@@ -2,6 +2,9 @@ bin/
 build/
 applications/*/build
 framework/*/build
+framework/images/webapp/images/uploads
+framework/images/webapp/images/categories
+framework/images/webapp/images/products
 hot-deploy/*/build
 specialpurpose/*/build
 runtime/git-rebase/*
