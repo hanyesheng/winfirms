@@ -22,7 +22,7 @@ under the License.
 <div class="label">${uiLabelMap.ProductProductId} <@htmlTemplate.lookupField name="productId" id="productId" formName="addMultipleImagesForm" fieldFormName="LookupProduct"/></div>
 <br/>
 <br/>
-  <table>
+  <table class="basic-table uk-table">
     <tbody>
       <tr>
         <td>

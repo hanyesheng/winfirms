@@ -45,7 +45,7 @@ under the License.
     <test-suite loader="main" location="testdef/scrumTests.xml"/>
 
     <!-- web applications; will be mounted when using the embedded container -->
-    <webapp name="scrum"
+    <webapp name="timeline"
         title="Scrum"
         server="default-server"
         location="webapp/scrum"

@@ -39,7 +39,7 @@
 
     <test-suite loader="main" location="testdef/assetmainttests.xml"/>
 
-    <webapp name="assetmaint"
+    <webapp name="dns"
         title="AssetMaint"
         server="default-server"
         location="webapp/assetmaint"

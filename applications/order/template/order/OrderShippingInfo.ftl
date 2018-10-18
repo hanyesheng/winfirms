@@ -49,12 +49,12 @@ under the License.
 </script>
 
 <#if security.hasEntityPermission("ORDERMGR", "_UPDATE", session) && (!orderHeader.salesChannelEnumId?? || orderHeader.salesChannelEnumId != "POS_SALES_CHANNEL")>
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <ul><li class="h3">&nbsp;${uiLabelMap.OrderActions}</li></ul>
       <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <ul>
         <#if security.hasEntityPermission("FACILITY", "_CREATE", session) && ((orderHeader.statusId == "ORDER_APPROVED") || (orderHeader.statusId == "ORDER_SENT"))>
           <#-- Special shipment options -->
@@ -193,16 +193,16 @@ under the License.
 
 <#if shipGroups?has_content && (!orderHeader.salesChannelEnumId?? || orderHeader.salesChannelEnumId != "POS_SALES_CHANNEL")>
   <#if parameters.view?has_content && parameters.view = "OISGA">
-  <div class="screenlet">
-     <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+     <div class="screenlet-title-bar md-card-toolbar">
         <ul>
            <li class="h3">&nbsp;${uiLabelMap.OrderShipmentInformation}</li>
            <li><a href="<@ofbizUrl>orderview?orderId=${orderId}</@ofbizUrl>">${uiLabelMap.OrderShipmentInformationByOISG}</a></li>
         </ul>
         <br class="clear"/>
      </div>
-     <div class="screenlet-body">
-      <table width="100%" cellspacing="0" cellpadding="2" border="1" class="basic-table">
+     <div class="screenlet-body md-card-content uk-overflow-container">
+      <table width="100%" cellspacing="0" cellpadding="2" border="1" class="basic-table uk-table">
           <tr class="header-row">
               <td width="10%">${uiLabelMap.OrderItemId}</td>
               <td width="25%">${uiLabelMap.ProductProduct}</td>
@@ -297,7 +297,7 @@ under the License.
               <input type="hidden" name="quantity" value="0"/>
               <td colspan="3" class="tableList">&nbsp;</td>
               <td class="tableList">
-                  <table class="basic-table" cellspacing='0'>
+                  <table class="basic-table uk-table" cellspacing='0'>
                       <tr>
                           <td>
                              <div class="label">${uiLabelMap.OrderAddToshipGroup} : </div>
@@ -342,8 +342,8 @@ under the License.
   <#list shipGroups as shipGroup>
     <#assign shipmentMethodType = shipGroup.getRelatedOne("ShipmentMethodType", false)!>
     <#assign shipGroupAddress = shipGroup.getRelatedOne("PostalAddress", false)!>
-    <div class="screenlet">
-      <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+      <div class="screenlet-title-bar md-card-toolbar">
          <ul>
            <li class="h3">&nbsp;${uiLabelMap.OrderShipmentInformation} - ${shipGroup.shipGroupSeqId}</li>
            <li class="expanded"><a onclick="javascript:toggleScreenlet(this, 'ShipGroupScreenletBody_${shipGroup.shipGroupSeqId}', 'true', '${uiLabelMap.CommonExpand}', '${uiLabelMap.CommonCollapse}');" title="Collapse">&nbsp;</a></li>
@@ -357,7 +357,7 @@ under the License.
         <input type="hidden" name="shipGroupSeqId" value="${shipGroup.shipGroupSeqId!}"/>
         <input type="hidden" name="contactMechPurposeTypeId" value="SHIPPING_LOCATION"/>
         <input type="hidden" name="oldContactMechId" value="${shipGroup.contactMechId!}"/>
-          <table class="basic-table" cellspacing='0'>
+          <table class="basic-table uk-table" cellspacing='0'>
                   <tr>
                       <td align="right" valign="top" width="15%">
                           <span class="label">&nbsp;${uiLabelMap.OrderAddress}</span>
@@ -546,7 +546,7 @@ under the License.
               <tr><td colspan="3"><hr /></td></tr>
               <tr>
                 <td colspan="3">
-                  <table>
+                  <table class="basic-table uk-table">
                     <tr>
                       <td>
                         <span class="label">&nbsp;${uiLabelMap.OrderOnlineUPSShippingEstimates}</span>
@@ -657,7 +657,7 @@ under the License.
                   <input type="hidden" name="orderId" value="${orderHeader.orderId}"/>
                   <input type="hidden" name="shipGroupSeqId" value="${shipGroup.shipGroupSeqId}"/>
                   <#if shipGroup.shippingInstructions?has_content>
-                    <table>
+                    <table class="basic-table uk-table">
                       <tr>
                         <td id="instruction">
                           <label>${shipGroup.shippingInstructions}</label>

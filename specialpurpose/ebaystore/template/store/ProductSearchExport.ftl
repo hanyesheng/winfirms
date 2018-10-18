@@ -194,8 +194,8 @@ under the License.
         }
     }
 </script>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">Items to export</li>
       <li>
@@ -210,11 +210,11 @@ under the License.
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form id="ProductsExportToEbay" method="post" action="<@ofbizUrl>exportProductsFromEbayStore</@ofbizUrl>"
         name="ProductsExportToEbay">
       <input type="hidden" name="productStoreId" value="${productStoreId!}"/>
-      <table class="basic-table" cellspacing="0">
+      <table class="basic-table uk-table" cellspacing="0">
         <tr>
           <td>
             <#if addItemObj?has_content>
@@ -301,14 +301,14 @@ under the License.
                         </td>
                       </tr>
                     </table>
-                    <div class="screenlet">
-                      <div class="screenlet-title-bar">
+                    <div class="screenlet md-card">
+                      <div class="screenlet-title-bar md-card-toolbar">
                         <ul>
                           <li class="h3">Product ${item.getSKU()!}</li>
                         </ul>
                         <br class="clear"/>
                       </div>
-                      <div class="screenlet-body">
+                      <div class="screenlet-body md-card-content uk-overflow-container">
                         <!-- ebay setting section -->
                         <table width="100%" cellspacing="0">
                           <tr>
@@ -529,14 +529,14 @@ under the License.
                     <!-- item specifices section -->
                     <#if primaryCate?has_content && primaryCate.getCategoryID()?? && listingTypes?has_content>
                       <#if checkSpecific == "true">
-                        <div class="screenlet">
-                          <div class="screenlet-title-bar">
+                        <div class="screenlet md-card">
+                          <div class="screenlet-title-bar md-card-toolbar">
                             <ul>
                               <li class="h3">Item specifices</li>
                             </ul>
                             <br class="clear"/>
                           </div>
-                          <div class="screenlet-body">
+                          <div class="screenlet-body md-card-content uk-overflow-container">
                             <table width="50%" height="100%" id="table2" cellspacing="0">
                               <#list categorySpecifix?keys as key>
                                 <#assign values = categorySpecifix.get(key)!/>
@@ -568,14 +568,14 @@ under the License.
                     </#if>
                     <!-- Setup ad templates section -->
                     <#if primaryCate?has_content && primaryCate.getCategoryID()?? && listingTypes?has_content>
-                      <div class="screenlet">
-                        <div class="screenlet-title-bar">
+                      <div class="screenlet md-card">
+                        <div class="screenlet-title-bar md-card-toolbar">
                           <ul>
                             <li class="h3">Details</li>
                           </ul>
                           <br class="clear"/>
                         </div>
-                        <div class="screenlet-body">
+                        <div class="screenlet-body md-card-content uk-overflow-container">
                           <table width="100%" height="100%" cellspacing="0">
                             <tr>
                               <td width="60%" valign="top">
@@ -680,13 +680,13 @@ under the License.
                     </#if>
                     <!-- product Price Type -->
                     <#if primaryCate?has_content && primaryCate.getCategoryID()?? && listingTypes?has_content>
-                      <div class="screenlet">
-                        <div class="screenlet-title-bar">
+                      <div class="screenlet md-card">
+                        <div class="screenlet-title-bar md-card-toolbar">
                           <ul>
                             <li class="h3">Listing Type</li>
                           </ul>
                           <br class="clear"/></div>
-                        <div class="screenlet-body">
+                        <div class="screenlet-body md-card-content uk-overflow-container">
                           <br class="clear"/>
                           <!--  set  listing type, duration, prices -->
                           <div id="tabs">
@@ -847,13 +847,13 @@ under the License.
                     </#if>
                     <!-- payment section -->
                     <#if primaryCate?has_content && primaryCate.getCategoryID()?? && listingTypes?has_content>
-                      <div class="screenlet">
-                        <div class="screenlet-title-bar">
+                      <div class="screenlet md-card">
+                        <div class="screenlet-title-bar md-card-toolbar">
                           <ul>
                             <li class="h3">Payment</li>
                           </ul>
                           <br class="clear"/></div>
-                        <div class="screenlet-body">
+                        <div class="screenlet-body md-card-content uk-overflow-container">
                           <table width="50%" height="100%" id="table2" cellspacing="0">
                             <tr>
                               <td colspan="4"><br/></td>
@@ -870,7 +870,7 @@ under the License.
                               <td colspan="4">
                                 <#assign is_payPal = false>
                                 <#if paymentMethods?has_content>
-                                  <table>
+                                  <table class="basic-table uk-table">
                                     <#assign j = 0>
                                     <#list paymentMethods as paymentMethod>
                                       <#if paymentMethod.value()??>
@@ -927,13 +927,13 @@ under the License.
                       </div>
                     </#if>
                     <#if primaryCate?has_content && primaryCate.getCategoryID()?? && listingTypes?has_content>
-                      <div class="screenlet">
-                        <div class="screenlet-title-bar">
+                      <div class="screenlet md-card">
+                        <div class="screenlet-title-bar md-card-toolbar">
                           <ul>
                             <li class="h3">Shipping Service</li>
                           </ul>
                           <br class="clear"/></div>
-                        <div class="screenlet-body">
+                        <div class="screenlet-body md-card-content uk-overflow-container">
                           <table cellSpacing="0" cellPadding="0" width="100%" border="0">
                             <tr>
                               <td></td>
@@ -972,7 +972,7 @@ under the License.
                             <tr>
                               <td>
                                 <#if shippingLocationDetails?has_content>
-                                  <table>
+                                  <table class="basic-table uk-table">
                                     <#assign j=0>
                                     <#list shippingLocationDetails as shippingLocationDetail>
                                       <#assign shippingLocation = shippingLocationDetail.getShippingLocation()!>
@@ -1002,7 +1002,7 @@ under the License.
         </tr>
       </table>
       <#--if addItemList?has_content>
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
           <tr>
             <td align="center" colspan="2">
               <a href="#" class="buttontext">${uiLabelMap.EbayExportToEbay}</a>

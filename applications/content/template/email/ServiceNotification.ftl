@@ -18,15 +18,9 @@
   -->
 
 <pre>
-The service : ${service.name}
+The service : 
 
 The Context :
-  <#list serviceContext.keySet() as ckey>
-      ${ckey!} --> ${(serviceContext.get(ckey))!}
-  </#list>
 
 The Result :
-  <#list serviceResult.keySet() as rkey>
-      ${rkey!} --> ${(serviceResult.get(rkey))!}
-  </#list>
 </pre>

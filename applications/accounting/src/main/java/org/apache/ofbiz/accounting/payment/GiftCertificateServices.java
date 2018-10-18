@@ -66,7 +66,7 @@ public class GiftCertificateServices {
         GenericValue userLogin = (GenericValue) context.get("userLogin");
         String productStoreId = (String) context.get("productStoreId");
         BigDecimal initialAmount = (BigDecimal) context.get("initialAmount");
-        String currency = (String) context.get("currency");
+
         String partyId = (String) context.get("partyId");
         if (UtilValidate.isEmpty(partyId)) {
             partyId = "_NA_";
@@ -113,14 +113,7 @@ public class GiftCertificateServices {
                 acctCtx.put("userLogin", userLogin);
                 acctResult = dispatcher.runSync("createFinAccount", acctCtx);
             } else {
-                Map<String, Object> createAccountCtx = new HashMap<String, Object>();
-                createAccountCtx.put("ownerPartyId", partyId);
-                createAccountCtx.put("finAccountTypeId", FinAccountHelper.giftCertFinAccountTypeId);
-                createAccountCtx.put("productStoreId", productStoreId);
-                createAccountCtx.put("currencyUomId", currency);
-                createAccountCtx.put("finAccountName", accountName + "for party ["+partyId+"]");
-                createAccountCtx.put("userLogin", userLogin);
-                acctResult = dispatcher.runSync("createFinAccountForStore", createAccountCtx);
+                acctResult = dispatcher.runSync("createFinAccountForStore", UtilMisc.<String, Object>toMap("productStoreId", productStoreId, "finAccountTypeId", FinAccountHelper.giftCertFinAccountTypeId, "userLogin", userLogin));
                 if (acctResult.get("finAccountId") != null) {
                     finAccountId = cardNumber = (String) acctResult.get("finAccountId");
                 }
@@ -930,7 +923,7 @@ public class GiftCertificateServices {
                 // SC 20060405: Changed to runSync because runAsync kept getting an error:
                 // Problem serializing service attributes (Cannot serialize object of class java.util.PropertyResourceBundle)
                 try {
-                    dispatcher.runAsync("sendMailFromScreen", emailCtx);
+                    dispatcher.runSync("sendMailFromScreen", emailCtx);
                 } catch (GenericServiceException e) {
                     Debug.logError(e, "Problem sending mail", module);
                     // this is fatal; we will rollback and try again later

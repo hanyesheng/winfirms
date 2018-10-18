@@ -18,8 +18,8 @@ under the License.
 -->
 
 <br />
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.PartyShoppingLists}</li>
       <li>
@@ -31,7 +31,7 @@ under the License.
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <#if shoppingLists?has_content>
       <form name="selectShoppingList" method="post" action="<@ofbizUrl>editShoppingList</@ofbizUrl>">
         <select name="shoppingListId">
@@ -53,8 +53,8 @@ under the License.
 </div>
 <br />
 <#if shoppingList?has_content>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.PartyShoppingListDetail} - ${shoppingList.listName}</li>
       <li><a href="javascript:document.updateList.submit();">${uiLabelMap.CommonSave}</a></li>
@@ -70,11 +70,11 @@ under the License.
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form name="updateList" method="post" action="<@ofbizUrl>updateShoppingList</@ofbizUrl>">
       <input type="hidden" name="shoppingListId" value="${shoppingList.shoppingListId}" />
       <input type="hidden" name="partyId" value="${shoppingList.partyId!}" />
-      <table class="basic-table" cellspacing='0'>
+      <table class="basic-table uk-table" cellspacing='0'>
         <tr>
           <td class="label">${uiLabelMap.PartyListName}</td>
           <td><input type="text" size="25" name="listName" value="${shoppingList.listName}" <#if shoppingList.listName?default("") == "auto-save">disabled="disabled"</#if> />
@@ -137,16 +137,16 @@ under the License.
 </div>
 <#if childShoppingListDatas?has_content>
 <br />
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.PartyChildShoppingList} - ${shoppingList.listName}</li>
       <li><a href="<@ofbizUrl>addListToCart?shoppingListId=${shoppingList.shoppingListId}&amp;includeChild=yes</@ofbizUrl>">${uiLabelMap.PartyAddChildListsToCart}</a></li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
-    <table class="basic-table" cellspacing="0">
+  <div class="screenlet-body md-card-content uk-overflow-container">
+    <table class="basic-table uk-table" cellspacing="0">
       <tr class="header-row">
         <td>${uiLabelMap.PartyListName}</td>
         <td>&nbsp;</td>
@@ -166,21 +166,26 @@ under the License.
 </div>
 </#if>
 <br />
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.PartyListItems} - ${shoppingList.listName}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <#if shoppingListItemDatas?has_content>
         <#-- Pagination -->
+        <#include "component://common/template/includes/HtmlTemplate.ftl"/>
         <#assign commonUrl = "editShoppingList?partyId=" + partyId + "&shoppingListId="+(shoppingListId!)+"&"/>
+        <#assign viewIndexFirst = 0/>
+        <#assign viewIndexPrevious = viewIndex - 1/>
+        <#assign viewIndexNext = viewIndex + 1/>
+        <#assign viewIndexLast = Static["org.apache.ofbiz.base.util.UtilMisc"].getViewLastIndex(listSize, viewSize) />
         <#assign messageMap = Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("lowCount", lowIndex, "highCount", highIndex, "total", listSize)/>
         <#assign commonDisplaying = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("CommonUiLabels", "CommonDisplaying", messageMap, locale)/>
-        <@htmlTemplate.nextPrev commonUrl=commonUrl ajaxEnabled=false javaScriptEnabled=false paginateStyle="nav-pager" paginateFirstStyle="nav-first" viewIndex=viewIndex highIndex=highIndex listSize=listSize viewSize=viewSize ajaxFirstUrl="" firstUrl="" paginateFirstLabel="" paginatePreviousStyle="nav-previous" ajaxPreviousUrl="" previousUrl="" paginatePreviousLabel="" pageLabel="" ajaxSelectUrl="" selectUrl="" ajaxSelectSizeUrl="" selectSizeUrl="" commonDisplaying=commonDisplaying paginateNextStyle="nav-next" ajaxNextUrl="" nextUrl="" paginateNextLabel="" paginateLastStyle="nav-last" ajaxLastUrl="" lastUrl="" paginateLastLabel="" paginateViewSizeLabel="" />
-      <table class="basic-table" cellspacing="0">
+        <@nextPrev commonUrl=commonUrl ajaxEnabled=false javaScriptEnabled=false paginateStyle="nav-pager" paginateFirstStyle="nav-first" viewIndex=viewIndex highIndex=highIndex listSize=listSize viewSize=viewSize ajaxFirstUrl="" firstUrl="" paginateFirstLabel="" paginatePreviousStyle="nav-previous" ajaxPreviousUrl="" previousUrl="" paginatePreviousLabel="" pageLabel="" ajaxSelectUrl="" selectUrl="" ajaxSelectSizeUrl="" selectSizeUrl="" commonDisplaying=commonDisplaying paginateNextStyle="nav-next" ajaxNextUrl="" nextUrl="" paginateNextLabel="" paginateLastStyle="nav-last" ajaxLastUrl="" lastUrl="" paginateLastLabel="" paginateViewSizeLabel="" />
+      <table class="basic-table uk-table" cellspacing="0">
         <tr class="header-row">
           <td>${uiLabelMap.PartyProduct}</td>
           <td>${uiLabelMap.PartyQuantity}</td>
@@ -219,11 +224,11 @@ under the License.
                   </#if> />
               </td>
             </form>
-            <td><@ofbizCurrency amount=unitPrice isoCode=currencyUomId/></td>
-            <td><@ofbizCurrency amount=totalPrice isoCode=currencyUomId/></td>
-            <td>
-              <a href="javascript:document.listform_${shoppingListItem.shoppingListItemSeqId}.submit();" class="buttontext">${uiLabelMap.CommonUpdate}</a>
-              <a href="javascript:document.removeform_${shoppingListItem.shoppingListItemSeqId}.submit();" class="buttontext">${uiLabelMap.CommonRemove}</a>
+            <td class="align-float"><@ofbizCurrency amount=unitPrice isoCode=currencyUomId/></td>
+            <td class="align-float"><@ofbizCurrency amount=totalPrice isoCode=currencyUomId/></td>
+            <td class="button-col align-float">
+              <a href="javascript:document.listform_${shoppingListItem.shoppingListItemSeqId}.submit();">${uiLabelMap.CommonUpdate}</a>
+              <a href="javascript:document.removeform_${shoppingListItem.shoppingListItemSeqId}.submit();">${uiLabelMap.CommonRemove}</a>
             </td>
           </tr>
           <#-- toggle the row color -->
@@ -237,14 +242,14 @@ under the License.
   </div>
 </div>
 <br />
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.PartyQuickAddList}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form name="addToShoppingList" method="post" action="<@ofbizUrl>addItemToShoppingList</@ofbizUrl>">
       <input type="hidden" name="shoppingListId" value="${shoppingList.shoppingListId}" />
       <input type="hidden" name="partyId" value="${shoppingList.partyId!}" />

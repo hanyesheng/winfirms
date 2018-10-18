@@ -16,8 +16,8 @@
 <xsl:param name="DistroName">docbook-xsl</xsl:param>
 <xsl:param name="PreviousRelease">1.77.0</xsl:param>
 <xsl:param name="PreviousReleaseRevision">9371</xsl:param>
-<xsl:param name="Revision">$Revision$</xsl:param>
-<xsl:param name="VersionFileURL">$URL$</xsl:param>
+<xsl:param name="Revision">$Revision: 1395307 $</xsl:param>
+<xsl:param name="VersionFileURL">$URL: http://svn.apache.org/repos/asf/ofbiz/branches/release16.11/specialpurpose/cmssite/template/docbook/VERSION.xsl $</xsl:param>
 
 <xsl:strip-space elements="fm:*"/>
 

@@ -120,7 +120,7 @@ under the License.
             <input type="hidden" name="facilityId" value="${facilityId!}"/>
             <input type="hidden" name="shipmentId" value="${shipmentPackage.shipmentId}"/>
             <input type="hidden" name="shipmentPackageSeqId" value="${shipmentPackage.shipmentPackageSeqId}"/>
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
               <tr>
                 <td width="20%" align="right"><span class="label">${uiLabelMap.ProductPackage}</span> ${shipmentPackage.shipmentPackageSeqId} ${uiLabelMap.ProductWeight}</td>
                 <td>&nbsp;</td>

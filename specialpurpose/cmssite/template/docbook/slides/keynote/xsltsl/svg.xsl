@@ -10,7 +10,7 @@
   <doc:reference xmlns="">
     <referenceinfo>
       <releaseinfo role="meta">
-        $Id$
+        $Id: svg.xsl 1395307 2012-10-07 14:02:53Z jleroux $
       </releaseinfo>
       <author>
         <surname>Ball</surname>

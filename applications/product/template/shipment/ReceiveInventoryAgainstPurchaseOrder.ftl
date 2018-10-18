@@ -32,14 +32,14 @@ under the License.
     </script>
 
     <#assign productId = parameters.productId!/>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <ul>
             <li class="h3">${uiLabelMap.ProductReceiveInventoryAgainstPurchaseOrder}</li>
         </ul>
         <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
     
     <#if ! isPurchaseShipment>
         <div class="errorMessage">
@@ -74,7 +74,7 @@ under the License.
 
 <form name="ReceiveInventoryAgainstPurchaseOrder" action="<@ofbizUrl>ReceiveInventoryAgainstPurchaseOrder</@ofbizUrl>">
   <input type="hidden" name="clearAll" value="Y"/>
-  <table class="basic-table" cellspacing="0">
+  <table class="basic-table uk-table" cellspacing="0">
     <tr>
       <td class="label">${uiLabelMap.ProductShipmentId}</td>
       <td><input type="text" size="20" name="shipmentId" value="${shipmentId!}"/></td>
@@ -107,7 +107,7 @@ under the License.
                 <input type="hidden" name="purchaseOrderId" value="${orderId}"/>
                 <input type="hidden" name="shipmentId" value="${shipmentId}" />
                 <input type="hidden" name="_useRowSubmit" value="Y"/>
-                <table cellspacing="0" class="basic-table">
+                <table cellspacing="0" class="basic-table uk-table">
                     <tr class="header-row">
                         <td>${uiLabelMap.ProductProduct}</td>
 

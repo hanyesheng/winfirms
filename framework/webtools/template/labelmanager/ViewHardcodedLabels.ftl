@@ -16,9 +16,9 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet-body">
+<div class="screenlet-body md-card-content uk-overflow-container">
   <#if parameters.searchLabels??>
-  <table class="basic-table hover-bar" cellspacing="3">
+  <table class="basic-table hover-bar uk-table" cellspacing="3">
     <tr class="header-row">
       <td>${uiLabelMap.WebtoolsLabelManagerRow}</td>
       <td>${uiLabelMap.WebtoolsLabelManagerKey}</td>

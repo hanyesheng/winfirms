@@ -240,7 +240,7 @@ public class CoreEvents {
                 endTime = ts1.getTime();
             } catch (IllegalArgumentException e) {
                 try {
-                    endTime = Long.parseLong(serviceEndTime);
+                    endTime = Long.parseLong(serviceTime);
                 } catch (NumberFormatException nfe) {
                     String errMsg = UtilProperties.getMessage(CoreEvents.err_resource, "coreEvents.invalid_format_time", locale);
                     errorBuf.append(errMsg);

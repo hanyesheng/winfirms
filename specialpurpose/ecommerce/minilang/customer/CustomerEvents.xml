@@ -65,6 +65,7 @@ under the License.
             <simple-map-processor name="newUserLogin">
                 <process field="USERNAME"><copy to-field="userLoginId"/><not-empty><fail-property resource="PartyUiLabels" property="PartyUserLoginMissingError"/></not-empty></process>
                 <process field="PASSWORD"><copy to-field="currentPassword"/><not-empty><fail-property resource="PartyUiLabels" property="PartyPasswordMissing"/></not-empty></process>
+                <process field="MSGCODE"><copy to-field="msgCode"/></process>
                 <process field="CONFIRM_PASSWORD">
                     <compare-field operator="equals" field="PASSWORD"><fail-property resource="PartyUiLabels" property="PartyPasswordMatchError"/></compare-field>                    
                     <copy to-field="currentPasswordVerify"/>
@@ -72,6 +73,11 @@ under the License.
                 <process field="PASSWORD_HINT"><copy to-field="passwordHint"/></process>
             </simple-map-processor>
         </call-map-processor>
+        <script>groovy:
+            String msgCode = (String) userLoginContext.get("msgCode");
+            String mobile = (String) userLoginContext.get("userLoginId");
+            com.winfirms.ofbiz.verification.MsgCert.checkMsg(mobile,msgCode,error_list,locale);
+        </script>
         <if-not-empty field="userLoginContext.userLoginId">
             <set from-field="userLoginContext.userLoginId" field="userLoginExistsMap.userLoginId"/>
             <find-by-primary-key entity-name="UserLogin" map="userLoginExistsMap" value-field="existingUserLogin"/>
@@ -112,6 +118,7 @@ under the License.
                     <convert type="Date" to-field="birthDate"><fail-property resource="PartyUiLabels" property="PartyBirthDateMissingError"/></convert>
                 </process>
                 <process field="USER_GENDER"><copy to-field="gender"/></process>
+                <process field="USER_NICKNAME"><copy to-field="nickname"/></process>
             </simple-map-processor>
         </call-map-processor>
 
@@ -245,32 +252,7 @@ under the License.
 
         <!-- Create the email address -->
 
-        <!-- Check for required E-Mail -->
-        <if-compare field="parameters.REQUIRE_EMAIL" operator="not-equals" value="false">
-            <call-map-processor in-map-name="parameters" out-map-name="emailContext">
-                <simple-map-processor name="newEmail">
-                    <process field="roleTypeId"><copy/></process>
-                    <process field="CUSTOMER_EMAIL">
-                        <copy to-field="emailAddress"/>
-                        <not-empty><fail-property resource="PartyUiLabels" property="PartyEmailAddressMissingError"/></not-empty>
-                        <validate-method method="isEmail"><fail-property resource="PartyUiLabels" property="PartyEmailAddressNotFormattedCorrectly"/></validate-method>
-                    </process>
-                    <process field="CUSTOMER_EMAIL_ALLOW_SOL"><copy to-field="allowSolicitation"/></process>
-                </simple-map-processor>
-            </call-map-processor>
-        <else>
-            <call-map-processor in-map-name="parameters" out-map-name="emailContext">
-                <simple-map-processor name="newEmail">
-                    <process field="roleTypeId"><copy/></process>
-                    <process field="CUSTOMER_EMAIL">
-                        <copy to-field="emailAddress"/>
-                        <validate-method method="isEmail"><fail-property resource="PartyUiLabels" property="PartyEmailAddressNotFormattedCorrectly"/></validate-method>
-                    </process>
-                    <process field="CUSTOMER_EMAIL_ALLOW_SOL"><copy to-field="allowSolicitation"/></process>
-                </simple-map-processor>
-            </call-map-processor>
-        </else>
-        </if-compare>
+      
 
         <!-- create the PartyDataSource entry to track where this info came from... -->
         <make-value entity-name="PartyDataSource" value-field="partyDataSource"/>

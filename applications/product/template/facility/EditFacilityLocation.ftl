@@ -32,12 +32,12 @@ under the License.
 <#if facilityId?? && !(facilityLocation??)>
     <form action="<@ofbizUrl>CreateFacilityLocation</@ofbizUrl>" method="post">
     <input type="hidden" name="facilityId" value="${facilityId}" />
-    <table class="basic-table" cellspacing="0">
+    <table class="basic-table uk-table" cellspacing="0">
 <#elseif facilityLocation??>
     <form action="<@ofbizUrl>UpdateFacilityLocation</@ofbizUrl>" method="post">
     <input type="hidden" name="facilityId" value="${facilityId!}" />
     <input type="hidden" name="locationSeqId" value="${locationSeqId}" />
-    <table class="basic-table" cellspacing="0">
+    <table class="basic-table uk-table" cellspacing="0">
     <tr>
         <td class="label">${uiLabelMap.ProductFacilityId}</td>
         <td>${facilityId!}</td>
@@ -98,13 +98,13 @@ under the License.
   </form>
   <#if locationSeqId??>
   <br />
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductLocationProduct}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <#-- ProductFacilityLocation stuff -->
-        <table class="basic-table hover-bar" cellspacing="0">
+        <table class="basic-table hover-bar uk-table" cellspacing="0">
         <tr class="header-row">
             <td>${uiLabelMap.ProductProduct}</td>
             <td>${uiLabelMap.ProductMinimumStockAndMoveQuantity}</td>
@@ -129,11 +129,11 @@ under the License.
         </table>
     </div>
   </div>
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductAddProduct}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <form method="post" action="<@ofbizUrl>createProductFacilityLocation</@ofbizUrl>" style="margin: 0;" name="createProductFacilityLocationForm">
             <input type="hidden" name="facilityId" value="${facilityId!}" />
             <input type="hidden" name="locationSeqId" value="${locationSeqId!}" />

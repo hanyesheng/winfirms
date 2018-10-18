@@ -17,14 +17,14 @@ specific language governing permissions and limitations
 under the License.
 -->
 <div>
-<table>
+<table class="basic-table uk-table">
   <tr>
      <td colspan="3"><h1>${uiLabelMap.AccountingAgreements}</h1></td>
   </tr>
 
   <tr>
      <td colspan="3">
-<ul>
+<ul class="uk-subnav uk-subnav-pill">
 <li><a href="<@ofbizUrl>FindAgreement</@ofbizUrl>">${uiLabelMap.AccountingAgreementAvailable}</a></li>
 </ul>
 <br />
@@ -36,7 +36,7 @@ under the License.
 
   <tr>
      <td colspan="3">
-<ul>
+<ul class="uk-subnav uk-subnav-pill">
 <li><a href="<@ofbizUrl>FindBillingAccount</@ofbizUrl>">${uiLabelMap.CommonShow} ${uiLabelMap.AccountingCustomer} ${uiLabelMap.AccountingBillingAccount}</a></li>
 </ul>
 <br />
@@ -49,7 +49,7 @@ under the License.
 
   <tr>
      <td colspan="3">
-<ul>
+<ul class="uk-subnav uk-subnav-pill">
 <li><a href="<@ofbizUrl>ListFixedAssets</@ofbizUrl>">${uiLabelMap.AccountingShowAllFixedAssets}</a></li>
 </ul>
 <br />
@@ -62,20 +62,20 @@ under the License.
 
   <tr valign="top">
 <td>
-<ul>
+<ul class="uk-subnav uk-subnav-pill">
 <li><a href="<@ofbizUrl>findInvoices?noConditionFind=Y&amp;lookupFlag=Y</@ofbizUrl>">${uiLabelMap.AccountingShowAllInvoices}</a></li>
 </ul>
 </td>
 
 <td>
-<ul>
+<ul class="uk-subnav uk-subnav-pill">
 <#list invoiceTypes as invoiceType>
 <li><a href="<@ofbizUrl>findInvoices?lookupFlag=Y&amp;invoiceTypeId=${invoiceType.invoiceTypeId}</@ofbizUrl>">${uiLabelMap.AccountingShowInvoices} ${invoiceType.get("description",locale)!invoiceType.invoiceTypeId}</a></li>
 </#list>
 </ul>
 </td>
 <td>
-<ul>
+<ul class="uk-subnav uk-subnav-pill">
 <#list invoiceStatus as status>
 <li><a href="<@ofbizUrl>findInvoices?lookupFlag=Y&amp;statusId=${status.statusId}</@ofbizUrl>">${uiLabelMap.AccountingShowInvoices} ${status.get("description",locale)!status.statusId}</a></li>
 </#list>
@@ -89,13 +89,13 @@ under the License.
 
 <tr valign="top">
 <td>
-<ul>
+<ul class="uk-subnav uk-subnav-pill">
 <li><a href="<@ofbizUrl>findPayments?noConditionFind=Y&amp;lookupFlag=Y</@ofbizUrl>">${uiLabelMap.AccountingShowAllPayments}</a></li>
 </ul>
 </td>
 <td>
 
-<ul>
+<ul class="uk-subnav uk-subnav-pill">
 <#list paymentTypes as paymentType>
 <li><a href="<@ofbizUrl>findPayments?lookupFlag=Y&amp;paymentTypeId=${paymentType.paymentTypeId}</@ofbizUrl>">${uiLabelMap.AccountingShowPayments} ${paymentType.get("description",locale)!paymentType.paymentTypeId}</a></li>
 </#list>
@@ -104,7 +104,7 @@ under the License.
 
 
 <td>
-<ul>
+<ul class="uk-subnav uk-subnav-pill">
 <#list paymentMethodTypes as paymentMethodType>
 <li><a href="<@ofbizUrl>findPayments?lookupFlag=Y&amp;paymentMethodTypeId=${paymentMethodType.paymentMethodTypeId}</@ofbizUrl>">${uiLabelMap.AccountingShowPayments} ${paymentMethodType.get("description",locale)!paymentMethodType.paymentMethodTypeId}</a></li>
 </#list>
@@ -112,7 +112,7 @@ under the License.
 </td>
 
 <td>
-<ul>
+<ul class="uk-subnav uk-subnav-pill">
 <#list paymentStatus as status>
 <li><a href="<@ofbizUrl>findPayments?lookupFlag=Y&amp;statusId=${status.statusId}</@ofbizUrl>">${uiLabelMap.AccountingShowPayments} ${status.get("description",locale)!status.statusId}</a></li>
 </#list>

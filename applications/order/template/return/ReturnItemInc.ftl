@@ -16,7 +16,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<table cellspacing="0" class="basic-table">
+<table cellspacing="0" class="basic-table uk-table">
     <tr>
       <td colspan="7"><h3>${uiLabelMap.OrderReturnFromOrder} ${uiLabelMap.CommonNbr}<a href="<@ofbizUrl>orderview?orderId=${orderId}</@ofbizUrl>" class="buttontext">${orderId}</a></h3></td>
       <td colspan="2" align="right">
@@ -28,7 +28,7 @@ under the License.
     <#-- information about orders and amount refunded/credited on past returns -->
     <#if orh??>
     <tr><td colspan="10">
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
           <tr>
             <td class="label" width="25%">${uiLabelMap.OrderOrderTotal}</td>
             <td><@ofbizCurrency amount=orh.getOrderGrandTotal() isoCode=orh.getCurrency()/></td>

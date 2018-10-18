@@ -17,14 +17,14 @@ specific language governing permissions and limitations
 under the License.
 -->
 <div class="lists screenlet">
-  <div class="screenlet-title-bar">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.CommonLanguageTitle}</li>
       <li><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.CommonCancel}</a></li>
     </ul>
     <br class="clear"/>
   </div>
-  <table cellspacing="0" class="basic-table hover-bar">
+  <table cellspacing="0" class="basic-table hover-bar uk-table">
     <#assign altRow = true>
     <#assign availableLocales = Static["org.apache.ofbiz.base.util.UtilMisc"].availableLocales()/>
     <#list availableLocales as availableLocale>

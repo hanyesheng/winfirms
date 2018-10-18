@@ -2010,9 +2010,6 @@
         <value xml:lang="th">โอกาสใหม่ที่สร้างเสร็จเรียบร้อยแล้ว</value>
         <value xml:lang="vi">Triển vọng Mới được tạo thành công.</value>
     </property>
-    <property key="CustomerCreatedSuccessfully">
-        <value xml:lang="en">Customer created successfully.</value>
-    </property>
     <property key="PageTitleAddPartyContent">
         <value xml:lang="ar">إضافة محتوى للطرف</value>
         <value xml:lang="de">Akteur Inhalt hinzufügen</value>
@@ -4753,7 +4750,7 @@
         <value xml:lang="ru">OFBiz: Управление участниками</value>
         <value xml:lang="th">OFBiz: การจัดการกลุ่มผู้ใช้</value>
         <value xml:lang="vi">vCloudBusines: Quản lý Tác nhân (Cá nhân/Tổ chức)</value>
-        <value xml:lang="zh">OFBiz: 会员管理程序</value>
+        <value xml:lang="zh">浴火: 会员管理程序</value>
         <value xml:lang="zh-TW">OFBiz: 團體管理</value>
     </property>
     <property key="PartyCompanyNameMissingError">

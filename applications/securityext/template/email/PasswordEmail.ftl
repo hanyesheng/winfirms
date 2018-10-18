@@ -23,6 +23,10 @@ under the License.
 <body>
   <div>${uiLabelMap.SecurityExtThisEmailIsInResponseToYourRequestToHave} <#if useEncryption>${uiLabelMap.SecurityExtANew}<#else>${uiLabelMap.SecurityExtYour}</#if> ${uiLabelMap.SecurityExtPasswordSentToYou}.</div>
   <br />
+  <br />
+  --${password}
+  --${productStoreId}
+  
   <div>
       <form method="post" action="${baseEcommerceSecureUrl}/partymgr/control/passwordChange?USERNAME=${userLogin.userLoginId!}&password=${password!}&forgotPwdFlag=true&tenantId=${tenantId!}" name="loginform" id="loginform" target="_blank">
         <input type="submit" name="submit" value="${uiLabelMap.ResetPassword}" />

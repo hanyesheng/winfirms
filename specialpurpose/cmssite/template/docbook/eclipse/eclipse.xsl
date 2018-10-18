@@ -9,7 +9,7 @@
 <xsl:import href="../html/chunk.xsl"/>
 
 <!-- ********************************************************************
-     $Id$
+     $Id: eclipse.xsl 1395307 2012-10-07 14:02:53Z jleroux $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.

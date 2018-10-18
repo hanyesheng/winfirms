@@ -53,7 +53,7 @@ function clickAll(e) {
             <input type="hidden" name="productId" value="${productId}" />
             <input type="hidden" name="_useRowSubmit" value="Y" />
             <input type="hidden" name="_checkGlobalScope" value="Y" />
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
         <#assign rowCount = 0>
         <tr class="header-row">
             <#list featureTypes as featureType>
@@ -119,7 +119,7 @@ function clickAll(e) {
     <b>${uiLabelMap.ProductNoSelectableFeaturesFound}</b>
 </#if>
 <form action="<@ofbizUrl>addVariantsToVirtual</@ofbizUrl>" method="post" name="addVariantsToVirtual">
-    <table cellspacing="0" class="basic-table">
+    <table cellspacing="0" class="basic-table uk-table">
         <tr class="header-row">
             <td><b>${uiLabelMap.ProductVariantAdd}:</b></td>
         </tr>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<menus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://ofbiz.apache.org/Widget-Menu" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Menu http://ofbiz.apache.org/dtds/widget-menu.xsd">
+    <menu name="ProjectTabBar" extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="ProjectInfo" title="${uiLabelMap.BasicInformation}">
+            <link target="projectInfo">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="ProjectFeatures" title="${uiLabelMap.FieldAndFinancingStage}">
+            <link target="projectFeatures">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="ProjectRecruit" title="${uiLabelMap.RecruitInfo}">
+            <link target="projectRecruit">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="ProjectVideoIntro" title="${uiLabelMap.VideoIntro}">
+            <link target="projectVideoIntro">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="ProjectDynamic" title="${uiLabelMap.ProjectDynamic}">
+            <link target="projectDynamic">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="ProjectPlan" title="${uiLabelMap.BusinessPlan}">
+            <link target="projectPlan">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="ProjectParty" title="${uiLabelMap.Teammates}">
+            <link target="projectParty">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="ProjectDiscuss" title="${uiLabelMap.ProjectComm}">
+            <link target="projectDiscuss">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="ProjectRelease" title="${uiLabelMap.Realease}">
+            <link target="projectRelease">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+    </menu>
+    <menu name="ProjectSubTabBar" menu-container-style="button-bar button-style-2" default-selected-style="selected">
+        <menu-item name="InitiateProject" title="${uiLabelMap.InitiateProject}" widget-style="buttontext create">
+            <link target="initiateProjectPrepare"/>
+        </menu-item>
+    </menu>
+    
+    <menu name="CourseTabBar" extends="CommonTabBarMenu" extends-resource="component://common/widget/CommonMenus.xml">
+        <menu-item name="CourseInfo" title="${uiLabelMap.BasicInformation}">
+            <link target="courseInfo">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="CourseVideoIntro" title="${uiLabelMap.VideoIntro}">
+            <link target="courseVideoIntro">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="CourseVideoList" title="${uiLabelMap.CourseVideoList}">
+            <link target="courseVideoList">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="CourseDynamic" title="${uiLabelMap.CourseDynamic}">
+            <link target="courseDynamic">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="CourseParty" title="${uiLabelMap.Teammates}">
+            <link target="courseParty">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="CourseDiscuss" title="${uiLabelMap.CourseComm}">
+            <link target="courseDiscuss">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="CourseRelease" title="${uiLabelMap.Realease}">
+            <link target="courseRelease">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+    </menu>
+    <menu name="CourseSubTabBar" menu-container-style="button-bar button-style-2" default-selected-style="selected">
+        <menu-item name="InitiateCourse" title="${uiLabelMap.InitiateCourse}" widget-style="buttontext create">
+            <link target="initiateCoursePrepare"/>
+        </menu-item>
+    </menu>
+</menus>

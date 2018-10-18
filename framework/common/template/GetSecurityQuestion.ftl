@@ -19,16 +19,16 @@ under the License.
 
 <center>
   <div class="screenlet login-screenlet">
-    <div class="screenlet-title-bar">
+    <div class="screenlet-title-bar md-card-toolbar">
       <#if securityQuestion?has_content>
         <h3>${uiLabelMap.AnswerSecurityQuestion}</h3>
       <#else>
         <h3>${uiLabelMap.CommonForgotYourPassword}</h3>
       </#if>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <form method="post" action="<@ofbizUrl>forgotPassword_step3${previousParams?if_exists}</@ofbizUrl>" name="forgotpassword">
-        <table class="basic-table" cellspacing="0">
+        <table class="basic-table uk-table" cellspacing="0">
           <#if userLoginId?has_content>
             <#if securityQuestion?has_content>
               <tr>

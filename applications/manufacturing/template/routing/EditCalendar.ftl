@@ -18,30 +18,30 @@ under the License.
 -->
 
 <#if techDataCalendar?has_content>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.ManufacturingUpdateCalendar}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
   <div class="button-bar"><a href="<@ofbizUrl>EditCalendar</@ofbizUrl>" class="buttontext">${uiLabelMap.ManufacturingNewCalendar}</a></div>
   <form name="calendarform" method="post" action="<@ofbizUrl>UpdateCalendar</@ofbizUrl>">
     <input type="hidden" name="calendarId" value="${techDataCalendar.calendarId}" />
 <#else>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.ManufacturingCreateCalendar}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
   <a href="<@ofbizUrl>EditCalendar</@ofbizUrl>" class="buttontext">${uiLabelMap.ManufacturingNewCalendar}</a>
   <form name="calendarform" method="post" action="<@ofbizUrl>CreateCalendar</@ofbizUrl>">
 </#if>
-  <table class="basic-table" cellspacing="0">
+  <table class="basic-table uk-table" cellspacing="0">
     <#if techDataCalendar?has_content>
     <tr>
       <td width='26%' align='right' valign='top' class="label">${uiLabelMap.ManufacturingCalendarId}</td>

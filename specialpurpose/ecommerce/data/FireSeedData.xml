@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<entity-engine-xml>
+    <!-- RoleType 角色类型 -->
+    <RoleType roleTypeId="BUSINESSMAN" description="创客" createdStamp="2017-12-20 16:11:07.092" createdTxStamp="2017-12-20 16:11:06.967" lastUpdatedStamp="2017-12-20 16:11:07.092" lastUpdatedTxStamp="2017-12-20 16:11:06.967"/>
+    <RoleType roleTypeId="INVESTORS" description="投资人" createdStamp="2017-12-20 16:11:07.092" createdTxStamp="2017-12-20 16:11:06.967" lastUpdatedStamp="2017-12-20 16:11:07.092" lastUpdatedTxStamp="2017-12-20 16:11:06.967"/>
+    <RoleType roleTypeId="COMPANY" description="公司" createdStamp="2017-12-20 16:11:07.092" createdTxStamp="2017-12-20 16:11:06.967" lastUpdatedStamp="2017-12-20 16:11:07.092" lastUpdatedTxStamp="2017-12-20 16:11:06.967"/>
+    <RoleType roleTypeId="INCUBATOR" description="孵化器" createdStamp="2017-12-20 16:11:07.092" createdTxStamp="2017-12-20 16:11:06.967" lastUpdatedStamp="2017-12-20 16:11:07.092" lastUpdatedTxStamp="2017-12-20 16:11:06.967"/>
+    <RoleType roleTypeId="SUBSCRIBER" description="用户" createdStamp="2017-12-20 16:11:07.092" createdTxStamp="2017-12-20 16:11:06.967" lastUpdatedStamp="2017-12-20 16:11:07.092" lastUpdatedTxStamp="2017-12-20 16:11:06.967"/>
+    <RoleType roleTypeId="TEACHER" description="教师" createdStamp="2017-12-20 16:11:07.092" createdTxStamp="2017-12-20 16:11:06.967" lastUpdatedStamp="2017-12-20 16:11:07.092" lastUpdatedTxStamp="2017-12-20 16:11:06.967"/>
+    
+    <!-- CommunicationEventType 沟通事件类型 -->
+    <CommunicationEventType communicationEventTypeId="PRODUCT_DISSCUSS" description="产品讨论" createdStamp="2017-12-20 16:11:07.092" createdTxStamp="2017-12-20 16:11:06.967" lastUpdatedStamp="2017-12-20 16:11:07.092" lastUpdatedTxStamp="2017-12-20 16:11:06.967"/>
+    <CommunicationEventType communicationEventTypeId="PRODUCT_APPLY" description="产品申请" createdStamp="2017-12-20 16:11:07.092" createdTxStamp="2017-12-20 16:11:06.967" lastUpdatedStamp="2017-12-20 16:11:07.092" lastUpdatedTxStamp="2017-12-20 16:11:06.967"/>
+    <CommunicationEventType communicationEventTypeId="PRIVATE_LETTER" description="私信" createdStamp="2017-12-20 16:11:07.092" createdTxStamp="2017-12-20 16:11:06.967" lastUpdatedStamp="2017-12-20 16:11:07.092" lastUpdatedTxStamp="2017-12-20 16:11:06.967"/>
+
+	<!-- ProductType 产品类型 -->
+	<ProductType description="欲火" productTypeId="FIRE"/>
+	<ProductType parentTypeId="FIRE" productTypeId="COURSE" description="课程" hasTable="N" isDigital="N" isPhysical="N" createdStamp="2017-12-20 16:11:09.919" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.919" lastUpdatedTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductType parentTypeId="FIRE" productTypeId="ACTIVITY" description="活动" hasTable="N" isDigital="N" isPhysical="N" createdStamp="2017-12-20 16:11:09.919" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.919" lastUpdatedTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductType parentTypeId="FIRE" productTypeId="SERVICE" description="服务" hasTable="N" isDigital="N" isPhysical="N" createdStamp="2017-12-20 16:11:09.919" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.919" lastUpdatedTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductType parentTypeId="FIRE" productTypeId="PROJECT" description="项目" hasTable="N" isDigital="N" isPhysical="N" createdStamp="2017-12-20 16:11:09.919" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.919" lastUpdatedTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductType parentTypeId="FIRE" productTypeId="POLICY" description="政策" hasTable="N" isDigital="N" isPhysical="N" createdStamp="2017-12-20 16:11:09.919" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.919" lastUpdatedTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductType parentTypeId="FIRE" productTypeId="CROWD_FUNDING" description="众筹" hasTable="N" isDigital="N" isPhysical="N" createdStamp="2017-12-20 16:11:09.919" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.919" lastUpdatedTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductType parentTypeId="FIRE" productTypeId="BUSINESSMAN" description="创客" hasTable="N" isDigital="N" isPhysical="N" createdStamp="2017-12-20 16:11:09.919" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.919" lastUpdatedTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductType parentTypeId="FIRE" productTypeId="NEWS" description="新闻资讯" hasTable="N" isDigital="N" isPhysical="N" createdStamp="2017-12-20 16:11:09.919" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.919" lastUpdatedTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductType parentTypeId="FIRE" productTypeId="INVESTORS" description="投资人" hasTable="N" isDigital="N" isPhysical="N" createdStamp="2017-12-20 16:11:09.919" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.919" lastUpdatedTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductType parentTypeId="FIRE" productTypeId="COMPANY" description="公司" hasTable="N" isDigital="N" isPhysical="N" createdStamp="2017-12-20 16:11:09.919" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.919" lastUpdatedTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductType parentTypeId="FIRE" productTypeId="INCUBATOR" description="孵化器" hasTable="N" isDigital="N" isPhysical="N" createdStamp="2017-12-20 16:11:09.919" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.919" lastUpdatedTxStamp="2017-12-20 16:11:09.509"/>
+
+	<!-- ProductType 分类类型 -->
+	<ProductCategoryType productCategoryTypeId="FIRE" description="欲火" hasTable="N" lastUpdatedStamp="2017-12-20 16:11:09.691" lastUpdatedTxStamp="2017-12-20 16:11:09.509" createdStamp="2017-12-20 16:11:09.691" createdTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductCategoryType productCategoryTypeId="COURSE" description="课程" parentTypeId="FIRE" hasTable="N" lastUpdatedStamp="2017-12-20 16:11:09.691" lastUpdatedTxStamp="2017-12-20 16:11:09.509" createdStamp="2017-12-20 16:11:09.691" createdTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductCategoryType productCategoryTypeId="ACTIVITY" description="活动" parentTypeId="FIRE" hasTable="N" lastUpdatedStamp="2017-12-20 16:11:09.691" lastUpdatedTxStamp="2017-12-20 16:11:09.509" createdStamp="2017-12-20 16:11:09.691" createdTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductCategoryType productCategoryTypeId="SERVICE" description="服务" parentTypeId="FIRE" hasTable="N" lastUpdatedStamp="2017-12-20 16:11:09.691" lastUpdatedTxStamp="2017-12-20 16:11:09.509" createdStamp="2017-12-20 16:11:09.691" createdTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductCategoryType productCategoryTypeId="PROJECT" description="项目" parentTypeId="FIRE" hasTable="N" lastUpdatedStamp="2017-12-20 16:11:09.691" lastUpdatedTxStamp="2017-12-20 16:11:09.509" createdStamp="2017-12-20 16:11:09.691" createdTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductCategoryType productCategoryTypeId="POLICY" description="政策" parentTypeId="FIRE" hasTable="N" lastUpdatedStamp="2017-12-20 16:11:09.691" lastUpdatedTxStamp="2017-12-20 16:11:09.509" createdStamp="2017-12-20 16:11:09.691" createdTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductCategoryType productCategoryTypeId="CROWD_FUNDING" description="众筹" parentTypeId="FIRE" hasTable="N" lastUpdatedStamp="2017-12-20 16:11:09.691" lastUpdatedTxStamp="2017-12-20 16:11:09.509" createdStamp="2017-12-20 16:11:09.691" createdTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductCategoryType productCategoryTypeId="BUSINESSMAN" description="创客" parentTypeId="FIRE" hasTable="N" lastUpdatedStamp="2017-12-20 16:11:09.691" lastUpdatedTxStamp="2017-12-20 16:11:09.509" createdStamp="2017-12-20 16:11:09.691" createdTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductCategoryType productCategoryTypeId="INVESTORS" description="投资人" parentTypeId="FIRE" hasTable="N" lastUpdatedStamp="2017-12-20 16:11:09.691" lastUpdatedTxStamp="2017-12-20 16:11:09.509" createdStamp="2017-12-20 16:11:09.691" createdTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductCategoryType productCategoryTypeId="COMPANY" description="公司" parentTypeId="FIRE" hasTable="N" lastUpdatedStamp="2017-12-20 16:11:09.691" lastUpdatedTxStamp="2017-12-20 16:11:09.509" createdStamp="2017-12-20 16:11:09.691" createdTxStamp="2017-12-20 16:11:09.509"/>
+	<ProductCategoryType productCategoryTypeId="INCUBATOR" description="孵化器" parentTypeId="FIRE" hasTable="N" lastUpdatedStamp="2017-12-20 16:11:09.691" lastUpdatedTxStamp="2017-12-20 16:11:09.509" createdStamp="2017-12-20 16:11:09.691" createdTxStamp="2017-12-20 16:11:09.509"/>
+	
+	<!-- ProductContentType 产品内容类型 -->
+	<ProductContentType productContentTypeId="RECRUITINFO" description="招募信息" hasTable="N" createdStamp="2017-12-20 16:11:09.772" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.772" lastUpdatedTxStamp="2017-12-20 16:11:09.509" /> 
+	<ProductContentType productContentTypeId="BUSINESSPLAN" description="商业计划" hasTable="N" createdStamp="2017-12-20 16:11:09.772" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.772" lastUpdatedTxStamp="2017-12-20 16:11:09.509" /> 
+	<ProductContentType parentTypeId="DIGITAL_DOWNLOAD" productContentTypeId="TIMELINE" description="时间线" hasTable="N" createdStamp="2017-12-20 16:11:09.772" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.772" lastUpdatedTxStamp="2017-12-20 16:11:09.509" /> 
+	<ProductContentType parentTypeId="DIGITAL_DOWNLOAD" productContentTypeId="VIDEO_COURSE" description="视频课程" hasTable="N" createdStamp="2017-12-20 16:11:09.772" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.772" lastUpdatedTxStamp="2017-12-20 16:11:09.509" /> 
+	<ProductContentType parentTypeId="DIGITAL_DOWNLOAD" productContentTypeId="VIDEO_DES" description="短视频简介" hasTable="N" createdStamp="2017-12-20 16:11:09.772" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.772" lastUpdatedTxStamp="2017-12-20 16:11:09.509" /> 
+	<ProductContentType parentTypeId="DIGITAL_DOWNLOAD" productContentTypeId="DIGITAL_UPLOAD" description="附件上传" hasTable="N" createdStamp="2017-12-20 16:11:09.772" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.772" lastUpdatedTxStamp="2017-12-20 16:11:09.509" /> 
+	
+	<!--收藏夹类型-->
+	<ShoppingListType shoppingListTypeId="COLLECTE" description="收藏" createdStamp="2017-12-20 16:11:09.772" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.772" lastUpdatedTxStamp="2017-12-20 16:11:09.509" /> 
+	<ShoppingListType shoppingListTypeId="FOLLOW" description="关注" createdStamp="2017-12-20 16:11:09.772" createdTxStamp="2017-12-20 16:11:09.509" lastUpdatedStamp="2017-12-20 16:11:09.772" lastUpdatedTxStamp="2017-12-20 16:11:09.509" /> 
+
+	<!--特征类型-->
+	<ProductFeatureType createdStamp="2017-12-20 16:11:09.789" createdTxStamp="2017-12-20 16:11:09.509" description="融资阶段" hasTable="N" lastUpdatedStamp="2017-12-20 16:11:09.789" lastUpdatedTxStamp="2017-12-20 16:11:09.509" productFeatureTypeId="FINANCINGSTAGE"/>
+	<ProductFeatureType createdStamp="2017-12-20 16:11:09.789" createdTxStamp="2017-12-20 16:11:09.509" description="领域" hasTable="N" lastUpdatedStamp="2017-12-20 16:11:09.789" lastUpdatedTxStamp="2017-12-20 16:11:09.509" productFeatureTypeId="FIELDABOUT"/>
+
+	<ProductContentType parentTypeId="BUSINESSPLAN" productContentTypeId="1" description="商业计划书概要" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="1" productContentTypeId="1_1" description="我们是谁" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="1" productContentTypeId="1_2" description="我们要做什么" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="1" productContentTypeId="1_3" description="我们需要什么" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="BUSINESSPLAN" productContentTypeId="2" description="价值载体" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="2" productContentTypeId="2_1" description="问题和需求" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="2" productContentTypeId="2_2" description="解决方案" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="2" productContentTypeId="2_3" description="产品或服务" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="BUSINESSPLAN" productContentTypeId="3" description="用户分析" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="3" productContentTypeId="3_1" description="用户画像" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="3" productContentTypeId="3_2" description="典型客户描述" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="3" productContentTypeId="3_3" description="由谁支付" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="BUSINESSPLAN" productContentTypeId="4" description="行业分析" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="4" productContentTypeId="4_1" description="行业现状和趋势" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="4" productContentTypeId="4_2" description="市场细分和金字塔模型" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="BUSINESSPLAN" productContentTypeId="5" description="竞争分析" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="5" productContentTypeId="5_1" description="竞争者" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="5" productContentTypeId="5_2" description="关键因素" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="5" productContentTypeId="5_3" description="我们的优势" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="5" productContentTypeId="5_4" description="行业壁垒" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="BUSINESSPLAN" productContentTypeId="6" description="风险分析" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="6" productContentTypeId="6_1" description="风险描述" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="BUSINESSPLAN" productContentTypeId="7" description="运营和财务计划" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="7" productContentTypeId="7_1" description="项目运营的进展" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="7" productContentTypeId="7_2" description="财务团队" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="BUSINESSPLAN" productContentTypeId="8" description="团队介绍" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+	<ProductContentType parentTypeId="8" productContentTypeId="8_1" description="团队成员构成" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
+
+</entity-engine-xml>

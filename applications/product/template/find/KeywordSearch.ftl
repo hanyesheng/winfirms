@@ -16,11 +16,11 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.ProductSearchProducts}, ${uiLabelMap.ProductSearchFor}:</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <#list searchConstraintStrings as searchConstraintString>
       <div>&nbsp;<a href="<@ofbizUrl>keywordsearch?removeConstraint=${searchConstraintString_index}&amp;clearSearch=N&amp;SEARCH_CATEGORY_ID=${parameters.SEARCH_CATEGORY_ID!}</@ofbizUrl>" class="buttontext">X</a>&nbsp;${searchConstraintString}</div>
     </#list>
@@ -52,7 +52,7 @@ under the License.
         }
     </script>
 
-    <table cellspacing="0" class="basic-table">
+    <table cellspacing="0" class="basic-table uk-table">
         <tr>
           <td><label><input type="checkbox" name="selectAll" value="0" class="selectAll" form="products"/> <b>${uiLabelMap.ProductProduct}</b></label></td>
           <td align="right">
@@ -95,7 +95,7 @@ under the License.
 
     <form method="post" name="products" id="products">
       <input type="hidden" name="productStoreId" value="${parameters.productStoreId!}" />
-      <table cellspacing="0" class="basic-table">
+      <table cellspacing="0" class="basic-table uk-table">
         <#assign listIndex = lowIndex>
         <#assign rowClass = "2">
         <#list productIds as productId><#-- note that there is no boundary range because that is being done before the list is put in the content -->
@@ -116,7 +116,7 @@ under the License.
       </table>
     </form>
 
-    <table cellspacing="0" class="basic-table">
+    <table cellspacing="0" class="basic-table uk-table">
         <tr><td colspan="2"><hr /></td></tr>
         <tr>
           <td align="right">

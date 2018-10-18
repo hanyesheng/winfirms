@@ -41,7 +41,7 @@ under the License.
     <service-resource type="eca" loader="main" location="servicedef/secas.xml"/>
     <service-resource type="model" loader="main" location="servicedef/services.xml"/>
 
-    <webapp name="bi"
+    <webapp name="developer_board"
         title="Business Intelligence"
         menu-name="secondary"
         server="default-server"

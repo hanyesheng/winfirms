@@ -33,13 +33,13 @@ under the License.
   ${cardNumberDisplay!}
 </#macro>
 
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
       <ul><li class="h3">&nbsp;${uiLabelMap.AccountingPaymentInformation}</li></ul>
       <br class="clear"/>
   </div>
-  <div class="screenlet-body">
-     <table class="basic-table" cellspacing='0'>
+  <div class="screenlet-body md-card-content uk-overflow-container">
+     <table class="basic-table uk-table" cellspacing='0'>
      <#assign orderTypeId = orderReadHelper.getOrderTypeId()>
      <#if orderTypeId == "PURCHASE_ORDER">
        <tr>
@@ -141,7 +141,7 @@ under the License.
                     </td>
                     <td width="1%">&nbsp;</td>
                     <td valign="top" width="60%">
-                        <table class="basic-table" cellspacing='0'>
+                        <table class="basic-table uk-table" cellspacing='0'>
                             <tr>
                                 <td valign="top">
                                     ${uiLabelMap.CommonNbr}<a href="/accounting/control/EditBillingAccount?billingAccountId=${billingAccount.billingAccountId}${StringUtil.wrapString(externalKeyParam)}" class="buttontext">${billingAccount.billingAccountId}</a>  - ${billingAccount.description!}
@@ -580,7 +580,7 @@ under the License.
    <tr><td colspan="4">
    <form name="addPaymentMethodToOrder" method="post" action="<@ofbizUrl>addPaymentMethodToOrder</@ofbizUrl>">
    <input type="hidden" name="orderId" value="${orderId!}"/>
-   <table class="basic-table" cellspacing='0'>
+   <table class="basic-table uk-table" cellspacing='0'>
    <tr>
       <td width="29%" align="right" nowrap="nowrap"><span class="label">${uiLabelMap.AccountingPaymentMethod}</span></td>
       <td width="1%">&nbsp;</td>

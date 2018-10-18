@@ -27,7 +27,7 @@ under the License.
         <#if receivedItems?has_content>
           <h3>${uiLabelMap.ProductReceiptPurchaseOrder} ${purchaseOrder.orderId}</h3>
           <hr />
-          <table class="basic-table" cellspacing="0">
+          <table class="basic-table uk-table" cellspacing="0">
             <tr class="header-row">
               <td>${uiLabelMap.ProductShipmentId}</td>
               <td>${uiLabelMap.ProductReceipt}</td>
@@ -73,7 +73,7 @@ under the License.
         <#-- Single Product Receiving -->
         <#if requestParameters.initialSelected?? && product?has_content>
           <form method="post" action="<@ofbizUrl>receiveSingleInventoryProduct</@ofbizUrl>" name="selectAllForm">
-            <table class="basic-table" cellspacing="0">
+            <table class="basic-table uk-table" cellspacing="0">
               <#-- general request fields -->
               <input type="hidden" name="facilityId" value="${requestParameters.facilityId!}"/>
               <input type="hidden" name="purchaseOrderId" value="${requestParameters.purchaseOrderId!}"/>
@@ -294,7 +294,7 @@ under the License.
             <input type="hidden" name="purchaseOrderId" value="${requestParameters.purchaseOrderId!}"/>
             <input type="hidden" name="initialSelected" value="Y"/>
             <input type="hidden" name="partialReceive" value="${partialReceive!}"/>
-            <table class="basic-table" cellspacing="0">
+            <table class="basic-table uk-table" cellspacing="0">
               <#list shipments! as shipment>
                 <#assign originFacility = shipment.getRelatedOne("OriginFacility", true)!/>
                 <#assign destinationFacility = shipment.getRelatedOne("DestinationFacility", true)!/>
@@ -306,7 +306,7 @@ under the License.
                 </tr>
                 <tr>
                   <td>
-                    <table class="basic-table" cellspacing="0">
+                    <table class="basic-table uk-table" cellspacing="0">
                       <tr>
                         <td nowrap="nowrap"><label><input type="radio" name="shipmentId" value="${shipment.shipmentId}" /> ${shipment.shipmentId}</label></td>
                         <td>${shipmentType.get("description",locale)?default(shipmentType.shipmentTypeId?default(""))}</td>
@@ -324,7 +324,7 @@ under the License.
               </tr>
               <tr>
                 <td>
-                  <table class="basic-table" cellspacing="0">
+                  <table class="basic-table uk-table" cellspacing="0">
                     <tr>
                       <td nowrap="nowrap"><label><input type="radio" name="shipmentId" value="_NA_" /> ${uiLabelMap.ProductNoSpecificShipment}</label></td>
                       <td colspan="5"></td>
@@ -352,7 +352,7 @@ under the License.
             </#if>
             <input type="hidden" name="_useRowSubmit" value="Y"/>
             <#assign rowCount = 0/>
-            <table class="basic-table" cellspacing="0">
+            <table class="basic-table uk-table" cellspacing="0">
               <#if !purchaseOrderItems?? || purchaseOrderItems.size() == 0>
                 <tr>
                   <td colspan="2">${uiLabelMap.ProductNoItemsPoReceive}.</td>
@@ -402,7 +402,7 @@ under the License.
                   </tr>
                   <tr>
                     <td>
-                      <table class="basic-table" cellspacing="0">
+                      <table class="basic-table uk-table" cellspacing="0">
                         <tr>
                           <#if orderItem.productId??>
                             <#assign product = orderItem.getRelatedOne("Product", true)/>
@@ -567,7 +567,7 @@ under the License.
           <form name="selectAllForm" method="post" action="<@ofbizUrl>ReceiveInventory</@ofbizUrl>">
             <input type="hidden" name="facilityId" value="${requestParameters.facilityId!}"/>
             <input type="hidden" name="initialSelected" value="Y"/>
-            <table class="basic-table" cellspacing="0">
+            <table class="basic-table uk-table" cellspacing="0">
               <tr>
                 <td class="label">${uiLabelMap.ProductPurchaseOrderNumber}</td>
                 <td>

@@ -8,8 +8,8 @@
  *   http://www.opensource.org/licenses/mit-license.php
  *   http://www.gnu.org/licenses/gpl.html
  *
- * $Date$
- * $Revision$
+ * $Date: 2016-04-11 16:17:30 +0200 (Mon, 11 Apr 2016) $
+ * $Revision: 1738588 $
  */
 
 /*jslint browser: true, onevar: true, undef: true, bitwise: true, strict: true */

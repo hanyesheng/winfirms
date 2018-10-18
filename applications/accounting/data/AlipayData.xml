@@ -1,0 +1,12 @@
+
+<entity-engine-xml>
+	<!--20170110clgalipay4 支付宝初始配置-->
+    <PaymentGatewayConfigType paymentGatewayConfigTypeId="ALIPAY" hasTable="N" description="AliPay Payment Gateway"/>
+    <PaymentGatewayConfig paymentGatewayConfigId="ALIPAY_CONFIG" paymentGatewayConfigTypeId="ALIPAY" description="AliPay Config"/>
+    
+    <!--20170110clgalipay4-->
+    <PaymentMethodType description="AliPay" paymentMethodTypeId="EXT_ALIPAY"/>    
+    
+    <!--20170110clgalipay4-->
+	<PaymentMethodType paymentMethodTypeId="EXT_ALIPAY" defaultGlAccountId="122000" description="支付宝"/>    
+</entity-engine-xml>   

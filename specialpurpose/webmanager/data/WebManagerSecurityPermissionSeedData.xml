@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityPermission description="View operations in the WebManager Component." permissionId="WEBMANAGER_VIEW"/>
+    <SecurityPermission description="Create operations in the WebManager Component." permissionId="WEBMANAGER_CREATE"/>
+    <SecurityPermission description="Update operations in the WebManager Component." permissionId="WEBMANAGER_UPDATE"/>
+    <SecurityPermission description="Delete operations in the WebManager Component." permissionId="WEBMANAGER_DELETE"/>
+    <SecurityPermission description="ALL operations in the WebManager Component." permissionId="WEBMANAGER_ADMIN"/>
+
+    <SecurityGroupPermission groupId="SUPER" permissionId="WEBMANAGER_ADMIN"/>
+
+</entity-engine-xml>

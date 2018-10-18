@@ -69,8 +69,8 @@ function getPaymentRunningTotal() {
 
 
 </script>
-<div class="screenlet">
-    <div class="screenlet-body">
+<div class="screenlet md-card">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <form id="depositWithdrawPaymentsForm" name="depositWithdrawPaymentsForm" method="post" action="<@ofbizUrl>depositWithdrawPayments</@ofbizUrl>">
             <#if paymentList?has_content>
                 <input type="hidden" name='organizationPartyId' value="${organizationPartyId!}" />
@@ -85,7 +85,7 @@ function getPaymentRunningTotal() {
                     <span class="label">${uiLabelMap.AccountingRunningTotal} :</span>
                     <span class="label" id="showPaymentRunningTotal"></span>
                 </div>
-                <table class="basic-table">
+                <table class="basic-table uk-table">
                     <tr class="header-row-2">
                         <td>${uiLabelMap.FormFieldTitle_paymentId}</td>
                         <td>${uiLabelMap.AccountingPaymentType}</td>

@@ -17,13 +17,13 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#if productPromoId?? && productPromo??>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.PageTitleEditProductPromoRules}</h3>
   </div>
   <#-- ======================= Rules ======================== -->
-  <div class="screenlet-body">
-    <table cellspacing="0" class="basic-table">
+  <div class="screenlet-body md-card-content uk-overflow-container">
+    <table cellspacing="0" class="basic-table uk-table">
       <tr class="header-row">
         <td width="10%"><b>${uiLabelMap.ProductRuleId}</b></td>
         <td width="80%"><b>${uiLabelMap.ProductRuleName}</b></td>
@@ -60,7 +60,7 @@ under the License.
       <tr valign="top" class="row-level-one<#if ruleClass == "1"> alternate-row</#if>">
         <td align="right" class="label">${uiLabelMap.ProductConditionsForRule} ${(productPromoRule.productPromoRuleId)!} :</td>
         <td colspan="2">
-          <table cellspacing="0" class="basic-table">
+          <table cellspacing="0" class="basic-table uk-table">
     <#assign maxCondSeqId = 1>
     <#assign condClass = "2">
     <#list productPromoConds as productPromoCond>
@@ -272,7 +272,7 @@ under the License.
       <tr valign="top" class="row-level-one<#if ruleClass == "1"> alternate-row</#if>">
         <td align="right" class="label">${uiLabelMap.ProductActionForRule} ${(productPromoRule.productPromoRuleId)!} :</td>
         <td colspan="2">
-          <table cellspacing="0" class="basic-table">
+          <table cellspacing="0" class="basic-table uk-table">
     <#assign actionClass = "2">
     <#list productPromoActions as productPromoAction>
             <tr class="row-level-two<#if actionClass == "1"> alternate-row</#if>">
@@ -469,11 +469,11 @@ under the License.
   <div class="tooltip"><b>${uiLabelMap.ProductNoteOnPartyId} :</b> ${uiLabelMap.ProductPartyFreeShipping}</div>
   -->
 </div>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.ProductAddPromoRule}</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form method="post" action="<@ofbizUrl>createProductPromoRule</@ofbizUrl>">
       <input type="hidden" name="productPromoId" value="${productPromoId!}" />
       <span class="label">${uiLabelMap.ProductName}</span><input type="text" size="30" name="ruleName" />
@@ -481,12 +481,12 @@ under the License.
     </form>
   </div>
 </div>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.ProductPromotion} ${uiLabelMap.ProductCategories}</h3>
   </div>
   <#-- ======================= Categories ======================== -->
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
   <#list promoProductPromoCategories as promoProductPromoCategory>
     <#assign promoProductCategory = promoProductPromoCategory.getRelatedOne("ProductCategory", true)>
     <#assign promoApplEnumeration = promoProductPromoCategory.getRelatedOne("ApplEnumeration", true)>
@@ -528,12 +528,12 @@ under the License.
     </div>
   </div>
 </div>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.ProductPromotionProducts}</h3>
   </div>
   <#-- ======================= Products ======================== -->
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
   <#list promoProductPromoProducts as promoProductPromoProduct>
     <#assign promoProduct = promoProductPromoProduct.getRelatedOne("Product", true)!>
     <#assign promoApplEnumeration = promoProductPromoProduct.getRelatedOne("ApplEnumeration", true)>

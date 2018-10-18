@@ -19,8 +19,8 @@ under the License.
 
 <#assign extInfo = parameters.extInfo?default("N")>
 
-<div id="findEmployee" class="screenlet">
-    <div class="screenlet-title-bar">
+<div id="findEmployee" class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <ul>
             <li class="h3">${uiLabelMap.CommonFind} ${uiLabelMap.HumanResEmployee}</li>
             <#if parameters.hideFields?default("N") == "Y">
@@ -33,7 +33,7 @@ under the License.
         <br class="clear"/>
     </div>
     <#if parameters.hideFields?default("N") != "Y">
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <#-- NOTE: this form is setup to allow a search by partial partyId or userLoginId; to change it to go directly to
           the viewprofile page when these are entered add the follow attribute to the form element:
 
@@ -131,8 +131,8 @@ under the License.
     </#if>
     <#if partyList??>
     <br />
-    <div id="findEmployeeResults" class="screenlet">
-        <div class="screenlet-title-bar">
+    <div id="findEmployeeResults" class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <ul>
                 <li class="h3">${uiLabelMap.PartyPartiesFound}</li>
                 <#if (partyListSize > 0)>
@@ -152,7 +152,7 @@ under the License.
             <br class="clear"/>
         </div>
     <#if partyList?has_content>
-        <table class="basic-table" cellspacing="0">
+        <table class="basic-table uk-table" cellspacing="0">
             <tr class="header-row">
                 <td>${uiLabelMap.PartyPartyId}</td>
                 <td>${uiLabelMap.PartyUserLogin}</td>
@@ -222,7 +222,7 @@ under the License.
             </#list>
         </table>
     <#else>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <span class="h3">${uiLabelMap.PartyNoPartiesFound}</span>
         </div>
     </#if>

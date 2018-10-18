@@ -16,13 +16,13 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductGlobalPriceRule}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <a href="<@ofbizUrl>FindProductPriceRules</@ofbizUrl>" class="buttontext">${uiLabelMap.ProductFindRule}</a>
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
           <tr class="header-row">
             <td width="10%"><b>${uiLabelMap.ProductRuleId}</b></td>
             <td width="80%"><b>${uiLabelMap.ProductRuleNameFromDateThruDate}</b></td>
@@ -63,7 +63,7 @@ under the License.
           <tr valign="top">
             <td align="right" class="label">${uiLabelMap.ProductConditions}</td>
             <td colspan="2">
-                <table cellspacing="0" class="basic-table">
+                <table cellspacing="0" class="basic-table uk-table">
                   <tr class="header-row">
                     <td width="5%"><b>${uiLabelMap.ProductSeqId}</b></td>
                     <td width="85%"><b>${uiLabelMap.ProductInputOperatorValue}</b></td>
@@ -150,7 +150,7 @@ under the License.
           <tr valign="top">
             <td align="right" class="label">${uiLabelMap.ProductActions}</td>
             <td colspan="2">
-                <table cellspacing="0" class="basic-table">
+                <table cellspacing="0" class="basic-table uk-table">
                   <tr class="header-row">
                     <td width="5%"><b>${uiLabelMap.ProductSeqId}</b></td>
                     <td width="85%"><b>${uiLabelMap.ProductActionTypeAmount}</b></td>

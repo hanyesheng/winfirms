@@ -20,8 +20,8 @@ under the License.
 <h1>${uiLabelMap.AccountingEditCustomTimePeriods}</h1>
 <br />
 <#if security.hasPermission("PERIOD_MAINT", session)>
-   <div class="screenlet">
-     <div class="screenlet-title-bar">
+   <div class="screenlet md-card">
+     <div class="screenlet-title-bar md-card-toolbar">
          <ul>
            <li class="h3">${uiLabelMap.AccountingShowOnlyPeriodsWithOrganization}</li>
          </ul>
@@ -35,8 +35,8 @@ under the License.
      </form>
    </div>
 
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <#if currentCustomTimePeriod?has_content>
         <ul>
           <li class="h3">${uiLabelMap.AccountingCurrentCustomTimePeriod}</li>
@@ -47,7 +47,7 @@ under the License.
       </#if>
     </div>
     <#if currentCustomTimePeriod?has_content>
-      <table class="basic-table" cellspacing="0">
+      <table class="basic-table uk-table" cellspacing="0">
         <tr class="header-row">
           <td>${uiLabelMap.CommonId}</td>
           <td>${uiLabelMap.CommonParent}</td>
@@ -135,18 +135,18 @@ under the License.
         </tr>
       </table>
     <#else>
-      <div class="screenlet-body">${uiLabelMap.AccountingNoCurrentCustomTimePeriodSelected}</div>
+      <div class="screenlet-body md-card-content uk-overflow-container">${uiLabelMap.AccountingNoCurrentCustomTimePeriodSelected}</div>
     </#if>
   </div>
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <ul>
         <li class="h3">${uiLabelMap.AccountingChildPeriods}</li>
       </ul>
       <br class="clear"/>
     </div>
     <#if customTimePeriods?has_content>
-      <table class="basic-table" cellspacing="0">
+      <table class="basic-table uk-table" cellspacing="0">
         <tr class="header-row">
           <td>${uiLabelMap.CommonId}</td>
           <td>${uiLabelMap.CommonParent}</td>
@@ -236,17 +236,17 @@ under the License.
         </#list>
       </table>
     <#else>
-      <div class="screenlet-body">${uiLabelMap.AccountingNoChildPeriodsFound}</div>
+      <div class="screenlet-body md-card-content uk-overflow-container">${uiLabelMap.AccountingNoChildPeriodsFound}</div>
     </#if>
   </div>
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <ul>
         <li class="h3">${uiLabelMap.AccountingAddCustomTimePeriod}</li>
       </ul>
       <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <form method="post" action="<@ofbizUrl>createCustomTimePeriod</@ofbizUrl>" name="createCustomTimePeriodForm">
         <input type="hidden" name="findOrganizationPartyId" value="${findOrganizationPartyId!}" />
         <input type="hidden" name="currentCustomTimePeriodId" value="${currentCustomTimePeriodId!}" />

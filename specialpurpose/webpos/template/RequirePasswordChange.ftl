@@ -24,8 +24,8 @@ under the License.
 </#if>
 <h1>${uiLabelMap.CommonLogin}</h1>
 <br />
-<div style="float: center; width: 49%; margin-right: 5px; text-align: center;" class="screenlet">
-  <div class="screenlet-title-bar">${uiLabelMap.CommonPasswordChange}</div>
+<div style="float: center; width: 49%; margin-right: 5px; text-align: center;" class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">${uiLabelMap.CommonPasswordChange}</div>
   <div class="screenlet-body" style="text-align: center;">
     <form method="post" action="<@ofbizUrl>login${previousParams}</@ofbizUrl>" name="loginform">
       <input type="hidden" name="requirePasswordChange" value="Y"/>

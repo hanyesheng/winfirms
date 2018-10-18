@@ -16,12 +16,12 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.PageTitleEditProductStoreSurveys}</h3>
     </div>
-    <div class="screenlet-body">
-        <table cellspacing="0" class="basic-table">
+    <div class="screenlet-body md-card-content uk-overflow-container">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr class="header-row">
               <td><b>${uiLabelMap.CommonType}</b></td>
               <td><b>${uiLabelMap.CommonName}</b></td>
@@ -58,14 +58,14 @@ under the License.
         </table>
     </div>
 </div>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.PageTitleAddProductStoreSurveys}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <form name="addSurvey" action="<@ofbizUrl>createProductStoreSurveyAppl</@ofbizUrl>" method="post">
             <input type="hidden" name="productStoreId" value="${productStoreId}" />
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
               <tr>
                 <td class="label">${uiLabelMap.CommonType}</td>
                 <td>

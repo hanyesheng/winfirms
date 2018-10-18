@@ -17,11 +17,11 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#if productPromoCode??>
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <h3>${uiLabelMap.ProductPromoCodeEmails}</h3>
         </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <#list productPromoCodeEmails as productPromoCodeEmail>
               <div>
                 <form name="deleteProductPromoCodeEmail_${productPromoCodeEmail_index}" method="post" action="<@ofbizUrl>deleteProductPromoCodeEmail</@ofbizUrl>">
@@ -51,11 +51,11 @@ under the License.
             </div>
         </div>
     </div>
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <h3>${uiLabelMap.ProductPromoCodeParties}</h3>
         </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <#list productPromoCodeParties as productPromoCodeParty>
                 <div><a href="<@ofbizUrl>deleteProductPromoCodeParty?productPromoCodeId=${productPromoCodeParty.productPromoCodeId}&amp;partyId=${productPromoCodeParty.partyId}&amp;productPromoId=${productPromoId}</@ofbizUrl>" class="buttontext">X</a>&nbsp;${productPromoCodeParty.partyId}</div>
             </#list>

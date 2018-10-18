@@ -16,13 +16,13 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
+<div class="screenlet md-card">
   <#if partyId??>
     <#assign title = uiLabelMap.PartyParty>
   <#else>
     <#assign title = uiLabelMap.PartyActive>
   </#if>
-  <div class="screenlet-title-bar">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${title}&nbsp;${uiLabelMap.PartyVisitListing}</li>
       <#if !partyId?? && showAll?lower_case == "true">
@@ -33,7 +33,7 @@ under the License.
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
       <br />
         <div class="align-float">
             <span class="label">
@@ -50,7 +50,7 @@ under the License.
         </div>
         <br class="clear"/>
       <br />
-      <table class="basic-table hover-bar" cellspacing="0">
+      <table class="basic-table hover-bar uk-table" cellspacing="0">
         <tr class="header-row">
           <td><a href="<@ofbizUrl>showvisits?sort=visitId&amp;showAll=${showAll}<#if partyId?has_content>&amp;partyId=${partyId}</#if></@ofbizUrl>">${uiLabelMap.PartyVisitId}</a></td>
           <td><a href="<@ofbizUrl>showvisits?sort=visitorId&amp;showAll=${showAll}<#if visitorId?has_content>&amp;visitorId=${visitorId}</#if></@ofbizUrl>">${uiLabelMap.PartyVisitorId}</a></td>

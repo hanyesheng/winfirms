@@ -20,7 +20,7 @@ under the License.
             <#assign commonUrl="FindGeneric?${curFindString}&amp;searchOptions_collapsed=${(parameters.searchOptions_collapsed)?default(\"false\")}&amp;"/>
             <@htmlTemplate.nextPrev commonUrl=commonUrl listSize=arraySize viewSize=viewSize viewIndex=viewIndex highIndex=highIndex commonDisplaying=commonDisplaying/>
         </#if>
-          <table class="basic-table hover-bar" cellspacing="0">
+          <table class="basic-table hover-bar uk-table" cellspacing="0">
             <tr class="header-row-2">
                 <td>&nbsp;</td>
                 <#list fieldList as field>

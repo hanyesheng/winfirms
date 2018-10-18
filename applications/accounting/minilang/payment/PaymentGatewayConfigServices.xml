@@ -39,6 +39,13 @@ under the License.
         <store-value value-field="lookedUpValue"/>
     </simple-method>
     
+    <!--20170110clgalipay7-->
+    <simple-method method-name="updatePaymentGatewayConfigAliPay" short-description="Update Payment Gateway Config AliPay">
+        <entity-one entity-name="PaymentGatewayAliPay" value-field="lookedUpValue"/>
+        <set-nonpk-fields map="parameters" value-field="lookedUpValue"/>
+        <store-value value-field="lookedUpValue"/>
+    </simple-method>
+    
     <simple-method method-name="updatePaymentGatewayConfigWorldPay" short-description="Update Payment Gateway Config RBS WorldPay">
         <entity-one entity-name="PaymentGatewayWorldPay" value-field="lookedUpValue"/>
         <set-nonpk-fields map="parameters" value-field="lookedUpValue"/>

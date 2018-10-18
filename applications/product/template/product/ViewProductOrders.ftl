@@ -25,8 +25,8 @@ under the License.
     }
 </script>
 
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.OrderOrderFound}</li>
       <#if (orderList?has_content && 0 < orderList?size)>
@@ -46,7 +46,7 @@ under the License.
       </#if>
     </ul>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form name="paginationForm" method="post" action="<@ofbizUrl>viewProductOrder</@ofbizUrl>">
       <input type="hidden" name="viewSize"/>
       <input type="hidden" name="viewIndex"/>
@@ -60,7 +60,7 @@ under the License.
         </#list>
       </#if>
     </form>
-    <table class="basic-table hover-bar" cellspacing='0'>
+    <table class="basic-table hover-bar uk-table" cellspacing='0'>
       <tr class="header-row">
         <td>${uiLabelMap.OrderOrderId}</td>
         <td>${uiLabelMap.FormFieldTitle_itemStatusId}</td>
@@ -77,7 +77,7 @@ under the License.
             <tr>
               <td><a href="/ordermgr/control/orderview?orderId=${orderItem.orderId}" class='buttontext'>${orderItem.orderId}</a></td>
               <#assign currentItemStatus = orderItem.getRelatedOne("StatusItem", false)/>
-              <td>${currentItemStatus.get("description",locale)?default(currentItemStatus.statusId)}</td>
+              <td>${currentItemStatus.get("description",locale)?default(currentItemStatus.statusId)}${currentItemStatus.statusId}</td>
               <td>${orderItem.orderItemSeqId}</td>
               <td>${order.orderDate}</td>
               <td>${orderItem.unitPrice}</td>

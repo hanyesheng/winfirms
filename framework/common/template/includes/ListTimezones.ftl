@@ -16,15 +16,15 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.CommonTimeZone}</li>
       <li><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.CommonCancel}</a></li>
     </ul>
     <br class="clear"/>
   </div>
-  <table cellspacing="0" class="basic-table hover-bar">
+  <table cellspacing="0" class="basic-table hover-bar uk-table">
     <#assign altRow = true>
     <#assign displayStyle = Static["java.util.TimeZone"].LONG>
     <#assign availableTimeZones = Static["org.apache.ofbiz.base.util.UtilDateTime"].availableTimeZones()/>

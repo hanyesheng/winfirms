@@ -23,13 +23,13 @@ under the License.
     <#assign clientCerts = request.getAttribute("javax.net.ssl.peer_certificates")!/>
 </#if>
 
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.WebtoolsCertsX509}</h3>
   </div>
   <#if (isSecure)>
     <#if (clientCerts?has_content)>
-      <table class="basic-table">
+      <table class="basic-table uk-table">
         <#list clientCerts as cert>
           <#assign certString = Static["org.apache.ofbiz.base.util.KeyStoreUtil"].certToString(cert)!>
           <#if (certString?has_content)>
@@ -58,9 +58,9 @@ ${Static["org.apache.ofbiz.base.util.KeyStoreUtil"].pemToPkHex(certString)}
         </#list>
       </table>
     <#else>
-      <div class="screenlet-body">${uiLabelMap.WebtoolsCertsNotFound}.</div>
+      <div class="screenlet-body md-card-content uk-overflow-container">${uiLabelMap.WebtoolsCertsNotFound}.</div>
     </#if>
   <#else>
-    <div class="screenlet-body">${uiLabelMap.WebtoolsCertsRequiresSSL}.</div>
+    <div class="screenlet-body md-card-content uk-overflow-container">${uiLabelMap.WebtoolsCertsRequiresSSL}.</div>
   </#if>
 </div>

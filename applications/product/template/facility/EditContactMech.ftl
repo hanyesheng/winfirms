@@ -31,7 +31,7 @@ under the License.
     <form method="post" action='<@ofbizUrl>EditContactMech</@ofbizUrl>' name="createcontactmechform">
       <input type='hidden' name='facilityId' value='${facilityId}' />
       <input type='hidden' name='DONE_PAGE' value='${donePage!}' />
-      <table width="50%" class="basic-table" cellspacing="0">
+      <table width="50%" class="basic-table uk-table" cellspacing="0">
         <tr>
           <td class="label">${uiLabelMap.PartySelectContactType}</td>
           <td>
@@ -56,7 +56,7 @@ under the License.
       <#if contactMechPurposeType??>
         <div><span class="label">(${uiLabelMap.PartyMsgContactHavePurpose}</span>"${contactMechPurposeType.get("description",locale)!}")</div>
       </#if>
-      <table width="90%" class="basic-table" cellspacing="0">
+      <table width="90%" class="basic-table uk-table" cellspacing="0">
         <form method="post" action='<@ofbizUrl>${mechMap.requestName}</@ofbizUrl>' name="editcontactmechform" id="editcontactmechform">
         <input type='hidden' name='DONE_PAGE' value='${donePage}' />
         <input type='hidden' name='contactMechTypeId' value='${mechMap.contactMechTypeId}' />
@@ -83,12 +83,12 @@ under the License.
         <a href='<@ofbizUrl>authview/${donePage}?facilityId=${facilityId}</@ofbizUrl>' class='buttontext'>${uiLabelMap.CommonGoBack}</a>
         <a href="<@ofbizUrl>EditContactMech?facilityId=${facilityId}</@ofbizUrl>" class="buttontext">${uiLabelMap.ProductNewContactMech}</a>
       </div>
-      <table class="basic-table" cellspacing="0">
+      <table class="basic-table uk-table" cellspacing="0">
         <#if mechMap.purposeTypes?has_content>
         <tr>
           <td valign="top" class="label">${uiLabelMap.PartyContactPurposes}</td>
           <td>
-            <table class="basic-table" cellspacing="0">
+            <table class="basic-table uk-table" cellspacing="0">
             <#if mechMap.facilityContactMechPurposes?has_content>
               <#assign alt_row = false>
               <#list mechMap.facilityContactMechPurposes as facilityContactMechPurpose>

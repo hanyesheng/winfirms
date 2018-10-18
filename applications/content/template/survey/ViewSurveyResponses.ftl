@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-  <table class="basic-table hover-bar" cellspacing="0">
+  <table class="basic-table hover-bar uk-table" cellspacing="0">
     <#assign questions = surveyWrapper.getSurveyQuestionAndAppls()>
     <#assign surveyResults = surveyWrapper.getResults(questions)>
 

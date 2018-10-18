@@ -31,7 +31,7 @@ under the License.
     <service-resource type="model" loader="main" location="servicedef/solrservices.xml"/>
     <service-resource type="eca" loader="main" location="servicedef/secas.xml"/>
 
-    <webapp name="solr"
+    <webapp name="explore"
         title="Apache Solr Integration"
         server="default-server"
         location="webapp/solr"

@@ -24,21 +24,21 @@ function lookupInventory() {
 }
 // -->
 </script>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.PageTitleFindInventoryEventPlan}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form method="post" name="lookupinventory" action="<@ofbizUrl>FindInventoryEventPlan</@ofbizUrl>">
     <input type="hidden" name="lookupFlag" value="Y"/>
     <input type="hidden" name="hideFields" value="Y"/>
-    <table class="basic-table" cellspacing="0">
+    <table class="basic-table uk-table" cellspacing="0">
       <tr>
         <td width='100%'>
-          <table class="basic-table" cellspacing="0">
+          <table class="basic-table uk-table" cellspacing="0">
             <tr>
               <td></td>
               <td align='right'>
@@ -55,10 +55,10 @@ function lookupInventory() {
             </tr>
           </table>
           <#if requestParameters.hideFields?default("N") != "Y">
-          <table class="basic-table" cellspacing="0">
+          <table class="basic-table uk-table" cellspacing="0">
             <tr>
               <td align='center' width='100%'>
-                 <table class="basic-table" cellspacing="0">
+                 <table class="basic-table uk-table" cellspacing="0">
                   <tr>
                     <td width='20%' align='right' class="label">${uiLabelMap.ManufacturingProductId}</td>
                     <td width='5%'>&nbsp;</td>
@@ -100,12 +100,12 @@ document.lookupinventory.productId.focus();
 </script>
 </#if>
 <#if requestParameters.lookupFlag?default("N") == "Y">
-<table class="basic-table" cellspacing="0">
+<table class="basic-table uk-table" cellspacing="0">
   <tr>
     <td width='100%'>
       <#if inventoryList?has_content>
          <#assign rowClass = "alternate-row">
-         <table class="basic-table" cellspacing="0">
+         <table class="basic-table uk-table" cellspacing="0">
           <tr>
            <td width="50%" class="boxhead">${uiLabelMap.CommonElementsFound}</td>
             <td width="50%">
@@ -131,7 +131,7 @@ document.lookupinventory.productId.focus();
         </tr>
       </table>
 
-      <table class="basic-table" cellspacing="0">
+      <table class="basic-table uk-table" cellspacing="0">
         <tr class="header-row">
           <td>${uiLabelMap.CommonType}</td>
           <td align="center">&nbsp;</td>

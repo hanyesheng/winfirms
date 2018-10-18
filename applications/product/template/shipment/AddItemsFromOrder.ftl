@@ -17,14 +17,14 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#if shipment??>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <ul>
             <li class="h3">${uiLabelMap.PageTitleAddItemsFromOrder}</li>
         </ul>
         <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <form name="additemsfromorder" action="<@ofbizUrl>AddItemsFromOrder</@ofbizUrl>">
             <input type="hidden" name="shipmentId" value="${shipmentId}"/>
             <div>
@@ -39,14 +39,14 @@ under the License.
         </form>
     </div>
 </div>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <ul>
             <li class="h3">${uiLabelMap.ProductAddItemsShipment}: [${shipmentId!}]; ${uiLabelMap.ProductFromAnOrder}: [${orderId!}], ${uiLabelMap.ProductOrderShipGroupId}: [${shipGroupSeqId!}]</li>
         </ul>
         <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
     <#if orderId?has_content && !orderHeader??>
         <h3 style="color: red;"><#assign uiLabelWithVar=uiLabelMap.ProductErrorOrderIdNotFound?interpret><@uiLabelWithVar/>.</h3>
     </#if>
@@ -82,7 +82,7 @@ under the License.
         </#if>
         <input type="hidden" name="shipmentId" value="${shipmentId}" />
         <input type="hidden" name="_useRowSubmit" value="Y" />
-        <table cellspacing="0" cellpadding="2" class="basic-table hover-bar">
+        <table cellspacing="0" cellpadding="2" class="basic-table hover-bar uk-table">
             <tr class="header-row">
                 <td>${uiLabelMap.ProductOrderId}<br />${uiLabelMap.ProductOrderShipGroupId}<br />${uiLabelMap.ProductOrderItem}</td>
                 <td>${uiLabelMap.ProductProduct}</td>
@@ -232,8 +232,8 @@ under the License.
     </div>
 </div>
 <#else>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <ul>
             <li class="h3">${uiLabelMap.ProductShipmentNotFoundId}: [${shipmentId!}]</li>
         </ul>

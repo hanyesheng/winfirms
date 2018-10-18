@@ -81,8 +81,8 @@ function submitForm(form, mode, value) {
   <table width="100%" border="0" cellpadding="0" cellspacing="0">
     <tr valign="top">
       <td height="100%">
-        <div class="screenlet" style="height: 100%;">
-            <div class="screenlet-title-bar">
+        <div class="screenlet md-card" style="height: 100%;">
+            <div class="screenlet-title-bar md-card-toolbar">
                 <#if shipping == true>
                     <div class="h3">1)&nbsp;${uiLabelMap.OrderWhereShallWeShipIt}?</div>
                 <#else>
@@ -152,8 +152,8 @@ function submitForm(form, mode, value) {
       </td>
       <td bgcolor="white" width="1">&nbsp;&nbsp;</td>
       <td height="100%">
-        <div class="screenlet" style="height: 100%;">
-            <div class="screenlet-title-bar">
+        <div class="screenlet md-card" style="height: 100%;">
+            <div class="screenlet-title-bar md-card-toolbar">
                 <#if shipping == true>
                     <div class="h3">2)&nbsp;${uiLabelMap.OrderHowShallWeShipIt}?</div>
                 <#else>
@@ -287,8 +287,8 @@ function submitForm(form, mode, value) {
       <td height="100%">
           <#-- Payment Method Selection -->
 
-        <div class="screenlet" style="height: 100%;">
-            <div class="screenlet-title-bar">
+        <div class="screenlet md-card" style="height: 100%;">
+            <div class="screenlet-title-bar md-card-toolbar">
                 <div class="h3">3)${uiLabelMap.OrderHowShallYouPay}?</div>
             </div>
             <div class="screenlet-body" style="height: 100%;">
@@ -348,6 +348,26 @@ function submitForm(form, mode, value) {
                       <input type="radio" name="checkOutPaymentId" value="EXT_PAYPAL" <#if "EXT_PAYPAL" == checkOutPaymentId>checked="checked"</#if>/>
                       <span>${uiLabelMap.AccountingPayWithPayPal}</span>
                       </label>
+                    </td>
+                  </tr>
+                  </#if>
+                  <#if productStorePaymentMethodTypeIdMap.EXT_ALIPAY??>
+                  <tr>
+                    <td width="1%">
+                      <input type="radio" name="checkOutPaymentId" value="EXT_ALIPAY" <#if "EXT_ALIPAY" == checkOutPaymentId>checked="checked"</#if>/>
+                    </td>
+                    <td width="50%">
+                      <span>${uiLabelMap.AccountingPayWithAliPay}</span>
+                    </td>
+                  </tr>
+                  </#if>
+                  <#if productStorePaymentMethodTypeIdMap.EXT_UNIONPAY??>
+                  <tr>
+                    <td width="1%">
+                      <input type="radio" name="checkOutPaymentId" value="EXT_UNIONPAY" <#if "EXT_UNIONPAY" == checkOutPaymentId>checked="checked"</#if>/>
+                    </td>
+                    <td width="50%">
+                      <span>${uiLabelMap.AccountingPayWithUnionPay}</span>
                     </td>
                   </tr>
                   </#if>

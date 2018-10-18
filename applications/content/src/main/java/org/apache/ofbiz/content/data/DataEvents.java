@@ -18,6 +18,7 @@
  *******************************************************************************/
 package org.apache.ofbiz.content.data;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -168,7 +169,7 @@ public class DataEvents {
         String mimeType = DataResourceWorker.getMimeType(dataResource);
 
         // hack for IE and mime types
-        if (UtilValidate.isNotEmpty(userAgent) && userAgent.indexOf("MSIE") > -1) {
+        if (userAgent.indexOf("MSIE") > -1) {
             Debug.logInfo("Found MSIE changing mime type from - " + mimeType, module);
             mimeType = "application/octet-stream";
         }
@@ -284,7 +285,7 @@ public class DataEvents {
             }
             OutputStream os = response.getOutputStream();
             Map<String, Object> resourceData = DataResourceWorker.getDataResourceStream(dataResource, "", application.getInitParameter("webSiteId"), UtilHttp.getLocale(request), application.getRealPath("/"), false);
-            os.write(IOUtils.toByteArray((InputStream)resourceData.get("stream")));
+            os.write(IOUtils.toByteArray((ByteArrayInputStream)resourceData.get("stream")));
             os.flush();
         } catch (GenericEntityException e) {
             String errMsg = "Error downloading digital product content: " + e.toString();

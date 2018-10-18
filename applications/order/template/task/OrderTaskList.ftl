@@ -40,21 +40,21 @@ under the License.
 
 <#if security.hasEntityPermission("ORDERMGR", "_VIEW", session)>
 <#assign tasksFound = false>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <div class="h3">${uiLabelMap.OrderOrderNeedingAttention}</div>
     </div>
-    <div class="screenlet-body">
-        <table cellspacing="0" class="basic-table">
+    <div class="screenlet-body md-card-content uk-overflow-container">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr>
               <td width='100%'>
                 <#if poList?has_content>
                   <#assign tasksFound = true>
-                  <table cellspacing="0" class="basic-table">
+                  <table cellspacing="0" class="basic-table uk-table">
                     <tr>
                       <td>
                         <h3>${uiLabelMap.OrderOrderPurchaseToBeScheduled}</h3>
-                        <table cellspacing="0" class="basic-table hover-bar">
+                        <table cellspacing="0" class="basic-table hover-bar uk-table">
                           <tr class="header-row">
                             <td>${uiLabelMap.OrderOrderNumber}</td>
                             <td>${uiLabelMap.CommonName}</td>
@@ -115,11 +115,11 @@ under the License.
 
                 <#if partyTasks?has_content>
                   <#assign tasksFound = true>
-                  <table cellspacing="0" class="basic-table hover-bar">
+                  <table cellspacing="0" class="basic-table hover-bar uk-table">
                     <tr>
                       <td>
                         <h3>${uiLabelMap.OrderWorkflow}</h3>
-                        <table cellspacing="0" class="basic-table">
+                        <table cellspacing="0" class="basic-table uk-table">
                           <tr class="header-row">
                             <td><a href="<@ofbizUrl>tasklist?sort=orderId</@ofbizUrl>">${uiLabelMap.OrderOrderNumber}</a></td>
                             <td><a href="<@ofbizUrl>tasklist?sort=name</@ofbizUrl>">${uiLabelMap.CommonName}</a></td>
@@ -181,11 +181,11 @@ under the License.
 
                 <#if roleTasks?has_content>
                   <#assign tasksFound = true>
-                  <table cellspacing="0" class="basic-table">
+                  <table cellspacing="0" class="basic-table uk-table">
                     <tr>
                       <td>
                         <h3>${uiLabelMap.CommonWorkflowActivityUserRole}</h3>
-                        <table cellspacing="0" class="basic-table hover-bar">
+                        <table cellspacing="0" class="basic-table hover-bar uk-table">
                           <tr class="header-row">
                             <td><a href="<@ofbizUrl>tasklist?sort=orderId</@ofbizUrl>">${uiLabelMap.OrderOrderNumber}</a></td>
                             <td><a href="<@ofbizUrl>tasklist?sort=name</@ofbizUrl>">${uiLabelMap.CommonName}</a></td>

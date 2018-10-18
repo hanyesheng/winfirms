@@ -43,8 +43,8 @@ margin: 1em;
     });
 </script>
 
-<div class="screenlet" style="margin: 1em;">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card" style="margin: 1em;">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.CommonVisualThemes}</li>
       <li><a href="<@ofbizUrl>main</@ofbizUrl>">${uiLabelMap.CommonDone}</a></li>
@@ -54,7 +54,7 @@ margin: 1em;
   <li class="h2" style="padding-top:1em">${uiLabelMap.CommonVisualThemeUsage}</li>
   <#if visualThemes?has_content>
     <#assign orderByList = Static["org.apache.ofbiz.base.util.UtilMisc"].toList("visualThemeId")/>
-    <table cellspacing="0" class="basic-table">
+    <table cellspacing="0" class="basic-table uk-table">
       <#list visualThemes as visualTheme>
         <#assign screenshots = delegator.findByAnd("VisualThemeResource", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap(
             "visualThemeId", "${visualTheme.visualThemeId}",

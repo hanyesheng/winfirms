@@ -464,6 +464,15 @@ under the License.
         </field>
     </form>
     
+    <!--20170110clgalipay18-->
+    <form name="EditPaymentGatewayConfigAliPay" type="single" target="UpdatePaymentGatewayConfigAliPay" default-map-name="paymentGatewayAliPay" header-row-style="header-row" default-table-style="basic-table">
+        <auto-fields-entity entity-name="PaymentGatewayAliPay" default-field-type="edit"/>
+        <field name="paymentGatewayConfigId"><hidden/></field>
+        <field name="submitButton" title="${uiLabelMap.CommonUpdate}" widget-style="btn btn-default smallSubmit">
+            <submit button-type="button"/>
+        </field>
+    </form>
+    
     <form name="EditPaymentGatewayConfigSecurePay" type="single" target="UpdatePaymentGatewayConfigSecurePay" default-map-name="paymentGatewaySecurePay" header-row-style="header-row" default-table-style="basic-table">
         <auto-fields-entity entity-name="PaymentGatewaySecurePay" default-field-type="edit"/>
         <field name="paymentGatewayConfigId"><hidden/></field>

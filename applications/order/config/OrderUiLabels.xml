@@ -19,11 +19,6 @@
     under the License.
 -->
 <resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
-    <property key="BirtOrderReportsWarning">
-        <value xml:lang="en">Four Birt reports (Last 3 Months Sales, Sales, Sales Order Discount Code, Product Demand) require to feed the BI data base (note that the bi.properties file will need to be updated after September 2026). Then only new approved orders will be taken into account.</value>
-        <value xml:lang="fr">Quatre tableau créés par Birt (Ventes des 3 derniers mois, Ventes, Ventes par codes promotionels, Demandes par produit) nécessitent d'alimenter la base de données d'Inform. décis. (notez aussi la nécessaire màj du fichier bi.properties après septembre 2026). Ensuite seules les commandes nouvellement approuvées seront prises en compte.</value>
-        <value xml:lang="zh">4个Birt报告（最近3个月销售、销售、销售订单折扣优惠码、产品需求）要求提供BI数据库（注意：bi.properites文件需要在2026年9月后进行更新）。只会统计新批准的那些订单。</value>
-    </property>
     <property key="DeleteOrderItemShipGroup">
         <value xml:lang="de">Versandgruppe löschen</value>
         <value xml:lang="en">Delete this ship group</value>
@@ -2528,7 +2523,7 @@
         <value xml:lang="de">Rechnungsadresse</value>
         <value xml:lang="en">Billing Address</value>
         <value xml:lang="es">Dirección de facturación</value>
-        <value xml:lang="fr">Adresse de facturation</value>
+        <value xml:lang="fr">Addresse de facturation</value>
         <value xml:lang="it">Indirizzo di fatturazione</value>
         <value xml:lang="ja">請求先住所</value>
         <value xml:lang="nl">Factuuradres</value>
@@ -2570,6 +2565,16 @@
         <value xml:lang="vi">COD (Thanh toán tiền mặt hoặc Séc khi nhận hàng)</value>
         <value xml:lang="zh">货到付款</value>
         <value xml:lang="zh-TW">貨到付款</value>
+    </property>
+    <property key="Alipay">
+    	<value xml:lang="en">Alipay</value>
+        <value xml:lang="zh">支付宝</value>
+        <value xml:lang="zh-TW">支付宝</value>
+    </property>
+    <property key="Unionpay">
+    	<value xml:lang="en">Unionpay</value>
+        <value xml:lang="zh">银联支付</value>
+        <value xml:lang="zh-TW">银联支付</value>
     </property>
     <property key="OrderCalculatedMarkup">
         <value xml:lang="ar">الزيادة المحتسبة</value>
@@ -3086,7 +3091,7 @@
         <value xml:lang="ru">OFBiz: Управление заказами</value>
         <value xml:lang="th">OFBiz: การจัดการรายการสั่งซื้อสินค้าสินค้า</value>
         <value xml:lang="vi">OFBiz: Quản lý đặt hàng</value>
-        <value xml:lang="zh">OFBiz: 订单管理</value>
+        <value xml:lang="zh">浴火: 订单管理</value>
         <value xml:lang="zh-CN">OFBiz: 订单管理</value>
         <value xml:lang="zh-TW">OFBiz: 訂單管理</value>
     </property>

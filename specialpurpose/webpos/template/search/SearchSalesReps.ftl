@@ -19,7 +19,7 @@ under the License.
 <div>
   <div id="SearchSalesRepsList">
     <#if salesReps?? && salesReps?has_content>
-      <table id="salesRepsResults" name="salesRepsResults" cellspacing="0" cellpadding="2" class="basic-table">
+      <table id="salesRepsResults" name="salesRepsResults" cellspacing="0" cellpadding="2" class="basic-table uk-table">
       <#assign alt_row = false>
         <#list salesReps as salesRep>
           <#assign salesRepInCart = false>

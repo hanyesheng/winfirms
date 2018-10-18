@@ -85,7 +85,7 @@ under the License.
     <#if artifactInfo.getType() == "entity">
         <div><a href="<@ofbizUrl>FindGeneric?entityName=${artifactInfo.modelEntity.getEntityName()}&amp;find=true&amp;VIEW_SIZE=50&amp;VIEW_INDEX=0</@ofbizUrl>">All Entity Data</a></div>
         <h2>Entity Fields</h2>
-        <table>
+        <table class="basic-table uk-table">
         <#list artifactInfo.modelEntity.getFieldsUnmodifiable() as modelField>
             <tr><td>${modelField.getName()}<#if modelField.getIsPk()>*</#if></td><td>${modelField.getType()}</td><td>${modelField.getDescription()!}</td></tr>
         </#list>
@@ -132,7 +132,7 @@ under the License.
         <div>&nbsp;Run (${artifactInfo.modelService.engineName}): ${artifactInfo.modelService.location} :: ${artifactInfo.modelService.invoke}</div>
         <div>&nbsp;Impl Location: <a href="${artifactInfo.getImplementationLocationURL()!}">${artifactInfo.getImplementationLocationURL()!}</a></div>
         <h2>Service Parameters</h2>
-        <table>
+        <table class="basic-table uk-table">
             <tr><td>Name</td><td>Type</td><td>Optional</td><td>Mode</td><td>Entity.field</td></tr>
         <#list artifactInfo.modelService.getAllParamNames() as paramName>
             <#assign modelParam = artifactInfo.modelService.getParam(paramName)/>
@@ -388,7 +388,7 @@ under the License.
     </#if>
     <#if serviceEcaArtifactInfo.serviceEcaRule.getEcaActionList()?has_content>
         <h4>ECA Rule Actions</h4>
-        <table>
+        <table class="basic-table uk-table">
         <#list serviceEcaArtifactInfo.serviceEcaRule.getEcaActionList() as ecaAction>
             <tr>
                 <td><a href="<@ofbizUrl>ArtifactInfo?type=${artifactInfo.getType()}&amp;uniqueId=${ecaAction.getServiceName()}</@ofbizUrl>">${ecaAction.getServiceName()}</a></td>

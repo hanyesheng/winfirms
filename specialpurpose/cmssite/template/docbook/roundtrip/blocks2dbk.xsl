@@ -16,7 +16,7 @@
   xmlns:rnd='http://docbook.org/ns/docbook/roundtrip'
   xmlns:xlink='http://www.w3.org/1999/xlink'>
 
-  <!-- $Id$ -->
+  <!-- $Id: blocks2dbk.xsl 1395307 2012-10-07 14:02:53Z jleroux $ -->
   <!-- Stylesheet to convert word processing docs to DocBook -->
   <!-- This stylesheet processes the output of sections2blocks.xsl -->
 

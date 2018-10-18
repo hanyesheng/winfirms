@@ -14,7 +14,7 @@
   exclude-result-prefixes="exsl dc ncx opf stext str xtext"
   version="1.0">
 
-<!-- $Id$ -->
+<!-- $Id: epub3-chunk-mods.xsl 1395307 2012-10-07 14:02:53Z jleroux $ -->
 
 <xsl:include href="../xhtml5/html5-chunk-mods.xsl"/>
 

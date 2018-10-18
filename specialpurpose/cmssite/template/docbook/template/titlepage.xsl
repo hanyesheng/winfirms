@@ -9,7 +9,7 @@
                 version='1.0'>
 
 <!-- ********************************************************************
-     $Id$
+     $Id: titlepage.xsl 1395307 2012-10-07 14:02:53Z jleroux $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -35,7 +35,7 @@
   <info>
     <title>Titlepage Template Stylesheet Reference</title>
     <releaseinfo role="meta">
-      $Id$
+      $Id: titlepage.xsl 1395307 2012-10-07 14:02:53Z jleroux $
     </releaseinfo>
   </info>
   <partintro xml:id="intro_partintro">

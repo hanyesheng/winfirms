@@ -16,15 +16,14 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.WebtoolsMainPage}</li>
-      <li class="disabled">${delegator.getDelegatorName()}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <#if !userLogin?has_content>
       <div>${uiLabelMap.WebtoolsForSomethingInteresting}.</div>
       <br />
@@ -33,24 +32,24 @@ under the License.
       <div><a href="<@ofbizUrl>checkLogin</@ofbizUrl>">${uiLabelMap.CommonLogin}</a></div>
     </#if>
     <#if userLogin?has_content>
-      <ul class="webToolList">
-        <li><h3>${uiLabelMap.WebtoolsCacheDebugTools}</h3></li>
+      <ul class="webToolList uk-subnav uk-subnav-pill">
+        <li class="full_width"><h3>${uiLabelMap.WebtoolsCacheDebugTools}</h3></li>
         <li><a href="<@ofbizUrl>FindUtilCache</@ofbizUrl>">${uiLabelMap.WebtoolsCacheMaintenance}</a></li>
         <li><a href="<@ofbizUrl>LogConfiguration</@ofbizUrl>">${uiLabelMap.WebtoolsAdjustDebuggingLevels}</a></li>
         <li><a href="<@ofbizUrl>LogView</@ofbizUrl>">${uiLabelMap.WebtoolsViewLog}</a></li>
         <li><a href="<@ofbizUrl>ViewComponents</@ofbizUrl>">${uiLabelMap.WebtoolsViewComponents}</a></li>
         <#if security.hasPermission("ARTIFACT_INFO_VIEW", session)>
-          <li><h3>${uiLabelMap.WebtoolsGeneralArtifactInfoTools}</h3></li>
+          <li class="full_width"><h3>${uiLabelMap.WebtoolsGeneralArtifactInfoTools}</h3></li>
           <li><a href="<@ofbizUrl>ViewComponents</@ofbizUrl>" target="_blank">${uiLabelMap.WebtoolsArtifactInfo}</a></li>
           <li><a href="<@ofbizUrl>entityref</@ofbizUrl>" target="_blank">${uiLabelMap.WebtoolsEntityReference} - ${uiLabelMap.WebtoolsEntityReferenceInteractiveVersion}</a></li>
           <li><a href="<@ofbizUrl>ServiceList</@ofbizUrl>">${uiLabelMap.WebtoolsServiceReference}</a></li>
         </#if>
         <#if security.hasPermission("LABEL_MANAGER_VIEW", session)>
-          <li><h3>${uiLabelMap.WebtoolsLabelManager}</h3></li>
+          <li class="full_width"><h3>${uiLabelMap.WebtoolsLabelManager}</h3></li>
           <li><a href="<@ofbizUrl>SearchLabels</@ofbizUrl>">${uiLabelMap.WebtoolsLabelManager}</a></li>
         </#if>
         <#if security.hasPermission("ENTITY_MAINT", session)>
-          <li><h3>${uiLabelMap.WebtoolsEntityEngineTools}</h3></li>
+          <li class="full_width"><h3>${uiLabelMap.WebtoolsEntityEngineTools}</h3></li>
           <li><a href="<@ofbizUrl>entitymaint</@ofbizUrl>">${uiLabelMap.WebtoolsEntityDataMaintenance}</a></li>
           <li><a href="<@ofbizUrl>entityref</@ofbizUrl>" target="_blank">${uiLabelMap.WebtoolsEntityReference} - ${uiLabelMap.WebtoolsEntityReferenceInteractiveVersion}</a></li>
           <li><a href="<@ofbizUrl>entityref?forstatic=true</@ofbizUrl>" target="_blank">${uiLabelMap.WebtoolsEntityReference} - ${uiLabelMap.WebtoolsEntityReferenceStaticVersion}</a></li>
@@ -74,7 +73,7 @@ under the License.
             <li><a href="<@ofbizUrl>view/tablesMySql</@ofbizUrl>">MySQL Table Creation SQL</a></li>
             <li><a href="<@ofbizUrl>view/dataMySql</@ofbizUrl>">MySQL Auto Data SQL</a></li>
           -->
-          <li><h3>${uiLabelMap.WebtoolsEntityXMLTools}</h3></li>
+          <li class="full_width"><h3>${uiLabelMap.WebtoolsEntityXMLTools}</h3></li>
           <li><a href="<@ofbizUrl>xmldsdump</@ofbizUrl>">${uiLabelMap.PageTitleEntityExport}</a></li>
           <li><a href="<@ofbizUrl>EntityExportAll</@ofbizUrl>">${uiLabelMap.PageTitleEntityExportAll}</a></li>
           <li><a href="<@ofbizUrl>EntityImport</@ofbizUrl>">${uiLabelMap.PageTitleEntityImport}</a></li>
@@ -82,7 +81,7 @@ under the License.
           <li><a href="<@ofbizUrl>EntityImportReaders</@ofbizUrl>">${uiLabelMap.PageTitleEntityImportReaders}</a></li>
         </#if>
         <#if security.hasPermission("SERVICE_MAINT", session)>
-          <li><h3>${uiLabelMap.WebtoolsServiceEngineTools}</h3></li>
+          <li class="full_width"><h3>${uiLabelMap.WebtoolsServiceEngineTools}</h3></li>
           <li><a href="<@ofbizUrl>ServiceList</@ofbizUrl>">${uiLabelMap.WebtoolsServiceReference}</a></li>
           <li><a href="<@ofbizUrl>scheduleJob</@ofbizUrl>">${uiLabelMap.PageTitleScheduleJob}</a></li>
           <li><a href="<@ofbizUrl>runService</@ofbizUrl>">${uiLabelMap.PageTitleRunService}</a></li>
@@ -92,10 +91,10 @@ under the License.
           <li><a href="<@ofbizUrl>ServiceLog</@ofbizUrl>">${uiLabelMap.WebtoolsServiceLog}</a></li>
         </#if>
         <#if security.hasPermission("DATAFILE_MAINT", session)>
-          <li><h3>${uiLabelMap.WebtoolsDataFileTools}</h3></li>
+          <li class="full_width"><h3>${uiLabelMap.WebtoolsDataFileTools}</h3></li>
           <li><a href="<@ofbizUrl>viewdatafile</@ofbizUrl>">${uiLabelMap.WebtoolsWorkWithDataFiles}</a></li>
         </#if>
-        <li><h3>${uiLabelMap.WebtoolsMiscSetupTools}</h3></li>
+        <li class="full_width"><h3>${uiLabelMap.WebtoolsMiscSetupTools}</h3></li>
         <#if security.hasPermission("PORTALPAGE_ADMIN", session)>
           <li><a href="<@ofbizUrl>FindGeo</@ofbizUrl>">${uiLabelMap.WebtoolsGeoManagement}</a></li>
           <li><a href="<@ofbizUrl>WebtoolsLayoutDemo</@ofbizUrl>">${uiLabelMap.WebtoolsLayoutDemo}</a></li>
@@ -106,13 +105,13 @@ under the License.
           <li><a href="<@ofbizUrl>EditStatusTypes</@ofbizUrl>">Edit Status Options</a></li>
           -->
         </#if>
-        <li><h3>${uiLabelMap.WebtoolsPerformanceTests}</h3></li>
+        <li class="full_width"><h3>${uiLabelMap.WebtoolsPerformanceTests}</h3></li>
         <li><a href="<@ofbizUrl>EntityPerformanceTest</@ofbizUrl>">${uiLabelMap.WebtoolsEntityEngine}</a></li>
         <#if security.hasPermission("SERVER_STATS_VIEW", session)>
-          <li><h3>${uiLabelMap.WebtoolsServerHitStatisticsTools}</h3></li>
+          <li class="full_width"><h3>${uiLabelMap.WebtoolsServerHitStatisticsTools}</h3></li>
           <li><a href="<@ofbizUrl>StatsSinceStart</@ofbizUrl>">${uiLabelMap.WebtoolsStatsSinceServerStart}</a></li>
         </#if>
-        <li><h3>${uiLabelMap.WebtoolsCertsX509}</h3></li>
+        <li class="full_width"><h3>${uiLabelMap.WebtoolsCertsX509}</h3></li>
         <li><a href="<@ofbizUrl>myCertificates</@ofbizUrl>">${uiLabelMap.WebtoolsMyCertificates}</a></li>
       </ul>
     </#if>

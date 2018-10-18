@@ -54,7 +54,7 @@ exprList = [EntityCondition.makeCondition("partyId", EntityOperator.EQUALS, user
         EntityCondition.makeCondition("listName", EntityOperator.NOT_EQUAL, "auto-save")]
 condition = EntityCondition.makeCondition(exprList, EntityOperator.AND)
 allShoppingLists = from("ShoppingList").where(exprList).orderBy("listName").queryList()
-shoppingLists = EntityUtil.filterByAnd(allShoppingLists, [parentShoppingListId : null])
+shoppingLists = EntityUtil.filterByAnd(allShoppingLists, [shoppingListTypeId : "COLLECTE"])
 context.allShoppingLists = allShoppingLists
 context.shoppingLists = shoppingLists
 
@@ -68,11 +68,9 @@ shoppingListId = parameterMap.shoppingListId ?: request.getAttribute("shoppingLi
 context.shoppingListId = shoppingListId
 
 // no passed shopping list id default to first list
-if (!shoppingListId) {
-    firstList = EntityUtil.getFirst(shoppingLists)
-    if (firstList) {
-        shoppingListId = firstList.shoppingListId
-    }
+firstList = EntityUtil.getFirst(shoppingLists)
+if (firstList) {
+    shoppingListId = firstList.shoppingListId
 }
 session.setAttribute("currentShoppingListId", shoppingListId)
 
@@ -142,7 +140,7 @@ if (shoppingListId) {
             context.shoppingListItemDatas = shoppingListItemDatas
             // pagination for the shopping list
             viewIndex = Integer.valueOf(parameters.VIEW_INDEX  ?: 1)
-            viewSize = parameters.VIEW_SIZE ? Integer.valueOf(parameters.VIEW_SIZE): EntityUtilProperties.getPropertyAsInteger("widget", "widget.form.defaultViewSize", 20)
+            viewSize = parameters.VIEW_SIZE ?: EntityUtilProperties.getPropertyAsInteger("widget", "widget.form.defaultViewSize", 20)
             listSize = shoppingListItemDatas ? shoppingListItemDatas.size() : 0
 
             lowIndex = ((viewIndex - 1) * viewSize) + 1

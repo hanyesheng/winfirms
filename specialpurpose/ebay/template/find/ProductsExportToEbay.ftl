@@ -148,7 +148,7 @@ under the License.
         </tr>
         <tr>
           <td colspan="3">
-            <table class="basic-table" cellspacing="0">
+            <table class="basic-table uk-table" cellspacing="0">
               <tr>
                 <td align="right" width="23%" class="label">${uiLabelMap.FormFieldTitle_paymentPayPal}</td>
                 <td width="2%">

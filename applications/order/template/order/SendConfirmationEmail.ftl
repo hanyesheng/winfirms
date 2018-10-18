@@ -18,14 +18,14 @@ under the License.
 -->
 
 <#if security.hasEntityPermission("ORDERMGR", "_SEND_CONFIRMATION", session)>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <ul>
         <li class="h3">${uiLabelMap.OrderSendConfirmationEmail}</li>
       </ul>
       <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <a href="<@ofbizUrl>authview/${donePage}?orderId=${orderId}</@ofbizUrl>" class="buttontext">${uiLabelMap.CommonGoBack}</a>
       <a href="javascript:document.sendConfirmationForm.submit()" class="buttontext">${uiLabelMap.CommonSend}</a>      
       <br />
@@ -36,7 +36,7 @@ under the License.
         </#if>
         <input type="hidden" name="partyId" value="${partyId!}" />
         <input type="hidden" name="contentType" value="${productStoreEmailSetting.contentType?default("")}" />
-        <table class="basic-table" cellspacing='0'>
+        <table class="basic-table uk-table" cellspacing='0'>
             <tr>
                 <td width="2%" align="right" class="label">${uiLabelMap.OrderSendConfirmationEmailSubject}&nbsp;</td>
                 <td width="54%">
@@ -67,7 +67,6 @@ under the License.
                 <td width="54%">
                     <#if productStoreEmailSetting.fromAddress??>
                         <input type="hidden" name="sendFrom" value="${productStoreEmailSetting.fromAddress}" />
-                        ${productStoreEmailSetting.fromAddress}
                     <#else>
                         <input type="text" size="40" name="sendFrom" value="" />
                     </#if>

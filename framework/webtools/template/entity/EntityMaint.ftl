@@ -42,16 +42,16 @@ under the License.
         </#if>
       </#list>
     </div>
-    <div class="screenlet">
-      <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+      <div class="screenlet-title-bar md-card-toolbar">
         <ul>
           <li class="h3">${uiLabelMap.WebtoolsEntitiesAlpha}</li>
         </ul>
         <br class="clear"/>
       </div>
-      <div class="screenlet-body">
+      <div class="screenlet-body md-card-content uk-overflow-container">
         <#assign firstChar = "*">
-        <table class="basic-table hover-bar" cellspacing='0'>
+        <table class="basic-table hover-bar uk-table" cellspacing='0'>
           <tr class="header-row">
             <td>${uiLabelMap.WebtoolsEntityName}</td>
             <td>&nbsp;</td>

@@ -43,11 +43,11 @@ under the License.
     }
 //]]>
 </script>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.ProductAdvancedSearchInCategory}</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form id="productSearchform" method="post" action="<@ofbizUrl>productsearch</@ofbizUrl>" style="margin: 0;"
         name="productSearchform">
       <input type="hidden" name="productStoreId" value="${parameters.productStoreId!}"/>
@@ -55,7 +55,7 @@ under the License.
         <input type="hidden" name="VIEW_SIZE" value="25"/>
         <input type="hidden" name="PAGING" value="Y"/>
         <input type="hidden" name="noConditionFind" value="Y"/>
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
           <tr>
             <td class="label" align="right" valign="top">
               ${uiLabelMap.ProductCatalog}:

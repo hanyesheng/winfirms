@@ -17,11 +17,11 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#if productPromoId??>
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <h3>${uiLabelMap.ProductPromotionUploadSetOfPromotionCodes}</h3>
         </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <form method="post" action="<@ofbizUrl>createBulkProductPromoCode</@ofbizUrl>" enctype="multipart/form-data">
                 <input type="hidden" name="productPromoId" value="${productPromoId}"/>
                 <span class="label">${uiLabelMap.ProductPromoUserEntered}:</span>
@@ -45,11 +45,11 @@ under the License.
         </div>
     </div>
     <br />
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <h3>${uiLabelMap.ProductPromotionAddSetOfPromotionCodes}</h3>
         </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <form method="post" action="<@ofbizUrl>createProductPromoCodeSet</@ofbizUrl>">
                 <input type="hidden" name="productPromoId" value="${productPromoId}"/>
                 <span class="label">${uiLabelMap.CommonQuantity}:</span><input type="text" size="5" name="quantity" />

@@ -785,7 +785,7 @@ under the License.
     <property key="ScrumCompanyName">
         <value xml:lang="en">OFBiz: SCRUM</value>
         <value xml:lang="ja">OFBiz: SCRUM</value>
-        <value xml:lang="zh">OFBiz: Scrum</value>
+        <value xml:lang="zh">浴火: Scrum</value>
         <value xml:lang="zh-TW">OFBiz: Scrum</value>
     </property>
     <property key="ScrumCompanyNameShow">

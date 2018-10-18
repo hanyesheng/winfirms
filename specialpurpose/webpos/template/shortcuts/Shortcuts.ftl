@@ -16,7 +16,7 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<table>
+<table class="basic-table uk-table">
   <tr>
     <td>
       <ol id="posShortcut"></ol>
@@ -43,27 +43,24 @@ under the License.
             payCheck();
             break;
           case 116:
-            //TODO: To be implemented with OFBIZ-5241
-            break;
-          case 117:
             payGiftCard();
             break;
-          case 118:
+          case 117:
             payCreditCard();
             break;
-          case 119:
+          case 118:
             payFinish();
             break;
-          case 120:
+          case 119:
             itemQuantityFocus();
             break;
-          case 121:
+          case 120:
             incrementItemQuantity();
             break;
-          case 122:
+          case 121:
             decrementItemQuantity();
             break;
-          case 123:
+          case 122:
             emptyCart();
             break;
           case 38:
@@ -81,15 +78,13 @@ under the License.
     WebPosHotkeys.bind("keydown", "f2", partyToSearchFocus, "partyToSearchFocus()", "${uiLabelMap.WebPosShortcutF2}");
     WebPosHotkeys.bind("keydown", "f3", payCash, "payCash()", "${uiLabelMap.WebPosShortcutF3}");
     WebPosHotkeys.bind("keydown", "f4", payCheck, "payCheck()", "${uiLabelMap.WebPosShortcutF4}");
-    <!--TODO: To be implemented with OFBIZ-5241-->
-    <!--WebPosHotkeys.bind("keydown", "f5", payPin, "", "${uiLabelMap.WebPosShortcutF5}");-->
-    WebPosHotkeys.bind("keydown", "f6", payGiftCard, "payGiftCard()", "${uiLabelMap.WebPosShortcutF6}");
-    WebPosHotkeys.bind("keydown", "f7", payCreditCard, "payCreditCard()", "${uiLabelMap.WebPosShortcutF7}");
-    WebPosHotkeys.bind("keydown", "f8", payFinish, "payFinish()", "${uiLabelMap.WebPosShortcutF8}");
-    WebPosHotkeys.bind("keydown", "f9", itemQuantityFocus, "itemQuantityFocus()", "${uiLabelMap.WebPosShortcutF9}");
-    WebPosHotkeys.bind("keydown", "f10", incrementItemQuantity, "incrementItemQuantity()", "${uiLabelMap.WebPosShortcutF10}");
-    WebPosHotkeys.bind("keydown", "f11", decrementItemQuantity, "decrementItemQuantity()", "${uiLabelMap.WebPosShortcutF11}");
-    WebPosHotkeys.bind("keydown", "f12", emptyCart, "emptyCart()", "${uiLabelMap.WebPosShortcutF12}");
+    WebPosHotkeys.bind("keydown", "f5", payGiftCard, "payGiftCard()", "${uiLabelMap.WebPosShortcutF5}");
+    WebPosHotkeys.bind("keydown", "f6", payCreditCard, "payCreditCard()", "${uiLabelMap.WebPosShortcutF6}");
+    WebPosHotkeys.bind("keydown", "f7", payFinish, "payFinish()", "${uiLabelMap.WebPosShortcutF7}");
+    WebPosHotkeys.bind("keydown", "f8", itemQuantityFocus, "itemQuantityFocus()", "${uiLabelMap.WebPosShortcutF8}");
+    WebPosHotkeys.bind("keydown", "f9", incrementItemQuantity, "incrementItemQuantity()", "${uiLabelMap.WebPosShortcutF9}");
+    WebPosHotkeys.bind("keydown", "f10", decrementItemQuantity, "decrementItemQuantity()", "${uiLabelMap.WebPosShortcutF10}");
+    WebPosHotkeys.bind("keydown", "f11", emptyCart, "emptyCart()", "${uiLabelMap.WebPosShortcutF11}");
     WebPosHotkeys.bind("keydown", "up", keyUp, "keyUp()", "${uiLabelMap.WebPosShortcutKeyUp}");
     WebPosHotkeys.bind("keydown", "down", keyDown, "keyDown()", "${uiLabelMap.WebPosShortcutKeyDown}");
     updateHotKeys();

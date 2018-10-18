@@ -24,10 +24,10 @@ under the License.
 <div class="screenlet login-screenlet">
 <#assign forgotPwdFlag = parameters.forgotPwdFlag?has_content />
 <div class="login-screenlet">
-  <div class="screenlet-title-bar">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.CommonPasswordChange}</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form method="post" action="<@ofbizUrl>login</@ofbizUrl>" name="loginform">
       <input type="hidden" name="requirePasswordChange" value="Y"/>
       <input type="hidden" name="USERNAME" value="${username}"/>

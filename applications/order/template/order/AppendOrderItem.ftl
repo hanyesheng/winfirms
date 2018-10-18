@@ -24,14 +24,14 @@ under the License.
 </script>
 
 <#if orderHeader?has_content>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">&nbsp;${uiLabelMap.OrderAddToOrder}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
         <form method="post" action="<@ofbizUrl>appendItemToOrder</@ofbizUrl>" name="appendItemForm">
             <input type="hidden" size="25" name="orderId" value="${orderId!}"/>
             <#if !catalogCol?has_content>
@@ -43,7 +43,7 @@ under the License.
             <#if shipGroups?size == 1>
                 <input type="hidden" name="shipGroupSeqId" value="${shipGroups.first.shipGroupSeqId}"/>
             </#if>
-            <table class="basic-table" cellspacing="0">
+            <table class="basic-table uk-table" cellspacing="0">
               <#if catalogCol?has_content && (catalogCol?size > 1)>
                 <tr>
                   <td class="label">${uiLabelMap.ProductChooseCatalog}</td>

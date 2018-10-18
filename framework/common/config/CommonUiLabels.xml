@@ -268,7 +268,7 @@
         <value xml:lang="ru">Добавить</value>
         <value xml:lang="th">เพิ่ม</value>
         <value xml:lang="vi">Thêm</value>
-        <value xml:lang="zh">新建</value>
+        <value xml:lang="zh">添加</value>
         <value xml:lang="zh-CN">添加</value>
         <value xml:lang="zh-TW">增加</value>
     </property>
@@ -15064,7 +15064,7 @@
         <value xml:lang="th">กลุ่มผู้ใช้</value>
         <value xml:lang="vi">Cá nhân - Tổ chức</value>
         <value xml:lang="zh">会员</value>
-        <value xml:lang="zh-CN">团体</value>
+        <value xml:lang="zh-CN">会员</value>
         <value xml:lang="zh-TW">團體</value>
     </property>
     <property key="PartyComponentDescription">
@@ -15530,5 +15530,57 @@
         <value xml:lang="zh">中文</value>
         <value xml:lang="zh-CN">中文</value>
         <value xml:lang="zh-TW">中文</value>
+    </property>
+    <property key="Company">
+        <value xml:lang="en">Company</value>
+        <value xml:lang="zh">四川安邦易佰科技有限公司</value>
+    </property>
+    <property key="CompanyCopyright">
+        <value xml:lang="en">CompanyCopyright</value>
+        <value xml:lang="zh">四川安邦易佰科技有限公司制作维护</value>
+    </property>
+    <property key="WebManager">
+        <value xml:lang="en">WebManager</value>
+        <value xml:lang="zh">网站管理</value>
+    </property>
+    <property key="ProjectDetail">
+        <value xml:lang="en">ServiceDetail</value>
+        <value xml:lang="zh">项目页面</value>
+    </property>
+    <property key="ActivityDetail">
+        <value xml:lang="en">ActivityDetail</value>
+        <value xml:lang="zh">活动页面</value>
+    </property>
+    <property key="ServiceDetail">
+        <value xml:lang="en">ServiceDetail</value>
+        <value xml:lang="zh">服务页面</value>
+    </property>
+    <property key="CourseDetail">
+        <value xml:lang="en">CourseDetail</value>
+        <value xml:lang="zh">课程页面</value>
+    </property>
+    <property key="CrowdDetail">
+        <value xml:lang="en">CrowdDetail</value>
+        <value xml:lang="zh">众筹页面</value>
+    </property>
+    <property key="CompanyDetail">
+        <value xml:lang="en">CompanyDetail</value>
+        <value xml:lang="zh">公司页面</value>
+    </property>
+    <property key="InvestorsDetail">
+        <value xml:lang="en">InvestorsDetail</value>
+        <value xml:lang="zh">投资人页面</value>
+    </property>
+    <property key="IncubatorDetail">
+        <value xml:lang="en">IncubatorDetail</value>
+        <value xml:lang="zh">孵化器页面</value>
+    </property>
+    <property key="NewsDetail">
+        <value xml:lang="en">NewsDetail</value>
+        <value xml:lang="zh">新闻资讯页面</value>
+    </property>
+    <property key="BusinessmanDetail">
+        <value xml:lang="en">Businessman</value>
+        <value xml:lang="zh">创客页面</value>
     </property>
 </resource>

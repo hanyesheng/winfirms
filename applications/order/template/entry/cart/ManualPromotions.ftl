@@ -18,11 +18,11 @@ under the License.
 -->
 
 <#if allProductPromos?has_content>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <div class="h3">&nbsp;${uiLabelMap.OrderManualPromotions}</div>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <div>
         <form method="post" action="<@ofbizUrl>doManualPromotions</@ofbizUrl>" name="domanualpromotions" style="margin: 0;">
           <!-- to enter more than two manual promotions, just add a new select box with name="productPromoId_n" -->

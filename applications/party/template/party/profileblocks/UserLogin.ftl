@@ -17,19 +17,19 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-  <div id="partyUserLogins" class="screenlet">
-    <div class="screenlet-title-bar">
+  <div id="partyUserLogins" class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <ul>
         <li class="h3">${uiLabelMap.PartyUserName}</li>
         <#if security.hasEntityPermission("PARTYMGR", "_CREATE", session)>
-          <li><a href="<@ofbizUrl>ProfileCreateNewLogin?partyId=${party.partyId}&amp;CANCEL_PAGE=${DONE_PAGE!}</@ofbizUrl>">${uiLabelMap.CommonCreateNew}</a></li>
+          <li><a href="<@ofbizUrl>ProfileCreateNewLogin?partyId=${party.partyId}</@ofbizUrl>">${uiLabelMap.CommonCreateNew}</a></li>
         </#if>
       </ul>
       <br class="clear" />
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <#if userLogins?has_content>
-        <table class="basic-table" cellspacing="0">
+        <table class="basic-table uk-table" cellspacing="0">
           <#list userLogins as userUserLogin>
             <tr>
               <td class="label">${uiLabelMap.PartyUserLogin}</td>

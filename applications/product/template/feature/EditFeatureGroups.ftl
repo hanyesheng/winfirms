@@ -16,13 +16,13 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.PageTitleEditProductFeatureGroups}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <br />
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
           <tr class="header-row">
             <td><b>${uiLabelMap.CommonId}</b></td>
             <td><b>${uiLabelMap.CommonDescription}</b></td>
@@ -53,14 +53,14 @@ under the License.
         <br />
     </div>
 </div>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductCreateProductFeatureGroup}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <form method="post" action="<@ofbizUrl>CreateProductFeatureGroup</@ofbizUrl>">
           <br />
-          <table cellspacing="0" class="basic-table">
+          <table cellspacing="0" class="basic-table uk-table">
             <tr>
               <td class="label">${uiLabelMap.CommonDescription}:</td>
               <td><input type="text" size='30' name='description' value='' /></td>

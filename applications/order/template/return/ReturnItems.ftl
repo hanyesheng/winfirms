@@ -85,26 +85,26 @@ under the License.
       </#if>
     </#if>
 
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <ul>
             <li class="h3">${uiLabelMap.PageTitleReturnItems}</li>
         </ul>
         <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
 <!-- if we're called with loadOrderItems or createReturn, then orderId would exist -->
 <#if !requestParameters.orderId?? && returnHeader?has_content>
           <form method="post" action="<@ofbizUrl>updateReturnItems</@ofbizUrl>">
           <input type="hidden" name="_useRowSubmit" value="Y" />
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
           <#assign readOnly = (returnHeader.statusId != "RETURN_REQUESTED" && returnHeader.statusId != "SUP_RETURN_REQUESTED")>
           <tr><td colspan="10"><h3>${uiLabelMap.OrderOrderReturn} #${returnId}</h3></td></tr>
 
           <#-- information about orders and amount refunded/credited on past returns -->
           <#if orh??>
           <tr><td colspan="10">
-              <table cellspacing="0" class="basic-table">
+              <table cellspacing="0" class="basic-table uk-table">
                 <tr>
                   <td class="label" width="25%">${uiLabelMap.OrderOrderTotal}</td>
                   <td><@ofbizCurrency amount=orh.getOrderGrandTotal() isoCode=orh.getCurrency()/></td>

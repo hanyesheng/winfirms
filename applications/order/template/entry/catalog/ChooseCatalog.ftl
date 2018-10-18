@@ -19,8 +19,8 @@ under the License.
 
 <#-- Only show if there is more than 1 (one) catalog, no sense selecting when there is only one option... -->
 <#if (catalogCol?size > 1)>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <div class="h3">${uiLabelMap.ProductChooseCatalog}</div>
     </div>
     <div class="screenlet-body" style="text-align: center;">

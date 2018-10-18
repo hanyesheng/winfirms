@@ -19,11 +19,11 @@ under the License.
 
 <#assign shoppingCart = sessionAttributes.shoppingCart!>
 
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <div class="h3">${uiLabelMap.OrderOrderShortcuts}</div>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <ul>
             <#if shoppingCart.getOrderType() == "PURCHASE_ORDER">
               <li><a href="<@ofbizUrl>RequirementsForSupplier</@ofbizUrl>" class="buttontext">${uiLabelMap.OrderRequirements}</a></li>

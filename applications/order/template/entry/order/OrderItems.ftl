@@ -17,8 +17,8 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <div class="boxlink">
             <#if maySelectItems?default(false)>
                 <a href="javascript:document.addOrderToCartForm.add_all.value="true";document.addOrderToCartForm.submit()" class="lightbuttontext">${uiLabelMap.OrderAddAllToCart}</a>
@@ -27,7 +27,7 @@ under the License.
         </div>
         <div class="h3">${uiLabelMap.OrderOrderItems}</div>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <table width="100%" border="0" cellpadding="0">
           <tr valign="bottom">
             <td width="65%"><span><b>${uiLabelMap.ProductProduct}</b></span></td>
@@ -115,13 +115,7 @@ under the License.
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
                 <td align="right">
-                  <div style="font-size: xx-small;">
-                    <#if orderItemAdjustment.amountAlreadyIncluded?has_content>
-                      <@ofbizCurrency amount=orderItemAdjustment.amountAlreadyIncluded isoCode=currencyUomId/>
-                    <#else>
-                      <@ofbizCurrency amount=localOrderReadHelper.getOrderItemAdjustmentTotal(orderItem, orderItemAdjustment) isoCode=currencyUomId/>
-                    </#if>
-                  </div>
+                  <div style="font-size: xx-small;"><@ofbizCurrency amount=localOrderReadHelper.getOrderItemAdjustmentTotal(orderItem, orderItemAdjustment) isoCode=currencyUomId/></div>
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>

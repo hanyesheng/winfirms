@@ -698,6 +698,10 @@ under the License.
     <PaymentMethodType description="eBay" paymentMethodTypeId="EXT_EBAY"/>
     <PaymentMethodType description="Offline Payment" paymentMethodTypeId="EXT_OFFLINE"/>
     <PaymentMethodType description="PayPal" paymentMethodTypeId="EXT_PAYPAL"/>
+    
+    <!--20170110clgalipay3-->
+    <PaymentMethodType description="AliPay" paymentMethodTypeId="EXT_ALIPAY"/>
+    
     <PaymentMethodType description="RBS WorldPay" paymentMethodTypeId="EXT_WORLDPAY"/>
     <PaymentMethodType description="iDEAL" paymentMethodTypeId="EXT_IDEAL"/>
 

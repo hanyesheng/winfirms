@@ -16,14 +16,14 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <ul>
             <li class="h3">${uiLabelMap.PageTitleRequestItems}</li>
         </ul>
         <br class="clear"/>
     </div>
-    <table class="basic-table hover-bar" cellspacing="0" >
+    <table class="basic-table hover-bar uk-table" cellspacing="0" >
     <tr class="header-row">
            <td>
               ${uiLabelMap.CommonNbr}
@@ -57,7 +57,7 @@ under the License.
             <#-- now show notes details per line item -->
             <td colspan="1" align="right" valign="top" width="50%" nowrap="nowrap" style="background-color:white; vertical-align: top;">
                 <#if custRequestItemNoteViews?has_content>
-                    <table class="basic-table hover-bar" cellspacing="0">
+                    <table class="basic-table hover-bar uk-table" cellspacing="0">
                         <tr class="header-row">
                             <td>
                             </td>

@@ -123,8 +123,8 @@ function toggleOrderIdList() {
 <input type="hidden" name="viewSize" value="${viewSize}"/>
 <input type="hidden" name="viewIndex" value="${viewIndex}"/>
 
-<div id="findOrders" class="screenlet">
-  <div class="screenlet-title-bar">
+<div id="findOrders" class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.OrderFindOrder}</li>
       <#if requestParameters.hideFields?default("N") == "Y">
@@ -138,11 +138,11 @@ function toggleOrderIdList() {
     <br class="clear"/>
   </div>
   <#if parameters.hideFields?default("N") != "Y">
-    <div class="screenlet-body">
-      <table class="basic-table" cellspacing='0'>
+    <div class="screenlet-body md-card-content uk-overflow-container">
+      <table class="basic-table uk-table" cellspacing='0'>
         <tr>
           <td align='center' width='100%'>
-            <table class="basic-table" cellspacing='0'>
+            <table class="basic-table uk-table" cellspacing='0'>
               <tr>
                 <td width='25%' align='right' class='label'>${uiLabelMap.OrderOrderId}</td>
                 <td width='5%'>&nbsp;</td>
@@ -391,7 +391,7 @@ function toggleOrderIdList() {
                 <td width='25%' align='right' class='label'>${uiLabelMap.CommonDateFilter}</td>
                 <td width='5%'>&nbsp;</td>
                 <td align='left'>
-                  <table class="basic-table" cellspacing='0'>
+                  <table class="basic-table uk-table" cellspacing='0'>
                     <tr>
                       <td nowrap="nowrap">
                         <@htmlTemplate.renderDateTimeField name="minDate" event="" action="" value="${requestParameters.minDate!}" className="" alert="" title="Format: yyyy-MM-dd HH:mm:ss.SSS" size="25" maxlength="30" id="minDate1" dateType="date" shortDateInput=false timeDropdownParamName="" defaultDateTimeString="" localizedIconTitle="" timeDropdown="" timeHourName="" classString="" hour1="" hour2="" timeMinutesName="" minutes="" isTwelveHour="" ampmName="" amSelected="" pmSelected="" compositeType="" formName=""/>
@@ -411,7 +411,7 @@ function toggleOrderIdList() {
                 <td width='25%' align='right' class='label'><label for="filterInventoryProblems">${uiLabelMap.OrderFilterOn} ${uiLabelMap.OrderFilterInventoryProblems}</label></td>
                 <td width='5%'>&nbsp;</td>
                 <td align='left'>
-                  <table class="basic-table" cellspacing='0'>
+                  <table class="basic-table uk-table" cellspacing='0'>
                     <tr>
                       <td nowrap="nowrap">
                         <input type="checkbox" id="filterInventoryProblems" name="filterInventoryProblems" value="Y"
@@ -425,7 +425,7 @@ function toggleOrderIdList() {
                 <td width='25%' align='right' class='label'><label for="filterPartiallyReceivedPOs">${uiLabelMap.OrderFilterOn} ${uiLabelMap.OrderFilterPOs} ${uiLabelMap.OrderFilterPartiallyReceivedPOs}</label></td>
                 <td width='5%'>&nbsp;</td>
                 <td align='left'>
-                  <table class="basic-table" cellspacing='0'>
+                  <table class="basic-table uk-table" cellspacing='0'>
                     <tr>
                       <td nowrap="nowrap">
                         <input type="checkbox" id="filterPartiallyReceivedPOs" name="filterPartiallyReceivedPOs" value="Y"
@@ -439,7 +439,7 @@ function toggleOrderIdList() {
                 <td width='25%' align='right' class='label'><label for="filterPOsOpenPastTheirETA">${uiLabelMap.OrderFilterOn} ${uiLabelMap.OrderFilterPOs} ${uiLabelMap.OrderFilterPOsOpenPastTheirETA}</label></td>
                 <td width='5%'>&nbsp;</td>
                 <td align='left'>
-                  <table class="basic-table" cellspacing='0'>
+                  <table class="basic-table uk-table" cellspacing='0'>
                     <tr>
                       <td nowrap="nowrap">
                         <input type="checkbox" id="filterPOsOpenPastTheirETA" name="filterPOsOpenPastTheirETA" value="Y"
@@ -453,7 +453,7 @@ function toggleOrderIdList() {
                 <td width='25%' align='right' class='label'><label for="filterPOsWithRejectedItems">${uiLabelMap.OrderFilterOn} ${uiLabelMap.OrderFilterPOs} ${uiLabelMap.OrderFilterPOsWithRejectedItems}</label></td>
                 <td width='5%'>&nbsp;</td>
                 <td align='left'>
-                  <table class="basic-table" cellspacing='0'>
+                  <table class="basic-table uk-table" cellspacing='0'>
                     <tr>
                       <td nowrap="nowrap">
                         <input type="checkbox" id="filterPOsWithRejectedItems" name="filterPOsWithRejectedItems" value="Y"
@@ -529,8 +529,8 @@ document.lookuporder.orderId.focus();
 
 <br />
 
-<div id="findOrdersList" class="screenlet">
-  <div class="screenlet-title-bar">
+<div id="findOrdersList" class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.OrderOrderFound}</li>
       <#if (orderList?has_content && 0 < orderList?size)>
@@ -551,7 +551,7 @@ document.lookuporder.orderId.focus();
     </ul>
     <br class="clear" />
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form name="paginationForm" method="post" action="<@ofbizUrl>searchorders</@ofbizUrl>">
       <input type="hidden" name="viewSize"/>
       <input type="hidden" name="viewIndex"/>
@@ -589,7 +589,7 @@ document.lookuporder.orderId.focus();
         <a href="javascript:runAction();" class="buttontext">${uiLabelMap.OrderRunAction}</a>
       </div>
 
-      <table class="basic-table hover-bar" cellspacing='0'>
+      <table class="basic-table hover-bar uk-table" cellspacing='0'>
         <tr class="header-row">
           <td width="1%">
             <input type="checkbox" id="checkAllOrders" name="checkAllOrders" value="1" onchange="javascript:toggleOrderId(this);"/>

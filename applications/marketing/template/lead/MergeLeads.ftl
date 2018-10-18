@@ -17,9 +17,9 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<div class="screenlet">
-<div class="screenlet-title-bar"><h3>${uiLabelMap.SfaMergingFollowing} ${uiLabelMap.SfaMergeLeads}</h3></div>
-<div class="screenlet-body">
+<div class="screenlet md-card">
+<div class="screenlet-title-bar md-card-toolbar"><h3>${uiLabelMap.SfaMergingFollowing} ${uiLabelMap.SfaMergeLeads}</h3></div>
+<div class="screenlet-body md-card-content uk-overflow-container">
   <form  method="post" action="<@ofbizUrl>mergeContacts</@ofbizUrl>" class="basic-form">
   <table border="0" width="100%" >
     <tr>

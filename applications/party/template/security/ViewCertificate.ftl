@@ -21,14 +21,14 @@ under the License.
 <#if (requestParameters.certString?has_content)>
     <#assign cert = Static["org.apache.ofbiz.base.util.KeyStoreUtil"].pemToCert(requestParameters.certString)/>
 </#if>
-<div id="findPartyParameters" class="screenlet">
-  <div class="screenlet-title-bar">
+<div id="findPartyParameters" class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.PageTitleImportCertificate}</li>
     </ul>
     <br class="clear" />
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <#if (cert?has_content)>
         <span class="label">${uiLabelMap.PartyCertType}</span>&nbsp;${cert.getType()} : ${cert.getSubjectX500Principal()}
         <span class="label">${uiLabelMap.PartyCertName}</span>&nbsp;${cert.getSubjectX500Principal().getName()}
@@ -38,15 +38,15 @@ under the License.
     </#if>
   </div>
 </div>
-<div id="findPartyParameters" class="screenlet">
-  <div class="screenlet-title-bar">
+<div id="findPartyParameters" class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.PartyCertSaveToKeyStore}</li>
     </ul>
     <br class="clear" />
   </div>
-  <div class="screenlet-body">
-    <table cellspacing="0" class="basic-table">
+  <div class="screenlet-body md-card-content uk-overflow-container">
+    <table cellspacing="0" class="basic-table uk-table">
       <tr class="header-row">
         <td>${uiLabelMap.PartyCertComponent}</td>
         <td>${uiLabelMap.PartyCertKeyStore}</td>

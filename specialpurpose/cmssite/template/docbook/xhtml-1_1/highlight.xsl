@@ -3,7 +3,7 @@
 <!--from the HTML stylesheets.-->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xslthl="http://xslthl.sf.net" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="xslthl" version="1.0">
   <!-- ********************************************************************
-     $Id$
+     $Id: highlight.xsl 1395307 2012-10-07 14:02:53Z jleroux $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.

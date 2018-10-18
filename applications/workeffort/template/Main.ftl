@@ -20,11 +20,11 @@ under the License.
     <#assign uiLabelMap = requestAttributes.uiLabelMap>
 </#if>
 
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
       <h3>${uiLabelMap.WorkEffortWorkEffortManagerMainPage}</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
       <#if !userLogin?has_content>
           <div>${uiLabelMap.WorkEffortInterestingSure}.</div>
           <br />

@@ -18,19 +18,19 @@ under the License.
 -->
 
 <#if productCategoryId?has_content>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductCategoryRollupParentCategories}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <#if currentProductCategoryRollups.size() == 0>
-            <table cellspacing="0" class="basic-table">
-               <tr class="header-row">
+            <table cellspacing="0" class="basic-table uk-table">
+               <thead class="header-row">
                   <td><b>${uiLabelMap.ProductParentCategoryId}</b></td>
                   <td><b>${uiLabelMap.CommonFromDate}</b></td>
                   <td align="center"><b>${uiLabelMap.ProductThruDateTimeSequence}</b></td>
                   <td><b>&nbsp;</b></td>
-              </tr>
+              </thead>
               <tr valign="middle">
                   <td colspan="4">${uiLabelMap.ProductNoParentCategoriesFound}.</td>
               </tr>
@@ -38,13 +38,13 @@ under the License.
         <#else>        
            <form method="post" action="<@ofbizUrl>updateProductCategoryToCategory</@ofbizUrl>" name="updateProductCategoryForm">
            <input type="hidden" name="showProductCategoryId" value="${productCategoryId}" />
-            <table cellspacing="0" class="basic-table">
-            <tr class="header-row">
+            <table cellspacing="0" class="basic-table uk-table">
+            <thead class="header-row">
                 <td><b>${uiLabelMap.ProductParentCategoryId}</b></td>
                 <td><b>${uiLabelMap.CommonFromDate}</b></td>
                 <td align="center"><b>${uiLabelMap.ProductThruDateTimeSequence}</b></td>
                 <td><b>&nbsp;</b></td>
-            </tr>
+            </thead>
                     <#assign rowClass = "2">
                     <#list currentProductCategoryRollups as productCategoryRollup>
                     <#assign suffix = "_o_" + productCategoryRollup_index>
@@ -105,12 +105,12 @@ under the License.
     </#if>      
     </div>
 </div>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductAddCategoryParent} ${uiLabelMap.ProductCategorySelectCategoryAndEnterFromDate}:</h3>
     </div>
-    <div class="screenlet-body">
-        <table cellspacing="0" class="basic-table">
+    <div class="screenlet-body md-card-content uk-overflow-container">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr><td>
                 <form method="post" action="<@ofbizUrl>addProductCategoryToCategory</@ofbizUrl>" style="margin: 0;" name="addParentForm">
                     <input type="hidden" name="productCategoryId" value="${productCategoryId}" />
@@ -124,19 +124,19 @@ under the License.
         </table>
     </div>
 </div>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductCategoryRollupChildCategories}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <#if parentProductCategoryRollups.size() == 0>
-            <table cellspacing="0" class="basic-table">
-                <tr class="header-row">
+            <table cellspacing="0" class="basic-table uk-table">
+                <thead class="header-row">
                     <td><b>${uiLabelMap.ProductChildCategoryId}</b></td>
                     <td><b>${uiLabelMap.CommonFromDate}</b></td>
                     <td align="center"><b>${uiLabelMap.ProductThruDateTimeSequence}</b></td>
                     <td><b>&nbsp;</b></td>
-                </tr>
+                </thead>
                 <tr valign="middle">
                     <td colspan="4">${uiLabelMap.ProductNoChildCategoriesFound}.</td>
                 </tr>
@@ -144,13 +144,13 @@ under the License.
         <#else>
             <form method="post" action="<@ofbizUrl>updateProductCategoryToCategory</@ofbizUrl>" name="updateProductCategoryToCategoryChild">
             <input type="hidden" name="showProductCategoryId" value="${productCategoryId}" />
-            <table cellspacing="0" class="basic-table">
-                <tr class="header-row">
+            <table cellspacing="0" class="basic-table uk-table">
+                <thead class="header-row">
                     <td><b>${uiLabelMap.ProductChildCategoryId}</b></td>
                     <td><b>${uiLabelMap.CommonFromDate}</b></td>
                     <td align="center"><b>${uiLabelMap.ProductThruDateTimeSequence}</b></td>
                     <td><b>&nbsp;</b></td>
-                </tr>           
+                </thead>           
                     <#assign lineChild = 0>
                     <#assign rowClass = "2">
                     <#list parentProductCategoryRollups as productCategoryRollup>
@@ -213,12 +213,12 @@ under the License.
         </#if>
     </div>
 </div>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductAddCategoryChild} ${uiLabelMap.ProductCategorySelectCategoryAndEnterFromDate}:</h3>
     </div>
-    <div class="screenlet-body">
-        <table cellspacing="0" class="basic-table">
+    <div class="screenlet-body md-card-content uk-overflow-container">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr><td>
                 <form method="post" action="<@ofbizUrl>addProductCategoryToCategory</@ofbizUrl>" style="margin: 0;" name="addChildForm">
                     <input type="hidden" name="showProductCategoryId" value="${productCategoryId}" />

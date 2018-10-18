@@ -51,7 +51,7 @@ under the License.
     <test-suite loader="main" location="testdef/tests.xml"/>
 
     <!-- web applications; will be mounted when using the embedded container -->
-    <webapp name="example"
+    <webapp name="widgets"
         title="Example"
         menu-name="secondary"
         server="default-server"

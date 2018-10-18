@@ -20,7 +20,7 @@ under the License.
 
     <p>${uiLabelMap.WebtoolsThisThread}<b> ${Static["java.lang.Thread"].currentThread().getName()} (${Static["java.lang.Thread"].currentThread().getId()})</b></p>
     <br />
-    <table class="basic-table hover-bar" cellspacing="0">
+    <table class="basic-table hover-bar uk-table" cellspacing="0">
       <tr class="header-row">
         <td>${uiLabelMap.WebtoolsGroup}</td>
         <td>${uiLabelMap.WebtoolsThreadId}</td>

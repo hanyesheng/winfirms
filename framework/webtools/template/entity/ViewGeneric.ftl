@@ -38,14 +38,14 @@ function ShowTab(lname) {
 }
 </script>
 
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.WebtoolsViewValue}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <h2>${uiLabelMap.WebtoolsForEntity}: ${entityName}</h2>
     <h2>${uiLabelMap.WebtoolsWithPk}: ${findByPk}</h2>
     <br />
@@ -75,13 +75,13 @@ function ShowTab(lname) {
       </form>
       <br />
     </#if>
-    <div id="area1" class="screenlet">
-      <div class="screenlet-title-bar">
+    <div id="area1" class="screenlet md-card">
+      <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.WebtoolsEntityCurrentValue}</h3>
       </div>
       <#if value?has_content>
         <#assign alt_row = false>
-        <table class="basic-table" cellspacing="0">
+        <table class="basic-table uk-table" cellspacing="0">
           <#list fields as field>
             <tr<#if alt_row> class="alternate-row"</#if>>
               <td class="label">${field.name}</td>
@@ -97,8 +97,8 @@ function ShowTab(lname) {
     <#if enableEdit = "true">
       <#if hasUpdatePermission || hasCreatePermission>
         <#assign alt_row = false>
-        <div id="area2" class="screenlet">
-          <div class="screenlet-title-bar">
+        <div id="area2" class="screenlet md-card">
+          <div class="screenlet-title-bar md-card-toolbar">
             <h3>${uiLabelMap.WebtoolsEntityEditValue}</h3>
           </div>
           <#if pkNotFound>
@@ -107,7 +107,7 @@ function ShowTab(lname) {
           <form action='<@ofbizUrl>UpdateGeneric?entityName=${entityName}</@ofbizUrl>' method="post" name="updateForm">
             <#assign showFields = true>
             <#assign alt_row = false>
-            <table class="basic-table" cellspacing="0">
+            <table class="basic-table uk-table" cellspacing="0">
               <#if value?has_content>
                 <#if hasUpdatePermission>
                   <#if newFieldPkList?has_content>
@@ -225,7 +225,7 @@ function ShowTab(lname) {
     <#if relationFieldList?has_content>
       <#list relationFieldList as relation>
           <div id="area${(relation_index + 2)}" class="topcontainerhidden">
-            <div class="screenlet-title-bar">
+            <div class="screenlet-title-bar md-card-toolbar">
               <ul>
                 <li class="h3">${uiLabelMap.WebtoolsRelatedEntity}: ${relation.title}${relation.relatedTable} (${relation.type})</li>
                 <li><a href="<@ofbizUrl>FindGeneric?${relation.encodeRelatedEntityFindString}&amp;find=true</@ofbizUrl>">${uiLabelMap.CommonFind}</a></li>
@@ -239,7 +239,7 @@ function ShowTab(lname) {
               <br class="clear"/>
             </div>
             <#if relation.valueRelated?has_content>
-              <table class="basic-table" cellspacing="0">
+              <table class="basic-table uk-table" cellspacing="0">
                 <#assign alt_row = false>
                 <tr<#if alt_row> class="alternate-row"</#if>>
                   <td class="label">${uiLabelMap.WebtoolsPk}</td>
@@ -264,11 +264,11 @@ function ShowTab(lname) {
       </#list>
     </#if>
   </div>
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <h3>${uiLabelMap.WebtoolsEntityXMLRepresentation}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <p>
       <#if value?has_content>
         <#assign valueXmlDoc = Static["org.apache.ofbiz.entity.GenericValue"].makeXmlDocument([value]) />

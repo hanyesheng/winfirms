@@ -10,7 +10,7 @@
   exclude-result-prefixes="#default"
   version="1.0">
 
-<!-- $Id$ -->
+<!-- $Id: docbook.xsl 1395307 2012-10-07 14:02:53Z jleroux $ -->
 
 <xsl:import href="../xhtml5/docbook.xsl"/>
 

@@ -77,7 +77,8 @@ under the License.
         <set-service-fields service-name="createProductContent" map="parameters" to-map="createProductContent"/>
         <set-service-fields service-name="persistContentAndAssoc" map="parameters" to-map="persistContentAndAssoc"/>
         <set field="persistContentAndAssoc.contentTypeId" value="DOCUMENT"/>
-        <set field="persistContentAndAssoc.dataResourceTypeId" value="IMAGE_OBJECT"/>
+        <set field="persistContentAndAssoc.isPublic" value="Y"/>
+        <set field="persistContentAndAssoc.dataResourceTypeId" value="OFBIZ_FILE"/>
         <set field="persistContentAndAssoc.contentName" from-field="parameters._imageData_fileName"/>
         <set field="persistContentAndAssoc.mimeTypeId" from-field="parameters._imageData_contentType"/>
         <call-service service-name="persistContentAndAssoc" in-map-name="persistContentAndAssoc" break-on-error="true" >

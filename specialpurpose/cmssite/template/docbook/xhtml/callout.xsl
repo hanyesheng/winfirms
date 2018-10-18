@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:sverb="http://nwalsh.com/xslt/ext/com.nwalsh.saxon.Verbatim" xmlns:xverb="xalan://com.nwalsh.xalan.Verbatim" xmlns:lxslt="http://xml.apache.org/xslt" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="sverb xverb lxslt" version="1.0">
 
 <!-- ********************************************************************
-     $Id$
+     $Id: callout.xsl 1395307 2012-10-07 14:02:53Z jleroux $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.

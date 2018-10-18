@@ -24,11 +24,11 @@ under the License.
     <#assign shoppingCartSize = 0>
 </#if>
 
-<div id="minicart" class="screenlet">
-    <div class="screenlet-title-bar">
+<div id="minicart" class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <h3>${uiLabelMap.OrderCartSummary}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <#if (shoppingCartSize > 0)>
           <#if hidetoplinks?default("N") != "Y">
             <ul>
@@ -38,7 +38,7 @@ under the License.
               <li><a href="<@ofbizUrl>onePageCheckout</@ofbizUrl>" class="button">${uiLabelMap.EcommerceOnePageCheckout}</a></li>
             </ul>
           </#if>
-          <table>
+          <table class="basic-table uk-table">
             <thead>
               <tr>
                 <th>${uiLabelMap.OrderQty}</th>

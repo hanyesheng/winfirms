@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:exsl="http://exslt.org/common" xmlns:set="http://exslt.org/sets" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="exsl set" version="1.0">
 
 <!-- ********************************************************************
-     $Id$
+     $Id: html-rtf.xsl 1395307 2012-10-07 14:02:53Z jleroux $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.

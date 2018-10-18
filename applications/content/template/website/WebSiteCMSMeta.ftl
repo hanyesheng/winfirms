@@ -104,7 +104,7 @@
 </form>
 
 <form name="cmsmetaform" action="javascript:void(0);" style="margin: 0;">
-    <table>
+    <table class="basic-table uk-table">
         <tr>
             <td class="label">Page Title</td>
             <td><input type="text" name="title" value="${(title.objectInfo)!}" size="40" /></td>

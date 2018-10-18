@@ -92,5 +92,5 @@ under the License.
   </#list>
 </table>
 <#else>
-  <div class="screenlet-body">${uiLabelMap.WorkEffortFailedCalendarEntries}!</div>
+  <div class="screenlet-body md-card-content uk-overflow-container">${uiLabelMap.WorkEffortFailedCalendarEntries}!</div>
 </#if>

@@ -799,6 +799,7 @@ under the License.
         </field>
         <field name="imageData" title="${uiLabelMap.ProductFile}"><file/></field>
         <field name="fileDataResourceId" map-name="downloadData"><hidden/></field>
+        <field name="drObjectInfo"><hidden value="/images/products/${productId}/"/></field>
         <field name="productId"><hidden/></field>
         <field name="productContentTypeId"><hidden/></field>
         <field use-when="contentId == null" name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>

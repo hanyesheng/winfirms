@@ -29,7 +29,7 @@
   exclude-result-prefixes="#default cf date db dc dcterms epub exsl m ncx opf pls set ssml stext str svg xtext"
   version="1.0">
 
-<!-- $Id$ -->
+<!-- $Id: epub3-element-mods.xsl 1395307 2012-10-07 14:02:53Z jleroux $ -->
 
 <xsl:import href="titlepage.templates.xsl"/>
 

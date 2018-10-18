@@ -1,0 +1,1926 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="main">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <entity-and entity-name="ProductStoreRole" list="ProductStoreRoles" use-cache="true">
+	                <field-map field-name="productStoreId" value="10000"/>
+	            </entity-and>
+	            <set field="productStoreRoleSize" value="${util:size(ProductStoreRoles)}" type="Integer"/>
+	            <entity-and entity-name="Visit" list="Visits" use-cache="true">
+	                <field-map field-name="webappName" value="root"/>
+	            </entity-and>
+	            <set field="visitSize" value="${util:size(Visits)}" type="Integer"/>
+	            <entity-and entity-name="Product" list="Products" use-cache="true">
+	                <field-map field-name="productTypeId" value="ACTIVITY"/>
+	            </entity-and>
+	            <set field="productSize" value="${util:size(Products)}" type="Integer"/>
+               <entity-and entity-name="Visit" list="todayVisitSizes" use-cache="true">
+	                <field-map field-name="webappName" value="root"/>
+	            </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="WebManagerCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<platform-specific>
+                            <html><html-template location="component://webmanager/webapp/webmgr/include/Main.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+	<screen name="FindCatalog">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleFindCatalog"/>
+                <set field="headerItem" value="catalogs"/>
+                <set field="tabButtonItem" value="FindCatalog"/>
+                <set field="labelTitleProperty" value="ProductCatalog"/>
+                <entity-and entity-name="ProdCatalog" list="ProdCatalog">
+                    <field-map field-name="prodCatalogId" value="10000"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonCatalogDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<screenlet title="${uiLabelMap.ProductCatalogs}">
+                            <include-form name="ListCatalog" location="component://webmanager/widget/WebManagerForms.xml"/>
+                       </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditProdCatalog">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProductCatalog"/>
+                <set field="tabButtonItem" value="ProductCatalog"/>
+                <set field="headerItem" value="catalogs"/>
+                <entity-one entity-name="ProdCatalog" value-field="prodCatalog"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonCatalogDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${groovy: parameters.prodCatalogId ? uiLabelMap.PageTitleEditProductCatalog : uiLabelMap.PageTitleNewProductCatalog}">
+                            <label style="h3">${uiLabelMap.ProductCatalogEmptyWarning}</label>
+                            <include-form name="EditProdCatalog" location="component://product/widget/catalog/ProdCatalogForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditProdCatalogSection">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProductCatalog"/>
+                <set field="tabButtonItem" value="ProductCatalog"/>
+                <set field="prodCatalogId" from-field="parameters.prodCatalogId"/>
+                <entity-one entity-name="ProdCatalog" value-field="prodCatalog"/>
+            </actions>
+            <widgets>
+            <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                <decorator-section name="body">
+                    <include-menu name="CatalogTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                    <include-menu name="CatalogSubTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                    <label style="h1">${uiLabelMap.ProductCatalog} ${uiLabelMap.CommonFor} "${prodCatalog.catalogName}" [${prodCatalogId}]</label>
+                    <screenlet title="${uiLabelMap.PageTitleEditProductCatalog}">
+                        <label style="h3">${uiLabelMap.ProductCatalogEmptyWarning}</label>
+                        <include-form name="EditProdCatalog" location="component://product/widget/catalog/ProdCatalogForms.xml"/>
+                    </screenlet>
+                </decorator-section>
+             </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditCategorySection">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProductCategories"/>
+                <set field="headerItem" value="categories"/>
+                <set field="tabButtonItem" value="EditCategory"/>
+                <set field="labelTitleProperty" value="ProductCategory"/>
+                <set field="productCategoryId" from-field="parameters.productCategoryId"/>
+                <entity-one entity-name="ProductCategory" value-field="productCategory"/>
+                <entity-condition entity-name="ProductCategoryType" list="productCategoryTypes">
+                    <order-by field-name="description"/>
+                </entity-condition>
+                <script location="component://product/groovyScripts/catalog/category/EditCategory.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <or>
+                                    <if-has-permission permission="WEBMANAGER" action="_ADMIN"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_CREATE"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_UPDATE"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_VIEW"/>
+                                </or>
+                            </condition>
+                            <actions>
+                                <set field="productCategoryId" from-field="parameters.productCategoryId"/>
+                                <entity-one entity-name="ProductCategory" value-field="productCategory"/>
+                            </actions>
+                            <widgets>
+                                <section>
+                                    <condition>
+                                        <not><if-empty field="productCategory"/></not>
+                                    </condition>
+                                    <widgets>
+                                        <include-menu name="CategoryTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                                        <include-menu name="CategorySubTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                                        <container>
+                                            <label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.CommonFor}: ${productCategory.description} [${uiLabelMap.CommonId}:${productCategoryId}]  ${${extraFunctionName}}</label>
+                                        </container>
+                                    </widgets>
+                                    <fail-widgets>
+                                        <section>
+                                            <condition>
+                                                <if-compare operator="not-equals" value="EditCategory" field="tabButtonItem"/>
+                                            </condition>
+                                            <widgets>
+                                                <include-menu name="CategorySubTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                                            </widgets>
+                                        </section>
+                                    </fail-widgets>
+                                </section>
+                                <decorator-section-include name="body"/>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.ProductCatalogViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                        <platform-specific>
+                            <html><html-template location="component://webmanager/webapp/webmgr/include/EditCategory.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditProdCatalogStores">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProductCatalogStores"/>
+                <set field="tabButtonItem" value="ProductStores"/>
+                <entity-and entity-name="ProductStoreCatalog" list="productStoreCatalogList">
+                    <field-map field-name="prodCatalogId" from-field="parameters.prodCatalogId"/>
+                    <order-by field-name="sequenceNum"/>
+                    <order-by field-name="productStoreId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                 <decorator-screen name="CommonCatalogDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PageTitleEditProductCatalogStores}">
+                            <include-form name="UpdateProductStoreCatalog" location="component://webmanager/widget/WebManagerForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditProdCatalogCategories">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProductCatalogCategories"/>
+                <set field="tabButtonItem" value="ProductCategories"/>
+                <entity-and entity-name="ProdCatalogCategory" list="prodCatalogCategories">
+                    <field-map field-name="prodCatalogId" from-field="parameters.prodCatalogId"/>
+                    <order-by field-name="prodCatalogCategoryTypeId"/>
+                    <order-by field-name="sequenceNum"/>
+                    <order-by field-name="productCategoryId"/>
+                </entity-and>
+                <entity-condition entity-name="ProductCategory" list="productCategories">
+                    <order-by field-name="description"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonCatalogDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PageTitleEditProductCatalogCategories}">
+                            <include-form name="EditProdCatalogCategories" location="component://webmanager/widget/WebManagerForms.xml"/>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.ProductAddCatalogProdCat}">
+                            <include-form name="AddProductCategoryToProdCatalog" location="component://product/widget/catalog/ProdCatalogForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="FindCategory">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleFindCategory"/>
+                <set field="headerItem" value="categories"/>
+                <set field="tabButtonItem" value="FindCategory"/>
+                <set field="labelTitleProperty" value="ProductCategory"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonCategoryDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<screenlet title="${uiLabelMap.CommonSearchOptions}">
+                            <include-form name="FindCategory" location="component://product/widget/catalog/CategoryForms.xml"/>
+                       	</screenlet>
+                       	<screenlet title="${uiLabelMap.CommonSearchResults}">
+                            <include-form name="ListCategory" location="component://product/widget/catalog/CategoryForms.xml"/>
+                       	</screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditCategory">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProductCategories"/>
+                <set field="headerItem" value="categories"/>
+                <set field="tabButtonItem" value="EditCategory"/>
+                <set field="labelTitleProperty" value="ProductCategory"/>
+                <set field="productCategoryId" from-field="parameters.productCategoryId"/>
+                <entity-one entity-name="ProductCategory" value-field="productCategory"/>
+                <entity-condition entity-name="ProductCategoryType" list="productCategoryTypes">
+                    <order-by field-name="description"/>
+                </entity-condition>
+                <script location="component://product/groovyScripts/catalog/category/EditCategory.groovy"/>
+            </actions>
+            <widgets>
+                 <decorator-screen name="CommonCategoryDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://webmanager/webapp/webmgr/include/EditCategory.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditCategoryRollup">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditCategoryRollup"/>
+                <set field="tabButtonItem" value="EditCategoryRollup"/>
+                <set field="labelTitleProperty" value="ProductRollup"/>
+                <set field="productCategoryId" from-field="parameters.showProductCategoryId" default-value="${parameters.productCategoryId}"/>
+                <set field="parameters.productCategoryId" from-field="productCategoryId"/>
+
+                <entity-condition entity-name="ProductCategoryRollup" list="currentProductCategoryRollups">
+                    <condition-expr field-name="productCategoryId" from-field="productCategoryId"/>
+                    <order-by field-name="sequenceNum"/>
+                </entity-condition>
+                <entity-condition entity-name="ProductCategoryRollup" list="parentProductCategoryRollups">
+                    <condition-expr field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                    <order-by field-name="sequenceNum"/>
+                </entity-condition>
+
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonCategoryDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://product/template/category/EditCategoryRollup.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditCategoryProducts">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditCategoryProducts"/>
+                <set field="tabButtonItem" value="EditCategoryProducts"/>
+                <set field="labelTitleProperty" value="ProductProducts"/>
+
+                <set field="productCategoryId" from-field="parameters.productCategoryId"/>
+
+                <script location="component://product/groovyScripts/catalog/category/EditCategoryProducts.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonCategoryDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://product/template/category/EditCategoryProducts.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditCategoryProdCatalogs">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditCategoryProductCatalogs"/>
+                <set field="tabButtonItem" value="EditCategoryProdCatalogs"/>
+                <set field="labelTitleProperty" value="ProductCatalogs"/>
+
+                <set field="productCategoryId" from-field="parameters.productCategoryId"/>
+                <entity-one entity-name="ProductCategory" value-field="productCategory"/>
+
+              <entity-condition entity-name="ProdCatalogCategory" list="prodCatalogCategories">
+                    <condition-expr field-name="productCategoryId" from-field="productCategoryId"/>
+                    <order-by field-name="prodCatalogCategoryTypeId"/>
+                    <order-by field-name="sequenceNum"/>
+                    <order-by field-name="prodCatalogId"/>
+                </entity-condition>
+
+                <entity-condition entity-name="ProdCatalog" list="prodCatalogs">
+                    <order-by field-name="catalogName"/>
+                </entity-condition>
+                <entity-condition entity-name="ProdCatalogCategoryType" list="prodCatalogCategoryTypes">
+                    <order-by field-name="description"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonCategoryDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://product/template/category/EditCategoryProdCatalogs.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditCategoryParties">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditCategoryParties"/>
+                <set field="tabButtonItem" value="EditCategoryParties"/>
+                <set field="labelTitleProperty" value="PartyParties"/>
+
+                <set field="productCategoryId" from-field="parameters.productCategoryId"/>
+                <entity-one entity-name="ProductCategory" value-field="productCategory"/>
+
+              <entity-condition entity-name="ProductCategoryRole" list="productCategoryRoles">
+                    <condition-expr field-name="productCategoryId" from-field="productCategoryId"/>
+                    <order-by field-name="roleTypeId"/>
+                    <order-by field-name="partyId"/>
+                </entity-condition>
+
+                <entity-condition entity-name="RoleType" list="roleTypes">
+                    <order-by field-name="description"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonCategoryDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://product/template/category/EditCategoryParties.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="advancedsearch">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleAdvancedSearch"/>
+                <set field="headerItem" value="Advanced Search"/>
+
+                <entity-condition entity-name="ProductCategory" list="productCategories">
+                    <condition-expr field-name="showInSelect" operator="not-equals" value="N"/>
+                    <order-by field-name="description"/>
+                </entity-condition>
+                <entity-condition entity-name="ProdCatalog" list="prodCatalogs">
+                    <order-by field-name="catalogName"/>
+                </entity-condition>
+                <script location="component://product/groovyScripts/catalog/find/AdvancedSearchOptions.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonCategoryDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://webmanager/webapp/webmgr/include/AdvancedSearch.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="keywordsearch">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleSearchResults"/>
+                <script location="component://product/groovyScripts/catalog/find/KeywordSearch.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonCategoryDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://product/template/find/KeywordSearch.ftl"/></html>
+                        </platform-specific>
+                        <platform-specific>
+                            <html><html-template location="component://product/template/find/KeywordSearchActions.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="FindProduct">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleFindProduct"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<screenlet title="${uiLabelMap.CommonSearchOptions}">
+                            <include-form name="FindProduct" location="component://product/widget/catalog/ProductForms.xml"/>
+                       	</screenlet>
+                       	<screenlet title="${uiLabelMap.CommonSearchResults}">
+                            <include-form name="ListProducts" location="component://product/widget/catalog/ProductForms.xml"/>
+                       	</screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+         </section>
+    </screen>
+    <screen name="EditProduct">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProduct"/>
+                <set field="tabButtonItem" value="EditProduct"/>
+                <set field="labelTitleProperty" value="ProductProduct"/>
+                <entity-condition entity-name="ProductType" list="ProductType">
+                    <condition-list combine="or">
+                        <condition-expr field-name="productTypeId" operator="equals" value="SERVICE"/>
+                        <condition-expr field-name="productTypeId" operator="equals" value="PERSON"/>
+                        <condition-expr field-name="productTypeId" operator="equals" value="COURSE"/>
+                        <condition-expr field-name="productTypeId" operator="equals" value="ACTIVITY"/>
+                    </condition-list>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${groovy: parameters.productId ? uiLabelMap.PageTitleEditProduct : uiLabelMap.ProductNewProduct}">
+                            <include-form name="EditProduct" location="component://webmanager/widget/WebManagerForms.xml"/>
+                        </screenlet>
+                        <section>
+                            <condition>
+                                <not><if-empty field="product"/></not>
+                            </condition>
+                            <widgets>
+                                <section>
+                                    <condition>
+                                        <if-compare field="product.isVirtual" operator="equals" type="String" value="Y"/>
+                                    </condition>
+                                    <widgets>
+                                        <screenlet title="${uiLabelMap.ProductUpdateProductVariants}">
+                                            <include-form name="UpdateProductVariants" location="component://product/widget/catalog/ProductForms.xml"/>
+                                        </screenlet>
+                                    </widgets>
+                                </section>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditProductPrices">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProductPrices"/>
+                <set field="tabButtonItem" value="EditProductPrices"/>
+                <set field="labelTitleProperty" value="ProductPrices"/>
+
+                <entity-and entity-name="ProductPrice" list="productPrices">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <order-by field-name="productStoreGroupId"/>
+                    <order-by field-name="productPricePurposeId"/>
+                    <order-by field-name="productPriceTypeId"/>
+                    <order-by field-name="currencyUomId"/>
+                    <order-by field-name="fromDate"/>
+                </entity-and>
+
+                <property-to-field field="defaultCurrencyUomId" resource="general" property="currency.uom.id.default" default="USD"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PageTitleEditProductPrices}">
+                            <include-form name="UpdateProductPrice" location="component://product/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.PageTitleAddProductPrices}">
+                            <label style="h3" text="${uiLabelMap.ProductPricesWarning}"/>
+                            <include-form name="AddProductPrice" location="component://product/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="ProductPriceHistory">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleProductPricesHistory"/>
+                <set field="tabButtonItem" value="EditProductPrices"/>
+                <set field="labelTitleProperty" value="PageTitleProductPricesHistory"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <entity-and entity-name="ProductPriceChange" list="productPricesChanges">
+                    <field-map field-name="productId" from-field="productId"/>
+                    <field-map field-name="productPriceTypeId" from-field="parameters.productPriceTypeId"/>
+                    <field-map field-name="fromDate" from-field="parameters.fromDate"/>
+                    <order-by field-name="fromDate"/>
+                </entity-and>
+
+                <property-to-field field="defaultCurrencyUomId" resource="general" property="currency.uom.id.default" default="USD"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <link target="EditProductPrices" text="${uiLabelMap.CommonBack}" style="buttontext">
+                            <parameter param-name="productId"/>
+                        </link>
+                        <screenlet title="${uiLabelMap.PageTitleProductPricesHistory}">
+                            <include-form name="ListProductPriceHistory" location="component://product/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditProductContent">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProductContent"/>
+                <set field="tabButtonItem" value="EditProductContent"/>
+                <set field="labelTitleProperty" value="ProductContent"/>
+
+                <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
+
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PageTitleEditProductContent}">
+                            <include-form name="ListProductContentInfos" location="component://product/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.ProductCreateNewProductContent}">
+                            <include-form name="PrepareAddProductContentAssoc" location="component://product/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.ProductAddContentProduct}">
+                            <include-form name="AddProductContentAssoc" location="component://product/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.ProductOverrideSimpleFields}">
+                            <platform-specific>
+                                <html><html-template location="component://product/template/product/EditProductContent.ftl"/></html>
+                            </platform-specific>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.ProductAddAdditionalImages}">
+                            <platform-specific>
+                                <html><html-template location="component://product/template/product/AddAdditionalImages.ftl"/></html>
+                            </platform-specific>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditProductContentContent">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProductContent"/>
+                <set field="tabButtonItem" value="EditProductContent"/>
+                <set field="labelTitleProperty" value="ProductContent"/>
+
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <entity-one entity-name="ProductContent" value-field="productContent"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition><not><if-empty field="contentId"/></not></condition>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.PageTitleEditProductContent}">
+                                    <include-form name="${contentFormName}" location="component://product/widget/catalog/ProductForms.xml"/>
+                                </screenlet>
+                                <screenlet title="${uiLabelMap.PageTitleListAssociatedContentInfos}">
+                                    <include-form name="ListAssociatedContentInfos" location="component://product/widget/catalog/ProductForms.xml"/>
+                                </screenlet>
+                                <screenlet title="${uiLabelMap.PageTitleCreateSimpleTextContentForAlternateLocale}">
+                                    <include-form name="CreateSimpleTextContentForAlternateLocale" location="component://product/widget/catalog/ProductForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                            <fail-widgets>
+                                <screenlet title="${uiLabelMap.PageTitleEditProductContent}">
+                                    <include-form name="${contentFormName}" location="component://product/widget/catalog/ProductForms.xml"/>
+                                </screenlet>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditProductCategories">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProductCategories"/>
+                <set field="tabButtonItem" value="EditProductCategories"/>
+                <set field="labelTitleProperty" value="ProductCategoryMembers"/>
+
+                <entity-condition entity-name="ProductCategoryMember" list="productCategoryMembers">
+                    <condition-expr field-name="productId" from-field="parameters.productId"/>
+                    <order-by field-name="sequenceNum"/>
+                    <order-by field-name="productCategoryId"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PageTitleEditProductCategories}">
+                            <include-form name="UpdateProductCategoryMember" location="component://product/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.PageTitleAddProductCategories}">
+                            <include-form name="AddProductCategoryMember" location="component://product/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditProductKeyword">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProductKeywords"/>
+                <set field="tabButtonItem" value="EditProductKeyword"/>
+                <set field="labelTitleProperty" value="ProductKeywords"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <entity-and entity-name="Enumeration" list="keywordTypeList">
+                    <field-map field-name="enumTypeId" value="KEYWORD_TYPE"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <container>
+                            <link target="forceIndexProductKeywords" text="${uiLabelMap.ProductReInduceKeywords}" style="buttontext">
+                                <parameter param-name="productId"/>
+                            </link>
+                            <link target="deleteProductKeywords" text="${uiLabelMap.ProductDeleteAllKeywords}" style="buttontext">
+                                <parameter param-name="productId"/>
+                            </link>
+                        </container>
+                        <screenlet title="${uiLabelMap.ProductAddProductKeyword}">
+                            <include-form name="AddProductKeyword" location="component://product/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                        <iterate-section entry="keywordType" list="keywordTypeList">
+                            <section>
+                                <actions>
+                                    <set field="keywordTypeId" from-field="keywordType.enumId"/>
+                                </actions>
+                                <widgets>
+                                    <screenlet title="${uiLabelMap.PageTitleEditProductKeywords} : ${keywordType.description}">
+                                        <include-form name="UpdateProductKeyword" location="component://product/widget/catalog/ProductForms.xml"/>
+                                    </screenlet>
+                                </widgets>
+                            </section>
+                        </iterate-section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditProductPaymentMethodTypes">
+        <section>
+            <actions>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap"/>
+                <set field="titleProperty" value="PageTitleEditProductPaymentMethodType"/>
+                <set field="tabButtonItem" value="EditProductPaymentMethodTypes"/>
+                <set field="labelTitleProperty" value="ProductPaymentTypes"/>
+
+                <entity-condition entity-name="ProductPaymentMethodType" list="productPaymentMethodTypes">
+                    <condition-expr field-name="productId" from-field="parameters.productId"/>
+                    <order-by field-name="productPricePurposeId"/>
+                    <order-by field-name="paymentMethodTypeId"/>
+                    <order-by field-name="fromDate"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PageTitleEditProductPaymentMethodType}">
+                            <include-form name="UpdateProductPaymentMethodType" location="component://product/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.PageTitleAddProductPaymentMethodType}">
+                            <include-form name="AddProductPaymentMethodType" location="component://product/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditProductParties">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProductParties"/>
+                <set field="headerItem" value="product"/>
+                <set field="tabButtonItem" value="EditProductParties"/>
+                <set field="labelTitleProperty" value="PartyParties"/>
+
+                <entity-condition entity-name="ProductRole" list="productRoles">
+                    <condition-expr field-name="productId" from-field="parameters.productId"/>
+                    <order-by field-name="roleTypeId"/>
+                    <order-by field-name="partyId"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PageTitleEditProductParties}">
+                            <include-form name="UpdateProductRole" location="component://product/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                        
+                        <screenlet title="${uiLabelMap.ProductAssociatePartyToProduct}">
+                            <include-form name="AddProductRole" location="component://product/widget/catalog/ProductForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="ViewProductOrder">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleViewProductOrders"/>
+                <set field="tabButtonItem" value="viewProductOrder"/>
+                <set field="labelTitleProperty" value="OrderOrders"/>
+                <script location="component://order/groovyScripts/order/FindOrders.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://product/template/product/ViewProductOrders.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditProductCommunicationEvents">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleCommEvents"/>
+                <set field="tabButtonItem" value="EditProductCommunicationEvents"/>
+                <set field="labelTitleProperty" value="PageTitleCommEvents"/>
+                <entity-and entity-name="CommunicationEventAndProduct" list="communicationEvents">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <link style="buttontext" target="AddCommEventForProduct" text="${uiLabelMap.CommonNew}">
+                            <parameter param-name="productId"/>
+                        </link>
+                        <screenlet title="${uiLabelMap.PageTitleCommEvents}">
+                            <include-form name="ListCommEvents" location="component://webmanager/widget/WebManagerForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="FindProductStore">
+       <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProductStoreList"/>
+                <set field="headerItem" value="store"/>
+                <set field="tabButtonItem" value="EditProductStoreList"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductStoreDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.ProductProductStoreList}">
+                            <include-form name="ListProductStore" location="component://webmanager/widget/WebManagerForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+       </section>
+    </screen>
+
+    <screen name="EditProductStore">
+       <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditProductStore"/>
+                <set field="headerItem" value="store"/>
+                <set field="tabButtonItem" value="EditProductStore"/>
+                <set field="labelTitleProperty" value="ProductStore"/>
+
+                <set field="productStoreId" from-field="parameters.productStoreId"/>
+                <entity-one entity-name="ProductStore" value-field="productStore" auto-field-map="true"/>
+                <property-to-field field="defaultCurrencyUomId" resource="general" property="currency.uom.id.default" default="USD"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductStoreDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.ProductProductStore}">
+                            <include-form name="EditProductStore" location="component://webmanager/widget/WebManagerForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+       </section>
+    </screen>
+    <screen name="FindProductStoreRoles">
+       <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleFindProductStoreRoles"/>
+                <set field="headerItem" value="store"/>
+                <set field="tabButtonItem" value="FindProductStoreRoles"/>
+                <set field="labelTitleProperty" value="ProductProductStoreRoles"/>
+                <set field="parameters.fromDate" from-field="parameters.fromDate" type="Timestamp"/>
+                <entity-one entity-name="ProductStoreRole" value-field="productStoreRole" auto-field-map="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonProductStoreDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
+                            <decorator-section name="search-options">
+                                <include-form name="FindProductStoreRole" location="component://webmanager/widget/WebManagerForms.xml"/>
+                            </decorator-section>
+                            <decorator-section name="search-results">
+                                <include-form name="ListProductStoreRole" location="component://webmanager/widget/WebManagerForms.xml"/>
+                            </decorator-section>
+                        </decorator-screen>
+                        <screenlet title="${uiLabelMap.PageTitleEditProductStoreRoles}">
+                            <include-form name="EditProductStoreRole" location="component://product/widget/catalog/StoreForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+       </section>
+    </screen>
+    <!-- Party Find Screen -->
+    <screen name="findparty">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleFindParty"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="findparty"/>
+                <set field="initialyCollapsed" value="${groovy:'Y'.equals(parameters.hideFields)}" type="String"/>
+                <script location="component://party/groovyScripts/party/FindParty.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <screenlet id="FindPartyPanel" title="${uiLabelMap.PartyFindParty}" navigation-menu-name="CreateNewParty"
+                                           navigation-form-name="LookupParty" save-collapsed="false" collapsible="true" initially-collapsed="${initialyCollapsed}">
+                                    <include-menu location="component://webmanager/widget/WebManagerMenus.xml" name="CreateNewParty"/>
+                                    <include-form name="LookupParty" location="component://webmanager/widget/WebManagerForms.xml"/>
+                                </screenlet>
+                                <screenlet title="${uiLabelMap.CommonSearchResults}" navigation-form-name="ListParty">
+                                    <include-grid name="ListParty${extInfo}" location="component://webmanager/widget/WebManagerForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="viewprofile">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleViewPartyProfile"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="labelTitleProperty" value="PartyTaxAuthInfos"/>
+                <set field="partyId" from-field="parameters.partyId"/>
+                <set field="layoutSettings.javaScripts[]" value="/partymgr/static/PartyProfileContent.js" global="true"/>
+                <script location="component://party/groovyScripts/party/ViewProfile.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <and>
+                                    <if-empty field="partyId"/>
+                                    <not><if-empty field="parameters.telno"/></not>
+                                </and>
+                            </condition>
+                            <actions>
+                                <service service-name="findPartyFromTelephone" auto-field-map="true" result-map="telnoMap"/>
+                                <entity-one entity-name="Party" value-field="party">
+                                    <field-map field-name="partyId" from-field="telnoMap.partyId"/>
+                                </entity-one>
+                                <set field="parameters.partyId" from-field="party.partyId"/>
+                            </actions>
+                            <widgets/>
+                        </section>
+                        <section>
+                            <condition>
+                                <and>
+                                    <if-empty field="partyId"/>
+                                    <not><if-empty field="parameters.email"/></not>
+                                </and>
+                            </condition>
+                            <actions>
+                                <service service-name="findPartyFromEmailAddress" result-map="emailMap">
+                                    <field-map field-name="address" from-field="parameters.email"/>
+                                </service>
+                                <entity-one entity-name="Party" value-field="party">
+                                    <field-map field-name="partyId" from-field="emailMap.partyId"/>
+                                </entity-one>
+                                <set field="parameters.partyId" from-field="party.partyId"/>
+                            </actions>
+                            <widgets/>
+                        </section>
+                        <section>
+                            <condition>
+                                <not><if-empty field="party"/></not>
+                            </condition>
+                            <widgets>
+                                <section>
+                                    <widgets>
+                                        <container style="uk-grid-width-small-1-1 uk-grid-width-medium-1-2 uk-margin-large-bottom hierarchical_show" id="uk_grid">
+                                        	<container><include-screen name="Party" location="component://webmanager/widget/ProfileScreens.xml"/></container>
+                                        	<container><include-screen name="UserLogin" location="component://webmanager/widget/ProfileScreens.xml"/></container>
+                                        	<container><include-screen name="LoyaltyPoints" location="component://webmanager/widget/ProfileScreens.xml"/></container>
+                                        	<container><include-screen name="Contact" location="component://webmanager/widget/ProfileScreens.xml"/></container>
+                                        	<container><include-screen name="Visits" location="component://webmanager/widget/ProfileScreens.xml"/></container>
+                                        	<container><include-screen name="Content" location="component://webmanager/widget/ProfileScreens.xml"/></container>
+                                        	<container><include-screen name="ProductStores" location="component://webmanager/widget/ProfileScreens.xml"/></container>
+                                    	</container>
+                                    </widgets>
+                                </section>
+                            </widgets>
+                            <fail-widgets>
+                                <container>
+                                    <label style="h3">${uiLabelMap.PartyNoPartyFoundWithPartyId}: ${parameters.partyId}</label>
+                                </container>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!-- List comm events for a specific party -->
+    <screen name="ListPartyCommEvents">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleListCommunications"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="PartyCommEvents"/>
+                <service service-name="findPartyInSalesOpportunityRole" result-map="leadPartyResult">
+                    <field-map field-name="salesOpportunityId" from-field="parameters.salesOpportunityId"/>
+                    <field-map field-name="roleTypeId" value="LEAD"/>
+                </service>
+                <set field="partyId" from-field="leadPartyResult.partyId" default-value="${parameters.partyId}"/>
+                <entity-and entity-name="Party" list="partyperson">
+                    <field-map field-name="partyId" from-field="partyId"/>
+                    <field-map field-name="partyTypeId" value="PERSON"/>
+                </entity-and>
+                <entity-condition entity-name="CommunicationEventAndRole" list="commEvents">
+                    <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and entity-name="PartyRelationship" list="contacts" filter-by-date="true">
+                    <field-map field-name="partyIdFrom" from-field="partyId"/>
+                    <field-map field-name="roleTypeIdFrom" value="ACCOUNT"/>
+                    <field-map field-name="roleTypeIdTo" value="CONTACT"/>
+                    <order-by field-name="partyIdTo"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                            	<screenlet title="${uiLabelMap.PageTitleListCommunications} ${partyId}">
+                                	<include-form name="ListCommEvents" location="component://webmanager/widget/WebManagerForms.xml"/>
+                                </screenlet>
+                                <section>
+                                    <condition>
+                                        <not><if-empty field="contacts"/></not>
+                                    </condition>
+                                    <widgets> 
+                                        <horizontal-separator/>
+                                        <container style="h1"><label text="${uiLabelMap.PageTitleListCommunicationsRelatedParties} ${partyId}"/></container>
+                                        <iterate-section entry="contact" list="contacts">
+                                            <section>
+                                                <condition>
+                                                    <not><if-empty field="contacts"/></not>
+                                                </condition>
+                                                <actions>
+                                                    <entity-condition entity-name="CommunicationEventAndRole" list="commEvents">
+                                                        <condition-expr field-name="partyId" operator="equals" value="${contact.partyIdTo}"/>
+                                                        <order-by field-name="-entryDate"/>
+                                                    </entity-condition>
+                                                </actions>
+                                                <widgets>
+                                                    <container style="h2"><label text="${contact.partyIdTo}"/></container>
+                                                    <include-form name="ListCommEvents" location="component://webmanager/widget/WebManagerForms.xml"/>
+                                                </widgets>
+                                            </section>
+                                        </iterate-section>
+                                    </widgets>
+                                </section>
+                                <!-- commevent list of partytypeId = PERSON -->
+                                <section>
+                                    <condition>
+                                        <not><if-empty field="partyperson"/></not>
+                                    </condition>
+                                    <actions>
+                                        <entity-condition entity-name="PartyRelationship" list="accounts">
+                                            <condition-list>
+                                                <condition-expr field-name="partyIdTo" from-field="partyId"/>
+                                                <condition-expr field-name="roleTypeIdFrom" value="ACCOUNT"/>
+                                                <condition-expr field-name="roleTypeIdTo" value="CONTACT"/>
+                                            </condition-list>
+                                            <select-field field-name="partyIdFrom"/>
+                                        </entity-condition>
+                                        <set field="partyIdFrom" from-field="accounts[0].partyIdFrom"/>
+                                        <entity-condition entity-name="CommunicationEventAndRole" list="commEvents">
+                                            <condition-expr field-name="partyId" operator="equals" from-field="partyIdFrom"/>
+                                            <order-by field-name="-entryDate"/>
+                                        </entity-condition>
+                                        <entity-and entity-name="PartyRelationship" list="contacts" filter-by-date="true">
+                                            <field-map field-name="partyIdFrom" from-field="partyIdFrom"/>
+                                            <field-map field-name="roleTypeIdFrom" value="ACCOUNT"/>
+                                            <field-map field-name="roleTypeIdTo" value="CONTACT"/>
+                                            <order-by field-name="partyIdTo"/>
+                                        </entity-and>    
+                                    </actions>
+                                    <widgets>
+                                        <section>
+                                            <condition>
+                                                <or>
+                                                    <not><if-empty field="partyIdFrom"/></not>
+                                                    <not><if-empty field="contacts"/></not>
+                                                </or>
+                                            </condition>
+                                            <widgets>
+                                                <horizontal-separator/>
+                                                <container style="h1"><label text="${uiLabelMap.PageTitleListCommunicationsRelatedParties} ${partyId}"/></container>
+                                                <container style="h2"><label text="${partyIdFrom}"/></container>       
+                                                <iterate-section entry="account" list="accounts">
+                                                    <section>
+                                                        <widgets>
+                                                            <include-form name="ListCommEvents" location="component://webmanager/widget/WebManagerForms.xml"/>
+                                                        </widgets>
+                                                    </section>
+                                                </iterate-section>
+                                                <iterate-section entry="contact" list="contacts">
+                                                    <section>
+                                                        <condition>
+                                                            <not><if-empty field="contacts"/></not>
+                                                        </condition>
+                                                        <actions>
+                                                            <entity-condition entity-name="CommunicationEventAndRole" list="commEvents">
+                                                                <condition-expr field-name="partyId" operator="equals" value="${contact.partyIdTo}"/>
+                                                                <order-by field-name="-entryDate"/>
+                                                            </entity-condition>
+                                                        </actions>
+                                                        <widgets>
+                                                            <section>
+                                                                <condition>
+                                                                    <if-compare field="contact.partyIdTo" operator="not-equals" value="${partyId}"/>
+                                                                </condition>
+                                                                <widgets>
+                                                                    <container style="h2"><label text="${contact.partyIdTo}"/></container>
+                                                                    <include-form name="ListCommEvents" location="component://webmanager/widget/WebManagerForms.xml"/>
+                                                                </widgets>
+                                                            </section>
+                                                        </widgets>
+                                                    </section>
+                                                </iterate-section>
+                                            </widgets>
+                                        </section>
+                                    </widgets>
+                                </section>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.PartyMgrViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="ViewProductStoreRoles">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleFindProductStoreRoles"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="productStoreRoles"/>
+                <set field="labelTitleProperty" value="ProductProductStoreRoles"/>
+                <set field="parameters.fromDate" from-field="parameters.fromDate" type="Timestamp"/>
+                <entity-one entity-name="ProductStoreRole" value-field="productStoreRole" auto-field-map="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PageTitleEditProductStoreRoles}">
+                            <include-form name="EditProductStoreRole" location="component://party/widget/partymgr/PartyForms.xml"/>
+                        </screenlet>
+                        <decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
+                            <decorator-section name="search-options">
+                                <include-form name="FindProductStoreRole" location="component://party/widget/partymgr/PartyForms.xml"/>
+                            </decorator-section>
+                            <decorator-section name="search-results">
+                                <include-form name="ListProductStoreRole" location="component://party/widget/partymgr/PartyForms.xml"/>
+                            </decorator-section>
+                        </decorator-screen>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="Preferences">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleViewPartyPreferences"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="preferences"/>
+                <set field="partyId"  from-field="parameters.partyId"/>
+                <entity-and entity-name="EnumTypeChildAndEnum" list="enumTypeChildAndEnums">
+                    <field-map field-name="parentEnumTypeId" value="USER_PREF_GROUPS"/>
+                </entity-and>
+                <entity-and entity-name="UserLogin" list="userLogins">
+                    <field-map field-name="partyId" from-field="parameters.partyId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <iterate-section entry="userLogin" list="userLogins">
+                            <section>
+                                <actions>
+                                    <set field="userPrefUserLoginId" from-field="userLogin.userLoginId"/>
+                                </actions>
+                                <widgets>
+                                    <screenlet title="${uiLabelMap.CommonPreferences} ${uiLabelMap.CommonFor} userLogin: ${userPrefUserLoginId}" >
+                                        <include-form name="ListPreference" location="component://party/widget/partymgr/PartyForms.xml"/>
+                                    </screenlet>
+                                </widgets>
+                            </section>
+                        </iterate-section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="viewroles">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleViewPartyRole"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="viewroles"/>
+                <set field="labelTitleProperty" value="PartyMemberRoles"/>
+                <entity-condition entity-name="RoleTypeAndParty" list="partyRoles">
+                    <condition-list combine="and">
+                        <condition-expr field-name="partyId" operator="equals" value="${parameters.partyId}"/>
+                        <condition-expr field-name="roleTypeId" operator="not-equals" value="_NA_"/>
+                    </condition-list>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PartyMemberRoles}" navigation-form-name="ViewPartyRoles">
+                            <include-form name="ViewPartyRoles" location="component://party/widget/partymgr/PartyForms.xml"/>
+                        </screenlet>
+                        <section>
+                            <condition>
+                                <if-has-permission permission="PARTYMGR" action="_UPDATE"/>
+                            </condition>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.PartyAddToRole}">
+                                    <container>
+                                        <label style="h2">${uiLabelMap.PartyAddToMainRole}</label>
+                                        <include-form name="AddPartyMainRole" location="component://party/widget/partymgr/PartyForms.xml"/>
+                                        <container id="addPartySecondaryRole"/>
+                                    </container>
+                                    <label style="h2">${uiLabelMap.PartyAddToRoleViewAll}</label>
+                                    <include-form name="AddPartyRole" location="component://party/widget/partymgr/PartyForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                                <if-has-permission permission="PARTYMGR" action="_CREATE"/>
+                            </condition>
+                            <actions>
+                                <entity-condition entity-name="RoleType" list="parentRoleList">
+                                    <condition-expr field-name="parentTypeId" operator="equals" from-field="nullField"/>
+                                    <order-by field-name="description"/>
+                                </entity-condition>
+                            </actions>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.PartyNewRoleType}">
+                                    <include-form name="AddRoleType" location="component://party/widget/partymgr/PartyForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditPartyRelationships">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditPartyRelationships"/>
+                <set field="tabButtonItem" value="EditPartyRelationships"/>
+                <set field="labelTitleProperty" value="PartyRelationships"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="partyId" from-field="parameters.partyId"/>
+                <entity-one entity-name="Party" value-field="party"/>
+                <entity-condition entity-name="RoleType" list="roleTypes">
+                    <order-by field-name="description"/>
+                    <order-by field-name="roleTypeId"/>
+                </entity-condition>
+                <entity-condition entity-name="RoleTypeAndParty" list="roleTypesForCurrentParty">
+                 <condition-expr field-name="partyId" from-field="partyId"/>
+                 <order-by field-name="description"/>
+                 <order-by field-name="roleTypeId"/>
+                </entity-condition>
+                <entity-condition entity-name="PartyRelationshipType" list="relateTypes">
+                    <order-by field-name="description"/>
+                    <order-by field-name="partyRelationshipTypeId"/>
+                </entity-condition>
+                <entity-condition entity-name="PartyRelationship" list="partyRelationships">
+                    <condition-list combine="or">
+                        <condition-expr field-name="partyIdTo" from-field="partyId"/>
+                        <condition-expr field-name="partyIdFrom" from-field="partyId"/>
+                    </condition-list>
+                    <order-by field-name="partyIdTo"/>
+                    <order-by field-name="partyRelationshipTypeId"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PartyRelationships}">
+                            <include-form name="ListPartyRelationships" location="component://party/widget/partymgr/PartyForms.xml"/>
+                        </screenlet>
+                        <container style="uk-grid">
+                        <container style="uk-width-medium-1-2">
+                        <section>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.PartyNewRelationshipType}">
+                                    <include-form name="AddPartyRelationshipType" location="component://party/widget/partymgr/PartyForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                        </container>
+                        <container style="uk-width-medium-1-2">
+                        <screenlet title="${uiLabelMap.PartyAddOtherRelationship}">
+                            <include-form name="AddOtherPartyRelationship" location="component://party/widget/partymgr/PartyForms.xml"/>
+                        </screenlet>
+                        </container>
+                        </container>
+                        <container style="clear"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!-- Party Content Screen -->
+    <screen name="EditPartyContents">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleListContent"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="PartyContents"/>
+                <set field="partyId" from-field="parameters.partyId"/>
+                <set field="contentId" from-field="parameters.contentId"/>
+                <entity-one entity-name="Content" value-field="content"/>
+                <entity-one entity-name="PartyContent" value-field="partyContent">
+                    <field-map field-name="contentId" from-field="parameters.contentId"/>
+                    <field-map field-name="partyId" from-field="parameters.partyId"/>
+                    <field-map field-name="partyContentTypeId" from-field="parameters.partyContentTypeId"/>
+                    <field-map field-name="fromDate" from-field="parameters.fromDate"/>
+                </entity-one>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator"  location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PageTitleListContent}">
+                            <container>
+                                <link target="EditPartyContents" text="${uiLabelMap.CommonCreateNew}" style="smallSubmit">
+                                    <parameter param-name="partyId"/>
+                                </link>
+                            </container>
+                            <include-form name="ListPartyContents" location="component://party/widget/partymgr/PartyForms.xml"/>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.PageTitleAddPartyContent}">
+                            <include-form name="AddPartyContent" location="component://party/widget/partymgr/PartyForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="PartyGeoLocation">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitlePartyGeoLocation"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="PartyGeoLocation"/>
+                <script location="component://party/groovyScripts/party/PartyGeoLocation.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <not><if-empty field="geoChart"/></not>
+                            </condition>
+                            <widgets>
+                                <container style="button-bar">
+                                    <link target="addGeoLocation" text="${uiLabelMap.CommonUpdate}" style="buttontext">
+                                        <parameter param-name="partyId" from-field="parameters.partyId"/>
+                                    </link>
+                                </container>
+                                <label>${uiLabelMap.CommonLatitude} ${latestGeoPoint.latitude}</label>
+                                <label>${uiLabelMap.CommonLongitude} ${latestGeoPoint.longitude}</label>
+                                <label>${uiLabelMap.CommonElevation} ${latestGeoPoint.elevation} ${elevationUomAbbr}</label>
+                                <include-screen name="geoChart" location="component://common/widget/CommonScreens.xml"/>
+                            </widgets>
+                            <fail-widgets>
+                                <container style="button-bar">
+                                    <link target="addGeoLocation" text="${uiLabelMap.CommonCreateNew}" style="buttontext create">
+                                        <parameter param-name="partyId" from-field="parameters.partyId"/>
+                                    </link>
+                                </container>
+                                <include-screen name="geoChart" location="component://common/widget/CommonScreens.xml"/>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditCommunicationEvent">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditCommunication"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="PartyCommEvents"/>
+                <set field="subTabButtonItem" value="CommunicationEvent"/>
+                <set field="my" from-field="parameters.my" default-value=""/>
+                <set field="partyId" from-field="parameters.partyId" default-value=""/>
+                <entity-one entity-name="CommunicationEvent" value-field="communicationEvent"/>
+                <set field="partyIdFrom" from-field="communicationEvent.partyIdFrom" default-value="${userLogin.partyId}"/>
+                <!-- if contactmechIdTo provided should override the one in the db record: see contacts.ftl where this is used. -->
+                <set field="contactMechIdTo" from-field="parameters.contactMechIdTo" default-value="${communicationEvent.contactMechIdTo}"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <include-screen name="editCommEvent"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="editCommEvent">
+        <section>
+            <widgets>
+                <section><!-- Email -->
+                    <condition>
+                        <and>
+                            <or>
+                                <if-compare field="communicationEvent.communicationEventTypeId" operator="equals" value="EMAIL_COMMUNICATION"/>
+                                <if-compare field="communicationEvent.communicationEventTypeId" operator="equals" value="AUTO_EMAIL_COMM"/>
+                            </or>
+                            <if-compare field="my" operator="equals" value="My"/>
+                        </and>
+                    </condition>
+                    <widgets>
+                        <section>
+                            <condition>
+                                <if-empty field="communicationEvent"/>
+                            </condition>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.PartyCreateAddEmail} ${uiLabelMap.CommonFrom} ${parameters.partyIdFrom}">
+                                    <include-form name="EditEmail" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                            <fail-widgets>
+                                <screenlet title="${uiLabelMap.CommonFrom}: ${communicationEvent.partyIdFrom}, CommunicationEventId: ${communicationEvent.communicationEventId}">
+                                    <include-form name="EditEmail" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                                </screenlet>
+                                <container style="uk-grid">
+                				<container style="uk-width-medium-1-2">
+                                    <screenlet title="${uiLabelMap.PartyCommEventRoles}">
+                                        <include-form name="ListCommRoles" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                                        <include-form name="AddEventRole" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                                    </screenlet>
+                                </container>
+                                <container style="uk-width-medium-1-2">
+                                    <screenlet title="${uiLabelMap.PartyCommContent}">
+                                        <include-form name="ListCommContent" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                                        <include-form  name="UploadContent" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                                    </screenlet>
+                                </container>
+                                </container>
+                            </fail-widgets>
+                        </section>
+                        <container style="clear"/>
+                    </widgets>
+                </section>
+                <section><!-- Internal Note -->
+                    <condition>
+                        <and>
+                            <if-compare field="communicationEvent.communicationEventTypeId" operator="equals" value="COMMENT_NOTE"/>
+                            <if-compare field="my" operator="equals" value="My"/>
+                        </and>
+                    </condition>
+                    <widgets>
+                        <section>
+                            <condition>
+                                <if-empty field="communicationEvent"/>
+                            </condition>
+                            <widgets>
+                                <screenlet id="EditCommunicationEventPanel" title="${uiLabelMap.PartyEditCommunicationEvent} ${parameters.communicationEventId}">
+                                    <include-form name="EditInternalNote" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                            <fail-widgets>
+                                <container style="uk-grid">
+                				<container style="uk-width-medium-1-2">
+                                    <screenlet id="EditCommunicationEventPanel" title="${uiLabelMap.PartyEditCommunicationEvent} ${parameters.communicationEventId} ${uiLabelMap.CommonFrom} ${communicationEvent.partyIdFrom}">
+                                        <include-form name="EditInternalNote" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                                    </screenlet>
+                                </container>
+                                <container style="uk-width-medium-1-2">
+                                    <screenlet title="${uiLabelMap.PartyCommEventRoles}">
+                                        <include-form name="ListCommRoles" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                                        <include-form name="AddEventRole" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                                    </screenlet>
+                                    <screenlet title="${uiLabelMap.PartyCommContent}">
+                                        <include-form name="ListCommContent" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                                        <include-form  name="UploadContent" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                                    </screenlet>
+                                </container>
+                                </container>
+                            </fail-widgets>
+                        </section>
+                    </widgets>
+                </section>
+                <section>
+                    <condition><!-- others and general communications in party-->
+                        <or>
+                            <if-empty field="my"/>
+                            <and>
+                                <if-compare field="communicationEvent.communicationEventTypeId" operator="not-equals" value="COMMENT_NOTE"/>
+                                <if-compare field="communicationEvent.communicationEventTypeId" operator="not-equals" value="EMAIL_COMMUNICATION"/>
+                                <if-compare field="communicationEvent.communicationEventTypeId" operator="not-equals" value="AUTO_EMAIL_COMM"/>
+                            </and>
+                        </or>
+                    </condition>
+                    <widgets>
+                        <screenlet id="EditCommunicationEventPanel" title="${uiLabelMap.PartyEditCommunicationEvent} ${parameters.communicationEventId}">
+                            <include-form name="EditCommEvent" location="component://webmanager/widget/WebManagerForms.xml"/>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.PartyOtherAndGeneralCommunicationEvents}" navigation-form-name="ListChildCommEvents">
+                            <include-form  name="ListChildCommEvents" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                        </screenlet>
+                    </widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="ViewCommunicationEvent">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleViewCommunication"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="PartyCommEvents"/>
+                <set field="subTabButtonItem" value="OverView"/>
+                <set field="parentCommEventId" from-field="parameters.parentCommEventId"/>
+                <entity-one entity-name="CommunicationEvent" value-field="communicationEvent"/>
+                <set field="partyIdFrom" from-field="parameters.partyId" default-value="${userLogin.partyId}"/>
+            </actions>
+            <widgets>
+                <section>
+                    <widgets>
+                        <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                            <decorator-section name="body">
+                                <include-screen name="commOverview"/>
+                            </decorator-section>
+                        </decorator-screen>
+                    </widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="commOverview">
+        <section>
+            <widgets>
+                <container style="uk-grid">
+                <container style="uk-width-medium-1-2">
+                    <section>
+                        <widgets>
+                            <label style="h1" text="${uiLabelMap.FormFieldTitle_communicationEventId} ${parameters.communicationEventId}"/>
+                            <include-screen name="commEvent"/>
+                        </widgets>
+                    </section>
+                </container>
+                <container style="uk-width-medium-1-2">
+                    <label style="h1" text="${uiLabelMap.CommonRelatedInformation}"/>
+                    <section>
+                        <condition>
+                            <if-empty field="communicationEvent.contactListId"/>
+                        </condition>
+                        <widgets>
+                            <screenlet title="${uiLabelMap.PartyCommEventRoles}">
+                                <include-form name="ViewCommRoles" location="component://webmanager/widget/WebManagerForms.xml"/>
+                            </screenlet>
+                        </widgets>
+                        <fail-widgets>
+                            <screenlet title="${uiLabelMap.MarketingContactListCommStatus}">
+                                <include-form name="ListContactListCommStatuses" location="component://marketing/widget/ContactListForms.xml"/>
+                            </screenlet>                        
+                        </fail-widgets>
+                    </section>
+                    <screenlet title="${uiLabelMap.PartyCommContent}">
+                        <include-form name="ListCommContent" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                    </screenlet>
+                    <section>
+                        <actions>
+                            <entity-and entity-name="CommunicationEvent" list="commEvents">
+                                <field-map field-name="parentCommEventId" from-field="parameters.communicationEventId"/>
+                            </entity-and>
+                        </actions>
+                        <widgets>
+                            <screenlet title="${uiLabelMap.PartyChildCommunicationEvents}">
+                                <include-form name="ListCommEvents" location="component://webmanager/widget/WebManagerForms.xml"/>
+                            </screenlet>
+                        </widgets>
+                    </section>
+                </container>
+                </container>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="commEvent">
+        <section>
+            <widgets>
+                <screenlet title="${parent} ${uiLabelMap.PartyCommunicationEvent}">
+                    <section>
+                        <condition>
+                            <and>
+                                <or><!-- have for e-mails a special form -->
+                                    <if-compare field="communicationEvent.communicationEventTypeId" operator="equals" value="EMAIL_COMMUNICATION"/>
+                                    <if-compare field="communicationEvent.communicationEventTypeId" operator="equals" value="AUTO_EMAIL_COMM"/>
+                                </or>
+                                <if-empty field="communicationEvent.contactListId"/>                                
+                            </and>
+                        </condition>
+                        <widgets>
+                            <section>
+                                <condition>
+                                    <or>
+                                        <if-compare field="communicationEvent.statusId" operator="equals" value="COM_UNKNOWN_PARTY"/>
+                                        <if-empty field="communicationEvent.partyIdFrom"/>
+                                    </or>
+                                </condition>
+                                <widgets>
+                                    <screenlet>
+                                        <container>
+                                            <label style="h1" text="${uiLabelMap.PartyOriginEmailNotKnown}"/>
+                                        </container>
+                                        <container>
+                                            <label style="h2" text="${uiLabelMap.PartyEmailMessage}"/>
+                                        </container>
+                                        <include-form name="AllocateMsgToPartyForm" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                                    </screenlet>
+                                </widgets>
+                            </section>
+                            <include-form  name="ViewEmail" location="component://party/widget/partymgr/CommunicationEventForms.xml"/>
+                        </widgets>
+                        <fail-widgets>
+                            <include-form name="ViewCommEvent" location="component://webmanager/widget/WebManagerForms.xml"/>
+                        </fail-widgets>
+                    </section>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="UpdateCommRoles">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleViewCommRoles"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="PartyCommEvents"/>
+                <set field="subTabButtonItem" value="UpdateCommRoles"/>
+                <set field="communicationEventId" from-field="parameters.communicationEventId"/>
+                <set field="parentCommEventId" from-field="parameters.parentCommEventId"/>
+                <set field="tabPartyId" from-field="parameters.tabPartyId" default-value="${parameters.partyId}"/>
+                <set field="partyId" value="${parameters.partyId}"/>
+                <set field="partyIdFrom" value="${parameters.partyId}"/>
+                <set field="partyIdTo" value="${parameters.partyId}"/>
+                <entity-one entity-name="Party" use-cache="true" value-field="party"/>
+                <entity-one entity-name="Person" use-cache="true" value-field="lookupPerson"/>
+                <entity-one entity-name="CommunicationEvent" value-field="communicationEvent"/>
+                <set field="viewIndex" from-field="parameters.VIEW_INDEX" type="Integer"/>
+                <property-to-field resource="widget" property="widget.form.defaultViewSize" field="viewSizeDefaultValue"/>
+                <set field="viewSize" from-field="parameters.VIEW_SIZE" type="Integer" default-value="${viewSizeDefaultValue}"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PartyCommEventRoles}">
+                            <include-form name="ListCommRoles" location="component://webmanager/widget/WebManagerForms.xml"/>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.PartyCommEventRoles}">
+                            <include-form name="AddEventRole" location="component://webmanager/widget/WebManagerForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="ListCommContent">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PartyCommContent"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="PartyCommEvents"/>
+                <set field="subTabButtonItem" value="CommContent"/>
+                <set field="tabPartyId" from-field="parameters.tabPartyId" default-value="${parameters.partyId}"/>
+                <set field="parameters.partyId" value="${parameters.partyId}" default-value="${userLogin.partyId}"/>
+                <set default-value="${userLogin.partyId}" field="partyIdFrom" value="${parameters.partyIdFrom}"/>
+                <set default-value="${userLogin.partyId}" field="partyIdTo" value="${parameters.partyIdTo}"/>
+                <set field="communicationEventId" value="${parameters.communicationEventId}"/>
+                <entity-one entity-name="CommunicationEvent" value-field="communicationEvent"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <container>
+                                    <screenlet title="${uiLabelMap.PartyCommContent}">
+                                        <include-form name="ListCommContent" location="component://webmanager/widget/WebManagerForms.xml"/>
+                                    </screenlet>
+                                    <screenlet title="${uiLabelMap.PartyAttachContent}">
+                                        <include-form name="UploadContent1" location="component://webmanager/widget/WebManagerForms.xml"/>
+                                    </screenlet>
+                                </container>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.PartyMgrViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="UpdateCommProducts">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PartyViewCommProducts"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="PartyCommEvents"/>
+                <set field="subTabButtonItem" value="UpdateCommProducts"/>
+                <set field="communicationEventId" from-field="parameters.communicationEventId"/>
+                <set field="tabPartyId" from-field="parameters.tabPartyId" default-value="${parameters.partyId}"/>
+                <set field="partyId" from-field="parameters.partyId"/>
+                <set field="partyIdFrom" from-field="parameters.partyIdFrom" default-value="${userLogin.partyId}"/>
+                <set field="partyIdTo" from-field="parameters.partyIdTo" default-value="${userLogin.partyId}"/>
+                <entity-one entity-name="CommunicationEvent" value-field="communicationEvent"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PartyCommEventProducts}">
+                            <include-form name="ListCommProducts" location="component://webmanager/widget/WebManagerForms.xml"/>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.PartyAddCommEventProduct}">
+                            <include-form name="AddCommProduct" location="component://webmanager/widget/WebManagerForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+           </section>
+    </screen>
+    <screen name="EditPerson">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditPersonalInformation"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="viewprofile"/>
+                <set field="labelTitleProperty" value="PageTitleEditPersonalInformation"/>
+
+                <set field="donePage" from-field="parameters.DONE_PAGE" default-value="viewprofile"/>
+                <set field="partyId" from-field="parameters.partyId"/>
+                <entity-one entity-name="PartyAndPerson" value-field="personInfo"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PageTitleEditPersonalInformation}">
+                            <include-form name="EditPerson" location="component://webmanager/widget/WebManagerForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="EditPartyGroup">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditGroupInformation"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="viewprofile"/>
+                <set field="labelTitleProperty" value="PageTitleEditGroupInformation"/>
+
+                <set field="donePage" from-field="parameters.DONE_PAGE" default-value="viewprofile"/>
+                <set field="partyId" from-field="parameters.partyId"/>
+                <entity-one entity-name="PartyAndGroup" value-field="partyGroup"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <screenlet title="${uiLabelMap.PageTitleEditGroupInformation}">
+                            <include-form name="EditPartyGroup" location="component://webmanager/widget/WebManagerForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="editcontactmech">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditContactMech"/>
+                <set field="headerItem" value="findparty"/>
+                <set field="tabButtonItem" value="viewprofile"/>
+
+                <set field="labelTitleProperty" value="PageTitleEditContactMech"/>
+
+                <script location="component://party/groovyScripts/HasPartyPermissions.groovy"/>
+                <script location="component://party/groovyScripts/party/EditContactMech.groovy"/>
+
+                <set field="dependentForm" value="editcontactmechform"/>
+                <set field="paramKey" value="countryGeoId"/>
+                <set field="mainId" value="countryGeoId"/>
+                <set field="dependentId" value="stateProvinceGeoId"/>
+                <set field="requestName" value="getAssociatedStateList"/>
+                <set field="responseName" value="stateList"/>
+                <set field="dependentKeyName" value="geoId"/>
+                <set field="descName" value="geoName"/>
+                <set field="selectedDependentOption" from-field="mechMap.postalAddress.stateProvinceGeoId" default-value="_none_"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="CommonPartyDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <or>
+                                    <if-compare field="hasViewPermission" operator="equals" value="true" type="Boolean"/>
+                                    <if-compare field="hasPcmCreatePermission" operator="equals" value="true" type="Boolean"/>
+                                    <if-compare field="hasPcmUpdatePermission" operator="equals" value="true" type="Boolean"/>
+                                    <if-compare-field field="parameters.partyId" operator="equals" to-field="userLogin.partyId"/>
+                                    <not><if-empty field="mechMap.partyContactMech"/></not>
+                                </or>
+                            </condition>
+                            <widgets>
+                                <platform-specific>
+                                    <html>
+                                        <html-template location="component://common/template/includes/SetDependentDropdownValuesJs.ftl"/>
+                                        <html-template location="component://webmanager/webapp/webmgr/include/EditContactMech.ftl"/>
+                                    </html>
+                                </platform-specific>
+                            </widgets>
+                            <fail-widgets>
+                                <container style="button-bar">
+                                    <link target="backHome" text="[${uiLabelMap.CommonBack}]" style="smallSubmit"/>
+                                </container>
+                                <container>
+                                    <label style="h3">${uiLabelMap.PartyMsgContactNotBelongToYou}</label>
+                                </container>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="FindVisits">
+        <section>
+            <actions>
+                <set field="headerItem" value="visits"/>
+                <set field="titleProperty" value="PageTitleVisitList"/>
+                <set field="noConditionFind" value="Y"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <decorator-screen name="FindScreenDecorator" location="component://common/widget/CommonScreens.xml">
+                                    <decorator-section name="search-options">
+                                        <include-form name="FindVisits"  location="component://webmanager/widget/WebManagerForms.xml"/>
+                                    </decorator-section>
+                                    <decorator-section name="search-results">
+                                        <include-grid name="ListVisits" location="component://webmanager/widget/WebManagerForms.xml"/>
+                                    </decorator-section>
+                                </decorator-screen>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.PartyMgrViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="ListLoggedInUsers">
+        <section>
+            <actions>
+                <set field="headerItem" value="loggedinusers"/>
+                <set field="titleProperty" value="PageTitleListLoggedInUsers"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <include-screen name="LoggedInUsersScreen" />
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="LoggedInUsersScreen">
+        <section>
+            <condition>
+                <if-service-permission service-name="partyBasePermissionCheck" main-action="VIEW"/>
+            </condition>
+            <widgets>
+                <screenlet title="${uiLabelMap.PageTitleListLoggedInUsers}">
+                    <include-grid name="ListLoggedInUsers" location="component://party/widget/partymgr/PartyVisitForms.xml"/>
+                </screenlet>
+            </widgets>
+            <fail-widgets>
+                <label style="h3">${uiLabelMap.PartyMgrViewPermissionError}</label>
+            </fail-widgets>
+        </section>
+    </screen>
+    
+    <screen name="visitdetail">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleVisitDetail"/>
+                <set field="headerItem" value="visits"/>
+                <set field="tabButtonItem" value="visitdetail"/>
+
+                <script location="component://party/groovyScripts/visit/VisitDetails.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <platform-specific>
+                                    <html><html-template location="component://party/template/visit/VisitDetail.ftl"/></html>
+                                </platform-specific>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.PartyMgrViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+</screens>

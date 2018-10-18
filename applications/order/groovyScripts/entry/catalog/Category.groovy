@@ -96,5 +96,5 @@ if (templatePathPrefix) {
 context.detailScreen = detailScreen
 
 request.setAttribute("productCategoryId", productCategoryId)
-request.setAttribute("defaultViewSize", 10)
+request.setAttribute("defaultViewSize", 28)
 request.setAttribute("limitView", true)

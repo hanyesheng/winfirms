@@ -12,7 +12,7 @@
   exclude-result-prefixes="exsl stbl xtbl lxslt ptbl"
   version="1.0">
 
-<!-- $Id$ -->
+<!-- $Id: docbook.xsl 1395307 2012-10-07 14:02:53Z jleroux $ -->
 <xsl:import href="xhtml-docbook.xsl"/>
 <xsl:include href="html5-element-mods.xsl"/>
 

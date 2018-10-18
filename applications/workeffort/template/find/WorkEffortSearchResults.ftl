@@ -16,11 +16,11 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.WorkEffortSearchWorkEfforts}, ${uiLabelMap.ProductSearchFor}:</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <#list searchConstraintStrings as searchConstraintString>
         <div>&nbsp;<a href="<@ofbizUrl>WorkEffortSearchResults?removeConstraint=${searchConstraintString_index}&amp;clearSearch=N</@ofbizUrl>" class="buttontext">X</a>&nbsp;${searchConstraintString}</div>
     </#list>
@@ -32,7 +32,7 @@ under the License.
     </#if>
 
     <#if workEffortIds?has_content>
-    <table class="basic-table" cellspacing="0">
+    <table class="basic-table uk-table" cellspacing="0">
         <tr>
           <td align="right" class="label">
             <#if 0 < viewIndex?int>
@@ -67,7 +67,7 @@ under the License.
     </#if>
 
     <#if workEffortIds?has_content>
-    <table class="basic-table" cellspacing="0">
+    <table class="basic-table uk-table" cellspacing="0">
         <tr>
           <td align="right" class="label">
             <#if 0 < viewIndex?int>

@@ -16,14 +16,14 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.WebtoolsRelations}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <#if hasViewPermission>
         <br />
         <h2>${uiLabelMap.WebtoolsForEntity}: ${entityName}</h2>
@@ -32,7 +32,7 @@ under the License.
             <a href="<@ofbizUrl>FindGeneric?entityName=${entityName}&amp;find=true&amp;VIEW_SIZE=50&amp;VIEW_INDEX=0</@ofbizUrl>" class="smallSubmit">${uiLabelMap.WebtoolsBackToFindScreen}</a>
         </div>
         <br />
-        <table class="basic-table hover-bar" cellspacing="0">
+        <table class="basic-table hover-bar uk-table" cellspacing="0">
             <tr class="header-row">
                 <td>${uiLabelMap.WebtoolsTitle}</td>
                 <td>${uiLabelMap.WebtoolsRelatedEntity}</td>

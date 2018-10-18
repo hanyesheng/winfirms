@@ -19,6 +19,36 @@
     under the License.
 -->
 <resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
+    <property key="msgCert.erro_wrong_code">
+        <value xml:lang="de">Fehler beim Zugriff auf Passwort: ${errorMessage}.</value>
+        <value xml:lang="en">please input right msgCode</value>
+        <value xml:lang="es">Error accediendo a la clave: ${errorMessage}.</value>
+        <value xml:lang="fr">Erreur concernant le mot de passe: ${errorMessage}.</value>
+        <value xml:lang="it">Errore accesso password:: ${errorMessage}.</value>
+        <value xml:lang="ja">パスワードアクセスエラー: ${errorMessage}</value>
+        <value xml:lang="nl">Fout bij toegang verkrijgen tot wachtwoord: ${errorMessage}.</value>
+        <value xml:lang="pt-BR">Erro ao acessar a senha: $ {errorMessage}.</value>
+        <value xml:lang="ro">Eroare acces parola:${errorMessage}.</value>
+        <value xml:lang="ru">Ошибка доступа к паролю: ${errorMessage}.</value>
+        <value xml:lang="th">ผิดพลาดในการใช้รหัสผ่าน: ${errorMessage}.</value>
+        <value xml:lang="zh">请输入正确的验证码</value>
+        <value xml:lang="zh-TW">请输入正确的验证码</value>
+    </property>
+    <property key="msgCert.erro_no_code">
+        <value xml:lang="de">Fehler beim Zugriff auf Passwort: ${errorMessage}.</value>
+        <value xml:lang="en">please get your msgCode</value>
+        <value xml:lang="es">Error accediendo a la clave: ${errorMessage}.</value>
+        <value xml:lang="fr">Erreur concernant le mot de passe: ${errorMessage}.</value>
+        <value xml:lang="it">Errore accesso password:: ${errorMessage}.</value>
+        <value xml:lang="ja">パスワードアクセスエラー: ${errorMessage}</value>
+        <value xml:lang="nl">Fout bij toegang verkrijgen tot wachtwoord: ${errorMessage}.</value>
+        <value xml:lang="pt-BR">Erro ao acessar a senha: $ {errorMessage}.</value>
+        <value xml:lang="ro">Eroare acces parola:${errorMessage}.</value>
+        <value xml:lang="ru">Ошибка доступа к паролю: ${errorMessage}.</value>
+        <value xml:lang="th">ผิดพลาดในการใช้รหัสผ่าน: ${errorMessage}.</value>
+        <value xml:lang="zh">请点击获取验证码</value>
+        <value xml:lang="zh-TW">请点击获取验证码</value>
+    </property>
     <property key="loginevents.error_accessing_password">
         <value xml:lang="de">Fehler beim Zugriff auf Passwort: ${errorMessage}.</value>
         <value xml:lang="en">Error accessing password: ${errorMessage}.</value>

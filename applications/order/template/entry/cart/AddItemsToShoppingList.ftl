@@ -20,11 +20,11 @@ under the License.
 <!-- Screenlet to add cart to shopping list. The shopping lists are presented in a dropdown box. -->
 
 <#if (shoppingLists??) && (shoppingCartSize > 0)>
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <div class="h3">${uiLabelMap.OrderAddOrderToShoppingList}</div>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <table border="0" cellspacing="0" cellpadding="0">
         <tr>
           <td>

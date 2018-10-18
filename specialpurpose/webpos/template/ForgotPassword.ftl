@@ -19,12 +19,12 @@ under the License.
 
 <center>
   <div class="screenlet login-screenlet">
-    <div class="screenlet-title-bar">
+    <div class="screenlet-title-bar md-card-toolbar">
       <h3>${uiLabelMap.CommonForgotYourPassword}?</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <form method="post" action="<@ofbizUrl>ForgotPassword_step2</@ofbizUrl>" name="getSecurityQuestion">
-        <table class="basic-table" cellspacing="0">
+        <table class="basic-table uk-table" cellspacing="0">
           <tr>
             <td class="label">${uiLabelMap.CommonUsername}</td>
             <td><input class="required" type="text" size="20" name="USERNAME" value="<#if requestParameters.USERNAME?has_content>${requestParameters.USERNAME}<#elseif autoUserLogin?has_content>${autoUserLogin.userLoginId}</#if>"/></td>

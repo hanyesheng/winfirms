@@ -17,19 +17,19 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.CommonAvailablePortlets}</li>
       <li><a href="<@ofbizUrl>ManagePortalPages?portalPageId=${parameters.portalPageId}&amp;parentPortalPageId=${parameters.parentPortalPageId}</@ofbizUrl>">${uiLabelMap.CommonCancel}</a></li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
   <#if portalPortlets?has_content>
     <#assign orderByList = Static["org.apache.ofbiz.base.util.UtilMisc"].toList("portalPortletId")/>
 
-    <table cellspacing="20" class="basic-table">
+    <table cellspacing="20" class="basic-table uk-table">
       <#assign leftColumn = true/>
       <#list portalPortlets as portalPortlet>
         <#if leftColumn==true>

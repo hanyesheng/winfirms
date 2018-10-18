@@ -119,8 +119,8 @@ function setServiceName(selection) {
 //]]>
 
 </script>
-<div class="screenlet">
-    <div class="screenlet-body">
+<div class="screenlet md-card">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <form id="paymentBatchForm" method="post" action="">
             <#if paymentList?has_content>
                 <div class="clearfix">
@@ -168,7 +168,7 @@ function setServiceName(selection) {
                         </select>
                     </#if>
                 </div>
-                <table class="basic-table hover-bar">
+                <table class="basic-table hover-bar uk-table">
                   <thead>
                     <tr class="header-row-2">
                       <th>${uiLabelMap.FormFieldTitle_paymentId}</th>

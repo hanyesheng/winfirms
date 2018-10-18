@@ -14,7 +14,7 @@
   exclude-result-prefixes="exsl stbl xtbl lxslt ptbl"
   version="1.0">
 
-<!-- $Id$ -->
+<!-- $Id: html5-element-mods.xsl 1395307 2012-10-07 14:02:53Z jleroux $ -->
 
 <!--==============================================================-->
 <!--  DocBook XSL Parameter settings                              -->

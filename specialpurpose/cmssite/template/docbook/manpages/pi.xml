@@ -2,7 +2,7 @@
 
 <reference><info><title>manpages Processing Instruction Reference</title>
     <releaseinfo role="meta">
-      $Id$
+      $Id: pi.xml 1395307 2012-10-07 14:02:53Z jleroux $
     </releaseinfo>
   </info>
   <partintro xml:id="partintro">

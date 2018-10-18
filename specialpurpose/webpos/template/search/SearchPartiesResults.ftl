@@ -18,7 +18,7 @@ under the License.
 -->
 <div id="searchPartiesResults" style="display:none">
   <form method="post" action="javascript:void(0);" id="SearchPartiesResultsForm" name="SearchPartiesResultsForm">
-    <table>
+    <table class="basic-table uk-table">
       <tr>
         <td width="12.5%">
           <label for="searchByPartyLastName"><b>&nbsp;${uiLabelMap.PartyLastName}</b></label>
@@ -60,7 +60,7 @@ under the License.
         <td width="25%" colspan="2"></td>
       </tr>
     </table>
-    <table cellspacing="0" cellpadding="2" class="basic-table">
+    <table cellspacing="0" cellpadding="2" class="basic-table uk-table">
       <thead class="searchPartiesResultsHead">
         <tr class="header-row">
           <td>&nbsp;</td>

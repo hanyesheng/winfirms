@@ -42,7 +42,7 @@
            <tr><td colspan="3"><hr /></td></tr>
    </#if>
 </table>
-<table class="basic-table hover-bar" cellspacing="0">
+<table class="basic-table hover-bar uk-table" cellspacing="0">
 <#if tabButtonItem=="ListContentTree">
 <#--Form ListContentTree-->
   <tr class="header-row">

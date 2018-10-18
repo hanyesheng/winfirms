@@ -29,7 +29,7 @@ under the License.
 
     <service-resource type="model" loader="main" location="servicedef/services_hhfacility.xml"/>
 
-    <webapp name="hhfacility"
+    <webapp name="phonelink_setup"
         title="HandheldFacility"
         menu-name="secondary"
         server="default-server"

@@ -5142,4 +5142,137 @@
         <value xml:lang="en">Thank You for contacting us.</value>
         <value xml:lang="zh">感谢您与我们联系！</value>
     </property>
+    <!--20170110clgalipay22-->
+    <property key="Alipay">
+        <value xml:lang="en">Use Alipay</value>
+        <value xml:lang="zh">支付宝</value>
+    </property>
+    <property key="YourEmailFormat">
+        <value xml:lang="en">Format is similar to demo@example.com</value>
+        <value xml:lang="zh">格式类似：demo@example.com</value>
+    </property>
+    <property key="RealEmail">
+        <value xml:lang="en">Please enter a real email address</value>
+        <value xml:lang="zh">请输入真实邮箱</value>
+    </property>
+    <property key="EmailNotEmpty">
+        <value xml:lang="en">Email cannot be empty</value>
+        <value xml:lang="zh">邮箱不能为空</value>
+    </property>
+    <property key="WrongEmailFormat">
+        <value xml:lang="en">Email format is wrong</value>
+        <value xml:lang="zh">邮箱格式有误！</value>
+    </property>
+    <property key="YourMobileFormat">
+        <value xml:lang="en">Consists of 11 Numbers</value>
+        <value xml:lang="zh">由十一位数字组成</value>
+    </property>
+    <property key="RealMobile">
+        <value xml:lang="en">Please enter a real mobile number</value>
+        <value xml:lang="zh">请输入真实手机号码</value>
+    </property>
+    <property key="MobileNotEmpty">
+        <value xml:lang="en">Mobile cannot be empty</value>
+        <value xml:lang="zh">手机号不能为空</value>
+    </property>
+    <property key="WrongMobileFormat">
+        <value xml:lang="en">Mobile format is wrong</value>
+        <value xml:lang="zh">手机号码格式有误！</value>
+    </property>
+    <property key="UserName">
+        <value xml:lang="en">UserName</value>
+        <value xml:lang="zh">账号</value>
+    </property>
+    <property key="YourUserName">
+        <value xml:lang="en">Your user name and login name</value>
+        <value xml:lang="zh">您的登录账号</value>
+    </property>
+    <property key="YourUserNameFormat">
+        <value xml:lang="en">Support Chinese, a combination of letters, Numbers, "", 4 to 20 characters</value>
+        <value xml:lang="zh">支持中文、字母、数字、“_”的组合，4-20个字符</value>
+    </property>
+    <property key="YourUserNameNotEmpty">
+        <value xml:lang="en">Mobile cannot be empty</value>
+        <value xml:lang="zh">账号登录不能为空！</value>
+    </property>
+    <property key="WrongUserNameFormat">
+        <value xml:lang="en">UserName format is wrong</value>
+        <value xml:lang="zh">账号格式有误！</value>
+    </property>
+    <property key="YourNickname">
+        <value xml:lang="en">Your Nickname</value>
+        <value xml:lang="zh">您的昵称</value>
+    </property>
+    <property key="YourNicknameFormat">
+        <value xml:lang="en">Support Chinese, a combination of letters, Numbers, "", 4 to 20 characters</value>
+        <value xml:lang="zh">支持中文、字母、数字、“_”的组合，4-20个字符</value>
+    </property>
+    <property key="YourNickNameNotEmpty">
+        <value xml:lang="en">NickName cannot be empty</value>
+        <value xml:lang="zh">昵称不能为空！</value>
+    </property>
+    <property key="WrongNickNameFormat">
+        <value xml:lang="en">NickName format is wrong</value>
+        <value xml:lang="zh">昵称格式有误！</value>
+    </property>
+    <property key="YourPassword">
+        <value xml:lang="en">Suggest at least use two kinds of character combinations</value>
+        <value xml:lang="zh">建议至少使用两种字符组合</value>
+    </property>
+    <property key="YourPasswordFormat">
+        <value xml:lang="en">Recommend the use of letters, Numbers and symbols, the combination of the two and above, 6 to 20 characters</value>
+        <value xml:lang="zh">建议使用字母、数字和符号两种以及以上的组合，6-20个字符</value>
+    </property>
+    <property key="YourPasswordNotEmpty">
+        <value xml:lang="en">Password cannot be empty</value>
+        <value xml:lang="zh">密码不能为空！</value>
+    </property>
+    <property key="WrongPasswordFormat">
+        <value xml:lang="en">Password format is wrong</value>
+        <value xml:lang="zh">密码格式有误！</value>
+    </property>
+    <property key="ConfirmYourPassword">
+        <value xml:lang="en">Please enter the password again</value>
+        <value xml:lang="zh">请再次输入密码</value>
+    </property>
+    <property key="NotAsYourPassword">
+        <value xml:lang="en">Password and set the password before</value>
+        <value xml:lang="zh">密码与之前设置的密码不符！</value>
+    </property>
+    <property key="UseEmailAsLoginName">
+        <value xml:lang="en">Use E-mail address as a login name</value>
+        <value xml:lang="zh">邮箱地址作为登录账号</value>
+    </property>
+    <property key="UseMobileAsLoginName">
+        <value xml:lang="en">Use Mobile Number as a login name</value>
+        <value xml:lang="zh">手机号码作为登录账号</value>
+    </property>
+    <property key="Email">
+        <value xml:lang="en">E-mail</value>
+        <value xml:lang="zh">电子邮箱</value>
+    </property>
+    <property key="Nickname">
+        <value xml:lang="en">Nickname</value>
+        <value xml:lang="zh">昵称</value>
+    </property>
+    <property key="ConfirmPassword">
+        <value xml:lang="en">Confirm Password</value>
+        <value xml:lang="zh">确认密码</value>
+    </property>
+    <property key="SignUpNow">
+        <value xml:lang="en">Sign Up Now</value>
+        <value xml:lang="zh">立即注册</value>
+    </property>
+    <property key="getMsgCode">
+        <value xml:lang="en">getMsgCode</value>
+        <value xml:lang="zh">获取手机验证码</value>
+    </property>
+    <property key="tryAgainLater">
+        <value xml:lang="en">tryAgainLater</value>
+        <value xml:lang="zh">  秒后再试</value>
+    </property>
+    <property key="writeMsgCode">
+        <value xml:lang="en">writeMsgCode</value>
+        <value xml:lang="zh">填写验证码</value>
+    </property>
 </resource>

@@ -18,12 +18,12 @@ under the License.
 -->
 
 <#if security.hasEntityPermission("ORDERMGR", "_VIEW", session)>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <h3>${uiLabelMap.OrderOrderStatisticsPage}</h3>
     </div>
-    <div class="screenlet-body">
-        <table class="basic-table" cellspacing='0'>
+    <div class="screenlet-body md-card-content uk-overflow-container">
+        <table class="basic-table uk-table" cellspacing='0'>
           <tr class="label">
             <td>&nbsp;</td>
             <td>&nbsp;</td>

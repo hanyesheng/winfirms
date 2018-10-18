@@ -18,15 +18,15 @@ under the License.
 -->
 
 <!-- begin editcreditcard.ftl -->
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <#if !creditCard??>
       <h3>${uiLabelMap.AccountingAddNewCreditCard}</h3>
     <#else>
       <h3>${uiLabelMap.AccountingEditCreditCard}</h3>
     </#if>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
         <div class="button-bar">
           <a href="<@ofbizUrl>${donePage}?partyId=${partyId}</@ofbizUrl>" class="smallSubmit">${uiLabelMap.CommonCancelDone}</a>
           <a href="javascript:document.editcreditcardform.submit()" class="smallSubmit">${uiLabelMap.CommonSave}</a>
@@ -38,7 +38,7 @@ under the License.
         <input type="hidden" name="paymentMethodId" value="${paymentMethodId}" />
     </#if>
         <input type="hidden" name="partyId" value="${partyId}"/>
-        <table class="basic-table" cellspacing="0">
+        <table class="basic-table uk-table" cellspacing="0">
 
         ${screens.render("component://accounting/widget/CommonScreens.xml#creditCardFields")}
         <tr>

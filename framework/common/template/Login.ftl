@@ -28,12 +28,12 @@ under the License.
 </#if>
 <center>
   <div class="screenlet login-screenlet">
-    <div class="screenlet-title-bar">
+    <div class="screenlet-title-bar md-card-toolbar">
       <h3>${uiLabelMap.CommonRegistered}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <form method="post" action="<@ofbizUrl>login</@ofbizUrl>" name="loginform">
-        <table class="basic-table" cellspacing="0">
+        <table class="basic-table uk-table" cellspacing="0">
           <tr>
             <td class="label">${uiLabelMap.CommonUsername}</td>
             <td><input type="text" name="USERNAME" value="${username}" size="20"/></td>
@@ -58,7 +58,7 @@ under the License.
             </td>
           </tr>
         </table>
-        <input type="hidden" name="JavaScriptEnabled" value="N"/>
+        <input type="hidden" name="JavaScriptEnabled" value="Y"/>
         <br />
         <a href="<@ofbizUrl>forgotPassword_step1</@ofbizUrl>">${uiLabelMap.CommonForgotYourPassword}?</a>
       </form>

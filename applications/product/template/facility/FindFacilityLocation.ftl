@@ -25,7 +25,7 @@ under the License.
         <#if (facilityId??)>
             <input type="hidden" name="facilityId" value="${facilityId}" />
         </#if>        
-        <table class="basic-table" cellspacing="0">
+        <table class="basic-table uk-table" cellspacing="0">
         <#if !(facilityId??)>
             <tr>
                 <td class="label">${uiLabelMap.ProductFacility}</td>
@@ -75,7 +75,7 @@ under the License.
         <br />
         <h3>${uiLabelMap.CommonFound}:&nbsp;${foundLocations.size()}&nbsp;${uiLabelMap.ProductLocationsFor}&nbsp;<#if facility??>${(facility.facilityName)!}</#if> [ID:${facilityId!}]</h3>
         <br />
-        <table class="basic-table hover-bar" cellspacing="0">
+        <table class="basic-table hover-bar uk-table" cellspacing="0">
         <tr class="header-row-2">
             <td>${uiLabelMap.ProductFacility}</td>
             <td>${uiLabelMap.ProductLocationSeqId}</td>

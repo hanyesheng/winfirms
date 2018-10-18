@@ -1,0 +1,2210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
+    <screen name="newcustomer">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleNewCustomer"/>
+                <script location="component://ecommerce/groovyScripts/customer/NewCustomer.groovy"/>
+                <set field="dependentForm" value="newuserform"/>
+                <set field="paramKey" value="countryGeoId"/>
+                <set field="mainId" value="countryGeoId"/>
+                <set field="dependentId" value="stateProvinceGeoId"/>
+                <set field="requestName" value="getAssociatedStateList"/>
+                <set field="responseName" value="stateList"/>
+                <set field="dependentKeyName" value="geoId"/>
+                <set field="descName" value="geoName"/>
+                <set field="selectedDependentOption" default-value="_none_"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://common/template/includes/SetDependentDropdownValuesJs.ftl"/>
+                                <html-template location="component://ecommerce/webapp/winfirms/customer/NewCustomer.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="viewprofile">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-one entity-name="Party" value-field="party"/>
+                <entity-one entity-name="Person" value-field="person"/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
+				<entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <order-by field-name="-fromDate"/>
+              	</entity-and>
+              	<!--拥有角色-->
+               	<entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                    	<condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="TEACHER"/>
+	                    </condition-list>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <!--上级：课程等-->
+                <entity-condition entity-name="PartyRelationship" list="PartyRelationship">
+                    <condition-list combine="and">
+                        <condition-expr field-name="statusId" operator="equals" value="PARTYREL_CREATED"/>
+                        <condition-expr field-name="partyRelationshipTypeId" operator="equals" value="CHILD"/>
+                        <condition-expr field-name="roleTypeIdTo" operator="equals" value="CLASS"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <!--活跃度-->
+                <entity-condition entity-name="CommunicationEventAndRole" list="ActiveDegree">
+                	<condition-list combine="or">
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" value="${partyId}"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <!--参加的项目-->
+               	<entity-condition entity-name="ProductAndRole" list="ProductAndRoleIn">
+                    <condition-list combine="and">
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="productTypeId" operator="equals" value="PROJECT"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="_NA_"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <!--参加的课程-->
+               	<entity-condition entity-name="ProductAndRole" list="CourseAndRoleIn">
+                    <condition-list combine="and">
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="productTypeId" operator="equals" value="COURSE"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="_NA_"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+               	<!--会员组-->
+                <entity-and list="PartyGroup" entity-name="PartyGroup">
+               	</entity-and>
+               	<!--所有孵化器-->
+               	<entity-condition entity-name="PartyRole" list="PartyRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="CLASS"/>
+                    </condition-list>
+                </entity-condition>
+                <script location="component://ecommerce/groovyScripts/customer/ViewProfile.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">              
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/ViewProfile.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="changepassword">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleChangePassword"/>
+                <script location="component://ecommerce/groovyScripts/customer/ChangePassword.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/ChangePassword.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="filemanager">
+        <section>
+            <actions>
+            	<set field="menuCol" value="2"/>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-one entity-name="Party" value-field="party"/>
+                <entity-one entity-name="Person" value-field="person"/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/dropify.min.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_file_input.min.js" global="true"/>
+                <!--上级：课程等-->
+                <entity-condition entity-name="PartyRelationship" list="PartyRelationship">
+                    <condition-list combine="and">
+                        <condition-expr field-name="statusId" operator="equals" value="PARTYREL_CREATED"/>
+                        <condition-expr field-name="partyRelationshipTypeId" operator="equals" value="CHILD"/>
+                        <condition-expr field-name="roleTypeIdTo" operator="equals" value="CLASS"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <!--班级的下载的资料-->
+                <entity-and list="PartyContentDownload" entity-name="PartyContentDetail">
+                    <field-map field-name="partyContentTypeId" value="USERDEF"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<!--个人显示自己的上传的资料-->
+               	<entity-and list="PartyContentUpload" entity-name="PartyContentDetail">
+                    <field-map field-name="partyContentTypeId" value="VNDSHPINF"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<!--班级查看学员上传列表-->
+               	<entity-and list="StudentsPartyContentUpload" entity-name="PartyContentDetail">
+                    <field-map field-name="partyContentTypeId" value="VNDSHPINF"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and entity-name="PartyAndPerson" list="PartyAndPerson">
+                     <field-map field-name="partyTypeId" value="PERSON"/>
+                     <field-map field-name="partyId" from-field="StudentsPartyContentUpload[0].createdByUserLogin"/>
+               	</entity-and>
+               	<!--会员组-->
+                <entity-and list="PartyGroup" entity-name="PartyGroup">
+               	</entity-and>
+               	<!--所有孵化器-->
+               	<entity-condition entity-name="PartyRole" list="PartyRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="CLASS"/>
+                    </condition-list>
+                </entity-condition>
+                <script location="component://ecommerce/groovyScripts/customer/ViewProfile.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">              
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/FileManager.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+	<screen name="editperson">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditPerson"/>
+                <get-related-one value-field="userLogin" relation-name="Person" to-value-field="person"/>
+                <set field="donePage" from-field="parameters.DONE_PAGE" default-value="viewprofile"/>
+                <set field="menuCol" value="1"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-one entity-name="Party" value-field="party"/>
+                <entity-one entity-name="Person" value-field="person"/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
+				<entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <order-by field-name="-fromDate"/>
+              	</entity-and>
+              	<!--上级：课程等-->
+                <entity-condition entity-name="PartyRelationship" list="PartyRelationship">
+                    <condition-list combine="and">
+                        <condition-expr field-name="statusId" operator="equals" value="PARTYREL_CREATED"/>
+                        <condition-expr field-name="partyRelationshipTypeId" operator="equals" value="CHILD"/>
+                        <condition-expr field-name="roleTypeIdTo" operator="equals" value="CLASS"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <!--会员组-->
+                <entity-and list="PartyGroup" entity-name="PartyGroup">
+               	</entity-and>
+                <script location="component://ecommerce/groovyScripts/customer/EditPerson.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">               
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/EditPerson.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+   </screen>
+   <!--添加上级角色-->
+   <screen name="addPartyParent">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditPerson"/>
+                <get-related-one value-field="userLogin" relation-name="Person" to-value-field="person"/>
+                <set field="donePage" from-field="parameters.DONE_PAGE" default-value="viewprofile"/>
+                <set field="menuCol" value="1"/>
+                <entity-condition entity-name="PartyRelationship" list="PartyRelationship">
+                    <condition-list combine="and">
+                        <condition-expr field-name="statusId" operator="equals" value="PARTYREL_CREATED"/>
+                        <condition-expr field-name="partyRelationshipTypeId" operator="equals" value="CHILD"/>
+                        <condition-expr field-name="roleTypeIdTo" operator="equals" value="INCUBATOR"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-and list="PartyGroup" entity-name="PartyGroup">
+               	</entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">               
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/AddPartyParent.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+   </screen>
+   <screen name="viewcontactmech">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-one entity-name="Party" value-field="party"/>
+                <entity-one entity-name="Person" value-field="person"/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
+                <set field="menuCol" value="3"/>
+                <script location="component://ecommerce/groovyScripts/customer/ViewProfile.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">               
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/ViewContactmech.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+   </screen>
+   <screen name="editcontactmech">
+        <section>
+            <actions>
+                <script location="component://ecommerce/groovyScripts/customer/EditContactMech.groovy"/>
+                <set field="reqName" from-field="requestName" />
+                <set field="menuCol" value="3"/>
+                <set field="dependentForm" value="editcontactmechform"/>
+                <set field="paramKey" value="countryGeoId"/>
+                <set field="mainId" value="countryGeoId"/>
+                <set field="dependentId" value="stateProvinceGeoId"/>
+                <set field="requestName" value="getAssociatedStateList"/>
+                <set field="responseName" value="stateList"/>
+                <set field="dependentKeyName" value="geoId"/>
+                <set field="descName" value="geoName"/>
+                <set field="selectedDependentOption" from-field="selectedStateName" default-value="_none_"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	   
+                        <platform-specific>
+                            <html>
+                                <html-template location="component://common/template/includes/SetDependentDropdownValuesJs.ftl"/>
+                                <html-template location="component://ecommerce/webapp/winfirms/customer/EditContactMech.ftl"/>
+                            </html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+   	<screen name="editCollection">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleShoppingList"/>
+                <set field="headerItem" value="Shopping List"/>
+                <set field="menuCol" value="4"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/page_contact_list.min.js" global="true"/>
+                <script location="component://ecommerce/groovyScripts/shoppinglist/EditShoppingList.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	        
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/EditCollecteList.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="editFollowing">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleShoppingList"/>
+                <set field="headerItem" value="Shopping List"/>
+                <set field="menuCol" value="5"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/page_contact_list.min.js" global="true"/>
+                <script location="component://ecommerce/groovyScripts/shoppinglist/EditShoppingListFollow.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	        
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/EditFollowList.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!--发起项目-->
+    
+    <!--发起项目-->
+    <screen name="ProjectInfo">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectInfo"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <set field="userLoginId" from-field="userLogin.userLoginId"/>
+                <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+            </actions>
+            <widgets>
+            <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                <decorator-section name="body">	  
+                	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                	<screenlet title="${uiLabelMap.BasicInformation}">
+                        <platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectInfo.ftl"/></html>
+                        </platform-specific>
+                   </screenlet>
+        		</decorator-section>
+            </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="ProjectFeatures">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectFeatures"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductFeatures.groovy"/>
+                <entity-and entity-name="ProductFeatureIactn" list="featureInteractions">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeature" list="ProductFeatureFinancing">
+                    <field-map field-name="productFeatureTypeId" value="FINANCINGSTAGE"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeature" list="ProductFeatureFieldabout">
+                    <field-map field-name="productFeatureTypeId" value="FIELDABOUT"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	  
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                        <platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/EditProductFeatures.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="ProjectRecruit">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectRecruit"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<screenlet title="${uiLabelMap.RecruitInfo}">
+                            <include-form name="ListProductRecruitInfos" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                      	</screenlet>
+                      	<platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateRecruit.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="UpdateProjectRecruit">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectRecruit"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <entity-one entity-name="ProductContent" value-field="productContent"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<section>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.RecruitInfo}">
+                                    <include-form name="EditProductRecruitInfos" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="ProjectVideoIntro">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectVideoIntro"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<screenlet title="${uiLabelMap.RecruitInfo}">
+                            <include-form name="ListProjectVideoIntro" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                      	</screenlet>
+                      	<platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateVideoIntro.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="UpdateProjectVideoIntro">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectVideoIntro"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <entity-one entity-name="ProductContent" value-field="productContent"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<section>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.VideoIntro}">
+                                    <include-form name="EditProjectVideoIntro" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="ProjectDynamic">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectDynamic"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <entity-and list="ProductContentTimeline" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="productContentTypeId" value="TIMELINE"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                      	<platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateProjectDynamic.ftl"/></html>
+                        </platform-specific>
+                        <platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ListProjectDynamic.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="UpdateProjectDynamic">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectDynamic"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <entity-one entity-name="ProductContent" value-field="productContent"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<section>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.ProjectDynamic}">
+                                    <include-form name="EditProjectDynamic" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="ProjectPlan">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectPlan"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <entity-and list="ProductContentTypeParent" entity-name="ProductContentType">
+                    <field-map field-name="parentTypeId" value="BUSINESSPLAN"/>
+                    <order-by field-name="productContentTypeId"/>
+                </entity-and>
+                <entity-and list="ProductContentType" entity-name="ProductContentType">
+                    <order-by field-name="productContentTypeId"/>
+                </entity-and>
+                <entity-and list="ProductContent" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <order-by field-name="+fromDate"/>
+                </entity-and>
+                <entity-and entity-name="ElectronicText" list="dataText">
+                </entity-and>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreatePlan.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="UpdateProjectPlan">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectPlan"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <entity-one entity-name="ProductContent" value-field="productContent"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<section>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.BusinessPlan}">
+                                    <include-form name="EditProjectPlanInfos" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="ProjectParty">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectParty"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <entity-condition entity-name="ProductRole" list="productRoles">
+                    <condition-expr field-name="productId" from-field="parameters.productId"/>
+                    <order-by field-name="roleTypeId"/>
+                    <order-by field-name="partyId"/>
+                </entity-condition>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<screenlet title="${uiLabelMap.Teammates}">
+                            <include-form name="UpdateProjectParty" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.CommonAdd}${uiLabelMap.Teammates}">
+                            <include-form name="AddProjectParty" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="ProjectDiscuss">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectDiscuss"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <entity-and list="commPartyContentList" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+               	</entity-and>
+                <entity-and list="PersonList" entity-name="Person">
+                    <field-map field-name="partyId" from-field="UserLoginList[0].partyId"/>
+                </entity-and>
+                <entity-and list="commPersonList" entity-name="Person">
+                </entity-and>
+                <set field="userPartyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="CommunicationEventAndProduct" list="disscussCommunicationEvents">
+                    <condition-list>
+                    	<condition-expr field-name="productId" from-field="parameters.productId"/>
+                    	<condition-expr field-name="communicationEventTypeId" value="PRODUCT_DISSCUSS"/>
+                    	<condition-expr field-name="statusId" value="COM_COMPLETE"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and entity-name="CommunicationEventAndProduct" list="childEvents">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                </entity-and>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProductDiscuss.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="ProjectRelease">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectRelease"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <!--当前目录-->
+                <set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>           
+                <!--发布项目-->
+                <entity-condition entity-name="ProdCatalogCategory" list="ProdCatalogCategoryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="prodCatalogCategoryTypeId" operator="equals" value="PCCT_VIEW_ALLW"/>
+                        <condition-expr field-name="prodCatalogId" operator="equals" value="${currentCatalogId}"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryTypeId" value="PROJECT"/>
+                </entity-and>
+                <set field="ProductCategoryPublicId" from-field="ProdCatalogCategoryList[0].productCategoryId"/>
+                <entity-and list="ProductCategoryMemberRelease" entity-name="ProductCategoryMember">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <entity-and list="ProductCategoryMemberPublic" entity-name="ProductCategoryMember">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryPublicId"/>
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectRelease.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!--课程管理-->
+    <screen name="CourseInfo">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CourseInfo"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <set field="userLoginId" from-field="userLogin.userLoginId"/>
+                <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+            </actions>
+            <widgets>
+            <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                <decorator-section name="body">	  
+                	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                	<screenlet title="${uiLabelMap.BasicInformation}">
+                        <platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CourseInfo.ftl"/></html>
+                        </platform-specific>
+                   </screenlet>
+        		</decorator-section>
+            </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CourseFeatures">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CourseFeatures"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductFeatures.groovy"/>
+                <entity-and entity-name="ProductFeatureIactn" list="featureInteractions">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeature" list="ProductFeatureFinancing">
+                    <field-map field-name="productFeatureTypeId" value="FINANCINGSTAGE"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeature" list="ProductFeatureFieldabout">
+                    <field-map field-name="productFeatureTypeId" value="FIELDABOUT"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	  
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                        <platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/EditProductFeatures.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CourseRecruit">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CourseRecruit"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<screenlet title="${uiLabelMap.RecruitInfo}">
+                            <include-form name="ListProductRecruitInfos" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                      	</screenlet>
+                      	<platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateRecruit.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="UpdateCourseRecruit">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CourseRecruit"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <entity-one entity-name="ProductContent" value-field="productContent"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<section>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.RecruitInfo}">
+                                    <include-form name="EditProductRecruitInfos" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CourseVideoIntro">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CourseVideoIntro"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<screenlet title="${uiLabelMap.RecruitInfo}">
+                            <include-form name="ListCourseVideoIntro" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                      	</screenlet>
+                      	<platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateCourseVideoIntro.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="UpdateCourseVideoIntro">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CourseVideoIntro"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <entity-one entity-name="ProductContent" value-field="productContent"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<section>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.VideoIntro}">
+                                    <include-form name="EditCourseVideoIntro" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CourseVideoList">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CourseVideoList"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<screenlet title="${uiLabelMap.RecruitInfo}">
+                            <include-form name="ListCourseVideoList" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                      	</screenlet>
+                      	<platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateCourseVideoList.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="UpdateCourseVideoList">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CourseVideoList"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <entity-one entity-name="ProductContent" value-field="productContent"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<section>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.CourseVideoList}">
+                                    <include-form name="EditCourseVideoList" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CourseDynamic">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CourseDynamic"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <entity-and list="ProductContentTimeline" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="productContentTypeId" value="TIMELINE"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                      	<platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateCourseDynamic.ftl"/></html>
+                        </platform-specific>
+                        <platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ListCourseDynamic.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="UpdateCourseDynamic">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CourseDynamic"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <entity-one entity-name="ProductContent" value-field="productContent"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<section>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.CourseDynamic}">
+                                    <include-form name="EditCourseDynamic" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CoursePlan">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CoursePlan"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <entity-and list="ProductContentTypeParent" entity-name="ProductContentType">
+                    <field-map field-name="parentTypeId" value="BUSINESSPLAN"/>
+                    <order-by field-name="productContentTypeId"/>
+                </entity-and>
+                <entity-and list="ProductContentType" entity-name="ProductContentType">
+                    <order-by field-name="productContentTypeId"/>
+                </entity-and>
+                <entity-and list="ProductContent" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <order-by field-name="+fromDate"/>
+                </entity-and>
+                <entity-and entity-name="ElectronicText" list="dataText">
+                </entity-and>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreatePlan.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="UpdateCoursePlan">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CoursePlan"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <entity-one entity-name="ProductContent" value-field="productContent"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<section>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.BusinessPlan}">
+                                    <include-form name="EditCoursePlanInfos" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CourseParty">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CourseParty"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <entity-condition entity-name="ProductRole" list="productRoles">
+                    <condition-expr field-name="productId" from-field="parameters.productId"/>
+                    <order-by field-name="roleTypeId"/>
+                    <order-by field-name="partyId"/>
+                </entity-condition>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<screenlet title="${uiLabelMap.Teammates}">
+                            <include-form name="UpdateCourseParty" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                        </screenlet>
+                        <screenlet title="${uiLabelMap.CommonAdd}${uiLabelMap.Teammates}">
+                            <include-form name="AddCourseParty" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                        </screenlet>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CourseDiscuss">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CourseDiscuss"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <entity-and list="commPartyContentList" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+               	</entity-and>
+                <entity-and list="PersonList" entity-name="Person">
+                    <field-map field-name="partyId" from-field="UserLoginList[0].partyId"/>
+                </entity-and>
+                <entity-and list="commPersonList" entity-name="Person">
+                </entity-and>
+                <set field="userPartyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="CommunicationEventAndProduct" list="disscussCommunicationEvents">
+                    <condition-list>
+                    	<condition-expr field-name="productId" from-field="parameters.productId"/>
+                    	<condition-expr field-name="communicationEventTypeId" value="PRODUCT_DISSCUSS"/>
+                    	<condition-expr field-name="statusId" value="COM_COMPLETE"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and entity-name="CommunicationEventAndProduct" list="childEvents">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                </entity-and>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProductDiscuss.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CourseRelease">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="tabButtonItem" value="CourseRelease"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <!--当前目录-->
+                <set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>           
+                <!--发布项目-->
+                <entity-condition entity-name="ProdCatalogCategory" list="ProdCatalogCategoryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="prodCatalogCategoryTypeId" operator="equals" value="PCCT_VIEW_ALLW"/>
+                        <condition-expr field-name="prodCatalogId" operator="equals" value="${currentCatalogId}"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryTypeId" value="COURSE"/>
+                </entity-and>
+                <set field="ProductCategoryPublicId" from-field="ProdCatalogCategoryList[0].productCategoryId"/>
+                <entity-and list="ProductCategoryMemberRelease" entity-name="ProductCategoryMember">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <entity-and list="ProductCategoryMemberPublic" entity-name="ProductCategoryMember">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryPublicId"/>
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CourseRelease.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    
+    <screen name="InitiateProjectPrepare">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <!--当前目录-->
+                <set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>           
+                <!--发布项目-->
+                <entity-condition entity-name="ProdCatalogCategory" list="ProdCatalogCategoryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="prodCatalogCategoryTypeId" operator="equals" value="PCCT_VIEW_ALLW"/>
+                        <condition-expr field-name="prodCatalogId" operator="equals" value="${currentCatalogId}"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryTypeId" value="SEEDPROJECT"/>
+                </entity-and>
+            </actions>
+            <widgets>
+            <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	  
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                		<platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/InitiateProjectPrepare.ftl"/></html></platform-specific>
+            		</decorator-section>
+            </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="InitiateCoursePrepare">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="TEACHER"/>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <!--当前目录-->
+                <set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>           
+                <!--发布项目-->
+                <entity-condition entity-name="ProdCatalogCategory" list="ProdCatalogCategoryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="prodCatalogCategoryTypeId" operator="equals" value="PCCT_VIEW_ALLW"/>
+                        <condition-expr field-name="prodCatalogId" operator="equals" value="${currentCatalogId}"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryTypeId" value="SEEDPROJECT"/>
+                </entity-and>
+            </actions>
+            <widgets>
+            <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	  
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                		<platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/InitiateCoursePrepare.ftl"/></html></platform-specific>
+            		</decorator-section>
+            </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <!--发起种子项目-->
+    <screen name="InitiateProject">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+            	<set field="partyId" from-field="userLogin.partyId"/>
+             	<entity-and list="Person" entity-name="Person">
+                    <field-map field-name="partyId" value="${partyId}"/>
+                </entity-and>
+            	<entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <!--当前目录-->
+                <set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>           
+                <!--发布项目-->
+                <entity-condition entity-name="ProdCatalogCategory" list="ProdCatalogCategoryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="prodCatalogCategoryTypeId" operator="equals" value="PCCT_VIEW_ALLW"/>
+                        <condition-expr field-name="prodCatalogId" operator="equals" value="${currentCatalogId}"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryTypeId" value="SEEDPROJECT"/>
+                </entity-and>
+            </actions>
+            <widgets>
+            <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	 
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                		<platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/InitiateProject.ftl"/></html></platform-specific>
+            		</decorator-section>
+            </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!--发起种子项目-->
+    <screen name="InitiateCourse">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+            	<set field="partyId" from-field="userLogin.partyId"/>
+             	<entity-and list="Person" entity-name="Person">
+                    <field-map field-name="partyId" value="${partyId}"/>
+                </entity-and>
+            	<entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="TEACHER"/>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <!--当前目录-->
+                <set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>           
+                <!--发布项目-->
+                <entity-condition entity-name="ProdCatalogCategory" list="ProdCatalogCategoryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="prodCatalogCategoryTypeId" operator="equals" value="PCCT_VIEW_ALLW"/>
+                        <condition-expr field-name="prodCatalogId" operator="equals" value="${currentCatalogId}"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryTypeId" value="SEEDPROJECT"/>
+                </entity-and>
+            </actions>
+            <widgets>
+            <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	 
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                		<platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/InitiateCourse.ftl"/></html></platform-specific>
+            		</decorator-section>
+            </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <!--我的消息-->
+    <screen name="messagePriLetterListReceive">
+        <section>
+            <actions>
+            	<set field="menuCol" value="11"/>
+            	<set field="partyId" from-field="userLogin.partyId"/>
+                <set field="titleProperty" value="PageTitleMessageList"/>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleRead">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRIVATE_LETTER"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleReplyLast">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ORIGINATOR"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRIVATE_LETTER"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleNoread">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="roleStatusId" operator="equals" value="COM_ROLE_CREATED"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRIVATE_LETTER"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+                <entity-and list="Person" entity-name="Person">
+                </entity-and>
+                <entity-and list="CommunicationEventAndProduct" entity-name="CommunicationEventAndProduct">
+                </entity-and>
+                <entity-and list="Product" entity-name="Product">
+                </entity-and>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/page_mailbox.min.js" global="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	 
+                         <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/MessagePriLetterListReceive.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="messagePriLetterListSend">
+        <section>
+            <actions>
+            	<set field="menuCol" value="11"/>
+                <set field="titleProperty" value="PageTitleMessageList"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRIVATE_LETTER"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleSend">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ORIGINATOR"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRIVATE_LETTER"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleReplyLast">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRIVATE_LETTER"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleNoread">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="roleStatusId" operator="equals" value="COM_ROLE_CREATED"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRIVATE_LETTER"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+               </entity-and>
+                <entity-and list="Person" entity-name="Person">
+                </entity-and>
+                <entity-and list="CommunicationEventAndProduct" entity-name="CommunicationEventAndProduct">
+                </entity-and>
+                <entity-and list="Product" entity-name="Product">
+                </entity-and>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/page_mailbox.min.js" global="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	 
+                         <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/MessagePriLetterListSend.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="messageDissListReceive">
+        <section>
+            <actions>
+            	<set field="menuCol" value="9"/>
+            	<set field="partyId" from-field="userLogin.partyId"/>
+                <set field="titleProperty" value="PageTitleMessageList"/>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleRead">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_DISSCUSS"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleReplyLast">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ORIGINATOR"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_DISSCUSS"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleNoread">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdFrom" operator="not-equals" value="${partyId}"/>
+                        <condition-expr field-name="roleStatusId" operator="equals" value="COM_ROLE_CREATED"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_DISSCUSS"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+                <entity-and list="Person" entity-name="Person">
+                </entity-and>
+                <entity-and list="CommunicationEventAndProduct" entity-name="CommunicationEventAndProduct">
+                </entity-and>
+                <entity-and list="Product" entity-name="Product">
+                </entity-and>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/page_mailbox.min.js" global="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	 
+                         <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/MessageDissListReceive.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="messageDissListSend">
+        <section>
+            <actions>
+            	<set field="menuCol" value="9"/>
+                <set field="titleProperty" value="PageTitleMessageList"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_DISSCUSS"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleSend">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ORIGINATOR"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_DISSCUSS"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleReplyLast">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_DISSCUSS"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleNoread">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="roleStatusId" operator="equals" value="COM_ROLE_CREATED"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_DISSCUSS"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+               </entity-and>
+                <entity-and list="Person" entity-name="Person">
+                </entity-and>
+                <entity-and list="CommunicationEventAndProduct" entity-name="CommunicationEventAndProduct">
+                </entity-and>
+                <entity-and list="Product" entity-name="Product">
+                </entity-and>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/page_mailbox.min.js" global="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	 
+                         <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/MessageDissListSend.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="messageApplyListReceive">
+        <section>
+            <actions>
+            	<set field="menuCol" value="10"/>
+            	<set field="partyId" from-field="userLogin.partyId"/>
+                <set field="titleProperty" value="PageTitleMessageList"/>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleRead">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PROJECT_APPLY_JOIN"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and entity-name="ProductAndRole" list="ProductAndRole">
+                </entity-and>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleNoread">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="roleStatusId" operator="equals" value="COM_ROLE_CREATED"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PROJECT_APPLY_JOIN"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+                <entity-and list="Person" entity-name="Person">
+                </entity-and>
+                <entity-and list="CommunicationEventAndProduct" entity-name="CommunicationEventAndProduct">
+                </entity-and>
+                <entity-and list="Product" entity-name="Product">
+                </entity-and>
+                <entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                    	<condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+	                    </condition-list>
+                    </condition-list>
+                </entity-condition>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRoleFrom">
+                    <condition-list combine="or">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/page_mailbox.min.js" global="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	 
+                         <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/MessageApplyListReceive.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="messageApplyListSend">
+        <section>
+            <actions>
+            	<set field="menuCol" value="10"/>
+                <set field="titleProperty" value="PageTitleMessageList"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PROJECT_APPLY_JOIN"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleSend">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ORIGINATOR"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PROJECT_APPLY_JOIN"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleNoread">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="roleStatusId" operator="equals" value="COM_ROLE_CREATED"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PROJECT_APPLY_JOIN"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and entity-name="ProductAndRole" list="ProductAndRole">
+                </entity-and>
+                <entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+               </entity-and>
+                <entity-and list="Person" entity-name="Person">
+                </entity-and>
+                <entity-and list="CommunicationEventAndProduct" entity-name="CommunicationEventAndProduct">
+                </entity-and>
+                <entity-and list="Product" entity-name="Product">
+                </entity-and>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/page_mailbox.min.js" global="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	 
+                         <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/MessageApplyListSend.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!--我创建的项目-->
+    <screen name="projectscreated">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="userLoginId" from-field="userLogin.userLoginId"/>
+                <entity-condition entity-name="Product" list="Product">
+                    <condition-list combine="and">
+                        <condition-expr field-name="productTypeId" operator="equals" value="PROJECT"/>
+                        <condition-expr field-name="createdByUserLogin" operator="equals" value="${userLoginId}"/>
+                    </condition-list>
+                    <order-by field-name="-lastUpdatedStamp"/>
+                </entity-condition>
+                <entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryTypeId" value="SEEDPROJECT"/>
+                </entity-and>
+                <entity-and list="ProductCategoryMember" entity-name="ProductCategoryMember">
+                    <field-map field-name="productCategoryId" from-field="ProductCategory[0].productCategoryId"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">      
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>        
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectsCreated.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!--我参与的项目-->
+    <screen name="projectsin">
+        <section>
+            <actions>
+            	<set field="menuCol" value="7"/>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="productTypeId" operator="equals" value="PROJECT"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="_NA_"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                 <entity-and list="Product" entity-name="Product">
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">   
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>           
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectsIn.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!--我参与的项目-->
+    <screen name="activityin">
+        <section>
+            <actions>
+            	<set field="menuCol" value="activityin"/>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="productTypeId" operator="equals" value="ACTIVITY"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="_NA_"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                 <entity-and list="Product" entity-name="Product">
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">   
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>           
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/ActivityIn.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="coursein">
+        <section>
+            <actions>
+            	<set field="menuCol" value="coursein"/>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="productTypeId" operator="equals" value="COURSE"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="_NA_"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                 <entity-and list="Product" entity-name="Product">
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">   
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>           
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/CourseIn.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!--参投项目-->
+    <screen name="ProjectsInvest">
+        <section>
+            <actions>
+            	<set field="menuCol" value="ProjectsInvest"/>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="productTypeId" operator="equals" value="PROJECT"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                 <entity-and list="Product" entity-name="Product">
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">           
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectsInvest.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!--我创建的课程-->
+    <screen name="courseCreated">
+        <section>
+            <actions>
+            	<set field="menuCol" value="courseCreated"/>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="userLoginId" from-field="userLogin.userLoginId"/>
+                <entity-condition entity-name="Product" list="Product">
+                    <condition-list combine="and">
+                        <condition-expr field-name="productTypeId" operator="equals" value="COURSE"/>
+                        <condition-expr field-name="createdByUserLogin" operator="equals" value="${userLoginId}"/>
+                    </condition-list>
+                    <order-by field-name="-lastUpdatedStamp"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">      
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>        
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/CourseCreated.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="verify">
+        <section>
+            <actions>
+            	<set field="menuCol" value="1"/>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                    	<condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+	                    </condition-list>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">              
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/Verify.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="addRoleShowCk">
+        <section>
+            <actions>
+            	<set field="menuCol" value="1"/>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+             	<entity-and list="Person" entity-name="Person">
+                    <field-map field-name="partyId" value="${partyId}"/>
+                </entity-and>
+                <entity-condition entity-name="RoleType" list="RoleType">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">              
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/AddRoleShowCk.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="addRoleShowSecCk">
+        <section>
+            <actions>
+            	<set field="menuCol" value="1"/>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <set field="userLoginId" from-field="userLogin.userLoginId"/>
+             	<entity-and list="Person" entity-name="Person">
+                    <field-map field-name="partyId" value="${partyId}"/>
+                </entity-and>
+                <entity-condition entity-name="RoleType" list="RoleType">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <!--当前目录-->
+                <set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>           
+                <!--发布项目-->
+                <entity-condition entity-name="ProdCatalogCategory" list="ProdCatalogCategoryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="prodCatalogCategoryTypeId" operator="equals" value="PCCT_VIEW_ALLW"/>
+                        <condition-expr field-name="prodCatalogId" operator="equals" value="${currentCatalogId}"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">              
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/AddRoleShowSecCk.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="addRoleShowSub">
+        <section>
+            <actions>
+            	<set field="menuCol" value="1"/>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+             	<entity-and list="Person" entity-name="Person">
+                    <field-map field-name="partyId" value="${partyId}"/>
+                </entity-and>
+                <entity-condition entity-name="RoleType" list="RoleType">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">              
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/AddRoleShowSub.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="addRoleShowSecSub">
+        <section>
+            <actions>
+            	<set field="menuCol" value="1"/>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <set field="userLoginId" from-field="userLogin.userLoginId"/>
+             	<entity-and list="Person" entity-name="Person">
+                    <field-map field-name="partyId" value="${partyId}"/>
+                </entity-and>
+                <entity-condition entity-name="RoleType" list="RoleType">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <!--当前目录-->
+                <set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>           
+                <!--发布项目-->
+                <entity-condition entity-name="ProdCatalogCategory" list="ProdCatalogCategoryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="prodCatalogCategoryTypeId" operator="equals" value="PCCT_VIEW_ALLW"/>
+                        <condition-expr field-name="prodCatalogId" operator="equals" value="${currentCatalogId}"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">              
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/AddRoleShowSecSub.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="editpartyrole">
+        <section>
+            <actions>
+            	<set field="menuCol" value="1"/>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                    	<condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+	                    </condition-list>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRoleFrom">
+                    <condition-list combine="or">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">              
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/EditPartyRole.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+</screens>

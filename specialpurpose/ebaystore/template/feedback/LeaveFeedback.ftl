@@ -51,7 +51,7 @@ under the License.
 </script>
 <form name="leaveFeedback" action="<@ofbizUrl>sendLeaveFeedback</@ofbizUrl>" method="post">
   <input type="hidden" value="${parameters.productStoreId}" name="productStoreId"/>
-  <table cellspacing="0" class="basic-table">
+  <table cellspacing="0" class="basic-table uk-table">
     <tbody>
     <tr class="header-row">
       <td>Item</td>
@@ -162,7 +162,7 @@ under the License.
                         label="Tell us more"/>
                     <br/>80 characters left<br/><br/>
                     <b>Rate details about this purchase</b>
-                    <table>
+                    <table class="basic-table uk-table">
                       <tr>
                         <td>
                           How accurate was the item description?
@@ -441,7 +441,7 @@ under the License.
                         label="Tell us more"/>
                     <br/>80 characters left<br/><br/>
                     <b>Rate details about this purchase</b>
-                    <table>
+                    <table class="basic-table uk-table">
                       <tr>
                         <td>
                           How accurate was the item description?
@@ -680,7 +680,7 @@ under the License.
                         label="Tell us more"/>
                     <br/>80 characters left<br/><br/>
                     <b>Rate details about this purchase</b>
-                    <table>
+                    <table class="basic-table uk-table">
                       <tr>
                         <td>
                           How accurate was the item description?

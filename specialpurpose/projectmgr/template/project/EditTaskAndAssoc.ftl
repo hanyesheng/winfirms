@@ -17,8 +17,8 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <#if task?has_content>
         <li class="h3">&nbsp;${uiLabelMap.PageTitleEditTask}&nbsp;#${project.workEffortId!} ${uiLabelMap.CommonInformation}</li>
@@ -28,7 +28,7 @@ under the License.
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <#assign workEffortIdFrom = parameters.workEffortIdFrom>
     <#if task?has_content>
       <form name="addTaskAndAssocForm" method="get" action="<@ofbizUrl>updateTaskAndAssoc</@ofbizUrl>">

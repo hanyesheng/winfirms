@@ -16,12 +16,12 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <div class="h3">${uiLabelMap.OrderOrderQuoteId}&nbsp;${quote.quoteId}&nbsp;${uiLabelMap.CommonInformation}</div>
     </div>
-    <div class="screenlet-body">
-        <table cellspacing="0" class="basic-table">
+    <div class="screenlet-body md-card-content uk-overflow-container">
+        <table cellspacing="0" class="basic-table uk-table">
             <#-- quote header information -->
             <tr>
                 <td align="right" valign="top" width="15%" class="label">

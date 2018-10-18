@@ -16,14 +16,14 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
+<div class="screenlet md-card">
   <div class="screenlet-body no-padding">
     <h3>${uiLabelMap.PageTitleEditSurveyQuestions} ${uiLabelMap.ContentSurveySurveyId} ${surveyId}</h3>
     <#assign commonUrl="EditSurveyQuestions?surveyId=${parameters.surveyId}&amp;" />
     <#assign messageMap = Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("lowCount", lowIndex, "highCount", highIndex, "total", listSize)/>
     <#assign commonDisplaying = Static["org.apache.ofbiz.base.util.UtilProperties"].getMessage("CommonUiLabels", "CommonDisplaying", messageMap, locale)/>
     <@htmlTemplate.nextPrev commonUrl=commonUrl listSize=listSize viewSize=viewSize viewIndex=viewIndex highIndex=highIndex commonDisplaying=commonDisplaying/>
-      <table class="basic-table hover-bar" cellspacing="0">
+      <table class="basic-table hover-bar uk-table" cellspacing="0">
         <tr class="header-row">
           <td>${uiLabelMap.CommonId}</td>
           <td>${uiLabelMap.CommonType}</td>
@@ -132,16 +132,16 @@ under the License.
 </div>
 <#-- apply question from category -->
 <#if surveyQuestionCategory?has_content>
-    <div class="screenlet">
-      <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+      <div class="screenlet-title-bar md-card-toolbar">
         <ul>
           <li class="h3">${uiLabelMap.ContentSurveyApplyQuestionFromCategory} - ${surveyQuestionCategory.description!} [${surveyQuestionCategory.surveyQuestionCategoryId}]</li>
         </ul>
         <br class="clear"/>
       </div>
-      <div class="screenlet-body">
+      <div class="screenlet-body md-card-content uk-overflow-container">
         <a name="appl">
-        <table class="basic-table hover-bar" cellspacing="0">
+        <table class="basic-table hover-bar uk-table" cellspacing="0">
             <tr class="header-row">
                 <td>${uiLabelMap.CommonId}</td>
                 <td>${uiLabelMap.CommonDescription}</td>
@@ -203,14 +203,14 @@ under the License.
       </div>
     </div>
 </#if>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.ContentSurveyApplyQuestionFromCategory}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
       <form method="post" action="<@ofbizUrl>EditSurveyQuestions</@ofbizUrl>">
         <input type="hidden" name="surveyId" value="${requestParameters.surveyId}"/>
         <input type="hidden" name="applyQuestionFromCategory" value="Y"/>

@@ -57,8 +57,8 @@ function toggleBillingAccount(box) {
 <form method="post" name="checkoutInfoForm" style="margin:0;">
   <fieldset>
     <input type="hidden" name="checkoutpage" value="shippingaddress"/>
-    <div class="screenlet" style="height: 100%;">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card" style="height: 100%;">
+        <div class="screenlet-title-bar md-card-toolbar">
             <div class="h3">1)&nbsp;${uiLabelMap.OrderWhereShallWeShipIt}?</div>
         </div>
         <div class="screenlet-body" style="height: 100%;">
@@ -100,7 +100,7 @@ function toggleBillingAccount(box) {
                </#if>
               </table>
              <div>&nbsp;${uiLabelMap.AccountingAgreementInformation}</div>
-               <table>
+               <table class="basic-table uk-table">
                  <#if agreements??>
                    <#if agreements.size()!=1>
                      <tr>

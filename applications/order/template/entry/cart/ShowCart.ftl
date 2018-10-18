@@ -31,8 +31,8 @@ under the License.
 <#else>
   <#assign target="getProductInventoryAvailable">
 </#if>
-<div class="screenlet">
-    <div class="screenlet-body">
+<div class="screenlet md-card">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <#if shoppingCart.getOrderType() == "SALES_ORDER">
         <div>
           <#if quantityOnHandTotal?? && availableToPromiseTotal?? && (productId)??>
@@ -48,7 +48,7 @@ under the License.
         </div>
       <#else>
         <#if parameters.availabalityList?has_content>
-          <table class="basic-table"  cellspacing="0">
+          <table class="basic-table uk-table"  cellspacing="0">
             <tr class="header-row">
               <td>${uiLabelMap.Facility}</td>
               <td>${uiLabelMap.ProductQuantityOnHand}</td>

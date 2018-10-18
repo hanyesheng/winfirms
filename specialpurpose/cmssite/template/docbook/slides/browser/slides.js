@@ -1,6 +1,6 @@
 // -*- Java -*-
 //
-// $Id$
+// $Id: slides.js 1395307 2012-10-07 14:02:53Z jleroux $
 //
 // Copyright (C) 2002 Norman Walsh
 //

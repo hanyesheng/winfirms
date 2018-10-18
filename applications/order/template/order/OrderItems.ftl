@@ -18,14 +18,14 @@ under the License.
 -->
 
 <#if orderHeader?has_content>
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <ul>
                 <li class="h3">&nbsp;${uiLabelMap.OrderOrderItems}</li>
             </ul>
             <br class="clear" />
         </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <table class="order-items basic-table" cellspacing='0'>
                 <tr valign="bottom" class="header-row">
                     <td width="30%">${uiLabelMap.ProductProduct}</td>
@@ -125,7 +125,7 @@ under the License.
                                             <#assign unplannedQuantity = requiredQuantity - qohQuantity - inProductionQuantity - onOrderQuantity - mktgPkgQOH>
                                             <#if unplannedQuantity < 0><#assign unplannedQuantity = 0></#if>
                                             <div class="screenlet order-item-inventory">
-                                                <div class="screenlet-body">
+                                                <div class="screenlet-body md-card-content uk-overflow-container">
                                                     <table cellspacing="0" cellpadding="0" border="0">
                                                         <tr>
                                                             <td style="text-align: right; padding-bottom: 10px;">
@@ -189,7 +189,7 @@ under the License.
                                 <#assign currentItemStatus = orderItem.getRelatedOne("StatusItem", false)>
                                 <td colspan="1" valign="top">
                                     <div class="screenlet order-item-status-list<#if currentItemStatus.statusCode?has_content> ${currentItemStatus.statusCode}</#if>">
-                                        <div class="screenlet-body">
+                                        <div class="screenlet-body md-card-content uk-overflow-container">
                                             <div class="current-status">
                                                 <span class="label">${uiLabelMap.CommonCurrent}</span>&nbsp;${currentItemStatus.get("description",locale)?default(currentItemStatus.statusId)}
                                             </div>
@@ -224,8 +224,8 @@ under the License.
                                 <#-- QUANTITY -->
                                 <td align="right" valign="top" nowrap="nowrap">
                                     <div class="screenlet order-item-quantity">
-                                        <div class="screenlet-body">
-                                            <table>
+                                        <div class="screenlet-body md-card-content uk-overflow-container">
+                                            <table class="basic-table uk-table">
                                                 <tr valign="top">
                                                     <#assign shippedQuantity = orderReadHelper.getItemShippedQuantity(orderItem)>
                                                     <#assign shipmentReceipts = delegator.findByAnd("ShipmentReceipt", {"orderId" : orderHeader.getString("orderId"), "orderItemSeqId" : orderItem.orderItemSeqId}, null, false)/>
@@ -461,11 +461,7 @@ under the License.
                                     <td>&nbsp;</td>
                                     <td>&nbsp;</td>
                                     <td align="right">
-                                        <#if orderItemAdjustment.amountAlreadyIncluded?has_content>
-                                            <@ofbizCurrency amount=orderItemAdjustment.amountAlreadyIncluded isoCode=currencyUomId/>
-                                        <#else>
-                                            <@ofbizCurrency amount=Static["org.apache.ofbiz.order.order.OrderReadHelper"].calcItemAdjustment(orderItemAdjustment, orderItem) isoCode=currencyUomId/>
-                                        </#if>
+                                        <@ofbizCurrency amount=Static["org.apache.ofbiz.order.order.OrderReadHelper"].calcItemAdjustment(orderItemAdjustment, orderItem) isoCode=currencyUomId/>
                                     </td>
                                     <td colspan="2">&nbsp;</td>
                                 </tr>
@@ -676,7 +672,7 @@ under the License.
                             <td>
                               <div class= "screenlet">
                                 <div class = "screenlet-body">
-                                  <table>
+                                  <table class="basic-table uk-table">
                                     <tr>
                                       <td align="right">
                                         <span class="label">${uiLabelMap.CommonComments}</span>

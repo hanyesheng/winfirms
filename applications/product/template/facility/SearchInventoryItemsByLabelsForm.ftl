@@ -19,7 +19,7 @@ under the License.
 
 <form method="post" action="<@ofbizUrl>SearchInventoryItemsByLabels</@ofbizUrl>">
   <input type="hidden" name="facilityId" value="${facility.facilityId}"/>
-  <table>
+  <table class="basic-table uk-table">
   <#assign index = 0>
   <#list labelTypes as labelType>
     <#assign index = index + 1>

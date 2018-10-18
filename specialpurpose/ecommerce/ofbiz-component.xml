@@ -70,5 +70,14 @@ under the License.
         location="webapp/ecomseo"
         mount-point="/ecomseo"
         app-bar-display="false"/>
+    <webapp name="winfirms" 
+	  title="winfirms" 
+	  server="default-server" 
+	  location="webapp/winfirms" 
+	  mount-point="/" 
+	  app-bar-display="false"> 
+	  <!--<virtual-host host-name="a.abc.com"/>--> 
+	</webapp> 
+
 </ofbiz-component>
 

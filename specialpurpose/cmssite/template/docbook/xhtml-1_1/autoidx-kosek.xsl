@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:i="urn:cz-kosek:functions:index" xmlns:l="http://docbook.sourceforge.net/xmlns/l10n/1.0" xmlns:func="http://exslt.org/functions" xmlns:k="http://www.isogen.com/functions/com.isogen.saxoni18n.Saxoni18nService" xmlns:exslt="http://exslt.org/common" xmlns="http://www.w3.org/1999/xhtml" extension-element-prefixes="func exslt" exclude-result-prefixes="func exslt i l k" version="1.0">
 
 <!-- ********************************************************************
-     $Id$
+     $Id: autoidx-kosek.xsl 1395307 2012-10-07 14:02:53Z jleroux $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.

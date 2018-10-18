@@ -74,17 +74,17 @@ under the License.
     </request-map>
     <request-map uri="forgotPassword_step1">
         <security https="true" auth="false"/>
-        <response name="success" type="view" value="forgotPassword_step1"/>
+        <response name="success" type="view" value="login"/>
     </request-map>
     <request-map uri="forgotPassword_step2">
         <security auth="false" https="true"></security>
-        <response name="success" type="view" value="forgotPassword_step2" />
+        <response name="success" type="view" value="login" />
     </request-map>
     <request-map uri="forgotPassword_step3">
         <security https="true" auth="false"/>
          <event type="java" path="org.apache.ofbiz.securityext.login.LoginEvents" invoke="forgotPassword"/>
         <response name="success" type="view" value="login"/>
-        <response name="error" type="view" value="forgotPassword_step2"/>
+        <response name="error" type="view" value="login"/>
      </request-map>
     <request-map uri="passwordChange">
         <security https="true" auth="false"/>

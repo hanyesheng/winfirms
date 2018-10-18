@@ -286,14 +286,14 @@ under the License.
 
   <br />
   <form method="post" action="setShipping" name="partyshipform">
-    <div class="screenlet">
-      <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+      <div class="screenlet-title-bar md-card-toolbar">
         <ul>
           <li class="h3">${uiLabelMap.OrderShipToAnotherParty}</li>
         </ul>
         <br class="clear" />
       </div>
-      <div class="screenlet-body">
+      <div class="screenlet-body md-card-content uk-overflow-container">
         <table width="100%" border='0' cellspacing='0' cellpadding='0' class='boxbottom'>
           <tr><td colspan="4">&nbsp;</td></tr>
           <tr>

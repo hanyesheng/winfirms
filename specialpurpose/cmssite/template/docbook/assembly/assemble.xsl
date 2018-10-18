@@ -7,7 +7,7 @@
   exclude-result-prefixes="exsl d xlink"
   version="1.0">
 
-<!-- $Id$ -->
+<!-- $Id: assemble.xsl 1395307 2012-10-07 14:02:53Z jleroux $ -->
 
 <xsl:preserve-space elements="*"/>
 <xsl:strip-space elements="d:assembly d:structure d:module d:resources d:resource"/>

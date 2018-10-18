@@ -62,7 +62,7 @@ under the License.
 <#macro renderFormClose focusFieldName formName containerId hasRequiredField></#macro>
 <#macro renderMultiFormClose></#macro>
 
-<#macro renderFormatListWrapperOpen formName style columnStyles><table></#macro>
+<#macro renderFormatListWrapperOpen formName style columnStyles><table class="basic-table uk-table"></#macro>
 
 <#macro renderFormatListWrapperClose formName></table></#macro>
 
@@ -93,7 +93,7 @@ under the License.
 <#macro renderFormatItemRowFormCellOpen style></#macro>
 <#macro renderFormatItemRowFormCellClose></#macro>
 
-<#macro renderFormatSingleWrapperOpen formName style><table></#macro>
+<#macro renderFormatSingleWrapperOpen formName style><table class="basic-table uk-table"></#macro>
 <#macro renderFormatSingleWrapperClose formName></table></#macro>
 
 <#macro renderFormatFieldRowOpen>

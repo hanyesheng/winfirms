@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+	<screen name="main-decorator">
+        <section>
+            <actions>
+                <!-- base/top/specific map first, then more common map added for shared labels -->
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="WorkEffortUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+				<property-map resource="WebManagerUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="MarketingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ContentUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="SecurityUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="HumanResUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="layoutSettings.companyName" from-field="uiLabelMap.WebManagerCompanyName" global="true"/>
+                <set field="layoutSettings.companySubtitle" from-field="uiLabelMap.WebManagerCompanySubtitle" global="true"/>
+                <!-- layoutSettings.headerImageUrl can be used to specify an application specific logo; if not set,
+                     then the global layoutSettings.commonHeaderImageUrl (specified in GlobalDecorator) will be used. -->
+                <!--<set field="layoutSettings.headerImageUrl" value="/images/ofbiz_logo.gif" global="true"/>-->
+                <!-- <set field="layoutSettings.headerMiddleBackgroundUrl" value="" global="true"/> -->
+                <!-- <set field="layoutSettings.headerRightBackgroundUrl" value="" global="true"/> -->
+                <set field="activeApp" value="webmgr" global="true"/>
+                <set field="applicationMenuName" value="MainAppBar" global="true"/>
+                <set field="applicationMenuLocation" value="component://webmanager/widget/WebManagerMenus.xml" global="true"/>
+                <set field="applicationTitle" value="${uiLabelMap.WebManagerApplication}" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/ui/js/jquery.cookie-1.4.0.js" global="true"/>
+                <set field="layoutSettings.javaScripts[+0]" value="/images/jquery/plugins/jsTree/jquery.jstree.js" global="true"/>
+            </actions>
+            <widgets>
+                <include-screen name="ApplicationDecorator" location="component://commonext/widget/CommonScreens.xml"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="WebManagerCommonDecorator">
+        <section>
+            <actions>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <if-has-permission permission="WEBMANAGER" action="_VIEW"/>
+                            </condition>
+                            <widgets>
+                                <decorator-section-include name="body"/>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.WebManagerViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="CommonCatalogDecorator">
+        <section>
+            <actions>
+                <set field="headerItem" value="catalogs"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="left-column">
+                        <include-screen name="leftbar"/>
+                    </decorator-section>                    
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <or>
+                                    <if-has-permission permission="WEBMANAGER" action="_ADMIN"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_CREATE"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_UPDATE"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_VIEW"/>
+                                </or>
+                            </condition>
+                            <actions>
+                                <set field="prodCatalogId" from-field="parameters.prodCatalogId"/>
+                                <entity-one entity-name="ProdCatalog" value-field="prodCatalog"/>
+                            </actions>
+                            <widgets>
+                                <section>
+                                    <condition>
+                                        <not><if-empty field="prodCatalog"/></not>
+                                    </condition>
+                                    <widgets>
+                                        <include-menu name="CatalogTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                                        <include-menu name="CatalogSubTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                                        <label style="h1">${uiLabelMap.ProductCatalog} ${uiLabelMap.CommonFor} "${prodCatalog.catalogName}" [${prodCatalogId}]</label>
+                                    </widgets>
+                                    <fail-widgets>
+                                        <section>
+                                            <condition>
+                                                <if-compare operator="not-equals" value="ProductCatalog" field="tabButtonItem"/>
+                                            </condition>
+                                        </section>
+                                    </fail-widgets>
+                                </section>
+                                <decorator-section-include name="body"/>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.ProductCatalogViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="CommonCategoryDecorator">
+        <section>
+            <actions>
+                <set field="headerItem" value="categories"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="left-column">
+                        <include-screen name="leftbar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <or>
+                                    <if-has-permission permission="WEBMANAGER" action="_ADMIN"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_CREATE"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_UPDATE"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_VIEW"/>
+                                </or>
+                            </condition>
+                            <actions>
+                                <set field="productCategoryId" from-field="parameters.productCategoryId"/>
+                                <entity-one entity-name="ProductCategory" value-field="productCategory"/>
+                            </actions>
+                            <widgets>
+                                <section>
+                                    <condition>
+                                        <not><if-empty field="productCategory"/></not>
+                                    </condition>
+                                    <widgets>
+                                        <include-menu name="CategoryTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                                        <include-menu name="CategorySubTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                                        <container>
+                                            <label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.CommonFor}: ${productCategory.categoryName} [${uiLabelMap.CommonId}:${productCategoryId}]  ${${extraFunctionName}}</label>
+                                        </container>
+                                    </widgets>
+                                    <fail-widgets>
+                                        <section>
+                                            <condition>
+                                                <if-compare operator="not-equals" value="EditCategory" field="tabButtonItem"/>
+                                            </condition>
+                                            <widgets>
+                                                <include-menu name="CategorySubTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                                            </widgets>
+                                        </section>
+                                    </fail-widgets>
+                                </section>
+                                <decorator-section-include name="body"/>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.ProductCatalogViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CommonProductDecorator">
+        <section>
+            <actions>
+                <set field="headerItem" value="products"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="productId" from-field="parameters.productId" global="true"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <set field="product" from-field="product" global="true"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="left-column">
+                        <include-screen name="leftbar"/>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <or>
+                                    <if-has-permission permission="WEBMANAGER" action="_ADMIN"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_CREATE"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_UPDATE"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_VIEW"/>
+                                </or>
+                            </condition>
+                            <actions>
+                                <set field="productId" from-field="parameters.productId"/>
+                                <entity-one entity-name="Product" value-field="product"/>
+                            </actions>
+                            <widgets>
+                                <section>
+                                    <condition>
+                                        <not><if-empty field="product"/></not>
+                                    </condition>
+                                    <widgets>
+                                        <include-menu name="ProductTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                                        <include-menu name="ProductSubTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                                        <image src="${product.smallImageUrl}" url-mode="content" alt="${product.internalName}" style="cssImgSmall"/>
+                                        <label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.CommonFor}: ${product.internalName} [${uiLabelMap.CommonId}:${productId}]  ${${extraFunctionName}}</label>
+                                    </widgets>
+                                    <fail-widgets>
+                                        <section>
+                                            <condition>
+                                                <if-compare operator="not-equals" value="EditProduct" field="tabButtonItem"/>
+                                            </condition>
+                                            <widgets>
+                                                <include-menu name="ProductSubTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                                            </widgets>
+                                        </section>
+                                    </fail-widgets>
+                                </section>
+                                <decorator-section-include name="body"/>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.ProductCatalogViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CommonProductStoreDecorator">
+        <section>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="left-column">
+                        <include-screen name="leftbar"/>
+                    </decorator-section>                    
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <or>
+                                    <if-has-permission permission="WEBMANAGER" action="_ADMIN"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_CREATE"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_UPDATE"/>
+                                    <if-has-permission permission="WEBMANAGER" action="_VIEW"/>
+                                </or>
+                            </condition>
+                            <actions>
+                                <set field="productStoreId" from-field="parameters.productStoreId"/>
+                                <entity-one entity-name="ProductStore" value-field="productStore"/>
+                            </actions>
+                            <widgets>
+                                <section>
+                                    <condition><not><if-empty field="productStore"/></not></condition>
+                                    <widgets>
+                                        <container>
+                                            <include-menu name="ProductStoreTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                                            <label style="h1">${uiLabelMap[labelTitleProperty]} ${uiLabelMap.CommonFor}: ${productStore.storeName} [${uiLabelMap.CommonId}:${productStoreId}]  ${${extraFunctionName}}</label>
+                                        </container>
+                                        <section>
+                                            <widgets>
+                                                <include-menu name="ProductStoreSubTabBar" location="component://webmanager/widget/WebManagerMenus.xml"/>
+                                            </widgets>
+                                        </section>
+                                    </widgets>
+                                    <fail-widgets>
+                                        <section>
+                                            <condition>
+                                                <if-compare operator="not-equals" value="EditProductStore" field="tabButtonItem"/>
+                                            </condition>
+                                            <widgets>
+                                            </widgets>
+                                        </section>
+                                    </fail-widgets>
+                                </section>
+                                <decorator-section-include name="body"/>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.ProductCatalogViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="leftbar">
+        <section>
+            <widgets>
+                <include-screen name="categorytree"/>
+                <include-screen name="miniproductlist"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="categorytree">
+        <section>
+            <actions>
+                <script location="component://webmanager/webapp/webmgr/WEB-INF/actions/CategoryTree.groovy"/>
+            </actions>
+            <widgets>
+                <screenlet id="ProductBrowseCategoriesPanel" title="${uiLabelMap.ProductBrowseCatalogeAndCategories}" collapsible="true">
+                    <container id="EditDocumentTree"/>
+                    <platform-specific><html><html-template location="component://webmanager/webapp/webmgr/include/CategoryTree.ftl"/></html></platform-specific>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="miniproductlist">
+        <section>
+            <actions>
+                <script location="component://product/groovyScripts/catalog/find/MiniProductList.groovy"/>
+            </actions>
+            <widgets>
+                <screenlet id="ProductCategoryProductsPanel" title="${uiLabelMap.ProductCategoryProducts}" collapsible="true">
+                    <container id="miniproductlist">
+                        <platform-specific><html><html-template location="component://product/template/find/MiniProductList.ftl"/></html></platform-specific>
+                    </container>
+                </screenlet>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CommonPartyDecorator">
+        <section>
+            <actions>
+                <set field="partyId" from-field="parameters.partyId"/>
+                <entity-one entity-name="Party" value-field="party"/>
+                <entity-one entity-name="Person" value-field="lookupPerson"/>
+                <entity-one entity-name="PartyGroup" value-field="lookupGroup"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="pre-body">
+                        <section>
+                            <condition>
+                            <not><if-empty field="communicationEvent"/></not>
+	                        </condition>
+	                        <widgets>
+	                            <include-menu location="component://webmanager/widget/WebManagerMenus.xml" name="ProfileTabBar"/>
+	                            <include-menu location="component://webmanager/widget/WebManagerMenus.xml" name="ProfileSubTabBar" />
+	                        </widgets>
+	                        <fail-widgets>
+	                            <section>
+	                                <widgets>
+	                                    <include-menu location="component://webmanager/widget/WebManagerMenus.xml" name="ProfileTabBar"/>
+	                                </widgets>
+	                            </section>
+	                        </fail-widgets>
+                        </section>
+                    </decorator-section>
+                    <decorator-section name="body">
+                        <section>
+                            <widgets>
+                                <section>
+                                    <condition><not><if-empty field="partyId"/></not></condition>
+                                    <widgets>
+                                        <container style="clear"/>
+                                        <container style="page-title">
+                                            <section>
+                                                <condition>
+                                                    <or>
+                                                        <not><if-empty field="lookupPerson"/></not>
+                                                        <not><if-empty field="lookupGroup"/></not>
+                                                    </or>
+                                                </condition>
+                                                <widgets>
+                                                    <label text="${uiLabelMap.PartyTheProfileOf} ${lookupPerson.lastName}${lookupPerson.firstName} ${lookupPerson.suffix} ${lookupGroup.groupName} [${partyId}]"/>
+                                                </widgets>
+                                                <fail-widgets>
+                                                    <label text="${uiLabelMap.PartyNewUser}"/>
+                                                </fail-widgets>
+                                            </section>
+                                        </container>
+                                    </widgets>
+                                </section>
+                                <decorator-section-include name="body"/>
+                            </widgets>
+                            <fail-widgets>
+                                <label style="h3">${uiLabelMap.PartyMgrViewPermissionError}</label>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+</screens>

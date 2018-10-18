@@ -18,7 +18,7 @@ under the License.
 -->
 <#if glAcctgAndAmountPercentageList?has_content && glAccountCategories?has_content>
   <form id="costCenters" method="post" action="<@ofbizUrl>createUpdateCostCenter</@ofbizUrl>">
-    <table class="basic-table hover-bar" cellspacing="0">
+    <table class="basic-table hover-bar uk-table" cellspacing="0">
       <tr class="header-row">
         <th>${uiLabelMap.FormFieldTitle_organizationPartyId}</th>
         <th>${uiLabelMap.FormFieldTitle_glAccountId}</th>

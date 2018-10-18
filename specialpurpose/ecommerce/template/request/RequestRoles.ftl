@@ -21,7 +21,7 @@ under the License.
         <div class="h3">${uiLabelMap.OrderRequestRoles}</div>
     </div>
     <div class="screenlet-body">
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
          <#assign row = 1>
          <#list requestParties as requestParty>
             <#assign roleType = requestParty.getRelatedOne("RoleType", false)>

@@ -17,12 +17,12 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#assign externalKeyParam = "&amp;externalLoginKey=" + requestAttributes.externalLoginKey!>
-<div class="screenlet">
+<div class="screenlet md-card">
   <#if product??>
-    <div class="screenlet-title-bar">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductInventoryItems} ${uiLabelMap.CommonFor} <#if product??>${(product.internalName)!} </#if> [${uiLabelMap.CommonId}:${productId!}]</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <#if productId?has_content>
             <a href="/facility/control/EditInventoryItem?productId=${productId}${StringUtil.wrapString(externalKeyParam)}" class="buttontext">${uiLabelMap.ProductCreateNewInventoryItemProduct}</a>
             <#if showEmpty>
@@ -33,7 +33,7 @@ under the License.
         </#if>
         <br />
         <#if productId??>
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
             <tr class="header-row">
                 <td><b>${uiLabelMap.ProductItemId}</b></td>
                 <td><b>${uiLabelMap.ProductItemType}</b></td>

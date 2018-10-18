@@ -143,7 +143,7 @@ under the License.
       <input type="hidden" name="invoiceStatusChange" id="invoiceStatusChange" value="<@ofbizUrl>massChangeInvoiceStatus</@ofbizUrl>"/>
     </div>
 
-    <table class="basic-table hover-bar" cellspacing="0">
+    <table class="basic-table hover-bar uk-table" cellspacing="0">
       <thead>
         <tr class="header-row-2">
           <td>${uiLabelMap.FormFieldTitle_invoiceId}</td>

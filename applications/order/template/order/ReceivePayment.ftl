@@ -18,14 +18,14 @@ under the License.
 -->
 
 <#if security.hasEntityPermission("ORDERMGR", "_UPDATE", session)>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <ul>
         <li class="h3">${uiLabelMap.OrderReceiveOfflinePayments}</li>
       </ul>
       <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <a href="<@ofbizUrl>authview/${donePage}</@ofbizUrl>" class="buttontext">${uiLabelMap.CommonBack}</a>
       <a href="javascript:document.paysetupform.submit()" class="buttontext">${uiLabelMap.CommonSave}</a>
 
@@ -36,7 +36,7 @@ under the License.
         <input type="hidden" name="partyId" value="${orderRoles[0].partyId}" />
 
         <#if paymentMethods?has_content>
-        <table class="basic-table" cellspacing='0'>
+        <table class="basic-table uk-table" cellspacing='0'>
           <tr class="header-row">
             <td width="30%" align="right">${uiLabelMap.PaymentMethod}</td>
             <td width="1">&nbsp;&nbsp;&nbsp;</td>
@@ -57,7 +57,7 @@ under the License.
         </#if>
         <br /> <br />
         <#if paymentMethodTypes?has_content>
-        <table class="basic-table" cellspacing='0'>
+        <table class="basic-table uk-table" cellspacing='0'>
           <tr class="header-row">
             <td width="30%" align="right">${uiLabelMap.OrderPaymentType}</td>
             <td width="1">&nbsp;&nbsp;&nbsp;</td>

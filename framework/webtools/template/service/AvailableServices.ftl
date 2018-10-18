@@ -25,8 +25,8 @@ under the License.
 <#-- Selected Service is available -->
 <#if selectedServiceMap??>
   <#if showWsdl?? && showWsdl = true>
-    <div class="screenlet">
-      <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+      <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.WebtoolsServiceWSDL} - ${uiLabelMap.WebtoolsService} ${selectedServiceMap.serviceName}</h3>
       </div>
       <div class="screenlet-body" align="center">
@@ -36,8 +36,8 @@ under the License.
       </div>
     </div>
   <#else>
-    <div class="screenlet">
-      <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+      <div class="screenlet-title-bar md-card-toolbar">
         <ul>
           <li class="h3">${uiLabelMap.WebtoolsService} ${selectedServiceMap.serviceName}</li>
           <li><a href='<@ofbizUrl>${url}</@ofbizUrl>'>${uiLabelMap.CommonListAll}</a></li>
@@ -46,8 +46,8 @@ under the License.
         </ul>
         <br class="clear"/>
       </div>
-      <div class="screenlet-body">
-        <table class="basic-table" cellspacing='0'>
+      <div class="screenlet-body md-card-content uk-overflow-container">
+        <table class="basic-table uk-table" cellspacing='0'>
           <tr>
             <td class="label">${uiLabelMap.WebtoolsServiceName}</td>
             <td>${selectedServiceMap.serviceName}</td>
@@ -92,12 +92,12 @@ under the License.
       </div>
     </div>
 
-    <div class="screenlet">
-      <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+      <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.SecurityGroups}</h3>
       </div>
       <#if selectedServiceMap.permissionGroups != 'NA'>
-        <table class="basic-table" cellspacing='0'>
+        <table class="basic-table uk-table" cellspacing='0'>
           <tr class="header-row">
             <td>${uiLabelMap.WebtoolsNameOrRole}</td>
             <td>${uiLabelMap.WebtoolsPermissionType}</td>
@@ -112,17 +112,17 @@ under the License.
           </#list>
         </table>
       <#else>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
           <b>${selectedServiceMap.permissionGroups}</b>
         </div>
       </#if>
     </div>
 
-    <div class="screenlet">
-      <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+      <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.WebtoolsImplementedServices}</h3>
       </div>
-      <div class="screenlet-body">
+      <div class="screenlet-body md-card-content uk-overflow-container">
         <#if selectedServiceMap.implServices == 'NA'>
           <b>${selectedServiceMap.implServices}</b>
         <#elseif selectedServiceMap.implServices?has_content>
@@ -145,11 +145,11 @@ under the License.
               lookupWin.focus();
           }
       </script>
-      <div class="screenlet">
-        <div class="screenlet-title-bar">
+      <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
           <h3>${uiLabelMap.WebtoolsServiceECA}</h3>
         </div>
-        <table class="basic-table" cellspacing='0'>
+        <table class="basic-table uk-table" cellspacing='0'>
           <tr class="header-row">
             <td>${uiLabelMap.WebtoolsEventName}</td>
             <#if ecaMapList.runOnError??>
@@ -174,7 +174,7 @@ under the License.
               <#if ecaMap.actions?has_content>
                 <td>
                   <#list ecaMap.actions as action>
-                    <table class="basic-table" cellspacing='0'>
+                    <table class="basic-table uk-table" cellspacing='0'>
                       <tr>
                         <td colspan="2"><a href='<@ofbizUrl>${url}?sel_service_name=${action.serviceName}</@ofbizUrl>'>${action.serviceName?default(uiLabelMap.CommonNA)}</a></td>
                       </tr>
@@ -278,8 +278,8 @@ under the License.
           vertical-align: top;
         }
       </style>
-      <div class="screenlet">
-        <div class="screenlet-title-bar">
+      <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
           <h3>${paramList.title}</h3>
         </div>
         <#if paramList.paramList?? && paramList.paramList?has_content>
@@ -314,7 +314,7 @@ under the License.
               </#list>
           </table>
         <#else>
-          <div class="screenlet-body">
+          <div class="screenlet-body md-card-content uk-overflow-container">
             ${uiLabelMap.WebtoolsNoParametersDefined}
           </div>
         </#if>
@@ -322,7 +322,7 @@ under the License.
     </#list>
 
     <#-- Show a little form for exportServiceEoModelBundle -->
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <form name="exportServiceEoModelBundle" method="post" action="<@ofbizUrl>exportServiceEoModelBundle</@ofbizUrl>" class="basic-form">
         <input type="hidden" name="sel_service_name" value="${selectedServiceMap.serviceName}"/>
         <input type="hidden" name="serviceName" value="${selectedServiceMap.serviceName}"/>
@@ -345,10 +345,10 @@ under the License.
       </div>
   </#if>
 
-  <div class="screenlet">
-    <div class="screenlet-body">
+  <div class="screenlet md-card">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <label>${uiLabelMap.WebtoolsServicesListFor} ${dispatcherName?default(uiLabelMap.CommonNA)} (${servicesFoundCount} ${uiLabelMap.CommonFound})</label>
-      <table class="basic-table hover-bar" cellspacing='0'>
+      <table class="basic-table hover-bar uk-table" cellspacing='0'>
         <tr class="header-row">
           <td>${uiLabelMap.WebtoolsServiceName}</td>
           <td>${uiLabelMap.WebtoolsEngineName}</td>

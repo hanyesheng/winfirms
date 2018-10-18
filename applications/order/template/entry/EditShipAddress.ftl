@@ -19,7 +19,7 @@ under the License.
 
 <#if security.hasEntityPermission("ORDERMGR", "_CREATE", session) || security.hasEntityPermission("ORDERMGR", "_PURCHASE_CREATE", session)>
 
-   <div class="screenlet-body">
+   <div class="screenlet-body md-card-content uk-overflow-container">
       <table width='100%' border='0' cellspacing='0' cellpadding='0' class='boxbottom'>
         <tr>
           <td>

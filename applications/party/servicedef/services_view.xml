@@ -83,6 +83,7 @@ under the License.
         <attribute name="partyId" type="String" mode="IN" optional="true"/> <!-- does a LIKE compare on this, can do partial, case insensitive, etc -->
         <attribute name="partyTypeId" type="String" mode="IN" optional="true"/>
         <attribute name="userLoginId" type="String" mode="IN" optional="true"/> <!-- does a LIKE compare on this, can do partial, case insensitive, etc -->
+        <attribute name="productStoreId" type="String" mode="IN" optional="true"/> <!-- does a LIKE compare on this, can do partial, case insensitive, etc -->
         <attribute name="externalId" type="String" mode="IN" optional="true"/>
         <attribute name="groupName" type="String" mode="IN" optional="true"/>
         <attribute name="firstName" type="String" mode="IN" optional="true"/>

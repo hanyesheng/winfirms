@@ -16,8 +16,8 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet-body">
-    <table class="basic-table" cellspacing="3">
+<div class="screenlet-body md-card-content uk-overflow-container">
+    <table class="basic-table uk-table" cellspacing="3">
         <tr>
             <td class="label">${uiLabelMap.WebtoolsLabelManagerKey}</td>
             <td>${parameters.sourceKey!}</td>

@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
 -->
 <form action="<@ofbizUrl>quickCreateVirtualWithVariants</@ofbizUrl>" method="post" name="quickCreateVirtualWithVariants">
-<table cellspacing="0" class="basic-table">
+<table cellspacing="0" class="basic-table uk-table">
     <tr class="header-row">
         <td><b>${uiLabelMap.ProductQuickCreateVirtualFromVariants}</b></td>
     </tr>

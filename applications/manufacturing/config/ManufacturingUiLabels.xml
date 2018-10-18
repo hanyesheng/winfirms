@@ -1393,7 +1393,7 @@
         <value xml:lang="ro">OFBiz: Gestiune Productie</value>
         <value xml:lang="th">OFBiz: การจัดการการผลิต</value>
         <value xml:lang="vi">OFBiz: Quản trị sản xuất</value>
-        <value xml:lang="zh">OFBiz: 生产管理</value>
+        <value xml:lang="zh">浴火: 生产管理</value>
         <value xml:lang="zh-TW">OFBiz: 生產管理</value>
     </property>
     <property key="ManufacturingCompanySubtitle">

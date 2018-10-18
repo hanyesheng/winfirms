@@ -16,14 +16,14 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.CommonAdvancedSearch}</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form name="advToKeyWordSearchForm" method="post" action="<@ofbizUrl>WorkEffortSearchResults</@ofbizUrl>" style="margin: 0;">
       <input type="hidden" name="VIEW_SIZE" value="25"/>
-      <table class="basic-table" cellspacing="0">
+      <table class="basic-table uk-table" cellspacing="0">
         <tr>
           <td align="right" valign="middle" class="label">${uiLabelMap.WorkEffortKeywords}</td>
           <td valign="middle">
@@ -106,7 +106,7 @@ under the License.
         <tr>
           <td width='25%' align='right' class='label'>${uiLabelMap.WorkEffortLastUpdatedDateFilter}</td>
           <td>
-            <table class="basic-table" cellspacing="0">
+            <table class="basic-table uk-table" cellspacing="0">
                <tr>
                   <td nowrap="nowrap">
                     <@htmlTemplate.renderDateTimeField name="fromDate" event="" action="" className="" alert="" title="Format: yyyy-MM-dd HH:mm:ss.SSS" value="${requestParameters.fromDate!}" size="25" maxlength="30" id="fromDate1" dateType="date" shortDateInput=false timeDropdownParamName="" defaultDateTimeString="" localizedIconTitle="" timeDropdown="" timeHourName="" classString="" hour1="" hour2="" timeMinutesName="" minutes="" isTwelveHour="" ampmName="" amSelected="" pmSelected="" compositeType="" formName=""/>

@@ -22,7 +22,7 @@ under the License.
 <br />
 <#if searchFeatures?has_content>
   <form method="post" action="<@ofbizUrl>LookupVariantProduct</@ofbizUrl>" name="selectAllForm">
-    <table cellspacing="0" class="basic-table">
+    <table cellspacing="0" class="basic-table uk-table">
         <input type="hidden" name="productId" value="${product.productId}" />
         <#list searchFeatures as searchFeature>
             <tr>
@@ -49,7 +49,7 @@ under the License.
 </#if>
 <br />
 <#if variantProducts??>
-    <table cellspacing="0" class="basic-table">
+    <table cellspacing="0" class="basic-table uk-table">
         <tr class="header-row">
             <td><b>${uiLabelMap.ProductProductId}</b></td>
             <td><b>${uiLabelMap.ProductBrandName}</b></td>
@@ -65,7 +65,7 @@ under the License.
     </table>
 </#if>
 <#if productFeatureIds??>
-    <table cellspacing="0" class="basic-table">
+    <table cellspacing="0" class="basic-table uk-table">
         <form method="post" action="<@ofbizUrl>LookupVariantProduct</@ofbizUrl>" name="createNewVariant">
         <input type="hidden" name="productId" value="${product.productId}" />
         <input type="hidden" name="productFeatureIds" value="${productFeatureIds}" />

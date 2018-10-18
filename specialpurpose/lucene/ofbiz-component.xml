@@ -36,7 +36,7 @@ under the License.
     <test-suite loader="main" location="testdef/lucenetests.xml"/>
 
     <!-- this overrides the content application in order to add the index management screens -->
-    <webapp name="content"
+    <webapp name="extension"
         title="Content"
         server="default-server"
         location="webapp/content"

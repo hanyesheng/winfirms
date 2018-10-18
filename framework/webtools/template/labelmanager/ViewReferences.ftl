@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
 -->
 <h1>${uiLabelMap.WebtoolsLabelManagerViewReferences}</h1>
-        <table class="basic-table" cellspacing="0">
+        <table class="basic-table uk-table" cellspacing="0">
             <tr>
                 <td class="label">${uiLabelMap.WebtoolsLabelManagerKey}</td>
                 <td colspan="2">${parameters.sourceKey!}</td>

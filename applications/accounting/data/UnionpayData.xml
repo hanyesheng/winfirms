@@ -1,0 +1,7 @@
+
+<entity-engine-xml>
+	
+    <PaymentMethodType description="银联支付" paymentMethodTypeId="EXT_UNIONPAY"/>    
+    
+	<PaymentMethodType paymentMethodTypeId="EXT_UNIONPAY" defaultGlAccountId="122000" description="银联支付"/>    
+</entity-engine-xml>   

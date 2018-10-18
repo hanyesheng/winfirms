@@ -18,11 +18,11 @@ under the License.
 -->
 
 <#if productIds?has_content>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <div class="h3">${uiLabelMap.OrderProductsForPromotion}:</div>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <#if (listSize > 0)>
             <table border="0" width="100%" cellpadding="2">
                 <tr>

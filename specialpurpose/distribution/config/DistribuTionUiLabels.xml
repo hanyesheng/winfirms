@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
+    <property key="DistribuTionApplication">
+        <value xml:lang="en">DistribuTion Application</value>
+        <value xml:lang="zh">推荐人管理平台</value>
+        <value xml:lang="zh-CN">推荐人管理平台</value>
+        <value xml:lang="zh-TW">DistribuTion應用程式</value>
+    </property>
+    <property key="DistribuTionViewPermissionError">
+        <value xml:lang="en">DistribuTionViewPermissionError</value>
+        <value xml:lang="zh">您没有权限访问这个应用</value>
+        <value xml:lang="zh-CN">您没有权限访问这个应用</value>
+    </property>
+    <property key="PromoActivity">
+        <value xml:lang="en">PromoActivity</value>
+        <value xml:lang="zh">优惠活动</value>
+        <value xml:lang="zh-CN">优惠活动</value>
+    </property>
+    <property key="MyPromoCode">
+        <value xml:lang="en">MyPromoCode</value>
+        <value xml:lang="zh">我的优惠码</value>
+        <value xml:lang="zh-CN">我的优惠码</value>
+    </property>
+    <property key="Used">
+        <value xml:lang="en">Used</value>
+        <value xml:lang="zh">已使用</value>
+        <value xml:lang="zh-CN">已使用</value>
+    </property>
+    <property key="Unused">
+        <value xml:lang="en">Unused</value>
+        <value xml:lang="zh">未使用</value>
+        <value xml:lang="zh-CN">未使用</value>
+    </property>
+    <property key="PromoCode">
+        <value xml:lang="en">PromoCode</value>
+        <value xml:lang="zh">优惠码</value>
+        <value xml:lang="zh-CN">优惠码</value>
+    </property>
+    <property key="PartyOwner">
+        <value xml:lang="en">PartyOwner</value>
+        <value xml:lang="zh">所属会员</value>
+        <value xml:lang="zh-CN">所属会员</value>
+    </property>
+    <property key="TargetCustomers">
+        <value xml:lang="en">TargetCustomers</value>
+        <value xml:lang="zh">目标客户</value>
+        <value xml:lang="zh-CN">目标客户</value>
+    </property>
+    <property key="GivePromoCodeToParty">
+        <value xml:lang="en">GivePromoCodeToParty</value>
+        <value xml:lang="zh">分发优惠码给会员</value>
+        <value xml:lang="zh-CN">分发优惠码给会员</value>
+    </property>
+    <property key="PromoProduct">
+        <value xml:lang="en">PromoProduct</value>
+        <value xml:lang="zh">可优惠的产品</value>
+        <value xml:lang="zh-CN">可优惠的产品</value>
+    </property>
+    <property key="CodeForPromoProduct">
+        <value xml:lang="en">CodeForPromoProduct</value>
+        <value xml:lang="zh">该促销活动下面的优惠码仅适用于以下产品</value>
+        <value xml:lang="zh-CN">该促销活动下面的优惠码仅适用于以下产品</value>
+    </property>
+    <property key="CreatePromoCode">
+        <value xml:lang="en">CreatePromoCode</value>
+        <value xml:lang="zh">生成优惠码</value>
+        <value xml:lang="zh-CN">生成优惠码</value>
+    </property>
+    <property key="CreatePromoCodeTip">
+        <value xml:lang="en">CreatePromoCodeTip</value>
+        <value xml:lang="zh">系统将会为你自动生成相应数量的优惠码</value>
+        <value xml:lang="zh-CN">系统将会为你自动生成相应数量的优惠码</value>
+    </property>
+    <property key="MyCustomers">
+        <value xml:lang="en">MyCustomers</value>
+        <value xml:lang="zh">我的客户</value>
+        <value xml:lang="zh-CN">我的客户</value>
+    </property>
+    <property key="AddCustomers">
+        <value xml:lang="en">AddCustomers</value>
+        <value xml:lang="zh">添加客户</value>
+        <value xml:lang="zh-CN">添加客户</value>
+    </property>
+    <property key="HasCodeUnabled">
+        <value xml:lang="en">HasCodeUnabled</value>
+        <value xml:lang="zh">每个用户只能获得一个优惠码，已有用优惠码的用户不能再次添加</value>
+        <value xml:lang="zh-CN">每个用户只能获得一个优惠码，已有用优惠码的用户不能再次添加</value>
+    </property>
+</resource>

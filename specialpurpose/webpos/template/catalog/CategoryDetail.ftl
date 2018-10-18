@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#if productCategoryMembers??>
-<table>
+<table class="basic-table uk-table">
   <#assign numButton = 1/>
   <#assign cell = 0/>
   <tr>    

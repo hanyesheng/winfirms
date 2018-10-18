@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofbiz-component name="webmanager"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-component.xsd">
+    <!-- define resource loaders; most common is to use the component resource loader -->
+    <resource-loader name="main" type="component"/>
+
+    <!-- place the config directory on the classpath to access configuration files -->
+    <classpath type="dir" location="config"/>
+    <classpath type="dir" location="dtd"/>
+
+    <!-- entity resources: model(s), eca(s), group, and data definitions -->
+    <entity-resource type="model" reader-name="main" loader="main" location="entitydef/entitymodel.xml"/>
+    <!-- <entity-resource type="eca" reader-name="main" loader="main" location="entitydef/eecas.xml"/> -->
+    <entity-resource type="data" reader-name="webmgr" loader="main" location="data/WebManagerTypeData.xml"/>
+    <entity-resource type="data" reader-name="webmgr" loader="main" location="data/WebManagerSecurityPermissionSeedData.xml"/>
+    <entity-resource type="data" reader-name="webmgr" loader="main" location="data/WebManagerSecurityGroupDemoData.xml"/>
+    <entity-resource type="data" reader-name="webmgr" loader="main" location="data/WebManagerDemoData.xml"/>
+
+    <!-- service resources: model(s), eca(s) and group definitions -->
+    <service-resource type="model" loader="main" location="servicedef/services.xml"/>
+    <!--
+    <service-resource type="eca" loader="main" location="servicedef/secas.xml"/>
+    <service-resource type="group" loader="main" location="servicedef/groups.xml"/>
+    -->
+
+    <test-suite loader="main" location="testdef/WebManagerTests.xml"/>
+
+    <!-- web applications; will be mounted when using the embedded container -->
+    <webapp name="web"
+        title="WebManager"
+        server="default-server"
+        location="webapp/webmgr"
+        base-permission="OFBTOOLS,WEBMANAGER"
+        mount-point="/webmgr"
+        app-bar-display="true"/>
+</ofbiz-component>

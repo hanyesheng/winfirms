@@ -87,7 +87,7 @@ function enableSubmitButton() {
       </select>
       <input id="submitButton" type="button" onclick="javascript:runAction();" value="${uiLabelMap.CommonRun}" disabled="disabled" />
     </div>
-    <table class="basic-table hover-bar" cellspacing="0">
+    <table class="basic-table hover-bar uk-table" cellspacing="0">
       <#-- Header Begins -->
       <tr class="header-row-2">
         <td width="9%"><label><input type="checkbox" id="checkAllInvoices" name="checkAllInvoices" onchange="javascript:toggleInvoiceId(this);"/> ${uiLabelMap.CommonSelectAll}</label></td>

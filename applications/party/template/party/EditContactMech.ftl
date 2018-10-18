@@ -22,7 +22,7 @@ under the License.
     <h1>${uiLabelMap.PartyCreateNewContact}</h1>
     <form method="post" action="<@ofbizUrl>editcontactmech</@ofbizUrl>" name="createcontactmechform">
       <input type="hidden" name="partyId" value="${partyId}" />
-      <table class="basic-table" cellspacing="0">
+      <table class="basic-table uk-table" cellspacing="0">
         <tr>
           <td class="label">${uiLabelMap.PartySelectContactType}</td>
           <td>
@@ -45,7 +45,7 @@ under the License.
     <#if contactMechPurposeType??>
       <p>(${uiLabelMap.PartyMsgContactHavePurpose} <b>"${contactMechPurposeType.get("description",locale)!}"</b>)</p>
     </#if>
-    <table class="basic-table" cellspacing="0">
+    <table class="basic-table uk-table" cellspacing="0">
       <form method="post" action="<@ofbizUrl>${mechMap.requestName}</@ofbizUrl>" name="editcontactmechform" id="editcontactmechform">
         <input type="hidden" name="DONE_PAGE" value="${donePage}" />
         <input type="hidden" name="contactMechTypeId" value="${mechMap.contactMechTypeId}" />
@@ -57,12 +57,12 @@ under the License.
   <#else>  
     <h1>${uiLabelMap.PartyEditContactInformation}</h1>
     <div id="mech-purpose-types">
-      <table class="basic-table" cellspacing="0">
+      <table class="basic-table uk-table" cellspacing="0">
       <#if mechMap.purposeTypes?has_content>
         <tr>
           <td class="label">${uiLabelMap.PartyContactPurposes}</td>
           <td>
-            <table class="basic-table" cellspacing="0">
+            <table class="basic-table uk-table" cellspacing="0">
               <#if mechMap.partyContactMechPurposes?has_content>
                 <#list mechMap.partyContactMechPurposes as partyContactMechPurpose>
                   <#assign contactMechPurposeType = partyContactMechPurpose.getRelatedOne("ContactMechPurposeType", true)>

@@ -19,10 +19,10 @@
 #####################################################################
 
 # set the parent directory as OFBiz Home
-OFBIZ_HOME="$( cd -P "$( dirname "$0" )" && pwd )"/..
+OFBIZ_HOME=/mnt/web/winfirms
 
 # console log file
-OFBIZ_LOG=runtime/logs/console.log
+OFBIZ_LOG=$OFBIZ_HOME/runtime/logs/console.log
 
 # delete the last log
 rm -f $OFBIZ_LOG
@@ -32,4 +32,4 @@ rm -f $OFBIZ_LOG
 # JLR post Gradle comment, not sure this is still true...
 
 # start ofbiz
-(cd "$OFBIZ_HOME" && exec gradlew ofbiz)
+(cd "$OFBIZ_HOME" && exec ./gradlew ofbiz)

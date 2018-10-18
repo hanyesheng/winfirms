@@ -21,8 +21,8 @@ under the License.
 <#else>
     <a href="<@ofbizUrl>EditCategoryProducts?productCategoryId=${productCategoryId!}&amp;activeOnly=true</@ofbizUrl>" class="buttontext">${uiLabelMap.ProductActiveOnly}</a>
 </#if>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <#if (listSize > 0)>
             <div class="boxhead-right">
                 <#if (viewIndex > 1)>
@@ -40,9 +40,9 @@ under the License.
             <div class="boxhead-fill">&nbsp;</div>
         </#if>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <#if (listSize == 0)>
-           <table cellspacing="0" class="basic-table">
+           <table cellspacing="0" class="basic-table uk-table">
               <tr class="header-row">
                  <td>${uiLabelMap.ProductProductNameId}</td>
                  <td>${uiLabelMap.CommonFromDateTime}</td>
@@ -56,7 +56,7 @@ under the License.
               <input type="hidden" name="VIEW_INDEX" value="${viewIndex}"/>
               <input type="hidden" name="activeOnly" value="${activeOnly.toString()}" />
               <input type="hidden" name="productCategoryId" value="${productCategoryId!}" />
-              <table cellspacing="0" class="basic-table">
+              <table cellspacing="0" class="basic-table uk-table">
                  <tr class="header-row">
                     <td>${uiLabelMap.ProductProductNameId}</td>
                     <td>${uiLabelMap.CommonFromDateTime}</td>
@@ -77,7 +77,7 @@ under the License.
                       <#if (product.smallImageUrl)??>
                          <a href="<@ofbizUrl>EditProduct?productId=${(productCategoryMember.productId)!}</@ofbizUrl>"><img alt="Small Image" src="<@ofbizContentUrl>${product.smallImageUrl}</@ofbizContentUrl>" class="cssImgSmall" align="middle" /></a>
                       </#if>
-                      <a href="<@ofbizUrl>EditProduct?productId=${(productCategoryMember.productId)!}</@ofbizUrl>" class="buttontext"><#if product??>${(product.internalName)!}</#if> [${(productCategoryMember.productId)!}]</a>
+                      <a href="<@ofbizUrl>EditProduct?productId=${(productCategoryMember.productId)!}</@ofbizUrl>" class="buttontext"><#if product??>${product.productName!}-[${product.internalName!}]</#if> [${(productCategoryMember.productId)!}]</a>
                     </td>
                     <td <#if hasntStarted> style="color: red;"</#if>>${(productCategoryMember.fromDate)!}</td>
                     <td align="center">
@@ -125,7 +125,7 @@ under the License.
            </#list>        
       </#if>
     </div>
-    <div class="screenlet-title-bar">
+    <div class="screenlet-title-bar md-card-toolbar">
         <#if (listSize > 0)>
             <div class="boxhead-right">
                 <#if (viewIndex > 1)>
@@ -144,12 +144,12 @@ under the License.
         </#if>
     </div>
 </div>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductAddProductCategoryMember}:</h3>
     </div>
-    <div class="screenlet-body">
-        <table cellspacing="0" class="basic-table">
+    <div class="screenlet-body md-card-content uk-overflow-container">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr><td>
                 <form method="post" action="<@ofbizUrl>addCategoryProductMember</@ofbizUrl>" style="margin: 0;" name="addProductCategoryMemberForm">
                     <input type="hidden" name="productCategoryId" value="${productCategoryId!}" />
@@ -170,12 +170,12 @@ under the License.
         </table>
     </div>
 </div>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductCopyProductCategoryMembersToAnotherCategory}:</h3>
     </div>
-    <div class="screenlet-body">
-        <table cellspacing="0" class="basic-table">
+    <div class="screenlet-body md-card-content uk-overflow-container">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr><td>
                 <form method="post" action="<@ofbizUrl>copyCategoryProductMembers</@ofbizUrl>" style="margin: 0;" name="copyCategoryProductMembersForm">
                     <input type="hidden" name="productCategoryId" value="${productCategoryId!}" />
@@ -199,12 +199,12 @@ under the License.
         </table>
     </div>
 </div>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductExpireAllProductMembers}:</h3>
     </div>
-    <div class="screenlet-body">
-        <table cellspacing="0" class="basic-table">
+    <div class="screenlet-body md-card-content uk-overflow-container">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr><td>
                 <form method="post" action="<@ofbizUrl>expireAllCategoryProductMembers</@ofbizUrl>" style="margin: 0;" name="expireAllCategoryProductMembersForm">
                     <input type="hidden" name="productCategoryId" value="${productCategoryId!}" />
@@ -219,12 +219,12 @@ under the License.
         </table>
     </div>
 </div>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductRemoveExpiredProductMembers}:</h3>
     </div>
-    <div class="screenlet-body">
-        <table cellspacing="0" class="basic-table">
+    <div class="screenlet-body md-card-content uk-overflow-container">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr><td>
                 <form method="post" action="<@ofbizUrl>removeExpiredCategoryProductMembers</@ofbizUrl>" style="margin: 0;" name="removeExpiredCategoryProductMembersForm">
                     <input type="hidden" name="productCategoryId" value="${productCategoryId!}" />

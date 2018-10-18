@@ -18,15 +18,15 @@ under the License.
 -->
 
 <#if shipment??>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <ul>
             <li class="h3">${uiLabelMap.PageTitleEditShipmentItems}</li>
         </ul>
         <br class="clear"/>
     </div>
-    <div class="screenlet-body">
-        <table cellspacing="0" class="basic-table">
+    <div class="screenlet-body md-card-content uk-overflow-container">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr class="header-row">
                 <td>${uiLabelMap.ProductItem}</td>
                 <td>&nbsp;</td>
@@ -143,8 +143,8 @@ under the License.
     </div>
 </div>
 <#else>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <ul>
             <li class="h3">${uiLabelMap.ProductShipmentNotFoundId} : [${shipmentId!}]</li>
         </ul>

@@ -24,7 +24,7 @@ under the License.
           <div>
             <a href='<@ofbizUrl>EditProduct?productId=${product.productId}</@ofbizUrl>' class='buttontext'>
               <#if product.internalName?has_content>
-                ${product.internalName}
+               ${product.productName!}-[${product.internalName!}]
               <#else>
                 ${product.productName?default("${uiLabelMap.CommonNo} ${uiLabelMap.ProductInternalName} / ${uiLabelMap.ProductProductName}")}
               </#if>    

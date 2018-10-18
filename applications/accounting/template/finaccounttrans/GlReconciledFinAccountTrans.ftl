@@ -21,21 +21,21 @@ under the License.
   <input name="_useRowSubmit" type="hidden" value="Y"/>
   <input name="finAccountId" type="hidden" value="${finAccountId}"/>
   <input name="glReconciliationId" type="hidden" value="${glReconciliationId}"/>
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <ul>
         <li class="h3">${uiLabelMap.AccountingCurrentBankReconciliation}</li>
       </ul>
       <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <a href="<@ofbizUrl>EditFinAccountReconciliations?finAccountId=${finAccountId}&amp;glReconciliationId=${glReconciliationId}</@ofbizUrl>" class="buttontext">${uiLabelMap.CommonEdit}</a>
       <#assign finAcctTransCondList = delegator.findByAnd("FinAccountTrans", {"glReconciliationId" : glReconciliationId, "statusId" : "FINACT_TRNS_CREATED"}, null, false)>
       <#if finAcctTransCondList?has_content>
         <a href="javascript:document.CancelBankReconciliationForm.submit();" class="buttontext">${uiLabelMap.AccountingCancelBankReconciliation}</a>
       </#if>
       <#if currentGlReconciliation?has_content>
-        <table>
+        <table class="basic-table uk-table">
           <tr>
             <td><span class="label">${uiLabelMap.FormFieldTitle_glReconciliationName}</span></td>
             <td>${currentGlReconciliation.glReconciliationName!}</td>
@@ -71,16 +71,16 @@ under the License.
       </#if>
     </div>
   </div>
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <ul>
         <li class="h3">${uiLabelMap.AccountingPreviousBankReconciliation}</li>
       </ul>
       <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <#if previousGlReconciliation?has_content>
-        <table>
+        <table class="basic-table uk-table">
           <tr>
             <td><span class="label">${uiLabelMap.FormFieldTitle_glReconciliationName}</span></td>
             <td>${previousGlReconciliation.glReconciliationName!}</td>
@@ -116,16 +116,16 @@ under the License.
       </#if>
     </div>
   </div>
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <ul>
         <li class="h3">${uiLabelMap.AccountingFinAcctTransAssociatedToGlReconciliation}</li>
       </ul>
       <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <#if finAccountTransList?has_content>
-        <table class="basic-table hover-bar" cellspacing="0">
+        <table class="basic-table hover-bar uk-table" cellspacing="0">
           <tr class="header-row-2">
             <th>${uiLabelMap.FormFieldTitle_finAccountTransId}</th>
             <th>${uiLabelMap.FormFieldTitle_finAccountTransType}</th>

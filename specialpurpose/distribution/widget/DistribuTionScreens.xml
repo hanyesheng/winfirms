@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <screen name="main">
+        <section>
+            <actions>
+                <set field="headerItem" value="main"/>
+                <set field="menuCol" value="1"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-one entity-name="Party" value-field="party"/>
+                <entity-one entity-name="Person" value-field="person"/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
+				<entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <order-by field-name="-fromDate"/>
+              	</entity-and>
+                <script location="component://ecommerce/groovyScripts/customer/ViewProfile.groovy"/>
+                <script location="component://ecommerce/groovyScripts/customer/ChangePassword.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="DistribuTionCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<platform-specific><html><html-template location="component://distribution/webapp/distributionmgr/main.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+	<screen name="editperson">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditPerson"/>
+                <get-related-one value-field="userLogin" relation-name="Person" to-value-field="person"/>
+                <set field="donePage" from-field="parameters.DONE_PAGE" default-value="viewprofile"/>
+                <set field="menuCol" value="1"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-one entity-name="Party" value-field="party"/>
+                <entity-one entity-name="Person" value-field="person"/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
+				<entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <order-by field-name="-fromDate"/>
+              	</entity-and>
+              	<!--上级：课程等-->
+                <entity-condition entity-name="PartyRelationship" list="PartyRelationship">
+                    <condition-list combine="and">
+                        <condition-expr field-name="statusId" operator="equals" value="PARTYREL_CREATED"/>
+                        <condition-expr field-name="partyRelationshipTypeId" operator="equals" value="CHILD"/>
+                        <condition-expr field-name="roleTypeIdTo" operator="equals" value="INCUBATOR"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <!--会员组-->
+                <entity-and list="PartyGroup" entity-name="PartyGroup">
+               	</entity-and>
+                <script location="component://ecommerce/groovyScripts/customer/EditPerson.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="DistribuTionCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">               
+                        <platform-specific><html><html-template location="component://distribution/webapp/distributionmgr/EditPerson.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+   </screen>
+   <screen name="myPromoCode">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditPerson"/>
+                <set field="menuCol" value="2"/>
+                <set field="tabButtonItem" value="MyPromoCode"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-and list="ProductStorePromoAndAppl" entity-name="ProductStorePromoAndAppl">
+                	<field-map field-name="productStoreId" value="10000"/>
+               	</entity-and>
+               	<entity-and list="ProductPromo" entity-name="ProductPromo">
+               	</entity-and>
+               	<entity-and list="ProductPromoCode" entity-name="ProductPromoCode">
+               		<field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+               	</entity-and>
+               	<entity-and list="ProductPromoUseCheck" entity-name="ProductPromoUseCheck">
+               		<field-map field-name="statusId" value="ORDER_APPROVED"/>
+               	</entity-and>
+               	<entity-and list="ProductPromoCodeParty" entity-name="ProductPromoCodeParty">
+               	</entity-and>
+               	<entity-and list="ProductPromoProduct" entity-name="ProductPromoProduct">
+               	</entity-and>
+               	<entity-and list="Product" entity-name="Product">
+               	</entity-and>
+               	<entity-and list="Person" entity-name="Person">
+               	</entity-and>
+               	<entity-condition entity-name="PartyRelationship" list="PartyRelationship">
+                    <condition-list combine="and">
+                        <condition-expr field-name="statusId" operator="equals" value="PARTYREL_CREATED"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" from-field="userLogin.partyId"/>
+                        <condition-expr field-name="roleTypeIdFrom" operator="equals" value="SALES_REP"/>
+                        <condition-expr field-name="roleTypeIdTo" operator="equals" value="CUSTOMER"/>
+                    </condition-list>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <decorator-screen name="DistribuTionCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">  
+                    	<container><label style="h2">${uiLabelMap.MyPromoCode}</label></container>
+                		<include-menu name="PromoTabBar" location="component://distribution/widget/DistribuTionMenus.xml"/>             
+                        <platform-specific><html><html-template location="component://distribution/webapp/distributionmgr/promo/myPromoCode.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+   	</screen>
+   	<screen name="targetCustomers">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleEditPerson"/>
+                <set field="menuCol" value="3"/>
+                <set field="tabButtonItem" value="MyCustomers"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="PartyRelationship" list="PartyRelationship">
+                    <condition-list combine="and">
+                        <condition-expr field-name="statusId" operator="equals" value="PARTYREL_CREATED"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" from-field="userLogin.partyId"/>
+                        <condition-expr field-name="roleTypeIdFrom" operator="equals" value="SALES_REP"/>
+                        <condition-expr field-name="roleTypeIdTo" operator="equals" value="CUSTOMER"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-condition entity-name="PartyContactDetailByPurpose" list="PartyContactDetailByPurpose">
+                    <condition-list combine="and">
+                        <condition-expr field-name="contactMechPurposeTypeId" operator="equals" value="PHONE_MOBILE"/>
+                        <condition-expr field-name="contactMechTypeId" operator="equals" value="TELECOM_NUMBER"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="CUSTOMER"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-condition entity-name="PartyContactDetailByPurpose" list="PartyEmailContactDetailByPurpose">
+                    <condition-list combine="and">
+                        <condition-expr field-name="contactMechPurposeTypeId" operator="equals" value="ORDER_EMAIL"/>
+                        <condition-expr field-name="contactMechTypeId" operator="equals" value="EMAIL_ADDRESS"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="CUSTOMER"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-and list="Person" entity-name="Person">
+               	</entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="DistribuTionCommonDecorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">  
+                    	<container><label style="h2">${uiLabelMap.TargetCustomers}</label></container>
+                		<include-menu name="CustomersTabBar" location="component://distribution/widget/DistribuTionMenus.xml"/>             
+                        <platform-specific><html><html-template location="component://distribution/webapp/distributionmgr/customers/targetCustomers.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+   	</screen>
+</screens>

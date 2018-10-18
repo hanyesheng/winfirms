@@ -4,7 +4,7 @@
 <book>
 <bookinfo>
 <title>Unit Test: refentry.007</title>
-<releaseinfo role="CVS">$Id$</releaseinfo>
+<releaseinfo role="CVS">$Id: refentry.007.xml 1395307 2012-10-07 14:02:53Z jleroux $</releaseinfo>
 <author><firstname>Norman</firstname><surname>Walsh</surname>
         <affiliation><address><email>ndw@nwalsh.com</email></address></affiliation>
 </author>

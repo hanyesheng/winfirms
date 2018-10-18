@@ -22,14 +22,12 @@ package org.apache.ofbiz.webapp.event;
 import static org.apache.ofbiz.base.util.UtilGenerics.checkMap;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.Writer;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -40,21 +38,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.xmlrpc.XmlRpcException;
 import org.apache.xmlrpc.XmlRpcHandler;
 import org.apache.xmlrpc.XmlRpcRequest;
-import org.apache.xmlrpc.XmlRpcRequestConfig;
 import org.apache.xmlrpc.common.ServerStreamConnection;
 import org.apache.xmlrpc.common.XmlRpcHttpRequestConfig;
 import org.apache.xmlrpc.common.XmlRpcHttpRequestConfigImpl;
-import org.apache.xmlrpc.common.XmlRpcStreamRequestConfig;
-import org.apache.xmlrpc.parser.XmlRpcRequestParser;
 import org.apache.xmlrpc.server.AbstractReflectiveHandlerMapping;
 import org.apache.xmlrpc.server.XmlRpcHttpServer;
 import org.apache.xmlrpc.server.XmlRpcHttpServerConfig;
 import org.apache.xmlrpc.server.XmlRpcNoSuchHandlerException;
 import org.apache.xmlrpc.util.HttpUtil;
-import org.apache.xmlrpc.util.SAXParsers;
-import org.xml.sax.InputSource;
-import org.xml.sax.XMLReader;
-import org.xml.sax.SAXException;
 import org.apache.ofbiz.base.util.Debug;
 import org.apache.ofbiz.base.util.UtilValidate;
 import org.apache.ofbiz.entity.Delegator;
@@ -216,91 +207,6 @@ public class XmlRpcEventHandler extends XmlRpcHttpServer implements EventHandler
 
             return true;
         }
-    }
-
-    @Override
-    public void execute(XmlRpcStreamRequestConfig pConfig,
-            ServerStreamConnection pConnection) throws XmlRpcException {
-        try {
-            Object result = null;
-            boolean foundError = false;
-
-            try (InputStream istream = getInputStream(pConfig, pConnection)) {
-                XmlRpcRequest request = getRequest(pConfig, istream);
-                result = execute(request);
-            } catch (Exception e) {
-                Debug.logError(e, module);
-                foundError = true;
-            }
-
-            ByteArrayOutputStream baos;
-            OutputStream initialStream;
-            if (isContentLengthRequired(pConfig)) {
-                baos = new ByteArrayOutputStream();
-                initialStream = baos;
-            } else {
-                baos = null;
-                initialStream = pConnection.newOutputStream();
-            }
-
-            try (OutputStream ostream = getOutputStream(pConnection, pConfig, initialStream)) {
-                if (!foundError) {
-                    writeResponse(pConfig, ostream, result);
-                } else {
-                    writeError(pConfig, ostream, new Exception("Failed to read XML-RPC request. Please check logs for more information"));
-                }
-            }
-
-            if (baos != null) {
-                try (OutputStream dest = getOutputStream(pConfig, pConnection, baos.size())) {
-                    baos.writeTo(dest);
-                }
-            }
-
-            pConnection.close();
-            pConnection = null;
-        } catch (IOException e) {
-            throw new XmlRpcException("I/O error while processing request: " + e.getMessage(), e);
-        } finally {
-            if (pConnection != null) {
-                try {
-                    pConnection.close();
-                } catch (IOException e) {
-                    Debug.logError(e, "Unable to close stream connection");
-                }
-            }
-        }
-    }
-
-    protected XmlRpcRequest getRequest(final XmlRpcStreamRequestConfig pConfig, InputStream pStream)
-            throws XmlRpcException {
-        final XmlRpcRequestParser parser = new XmlRpcRequestParser(pConfig, getTypeFactory());
-        final XMLReader xr = SAXParsers.newXMLReader();
-        xr.setContentHandler(parser);
-        try {
-            xr.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
-            xr.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-            xr.setFeature("http://xml.org/sax/features/external-general-entities", false);
-            xr.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
-            xr.parse(new InputSource(pStream));
-        } catch (SAXException | IOException e) {
-            throw new XmlRpcException("Failed to parse / read XML-RPC request: " + e.getMessage(), e);
-        }
-        final List<?> params = parser.getParams();
-        return new XmlRpcRequest() {
-            public XmlRpcRequestConfig getConfig() {
-                return pConfig;
-            }
-            public String getMethodName() {
-                return parser.getMethodName();
-            }
-            public int getParameterCount() {
-                return params == null ? 0 : params.size();
-            }
-            public Object getParameter(int pIndex) {
-                return params.get(pIndex);
-            }
-        };
     }
 
     class ServiceRpcHandler extends AbstractReflectiveHandlerMapping implements XmlRpcHandler {

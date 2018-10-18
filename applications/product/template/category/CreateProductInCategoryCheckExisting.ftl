@@ -20,8 +20,8 @@ under the License.
 <#if productCategoryId?has_content>
     <a href="<@ofbizUrl>EditCategory?productCategoryId=${productCategoryId}</@ofbizUrl>" class="buttontext">[${uiLabelMap.ProductBackToEditCategory}]</a>
 </#if>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>
             <b>${uiLabelMap.ProductCheckingForExistingProductInCategory} <#if (productCategory.description)?has_content>"${productCategory.description}"</#if> [${uiLabelMap.CommonId}:${productCategoryId!}]</b>
             <#if productFeatureAndTypeDatas?has_content>
@@ -35,9 +35,9 @@ under the License.
             </#if>
         </h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <#if products?has_content>
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr>
                 <td>${uiLabelMap.ProductInternalName}</td>
                 <td>${uiLabelMap.ProductProductName}</td>
@@ -56,10 +56,10 @@ under the License.
         </#if>
     </div>
     <br />
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <form name="createProductInCategoryForm" method="post" action="<@ofbizUrl>createProductInCategory</@ofbizUrl>" style="margin: 0;">
             <input type="hidden" name="productCategoryId" value="${productCategoryId}" />
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
                 <#list productFeatureAndTypeDatas! as productFeatureAndTypeData>
                 <#assign productFeatureType = productFeatureAndTypeData.productFeatureType>
                 <#assign productFeature = productFeatureAndTypeData.productFeature>

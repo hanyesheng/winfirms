@@ -18,7 +18,7 @@ under the License.
 -->
 <div id="searchProductsResults" style="display:none">
   <form method="post" action="javascript:void(0);" id="SearchProductsResultsForm" name="SearchProductsResultsForm">
-    <table>
+    <table class="basic-table uk-table">
       <tr>
         <td width="25%">
           <label for="searchByProductIdValue"><b>&nbsp;${uiLabelMap.ProductGoodIdentification}</b></label>
@@ -48,7 +48,7 @@ under the License.
         </td>
       </tr>
     </table>
-    <table cellspacing="0" cellpadding="2" class="basic-table">
+    <table cellspacing="0" cellpadding="2" class="basic-table uk-table">
       <thead class="searchProductsResultsHead">
         <tr class="header-row">
           <td nowrap>&nbsp;</td>

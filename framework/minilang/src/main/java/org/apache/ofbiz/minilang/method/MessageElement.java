@@ -29,6 +29,7 @@ import org.w3c.dom.Element;
 
 /**
  * Implements the &lt;fail-message&gt; and &lt;fail-property&gt; elements.
+ * 
  * @see <a href="https://cwiki.apache.org/confluence/display/OFBADMIN/Mini-language+Reference#Mini-languageReference-{{<failmessage>}}">Mini-language Reference</a>
  */
 public final class MessageElement extends MiniLangElement {
@@ -48,7 +49,7 @@ public final class MessageElement extends MiniLangElement {
     }
 
     private final FlexibleStringExpander messageFse;
-    private final FlexibleStringExpander propertyFse;
+    private final String propertykey;
     private final String propertyResource;
 
     public MessageElement(Element element, SimpleMethod simpleMethod) throws MiniLangException {
@@ -60,7 +61,7 @@ public final class MessageElement extends MiniLangElement {
                 MiniLangValidate.constantPlusExpressionAttributes(simpleMethod, element, "message");
             }
             this.messageFse = FlexibleStringExpander.getInstance(element.getAttribute("message"));
-            this.propertyFse = null;
+            this.propertykey = null;
             this.propertyResource = null;
         } else {
             if (MiniLangValidate.validationOn()) {
@@ -69,7 +70,7 @@ public final class MessageElement extends MiniLangElement {
                 MiniLangValidate.constantAttributes(simpleMethod, element, "property", "resource");
             }
             this.messageFse = null;
-            this.propertyFse = FlexibleStringExpander.getInstance(element.getAttribute("property"));
+            this.propertykey = element.getAttribute("property");
             this.propertyResource = element.getAttribute("resource");
         }
     }
@@ -78,7 +79,7 @@ public final class MessageElement extends MiniLangElement {
         if (messageFse != null) {
             return messageFse.expandString(methodContext.getEnvMap());
         } else {
-            return UtilProperties.getMessage(propertyResource, propertyFse.expandString(methodContext.getEnvMap()), methodContext.getEnvMap(), methodContext.getLocale());
+            return UtilProperties.getMessage(propertyResource, propertykey, methodContext.getEnvMap(), methodContext.getLocale());
         }
     }
 
@@ -88,8 +89,8 @@ public final class MessageElement extends MiniLangElement {
         if (this.messageFse != null) {
             sb.append("<fail-message message=\"").append(this.messageFse).append("\" />");
         }
-        if (this.propertyFse != null) {
-            sb.append("<fail-property property=\"").append(this.propertyFse).append(" resource=\"").append(this.propertyResource).append("\" />");
+        if (this.propertykey != null) {
+            sb.append("<fail-property property=\"").append(this.propertykey).append(" resource=\"").append(this.propertyResource).append("\" />");
         }
         return sb.toString();
     }

@@ -17,12 +17,12 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#if productPromoId?? && productPromo??>
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <h3>${uiLabelMap.PageTitleEditProductPromoStores}</h3>
         </div>
-        <div class="screenlet-body">
-            <table cellspacing="0" class="basic-table">
+        <div class="screenlet-body md-card-content uk-overflow-container">
+            <table cellspacing="0" class="basic-table uk-table">
                 <tr class="header-row">
                     <td><b>${uiLabelMap.ProductStoreNameId}</b></td>
                     <td><b>${uiLabelMap.CommonFromDateTime}</b></td>
@@ -71,11 +71,11 @@ under the License.
             </table>
         </div>
     </div>
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <h3>${uiLabelMap.ProductAddStorePromo}</h3>
         </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <form method="post" action="<@ofbizUrl>promo_createProductStorePromoAppl</@ofbizUrl>" name="addProductPromoToCatalog">
                 <input type="hidden" name="productPromoId" value="${productPromoId}"/>
                 <input type="hidden" name="tryEntity" value="true"/>

@@ -79,14 +79,14 @@ under the License.
     <test-suite loader="main" location="testdef/ProductTagTest.xml"/>
     <test-suite loader="main" location="testdef/ProductTest.xml"/>
 
-    <webapp name="catalog"
+    <webapp name="featured_play_list"
         title="Catalog"
         description="CatalogComponentDescription"
         server="default-server"
         location="webapp/catalog"
         base-permission="OFBTOOLS,CATALOG"
         mount-point="/catalog"/>
-    <webapp name="facility"
+    <webapp name="devices_other"
         title="Facility"
         description="FacilityComponentDescription"
         server="default-server"

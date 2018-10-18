@@ -18,12 +18,12 @@ under the License.
 -->
 
 
-<div class="screenlet">
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <h3>${uiLabelMap.WebtoolsEntityXMLRepresentation}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <p>
       <#if xmlDoc?has_content>
         ${Static["org.apache.ofbiz.base.util.UtilXml"].writeXmlDocument(xmlDoc)?replace("\n", "<br />")?replace("    ", "&nbsp;&nbsp;&nbsp;&nbsp;")}

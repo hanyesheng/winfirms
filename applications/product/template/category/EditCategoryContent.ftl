@@ -16,13 +16,13 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductOverrideSimpleFields}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <form action="<@ofbizUrl>updateCategoryContent</@ofbizUrl>" method="post" style="margin: 0;" name="categoryForm">
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
                 <tr>
                     <td width="26%" align="right" class="label"><input type="hidden" name="productCategoryId" value="${productCategoryId!}" />${uiLabelMap.ProductProductCategoryType}</td>
                     <td>&nbsp;</td>

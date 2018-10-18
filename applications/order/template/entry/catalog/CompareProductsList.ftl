@@ -16,17 +16,17 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div id="productcomparelist" class="screenlet">
-  <div class="screenlet-title-bar">
+<div id="productcomparelist" class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.ProductCompareProducts}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
   <#assign productCompareList = Static["org.apache.ofbiz.product.product.ProductEvents"].getProductCompareList(request)/>
   <#if productCompareList?has_content>
-    <table>
+    <table class="basic-table uk-table">
     <#list productCompareList as product>
       <tr>
         <td>

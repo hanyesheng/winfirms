@@ -17,16 +17,16 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<div id="partyProductStores" class="screenlet">
-  <div class="screenlet-title-bar">
+<div id="partyProductStores" class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.ProductStores}</li>
     </ul>
     <br class="clear" />
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <#if productStoreRoles?has_content>
-      <table class="basic-table" cellspacing="0">
+      <table class="basic-table uk-table" cellspacing="0">
         <tr class="header-row">
           <td>${uiLabelMap.ProductStoreNameId}</td>
           <td>${uiLabelMap.PartyRoleType}</td>

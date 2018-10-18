@@ -17,14 +17,14 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<div id="keywordsearchbox" class="screenlet">
-  <div class="screenlet-title-bar">
+<div id="keywordsearchbox" class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.ProductSearchCatalog}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form name="keywordsearchform" id="keywordsearchbox_keywordsearchform" method="post" action="<@ofbizUrl>keywordsearch</@ofbizUrl>">
       <fieldset class="inline">
         <input type="hidden" name="VIEW_SIZE" value="10" />

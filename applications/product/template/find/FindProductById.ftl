@@ -18,11 +18,11 @@ under the License.
 -->
 
 
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <div class="h3">${uiLabelMap.ProductFindProductWithIdValue}</div>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <form name="idsearchform" method="post" action="<@ofbizUrl>FindProductById</@ofbizUrl>" style="margin: 0;">
           <span class="label">${uiLabelMap.CommonId} ${uiLabelMap.CommonValue}:</span> <input type="text" name="idValue" size="20" maxlength="50" value="${idValue!}" />&nbsp;<a href="javascript:document.idsearchform.submit()" class="buttontext">${uiLabelMap.CommonFind}</a>
         </form>
@@ -32,7 +32,7 @@ under the License.
           <br />
           <h2>&nbsp;${uiLabelMap.ProductNoResultsFound}.</h2>
         <#else>
-          <table cellspacing="0" class="basic-table">
+          <table cellspacing="0" class="basic-table uk-table">
             <#assign rowClass = "1">
             <#if idProduct?has_content>
             <tr valign="middle"<#if rowClass == "1"> class="alternate-row"</#if>>

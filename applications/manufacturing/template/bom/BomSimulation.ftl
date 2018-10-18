@@ -19,28 +19,28 @@ under the License.
 
 <#if requestParameters.lookupFlag?default("N") == "Y">
     <#if selectedFeatures?has_content>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.ManufacturingSelectedFeatures}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
       <#list selectedFeatures as selectedFeature>
          <p>${selectedFeature.productFeatureTypeId} = ${selectedFeature.description!} [${selectedFeature.productFeatureId}]</p>
        </#list>
 <#else>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.ManufacturingBomSimulation}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
 </#if>
-      <table class="basic-table" cellspacing="0">
+      <table class="basic-table uk-table" cellspacing="0">
         <tr class="header-row">
           <td width="10%">${uiLabelMap.ManufacturingProductLevel}</td>
           <td width="20%">${uiLabelMap.ProductProductId}</td>
@@ -95,7 +95,7 @@ under the License.
         </#if>
       </table>
       <br />
-      <table class="basic-table" cellspacing="0">
+      <table class="basic-table uk-table" cellspacing="0">
         <tr class="header-row">
           <td width="20%">${uiLabelMap.ProductProductId}</td>
           <td width="50%">${uiLabelMap.ProductProductName}</td>

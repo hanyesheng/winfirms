@@ -56,7 +56,7 @@
         <value xml:lang="ja">OFBiz: 設定アプリケーション</value>
         <value xml:lang="pt-BR">OFBiz: Aplicativo de instalação</value>
         <value xml:lang="vi">OFBiz: Khởi tạo Ứng dụng</value>
-        <value xml:lang="zh">OFBiz：安装程序</value>
+        <value xml:lang="zh">浴火：安装程序</value>
         <value xml:lang="zh-TW">OFBiz: 設置應用程式</value>
     </property>
     <property key="SetupCompanySubtitle">

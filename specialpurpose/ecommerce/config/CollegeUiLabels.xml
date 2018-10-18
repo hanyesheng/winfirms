@@ -1,0 +1,1399 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ofbiz.apache.org/dtds/ofbiz-properties.xsd">
+    <property key="ThankYouForContactingUs">
+        <value xml:lang="en">Thank You for contacting us.</value>
+        <value xml:lang="zh">感谢您与我们联系！</value>
+    </property>
+    <property key="ProjectTeam">
+        <value xml:lang="en">ProjectTeam</value>
+        <value xml:lang="zh">项目团队</value>
+    </property>
+    <property key="ProjectComm">
+        <value xml:lang="en">ProjectComm</value>
+        <value xml:lang="zh">项目讨论</value>
+    </property>
+    <property key="ProjectDynamic">
+        <value xml:lang="en">ProjectDynamic</value>
+        <value xml:lang="zh">项目动态</value>
+    </property>
+    <property key="ProjectCreatedby">
+        <value xml:lang="en">ProjectCreatedby</value>
+        <value xml:lang="zh">项目创建者</value>
+    </property>
+    <property key="Teammates">
+        <value xml:lang="en">Teammates</value>
+        <value xml:lang="zh">团队成员</value>
+    </property>
+    <property key="CommArea">
+        <value xml:lang="en">CommArea</value>
+        <value xml:lang="zh">讨论区</value>
+    </property>
+    <property key="StartDiscuss">
+        <value xml:lang="en">StartDiscuss</value>
+        <value xml:lang="zh">发起讨论</value>
+    </property>
+    <property key="CommentInformation">
+        <value xml:lang="en">Comment Information</value>
+        <value xml:lang="zh">备注信息</value>
+    </property>
+    <property key="ProjectCreatedDate">
+        <value xml:lang="en">ProjectCreatedDate</value>
+        <value xml:lang="zh">创建日期</value>
+    </property>
+    <property key="ProjectSupportDate">
+        <value xml:lang="en">ProjectSupportDate</value>
+        <value xml:lang="zh">截止日期</value>
+    </property>
+    <property key="ProjectType">
+        <value xml:lang="en">Project Type</value>
+        <value xml:lang="zh">项目类型</value>
+    </property>
+    <property key="Joinnum">
+        <value xml:lang="en">Joinnum</value>
+        <value xml:lang="zh">参与人数</value>
+    </property>
+    <property key="Projdetail">
+        <value xml:lang="en">Projdetail</value>
+        <value xml:lang="zh">项目详情</value>
+    </property>
+    <property key="AddItemsToShoppingList">
+        <value xml:lang="en">AddItemsToShoppingList</value>
+        <value xml:lang="zh">才能添加收藏</value>
+    </property>
+    <property key="collecte">
+        <value xml:lang="en">Collecte</value>
+        <value xml:lang="zh">收藏</value>
+    </property>
+    <property key="haveCollected">
+        <value xml:lang="en">haveCollected</value>
+        <value xml:lang="zh">已收藏</value>
+    </property>
+    <property key="Otherlink">
+        <value xml:lang="en">Otherlink</value>
+        <value xml:lang="zh">友情链接</value>
+    </property>
+    <property key="ContactMechanism">
+        <value xml:lang="en">ContactMechanism</value>
+        <value xml:lang="zh">联系方式</value>
+    </property>
+    <property key="PhoneNumber">
+        <value xml:lang="en">Tel:028-87897886</value>
+        <value xml:lang="zh">电话：028-87897886</value>
+    </property>
+    <property key="EMail">
+        <value xml:lang="en">E-Mail:alphacker@126.com</value>
+        <value xml:lang="zh">邮箱：alphacker@126.com</value>
+    </property>
+    <property key="CompanyAddress1">
+        <value xml:lang="en">Company Address:四川省成都市高新西区天欣路13号</value>
+        <value xml:lang="zh">地址：四川省成都市</value>
+    </property>
+    <property key="CompanyAddress2">
+        <value xml:lang="en">Company Address:四川省成都市高新西区天欣路13号</value>
+        <value xml:lang="zh">高新西区天欣路13号</value>
+    </property>
+    <property key="Weibo">
+        <value xml:lang="en">Weibo</value>
+        <value xml:lang="zh">新浪微博：@alphacker</value>
+    </property>
+    <property key="Intro1">
+        <value xml:lang="en">Intro1</value>
+        <value xml:lang="zh">浴火孵化致力于帮你实现你的创业梦想，在这里你可以发布你的创业计划及招募信息，，还可以通过网络众筹、孵化投资等渠道为你的创业道路提供资金助力与支持，创业孵化，只有你想不到的，没有我们做不到的。</value>
+    </property>
+    <property key="ThankYouForContactingUs">
+        <value xml:lang="en">Thank You for contacting us.</value>
+        <value xml:lang="zh">感谢您与我们联系！</value>
+    </property>
+    <property key="CopyRight1">
+        <value xml:lang="en">CopyRight</value>
+        <value xml:lang="zh">版权所有  ©</value>
+    </property>
+    <property key="CopyRight2">
+        <value xml:lang="en">CopyRight</value>
+        <value xml:lang="zh"> 四川安邦易佰科技有限公司  制作维护</value>
+    </property>
+    <property key="ProductReview">
+        <value xml:lang="en">ProductReview</value>
+        <value xml:lang="zh">产品评价</value>
+    </property>
+    <property key="ProductDetail">
+        <value xml:lang="en">ProductDetail</value>
+        <value xml:lang="zh">产品详情</value>
+    </property>
+    <property key="FileDownload">
+        <value xml:lang="en">FileDownload</value>
+        <value xml:lang="zh">文件下载</value>
+    </property>
+    <property key="CommonDownload">
+        <value xml:lang="en">Download</value>
+        <value xml:lang="zh">下载</value>
+    </property>
+    <property key="ProductDiscuss">
+        <value xml:lang="en">ProductDiscuss</value>
+        <value xml:lang="zh">产品讨论</value>
+    </property>
+    <property key="StartDiscuss">
+        <value xml:lang="en">StartDiscuss</value>
+        <value xml:lang="zh">发起讨论</value>
+    </property>
+    <property key="BasicInformation">
+        <value xml:lang="en">BasicInformation</value>
+        <value xml:lang="zh">基本信息</value>
+    </property>
+    <property key="PersonalInformation">
+        <value xml:lang="en">PersonalInformation</value>
+        <value xml:lang="zh">个人资料</value>
+    </property>
+    <property key="AccountSettings">
+        <value xml:lang="en">AccountSettings</value>
+        <value xml:lang="zh">账号设置</value>
+    </property>
+    <property key="ContactInformation">
+        <value xml:lang="en">ContactInformation</value>
+        <value xml:lang="zh">联系方式</value>
+    </property>
+    <property key="MyCollection">
+        <value xml:lang="en">MyCollection</value>
+        <value xml:lang="zh">我的收藏</value>
+    </property>
+    <property key="MyCollectionProj">
+        <value xml:lang="en">MyCollectionProj</value>
+        <value xml:lang="zh">我收藏的项目</value>
+    </property>
+    <property key="MyCollectionNews">
+        <value xml:lang="en">MyCollectionNews</value>
+        <value xml:lang="zh">我收藏的服务</value>
+    </property>
+    <property key="MyProject">
+        <value xml:lang="en">MyProject</value>
+        <value xml:lang="zh">我的项目</value>
+    </property>
+    <property key="MyProjectCreate">
+        <value xml:lang="en">MyProjectCreate</value>
+        <value xml:lang="zh">我创建的项目</value>
+    </property>
+    <property key="MyProjectJoin">
+        <value xml:lang="en">MyProjectJoin</value>
+        <value xml:lang="zh">我参加的项目</value>
+    </property>
+    <property key="ProjectCreate">
+        <value xml:lang="en">ProjectCreate</value>
+        <value xml:lang="zh">创建的项目</value>
+    </property>
+    <property key="ProjectJoin">
+        <value xml:lang="en">ProjectJoin</value>
+        <value xml:lang="zh">参加的项目</value>
+    </property>
+    <property key="InitiateProject">
+        <value xml:lang="en">InitiateProject</value>
+        <value xml:lang="zh">发起项目</value>
+    </property>
+    <property key="MyMessage">
+        <value xml:lang="en">MyMessage</value>
+        <value xml:lang="zh">我的消息</value>
+    </property>
+    <property key="MyMessageDiscuss">
+        <value xml:lang="en">MyMessageDiscuss</value>
+        <value xml:lang="zh">我的讨论</value>
+    </property>
+    <property key="MyMessageApply">
+        <value xml:lang="en">MyMessageApply</value>
+        <value xml:lang="zh">我的申请</value> 
+    </property>
+    <property key="BriefIntroduction">
+        <value xml:lang="en">BriefIntroduction</value>
+        <value xml:lang="zh">简介</value>  
+    </property>
+    <property key="PersonLogo">
+        <value xml:lang="en">PersonLogo</value>
+        <value xml:lang="zh">用户头像</value>  
+    </property>
+    <property key="CommunicationEventReceive">
+        <value xml:lang="en">CommunicationEventReceive</value>
+        <value xml:lang="zh">我接收的消息</value>  
+    </property>
+    <property key="CommunicationEventSend">
+        <value xml:lang="en">CommunicationEventSend</value>
+        <value xml:lang="zh">我发送的消息</value>  
+    </property>
+    <property key="At">
+        <value xml:lang="en">At</value>
+        <value xml:lang="zh">在</value>  
+    </property>
+    <property key="SendThisMessage">
+        <value xml:lang="en">SendThisMessage</value>
+        <value xml:lang="zh">发来了这条消息</value>  
+    </property>
+    <property key="MessageFrom">
+        <value xml:lang="en">MessageFrom</value>
+        <value xml:lang="zh">来自</value>  
+    </property>
+    <property key="MySend">
+        <value xml:lang="en">MySend</value>
+        <value xml:lang="zh">我的回复</value>  
+    </property>
+    <property key="MySendNoRead">
+        <value xml:lang="en">MySendNoRead</value>
+        <value xml:lang="zh">对方暂未读取</value>  
+    </property>
+    <property key="MySendRead">
+        <value xml:lang="en">MySendRead</value>
+        <value xml:lang="zh">对方已读消息</value>  
+    </property>
+    <property key="Reminder">
+        <value xml:lang="en">Reminder</value>
+        <value xml:lang="zh">温馨提示</value>  
+    </property>
+    <property key="PersonDetail">
+        <value xml:lang="en">PersonDetail</value>
+        <value xml:lang="zh">个人介绍</value>  
+    </property>
+    <property key="PersonComm">
+        <value xml:lang="en">PersonComm</value>
+        <value xml:lang="zh">个人留言</value>  
+    </property>
+    <property key="PersonDynamic">
+        <value xml:lang="en">PersonDynamic</value>
+        <value xml:lang="zh">个人动态</value>  
+    </property>
+    <property key="Partygroupdetail">
+        <value xml:lang="en">Partygroupdetail</value>
+        <value xml:lang="zh">团队介绍</value>  
+    </property>
+    <property key="PartygroupComm">
+        <value xml:lang="en">PartygroupComm</value>
+        <value xml:lang="zh">团队留言</value>  
+    </property>
+    <property key="PartygroupDynamic">
+        <value xml:lang="en">PartygroupDynamic</value>
+        <value xml:lang="zh">团队动态</value>  
+    </property>
+    <property key="ProjectName">
+        <value xml:lang="en">Project Name</value>
+        <value xml:lang="zh">项目名称</value>
+    </property>
+    <property key="ProjectDescription">
+        <value xml:lang="en">ProjectDescription</value>
+        <value xml:lang="zh">项目描述</value>
+    </property>
+    <property key="CommonServie">
+        <value xml:lang="en">CommonServie</value>
+        <value xml:lang="zh">服务</value>
+    </property>
+    <property key="CreatProj">
+        <value xml:lang="en">CreatProj</value>
+        <value xml:lang="zh">发布普通项目</value>
+    </property>
+    <property key="CreatSeedProj">
+        <value xml:lang="en">CreatSeedProj</value>
+        <value xml:lang="zh">发布种子项目</value>
+    </property>
+    <property key="RefreshImg">
+        <value xml:lang="en">RefreshImg</value>
+        <value xml:lang="zh">图片刷新</value>
+    </property>
+    <property key="PlanLongDes">
+        <value xml:lang="en">PlanLongDes</value>
+        <value xml:lang="zh">计划详情</value>
+    </property>
+    <property key="PlanIntro">
+        <value xml:lang="en">PlanLongIntro</value>
+        <value xml:lang="zh">计划概览</value>
+    </property>
+    <property key="PlanNews">
+        <value xml:lang="en">PlanNews</value>
+        <value xml:lang="zh">计划动态</value>
+    </property>
+    <property key="PlanItem">
+        <value xml:lang="en">PlanItem</value>
+        <value xml:lang="zh">往期计划</value>
+    </property>
+    <property key="PlanFeatures">
+        <value xml:lang="en">PlanFeatures</value>
+        <value xml:lang="zh">计划特色</value>
+    </property>
+    <property key="PlanInprogress">
+        <value xml:lang="en">PlanInprogress</value>
+        <value xml:lang="zh">进行中</value>
+    </property>
+    <property key="PlanOver">
+        <value xml:lang="en">PlanOver</value>
+        <value xml:lang="zh">已结束</value>
+    </property>
+    <property key="DownloadFile">
+        <value xml:lang="en">DownloadFile</value>
+        <value xml:lang="zh">才能下载</value>
+    </property>
+    <!-- 发起项目-->
+    <property key="InitiateProject">
+        <value xml:lang="en">Initiate Project</value>
+        <value xml:lang="zh">发起项目</value>
+    </property>
+    <property key="InitiateProject1">
+        <value xml:lang="en">Male god and goddess, artifact, as long as you come, all can raise...</value>
+        <value xml:lang="zh">男神、女神、神器，只要你来，皆可发起项目......</value>
+    </property>
+    <property key="InitiateProject2">
+        <value xml:lang="en">kechuang the raise is a web site can help you achieve your dream, here you can publish your dreams, creative and business plan, and through the network platform in the face of public financing, make creative people may get the money they need, so that their dreams can be realized</value>
+        <value xml:lang="zh">浴火孵化是一家可以帮助您实现梦想的网站，在这里您可以发布您的梦想、创意和创业计划，并通过网络平台面对公众集资，让有创造力的人可能获得他们所需要的资金，以便使他们的梦想有可能实现</value>
+    </property>
+    <property key="InitiateProject3">
+        <value xml:lang="en">Read and agree to the raise of zhongchuang</value>
+        <value xml:lang="zh">阅读并同意发起项目的 </value>
+    </property>
+    <property key="InitiateProject4">
+        <value xml:lang="en">service agreement</value>
+        <value xml:lang="zh">《服务协议》</value>
+    </property>
+    <property key="InitiateProject5">
+        <value xml:lang="en">Supporters of agreement</value>
+        <value xml:lang="zh">《支持者协议》</value>
+    </property>
+    <property key="InitiateProjectNow">
+        <value xml:lang="en">Initiate Project Now</value>
+        <value xml:lang="zh">立即发起项目</value>
+    </property>
+    <property key="ProjectInformation">
+        <value xml:lang="en">Project Information</value>
+        <value xml:lang="zh">项目信息</value>
+    </property>
+    <property key="ProjectLabel">
+        <value xml:lang="en">Project Label</value>
+        <value xml:lang="zh">标签：</value>
+    </property>
+    <property key="ProjectType">
+        <value xml:lang="en">Project Type</value>
+        <value xml:lang="zh">项目类型</value>
+    </property>
+    <property key="ProjectInternalName">
+        <value xml:lang="en">Project Interna lName</value>
+        <value xml:lang="zh">项目内部名称</value>
+    </property>
+    <property key="NextPage">
+        <value xml:lang="en">Next Page</value>
+        <value xml:lang="zh">下一步</value>
+    </property>
+    <property key="InitiateProjectService1">
+        <value xml:lang="en">InitiateProjectService1</value>
+        <value xml:lang="zh">男神、女神、神器，只要你来，梦想在远方等你......</value>
+    </property>
+    <property key="CreatProjectComments">
+        <value xml:lang="en">CreatProjectComments</value>
+        <value xml:lang="zh">请填写您的项目类型、行业、特殊说明等信息</value>
+    </property>
+    <property key="ProjectContent">
+        <value xml:lang="en">ProjectContent</value>
+        <value xml:lang="zh">编辑项目内容</value>
+    </property>
+    <property key="CompleteProjectNext">
+        <value xml:lang="en">CompleteProjectNext</value>
+        <value xml:lang="zh">如果您确定完成了以上编辑，请进行下一步</value>
+    </property>
+    <property key="RealRelease">
+        <value xml:lang="en">RealRelease</value>
+        <value xml:lang="zh">确认发布</value>
+    </property>、
+    <property key="NoRelease">
+        <value xml:lang="en">NoRelease</value>
+        <value xml:lang="zh">您新建的项目暂未发布</value>
+    </property>
+    <property key="StatusRelease">
+        <value xml:lang="en">StatusRelease</value>
+        <value xml:lang="zh">发布状态</value>
+    </property>
+    <property key="InfRelease">
+        <value xml:lang="en">InfRelease</value>
+        <value xml:lang="zh">已提交您的项目，请等待审核······</value>
+    </property>
+    <property key="ReadyRelease">
+        <value xml:lang="en">ReadyRelease</value>
+        <value xml:lang="zh">准备发布······</value>
+    </property>
+    <property key="ProjectPic">
+        <value xml:lang="en">ProjectPic</value>
+        <value xml:lang="zh">项目图片</value>
+    </property>
+    <property key="ProjectDescription">
+        <value xml:lang="en">ProjectDescription</value>
+        <value xml:lang="zh">项目描述</value>
+    </property>
+    <property key="ProjectCreatedDate">
+        <value xml:lang="en">ProjectCreatedDate</value>
+        <value xml:lang="zh">创建日期</value>
+    </property>
+    <property key="ProjectSupportDate">
+        <value xml:lang="en">ProjectSupportDate</value>
+        <value xml:lang="zh">截止日期</value>
+    </property>
+    <property key="ProjectCreatedby">
+        <value xml:lang="en">ProjectCreatedby</value>
+        <value xml:lang="zh">项目创建者</value>
+    </property>
+    <property key="DeleteRelease">
+        <value xml:lang="en">DeleteRelease</value>
+        <value xml:lang="zh">取消发布</value>
+    </property>
+    <property key="Editproject">
+        <value xml:lang="en">Editproject</value>
+        <value xml:lang="zh">编辑项目信息</value>
+    </property>
+    <property key="CommentInformation">
+        <value xml:lang="en">Comment Information</value>
+        <value xml:lang="zh">备注信息</value>
+    </property>
+    <property key="ProjectName">
+        <value xml:lang="en">Project Name</value>
+        <value xml:lang="zh">项目名称</value>
+    </property>
+    <property key="OneWordInformation">
+        <value xml:lang="en">One Word Information</value>
+        <value xml:lang="zh">一句话说明</value>
+    </property>
+    <property key="NotMoreThan13Words">
+        <value xml:lang="en">Not more than 13 words</value>
+        <value xml:lang="zh">不多于13个字</value>
+    </property>
+    <property key="OneWordInformation1">
+        <value xml:lang="en">put in a nutshell</value>
+        <value xml:lang="zh">请用一句话概括项目内容（不多30个字）</value>
+    </property>
+    <property key="NotMoreThan13Words">
+        <value xml:lang="en">Not more than 13 words</value>
+        <value xml:lang="zh">不多于13个字</value>
+    </property>
+    <property key="Joinnum">
+        <value xml:lang="en">Joinnum</value>
+        <value xml:lang="zh">参与人数</value>
+    </property>
+    <property key="ProjectTeam">
+        <value xml:lang="en">ProjectTeam</value>
+        <value xml:lang="zh">项目团队</value>
+    </property>
+    <property key="ProjectComm">
+        <value xml:lang="en">ProjectComm</value>
+        <value xml:lang="zh">项目讨论</value>
+    </property>
+    <property key="ProjectDynamic">
+        <value xml:lang="en">ProjectDynamic</value>
+        <value xml:lang="zh">项目动态</value>
+    </property>
+    <property key="NoComments">
+        <value xml:lang="en">NoComments</value>
+        <value xml:lang="zh">暂无简介</value>
+    </property>
+    <property key="Teammates">
+        <value xml:lang="en">Teammates</value>
+        <value xml:lang="zh">团队成员</value>
+    </property>
+    <property key="ProjApplyContent">
+        <value xml:lang="en">ProjApplyContent</value>
+        <value xml:lang="zh">申请详细</value>
+    </property>
+    <property key="ApplyProject">
+        <value xml:lang="en">ApplyProject</value>
+        <value xml:lang="zh">申请加入项目</value>
+    </property>
+    <property key="NoteContact">
+        <value xml:lang="en">NoteContact</value>
+        <value xml:lang="zh">备注联系方式：如微信、QQ、电话等</value>
+    </property>
+    <property key="EcommerceLoggedToApply">
+        <value xml:lang="en">EcommerceLoggedToApply</value>
+        <value xml:lang="zh">您必须登录才能申请加入项目</value>
+    </property>
+    <property key="Noteammates">
+        <value xml:lang="en">Noteammates</value>
+        <value xml:lang="zh">此项目暂时没有成员加入</value>
+    </property>
+    <property key="Applyperson">
+        <value xml:lang="en">Applyperson</value>
+        <value xml:lang="zh">申请人</value>
+    </property>
+    <property key="Applyinfo">
+        <value xml:lang="en">Applyinfo</value>
+        <value xml:lang="zh">申请信息</value>
+    </property>
+    <property key="Applydate">
+        <value xml:lang="en">Applydate</value>
+        <value xml:lang="zh">申请日期</value>
+    </property>
+    <property key="Applystatus">
+        <value xml:lang="en">Applystatus</value>
+        <value xml:lang="zh">申请状态</value>
+    </property>
+    <property key="ApplyWaiting">
+        <value xml:lang="en">ApplyWaiting</value>
+        <value xml:lang="zh">您已提交申请，请等待项目负责人批准</value>
+    </property>
+    <property key="ApplyResolved">
+        <value xml:lang="en">ApplyResolved</value>
+        <value xml:lang="zh">恭喜，您已成为项目中的一员</value>
+    </property>
+    <property key="ApplyResolving">
+        <value xml:lang="en">ApplyResolving</value>
+        <value xml:lang="zh">我们已收到您的请求，正在处理，请您耐心等待。。。</value>
+    </property>
+    <property key="Youarecreater">
+        <value xml:lang="en">Youarecreater</value>
+        <value xml:lang="zh">您是项目创建者，无需申请</value>
+    </property>
+    <property key="ApplyCancelled">
+        <value xml:lang="en">ApplyCancelled</value>
+        <value xml:lang="zh">很遗憾，项目负责人拒绝了您的请求</value>
+    </property>
+    <property key="StartDiscuss">
+        <value xml:lang="en">StartDiscuss</value>
+        <value xml:lang="zh">发起讨论</value>
+    </property>
+    <property key="EntrepreneursMain">
+        <value xml:lang="en">EntrepreneursMain</value>
+        <value xml:lang="zh">大厅主页</value>
+    </property>
+    <property key="Textyourcontent">
+        <value xml:lang="en">Textyourcontent</value>
+        <value xml:lang="zh">请输入您想要搜索的内容···</value>
+    </property>
+    <property key="Readmore">
+        <value xml:lang="en">Readmore</value>
+        <value xml:lang="zh">查看详情</value>
+    </property>
+    <property key="ProCategory">
+        <value xml:lang="en">ProCategory</value>
+        <value xml:lang="zh">项目分类</value>
+    </property>
+    <property key="News">
+        <value xml:lang="en">News</value>
+        <value xml:lang="zh">资讯</value>
+    </property>
+    <property key="AllProjects">
+        <value xml:lang="en">AllProjects</value>
+        <value xml:lang="zh">所有项目</value>
+    </property>
+    <property key="RecruitStatus">
+        <value xml:lang="en">RecruitStatus</value>
+        <value xml:lang="zh">招募状态</value>
+    </property>
+    <property key="RecruitInfo">
+        <value xml:lang="en">RecruitInfo</value>
+        <value xml:lang="zh">招募信息</value>
+    </property>
+    <property key="NoRecruiting">
+        <value xml:lang="en">NoRecruiting</value>
+        <value xml:lang="zh">暂无招募信息</value>
+    </property>
+    <property key="NoMates">
+        <value xml:lang="en">NoMates</value>
+        <value xml:lang="zh">暂无成员</value>
+    </property>
+    <property key="Recruiting">
+        <value xml:lang="en">Recruiting</value>
+        <value xml:lang="zh">正在招募</value>
+    </property>
+    <property key="PrepareCreat">
+        <value xml:lang="en">PrepareCreat</value>
+        <value xml:lang="zh">我要发布</value>
+    </property>
+    <property key="CreatProj">
+        <value xml:lang="en">CreatProj</value>
+        <value xml:lang="zh">发布普通项目</value>
+    </property>
+    <property key="CreatSeedProj">
+        <value xml:lang="en">CreatSeedProj</value>
+        <value xml:lang="zh">发布种子项目</value>
+    </property>
+    <property key="RefreshImg">
+        <value xml:lang="en">RefreshImg</value>
+        <value xml:lang="zh">图片刷新</value>
+    </property>
+    <property key="PlanLongDes">
+        <value xml:lang="en">PlanLongDes</value>
+        <value xml:lang="zh">计划详情</value>
+    </property>
+    <property key="PlanIntro">
+        <value xml:lang="en">PlanLongIntro</value>
+        <value xml:lang="zh">计划概览</value>
+    </property>
+    <property key="PlanNews">
+        <value xml:lang="en">PlanNews</value>
+        <value xml:lang="zh">计划动态</value>
+    </property>
+    <property key="PlanItem">
+        <value xml:lang="en">PlanItem</value>
+        <value xml:lang="zh">往期计划</value>
+    </property>
+    <property key="PlanFeatures">
+        <value xml:lang="en">PlanFeatures</value>
+        <value xml:lang="zh">计划特色</value>
+    </property>
+    <property key="PlanInprogress">
+        <value xml:lang="en">PlanInprogress</value>
+        <value xml:lang="zh">进行中</value>
+    </property>
+    <property key="PlanOver">
+        <value xml:lang="en">PlanOver</value>
+        <value xml:lang="zh">已结束</value>
+    </property>
+    <property key="DownloadFile">
+        <value xml:lang="en">DownloadFile</value>
+        <value xml:lang="zh">才能下载</value>
+    </property>
+    <property key="Intro">
+        <value xml:lang="en">Intro</value>
+        <value xml:lang="zh">服务介绍</value>
+    </property>
+    <property key="PersonLogo">
+        <value xml:lang="en">PersonLogo</value>
+        <value xml:lang="zh">用户头像</value>  
+    </property>
+    <property key="OfDissuiss">
+        <value xml:lang="en">OfDissuiss</value>
+        <value xml:lang="zh">的讨论</value>  
+    </property>
+    <property key="Unverified">
+        <value xml:lang="en">Unverified</value>
+        <value xml:lang="zh">未认证</value>  
+    </property>
+    <property key="Gotoverify">
+        <value xml:lang="en">Gotoverify</value>
+        <value xml:lang="zh">前往认证</value>  
+    </property>
+    <property key="ChooseRole">
+        <value xml:lang="en">ChooseRole</value>
+        <value xml:lang="zh">请在下方选择您的认证角色：</value>  
+    </property>
+    <property key="RoleManager">
+        <value xml:lang="en">RoleManager</value>
+        <value xml:lang="zh">角色管理</value>  
+    </property>
+    <property key="AddRole">
+        <value xml:lang="en">AddRole</value>
+        <value xml:lang="zh">添加角色</value>  
+    </property>
+    <property key="RoleVerify">
+        <value xml:lang="en">RoleVerify</value>
+        <value xml:lang="zh">角色认证</value>  
+    </property>
+    <property key="NoPartyComments">
+        <value xml:lang="en">NoPartyComments</value>
+        <value xml:lang="zh">这个人很懒，什么都没有留下。。。</value>  
+    </property>
+    <property key="VerifyInfo">
+        <value xml:lang="en">VerifyInfo</value>
+        <value xml:lang="zh">认证信息</value>  
+    </property>
+    <property key="YourTrueName">
+        <value xml:lang="en">YourTrueName</value>
+        <value xml:lang="zh">真实姓名</value>  
+    </property>
+    <property key="PleaseWriteYourTrueName">
+        <value xml:lang="en">PleaseWriteYourTrueName</value>
+        <value xml:lang="zh">请填写你的真实姓名</value>  
+    </property>
+    <property key="RoleOneWordInformation">
+        <value xml:lang="en">RoleOneWordInformation</value>
+        <value xml:lang="zh">请一句话介绍您的角色履历或个人介绍</value>  
+    </property>
+    <property key="RoleCommentsAbout">
+        <value xml:lang="en">RoleCommentsAbout</value>
+        <value xml:lang="zh">请填写您的行业，特殊说明或其他备注信息</value>  
+    </property>
+    <property key="RoleLongDescription">
+        <value xml:lang="en">RoleLongDescription</value>
+        <value xml:lang="zh">您的履历</value>  
+    </property>
+    <property key="VerifyStepOne">
+        <value xml:lang="en">RoleLongDescription</value>
+        <value xml:lang="zh">填写基本信息</value>  
+    </property>
+    <property key="VerifyStepTwo">
+        <value xml:lang="en">VerifyStepTwo</value>
+        <value xml:lang="zh">编辑详细信息</value>  
+    </property>
+    <property key="VerifyStepThree">
+        <value xml:lang="en">VerifyStepThree</value>
+        <value xml:lang="zh">认证并生成主页</value>  
+    </property>
+    <property key="VerifyCk">
+        <value xml:lang="en">VerifyCk</value>
+        <value xml:lang="zh">创客认证</value>  
+    </property>
+    <property key="VerifyTzr">
+        <value xml:lang="en">VerifyTzr</value>
+        <value xml:lang="zh">投资人认证</value>  
+    </property>
+    <property key="VerifyGs">
+        <value xml:lang="en">VerifyTzr</value>
+        <value xml:lang="zh">公司认证</value>  
+    </property>
+    <property key="VerifyFhq">
+        <value xml:lang="en">VerifyTzr</value>
+        <value xml:lang="zh">孵化器认证</value>  
+    </property>
+    <property key="VerifiedCk">
+        <value xml:lang="en">VerifyCk</value>
+        <value xml:lang="zh">创客已认证</value>  
+    </property>
+    <property key="VerifiedTzr">
+        <value xml:lang="en">VerifyTzr</value>
+        <value xml:lang="zh">投资人已认证</value>  
+    </property>
+    <property key="VerifiedGs">
+        <value xml:lang="en">VerifyTzr</value>
+        <value xml:lang="zh">公司已认证</value>  
+    </property>
+    <property key="VerifiedFhq">
+        <value xml:lang="en">VerifyTzr</value>
+        <value xml:lang="zh">孵化器已认证</value>  
+    </property>
+    <property key="CompleteRoleVerify">
+        <value xml:lang="en">CompleteRoleVerify</value>
+        <value xml:lang="zh">如果您确定完成了以上编辑，请进行验证</value>  
+    </property>
+    <property key="VerifyOne">
+        <value xml:lang="en">VerifyOne</value>
+        <value xml:lang="zh">正在审核您的履历。。。</value>  
+    </property>
+    <property key="VerifyTwo">
+        <value xml:lang="en">VerifyTwo</value>
+        <value xml:lang="zh">审核通过。。。</value>  
+    </property>
+    <property key="VerifyThree">
+        <value xml:lang="en">VerifyThree</value>
+        <value xml:lang="zh">正在为您添加角色。。。</value>  
+    </property>
+    <property key="VerifyFour">
+        <value xml:lang="en">VerifyFour</value>
+        <value xml:lang="zh">正在生成您的角色主页。。。</value>  
+    </property>
+    <property key="VerifyFive">
+        <value xml:lang="en">VerifyFive</value>
+        <value xml:lang="zh">返回个人中心请稍候。。。</value>  
+    </property>
+    <property key="VerifyStatus">
+        <value xml:lang="en">VerifyStatus</value>
+        <value xml:lang="zh">验证状态</value>  
+    </property>
+    <property key="HasRoleNoOperate">
+        <value xml:lang="en">HasRoleNoOperate</value>
+        <value xml:lang="zh">您已拥有该角色无需进行验证</value>  
+    </property>
+    <property key="CannotCreate">
+        <value xml:lang="en">CannotCreate</value>
+        <value xml:lang="zh">发布通道暂时关闭</value>  
+    </property>
+    <property key="NoRoleToOperate">
+        <value xml:lang="en">NoRoleToOperate</value>
+        <value xml:lang="zh">您没有相应操作权限，请进行身份认证</value>  
+    </property>
+    <property key="createProjectOne">
+        <value xml:lang="en">createProjectOne</value>
+        <value xml:lang="zh">正在生成项目。。。</value>  
+    </property>
+    <property key="createProjectTwo">
+        <value xml:lang="en">createProjectTwo</value>
+        <value xml:lang="zh">正在发布项目。。。</value>  
+    </property>
+    <property key="createProjectThree">
+        <value xml:lang="en">createProjectThree</value>
+        <value xml:lang="zh">发布成功，请稍候。。。</value>  
+    </property>
+    <property key="RecruitProject">
+        <value xml:lang="en">RecruitProject</value>
+        <value xml:lang="zh">项目招募</value>  
+    </property>
+    <property key="CommonApprove">
+        <value xml:lang="en">CommonApprove</value>
+        <value xml:lang="zh">批准</value>  
+    </property>
+    <property key="CommonReject">
+        <value xml:lang="en">CommonReject</value>
+        <value xml:lang="zh">拒绝</value>  
+    </property>
+    <property key="UploadYourLogo">
+        <value xml:lang="en">UploadYourLogo</value>
+        <value xml:lang="zh">点击上传您的头像</value>  
+    </property>
+    <property key="UploadSuccess">
+        <value xml:lang="en">UploadSuccess</value>
+        <value xml:lang="zh">上传成功</value>  
+    </property>
+    <property key="UploadError">
+        <value xml:lang="en">UploadError</value>
+        <value xml:lang="zh">上传失败</value>  
+    </property>
+    <property key="ApplySend">
+        <value xml:lang="en">ApplySend</value>
+        <value xml:lang="zh">我发出的申请</value>  
+    </property>
+    <property key="ApplyReceive">
+        <value xml:lang="en">ApplyReceive</value>
+        <value xml:lang="zh">我收到的申请</value>  
+    </property>
+    <property key="EditRecruit">
+        <value xml:lang="en">EditRecruit</value>
+        <value xml:lang="zh">编辑招募信息</value>  
+    </property>
+    <property key="VerifySub">
+        <value xml:lang="en">VerifySub</value>
+        <value xml:lang="zh">用户认证</value>  
+    </property>
+    <property key="VerifiedSub">
+        <value xml:lang="en">VerifiedSub</value>
+        <value xml:lang="zh">用户已认证</value>  
+    </property>
+    <property key="Resume">
+        <value xml:lang="en">Resume</value>
+        <value xml:lang="zh">履历</value>  
+    </property>
+    <property key="SeeRoleResume">
+        <value xml:lang="en">SeeRoleResume</value>
+        <value xml:lang="zh">查看角色</value>  
+    </property>
+    <property key="AddSeedShow">
+        <value xml:lang="en">AddSeedShow</value>
+        <value xml:lang="zh">发布到种子项目</value>  
+    </property>
+    <property key="Realease">
+        <value xml:lang="en">Realease</value>
+        <value xml:lang="zh">发布</value>  
+    </property>
+    <property key="Offtheshelf">
+        <value xml:lang="en">Offtheshelf</value>
+        <value xml:lang="zh">下架</value>  
+    </property>
+    <property key="PartyProfile">
+        <value xml:lang="en">PartyProfile</value>
+        <value xml:lang="zh">个人中心</value>  
+    </property>
+    <property key="AddCommonParent">
+        <value xml:lang="en">AddCommonParent</value>
+        <value xml:lang="zh">添加班级</value>  
+    </property>
+    <property key="Course">
+        <value xml:lang="en">Course</value>
+        <value xml:lang="zh">课程</value>  
+    </property>
+    <property key="CommonQuit">
+        <value xml:lang="en">CommonQuit</value>
+        <value xml:lang="zh">退出</value>  
+    </property>
+    <property key="NoOperation">
+        <value xml:lang="en">NoOperation</value>
+        <value xml:lang="zh">切勿进行其他操作,请耐心等待</value>  
+    </property>
+    <property key="RegisteredCapital">
+        <value xml:lang="en">RegisteredCapital</value>
+        <value xml:lang="zh">注册资本</value>
+    </property>
+    <property key="CompanyCreatedDate">
+        <value xml:lang="en">CompanyCreatedDate</value>
+        <value xml:lang="zh">成立日期</value>
+    </property>
+    <property key="EquityTransferAble">
+        <value xml:lang="en">EquityTransferAble</value>
+        <value xml:lang="zh">可转让股权</value>
+    </property>
+    <property key="FinancingStage">
+        <value xml:lang="en">FinancingStage</value>
+        <value xml:lang="zh">融资阶段</value>
+    </property>
+    <property key="ProjectField">
+        <value xml:lang="en">ProjectField</value>
+        <value xml:lang="zh">项目领域</value>
+    </property>
+    <property key="FireManager">
+        <value xml:lang="en">FireManager</value>
+        <value xml:lang="zh">浴火管理平台</value>
+    </property>
+    <property key="Investors">
+        <value xml:lang="en">Investors</value>
+        <value xml:lang="zh">投资人</value>
+    </property>
+    <property key="Businessman">
+        <value xml:lang="en">Businessman</value>
+        <value xml:lang="zh">创客</value>
+    </property>
+    <property key="InvestPrefer">
+        <value xml:lang="en">InvestPrefer</value>
+        <value xml:lang="zh">投资偏好</value>
+    </property>
+    <property key="StagePrefer">
+        <value xml:lang="en">StagePrefer</value>
+        <value xml:lang="zh">阶段偏好</value>
+    </property>
+    <property key="FieldPrefer">
+        <value xml:lang="en">FieldPrefer</value>
+        <value xml:lang="zh">领域偏好</value>
+    </property>
+    <property key="InvestionsCol">
+        <value xml:lang="en">InvestionsCol</value>
+        <value xml:lang="zh">参投数量</value>
+    </property>
+    <property key="AttachFile">
+        <value xml:lang="en">AttachFile</value>
+        <value xml:lang="zh">相关文件</value>
+    </property>
+    <property key="UploadParentContentWarning">
+        <value xml:lang="en">UploadParentContentWarning</value>
+        <value xml:lang="zh">注意：上传文件的文件名注明学号，允许出现英文字符，但名字不能出现汉语，否则文件名称显示错误！！！</value>
+    </property>
+    <property key="JoininProAndComCol">
+        <value xml:lang="en">JoininProAndComCol</value>
+        <value xml:lang="zh">入驻数量(项目和公司)</value>
+    </property>
+    <property key="Invubator">
+        <value xml:lang="en">Invubator</value>
+        <value xml:lang="zh">孵化器</value>
+    </property>
+    <property key="CommonTag">
+        <value xml:lang="en">CommonTag</value>
+        <value xml:lang="zh">标签</value>
+    </property>
+    <property key="BusinessPlan">
+        <value xml:lang="en">BusinessPlan</value>
+        <value xml:lang="zh">商业计划书</value>
+    </property>
+    <property key="YouMustBeInvestor">
+        <value xml:lang="en">YouMustBeInvestor</value>
+        <value xml:lang="zh">您必须是投资人</value>
+    </property>
+    <property key="OnlyCan">
+        <value xml:lang="en">OnlyCan</value>
+        <value xml:lang="zh">才能</value>
+    </property>
+    <property key="CompanyIntro">
+        <value xml:lang="en">CompanyIntro</value>
+        <value xml:lang="zh">公司介绍</value>
+    </property>
+    <property key="BusinessInfo">
+        <value xml:lang="en">BusinessInfo</value>
+        <value xml:lang="zh">工商信息</value>
+    </property>
+    <property key="FinancingPlan">
+        <value xml:lang="en">FinancingPlan</value>
+        <value xml:lang="zh">融资计划</value>
+    </property>
+    <property key="CompanyDynamic">
+        <value xml:lang="en">CompanyDynamic</value>
+        <value xml:lang="zh">公司动态</value>
+    </property>
+    <property key="CompanyProject">
+        <value xml:lang="en">CompanyProject</value>
+        <value xml:lang="zh">运营项目</value>
+    </property>
+    <property key="PrivateLetter">
+        <value xml:lang="en">PrivateLetter</value>
+        <value xml:lang="zh">私信</value>
+    </property>
+    <property key="MyMessagePriLetter">
+        <value xml:lang="en">MyMessagePriLetter</value>
+        <value xml:lang="zh">我的私信</value>
+    </property>
+    <property key="FinancingProject">
+        <value xml:lang="en">FinancingProject</value>
+        <value xml:lang="zh">参投项目</value>
+    </property>
+    <property key="CommonFollow">
+        <value xml:lang="en">CommonFollow</value>
+        <value xml:lang="zh">关注</value>
+    </property>
+    <property key="MyFollowing">
+        <value xml:lang="en">MyFollowing</value>
+        <value xml:lang="zh">我的关注</value>
+    </property>
+    <property key="CommonFollowed">
+        <value xml:lang="en">CommonFollowed</value>
+        <value xml:lang="zh">已关注</value>
+    </property>
+    <property key="IncubatorIntro">
+        <value xml:lang="en">IncubatorIntro</value>
+        <value xml:lang="zh">孵化器介绍</value>
+    </property>
+    <property key="IncubatorProject">
+        <value xml:lang="en">IncubatorProject</value>
+        <value xml:lang="zh">在孵项目</value>
+    </property>
+    <property key="IncubatorPolicy">
+        <value xml:lang="en">IncubatorPolicy</value>
+        <value xml:lang="zh">相关政策</value>
+    </property>
+    <property key="CommonPolicy">
+        <value xml:lang="en">CommonPolicy</value>
+        <value xml:lang="zh">政策</value>
+    </property>
+    <property key="IncubatorActivity">
+        <value xml:lang="en">IncubatorActivity</value>
+        <value xml:lang="zh">相关活动</value>
+    </property>
+    <property key="IncubatorDynamic">
+        <value xml:lang="en">IncubatorDynamic</value>
+        <value xml:lang="zh">孵化器动态</value>
+    </property>
+    <property key="ActivityName">
+        <value xml:lang="en">ActivityName</value>
+        <value xml:lang="zh">活动名称</value>
+    </property>
+    <property key="ActivityDescription">
+        <value xml:lang="en">ActivityDescription</value>
+        <value xml:lang="zh">活动介绍</value>
+    </property>
+    <property key="ActivityDetail">
+        <value xml:lang="en">ActivityDetail</value>
+        <value xml:lang="zh">活动详情</value>
+    </property>
+    <property key="ActivityCreater">
+        <value xml:lang="en">ActivityCreater</value>
+        <value xml:lang="zh">主办方</value>
+    </property>
+    <property key="Signup">
+        <value xml:lang="en">Signup</value>
+        <value xml:lang="zh">报名</value>
+    </property>
+    <property key="SignupTarget">
+        <value xml:lang="en">SignupTarget</value>
+        <value xml:lang="zh">目标人数</value>
+    </property>
+    <property key="CommonPay">
+        <value xml:lang="en">Pay</value>
+        <value xml:lang="zh">付费</value>
+    </property>
+    <property key="CommonFree">
+        <value xml:lang="en">Free</value>
+        <value xml:lang="zh">免费</value>
+    </property>
+    <property key="CompleteSignup">
+        <value xml:lang="en">CompleteSignup</value>
+        <value xml:lang="zh">请前往购物车付款完成报名</value>
+    </property>
+    <property key="HasSignup">
+        <value xml:lang="en">HasSignup</value>
+        <value xml:lang="zh">已报名</value>
+    </property>
+    <property key="ActivityJoinWay">
+        <value xml:lang="en">ActivityJoinWay</value>
+        <value xml:lang="zh">报名通道</value>
+    </property>
+    <property key="ActivityDiscuss">
+        <value xml:lang="en">ActivityDiscuss</value>
+        <value xml:lang="zh">活动讨论</value>
+    </property>
+    <property key="ActivityDynamic">
+        <value xml:lang="en">ActivityDynamic</value>
+        <value xml:lang="zh">活动动态</value>
+    </property>
+    <property key="ActivityDate">
+        <value xml:lang="en">ActivityDate</value>
+        <value xml:lang="zh">活动日期</value>
+    </property>
+    <property key="ActivityJoinType">
+        <value xml:lang="en">ActivityJoinType</value>
+        <value xml:lang="zh">报名方式</value>
+    </property>
+    <property key="ActivityJoinDate">
+        <value xml:lang="en">ActivityJoinDate</value>
+        <value xml:lang="zh">报名截止日期</value>
+    </property>
+    <property key="CourseTeacher">
+        <value xml:lang="en">CourseTeacher</value>
+        <value xml:lang="zh">讲师</value>
+    </property>
+    <property key="CourseName">
+        <value xml:lang="en">CourseName</value>
+        <value xml:lang="zh">课程名称</value>
+    </property>
+    <property key="CourseInfo">
+        <value xml:lang="en">CourseInfo</value>
+        <value xml:lang="zh">课程介绍</value>
+    </property>
+    <property key="TeacherInfo">
+        <value xml:lang="en">TeacherInfo</value>
+        <value xml:lang="zh">讲师介绍</value>
+    </property>
+    <property key="CourseList">
+        <value xml:lang="en">CourseList</value>
+        <value xml:lang="zh">课程列表</value>
+    </property>
+    <property key="CourseDiscuss">
+        <value xml:lang="en">CourseDiscuss</value>
+        <value xml:lang="zh">问题讨论</value>
+    </property>
+    <property key="PlayVideo">
+        <value xml:lang="en">PlayVideo</value>
+        <value xml:lang="zh">播放视频</value>
+    </property>
+    <property key="VideoPlaying">
+        <value xml:lang="en">VideoPlaying</value>
+        <value xml:lang="zh">正在播放</value>
+    </property>
+    <property key="ActiveDegree">
+        <value xml:lang="en">ActiveDegree</value>
+        <value xml:lang="zh">活跃度</value>
+    </property>
+    <property key="FileManager">
+        <value xml:lang="en">FileManager</value>
+        <value xml:lang="zh">文件管理</value>
+    </property>
+    <property key="CommonProject">
+        <value xml:lang="en">CommonProject</value>
+        <value xml:lang="zh">项目</value>
+    </property>
+    <property key="CommonActivity">
+        <value xml:lang="en">CommonActivity</value>
+        <value xml:lang="zh">活动</value>
+    </property>
+    <property key="CreateList">
+        <value xml:lang="en">CreateList</value>
+        <value xml:lang="zh">创建收藏夹</value>
+    </property>
+    <property key="BusinessMgr">
+        <value xml:lang="en">BusinessMgr</value>
+        <value xml:lang="zh">创客管理</value>
+    </property>
+    <property key="HaveReleased">
+        <value xml:lang="en">HaveReleased</value>
+        <value xml:lang="zh">已发布</value>
+    </property>
+    <property key="UnReleased">
+        <value xml:lang="en">UnReleased</value>
+        <value xml:lang="zh">未发布</value>
+    </property>
+    <property key="CreatePrepareAlert">
+        <value xml:lang="en">CreateRecruitPrepareAlert</value>
+        <value xml:lang="zh">如果你创建了多个信息，那么项目展示页面将会展示最新创建的一个！！！</value>
+    </property>
+    <property key="FieldAndFinancingStage">
+        <value xml:lang="en">FieldAndFinancingStage</value>
+        <value xml:lang="zh">领域与投资阶段</value>
+    </property>
+    <property key="VideoIntro">
+        <value xml:lang="en">VideoIntro</value>
+        <value xml:lang="zh">短视频简介</value>
+    </property>
+    <property key="IsPublic">
+        <value xml:lang="en">IsPublic</value>
+        <value xml:lang="zh">是否公开</value>
+    </property>
+    <property key="Public">
+        <value xml:lang="en">Public</value>
+        <value xml:lang="zh">公开</value>
+    </property>
+    <property key="Hide">
+        <value xml:lang="en">Hide</value>
+        <value xml:lang="zh">隐藏</value>
+    </property>
+    <property key="OnPublic">
+        <value xml:lang="en">OnPublic</value>
+        <value xml:lang="zh">已公开</value>
+    </property>
+    <property key="UnPublic">
+        <value xml:lang="en">UnPublic</value>
+        <value xml:lang="zh">未公开</value>
+    </property>
+    <property key="CommonAbout">
+        <value xml:lang="en">CommonAbout</value>
+        <value xml:lang="zh">关于</value>
+    </property>
+    <property key="InvestorsMgr">
+        <value xml:lang="en">InvestorsMgr</value>
+        <value xml:lang="zh">投资管理</value>
+    </property>
+    <property key="IncubatorMgr">
+        <value xml:lang="en">IncubatorMgr</value>
+        <value xml:lang="zh">孵化器管理</value>
+    </property>
+    <property key="CompanyMgr">
+        <value xml:lang="en">CompanyMgr</value>
+        <value xml:lang="zh">公司管理</value>
+    </property>
+    <property key="MyProjectInvest">
+        <value xml:lang="en">MyProjectInvest</value>
+        <value xml:lang="zh">参投项目</value>
+    </property>
+    <property key="Teacher">
+        <value xml:lang="en">Teacher</value>
+        <value xml:lang="zh">教师</value>
+    </property>
+    <property key="TeacherMgr">
+        <value xml:lang="en">TeacherMgr</value>
+        <value xml:lang="zh">教师管理</value>
+    </property>
+    <property key="CourseMgr">
+        <value xml:lang="en">CourseMgr</value>
+        <value xml:lang="zh">课程管理</value>
+    </property>
+    <property key="MyActivityJoin">
+        <value xml:lang="en">MyActivityJoin</value>
+        <value xml:lang="zh">我参加的活动</value>
+    </property>
+    <property key="MyCourseCreate">
+        <value xml:lang="en">MyCourseCreate</value>
+        <value xml:lang="zh">我创建的课程</value>
+    </property>
+    <property key="MyCourseJoin">
+        <value xml:lang="en">MyCourseJoin</value>
+        <value xml:lang="zh">我参加的课程</value>
+    </property>
+    <property key="InitiateCourse">
+        <value xml:lang="en">InitiateCourse</value>
+        <value xml:lang="zh">创建课程</value>
+    </property>
+ 	<property key="CourseVideoList">
+        <value xml:lang="en">CourseVideoList</value>
+        <value xml:lang="zh">课程视频列表</value>
+    </property>
+    <property key="CourseDynamic">
+        <value xml:lang="en">CourseDynamic</value>
+        <value xml:lang="zh">课程动态</value>
+    </property>
+    <property key="CourseComm">
+        <value xml:lang="en">CourseComm</value>
+        <value xml:lang="zh">课程讨论</value>
+    </property>
+    <property key="PayReturn">
+        <value xml:lang="en">PayReturn</value>
+        <value xml:lang="zh">支付结果</value>
+    </property>
+    <property key="PayFail">
+        <value xml:lang="en">PayFail</value>
+        <value xml:lang="zh">支付失败</value>
+    </property>
+    <property key="PaySuccess">
+        <value xml:lang="en">PaySuccess</value>
+        <value xml:lang="zh">支付成功</value>
+    </property>
+    <property key="PlanNote">
+        <value xml:lang="en">PlanNote</value>
+        <value xml:lang="zh">批注</value>
+    </property>
+    <property key="SignupAndPay">
+        <value xml:lang="en">SignupAndPay</value>
+        <value xml:lang="zh">报名缴费</value>
+    </property>
+    <property key="LoggedToApplyActivity">
+        <value xml:lang="en">LoggedToApplyActivity</value>
+        <value xml:lang="zh">才能申请参加活动</value>
+    </property>
+    <property key="AddApplyActivityInfo">
+        <value xml:lang="en">AddApplyActivityInfo</value>
+        <value xml:lang="zh">填写申请信息</value>
+    </property>
+    <property key="ActivityFaq">
+        <value xml:lang="en">ActivityFaq</value>
+        <value xml:lang="zh">常见问题</value>
+    </property>
+    <property key="UnderReview">
+        <value xml:lang="en">UnderReview</value>
+        <value xml:lang="zh">审核中</value>
+    </property>
+    <property key="Refused">
+        <value xml:lang="en">Refused</value>
+        <value xml:lang="zh">已拒绝</value>
+    </property>
+    <property key="UnderReview">
+        <value xml:lang="en">UnderReview</value>
+        <value xml:lang="zh">审核中</value>
+    </property>
+    <property key="UnPay">
+        <value xml:lang="en">UnPay</value>
+        <value xml:lang="zh">未付款</value>
+    </property>
+    <property key="HasPay">
+        <value xml:lang="en">HasPay</value>
+        <value xml:lang="zh">已付款</value>
+    </property>
+    <property key="RefundInDays">
+        <value xml:lang="en">RefundInDays</value>
+        <value xml:lang="zh">我们会于三个工作日内完成退款</value>
+    </property>
+    <property key="StudUploads">
+        <value xml:lang="en">StudUploads</value>
+        <value xml:lang="zh">学员上传</value>
+    </property>
+    <property key="SchoolAndInfo">
+        <value xml:lang="en">SchoolAndInfo</value>
+        <value xml:lang="zh">你的学校，所在地及个人介绍</value>
+    </property>
+    <property key="PartyId">
+        <value xml:lang="en">PartyId</value>
+        <value xml:lang="zh">会员ID</value>
+    </property>
+    <property key="PromoTotalValue">
+        <value xml:lang="en">PromoTotalValue</value>
+        <value xml:lang="zh">优惠价格</value>
+    </property>
+    <property key="AddPromoCode">
+        <value xml:lang="en">AddPromoCode</value>
+        <value xml:lang="zh">添加优惠码</value>
+    </property>
+    <property key="PromoTotalValue">
+        <value xml:lang="en">PromoTotalValue</value>
+        <value xml:lang="zh">优惠价格</value>
+    </property>
+    <property key="MyPromoCode">
+        <value xml:lang="en">MyPromoCode</value>
+        <value xml:lang="zh">我的优惠码</value>
+    </property>
+    <property key="SeePromoCode">
+        <value xml:lang="en">LoginSeePromoCode</value>
+        <value xml:lang="zh">查看你的优惠码</value>
+    </property>
+    <property key="LoginPhoneNumber">
+        <value xml:lang="en">LoginPhoneNumber</value>
+        <value xml:lang="zh">登录手机号码</value>
+    </property>
+    <property key="Alipay">
+        <value xml:lang="en">Alipay</value>
+        <value xml:lang="zh">支付宝</value>
+    </property>
+    <property key="TotlePrice">
+        <value xml:lang="en">TotlePrice</value>
+        <value xml:lang="zh">总费用</value>
+    </property>
+    <property key="PayPrice">
+        <value xml:lang="en">PayPrice</value>
+        <value xml:lang="zh">预付款</value>
+    </property>
+    <property key="Businessman">
+        <value xml:lang="en">Businessman</value>
+        <value xml:lang="zh">创客</value>
+	</property>
+	<property key="Entrepreneurship">
+        <value xml:lang="en">Entrepreneurship</value>
+        <value xml:lang="zh">创业领域</value>
+    </property>
+	<property key="VentureProject">
+        <value xml:lang="en">VentureProject</value>
+        <value xml:lang="zh">创业项目</value>
+    </property>
+    <property key="Raisedsofar">
+        <value xml:lang="en">Raisedsofar</value>
+        <value xml:lang="zh">已众筹</value>
+    </property>
+    <property key="TargetAmount">
+        <value xml:lang="en">TargetAmount</value>
+        <value xml:lang="zh">目标金额</value>
+    </property>
+    <property key="CrowdPrice">
+        <value xml:lang="en">CrowdPrice</value>
+        <value xml:lang="zh">众筹单价</value>
+    </property>
+</resource>

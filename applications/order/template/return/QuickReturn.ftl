@@ -17,11 +17,11 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <div class="h3">${uiLabelMap.OrderReturnItems}</div>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <#-- DO NOT CHANGE THE NAME OF THIS FORM, it will break the some of the multi-service pattern features -->
         <#assign selectAllFormName = "selectAllForm"/>
         <form name="selectAllForm" method="post" action="<@ofbizUrl>makeQuickReturn</@ofbizUrl>">
@@ -40,7 +40,7 @@ under the License.
           <hr />
           <#if "CUSTOMER_RETURN" == returnHeaderTypeId>
           <h3>${uiLabelMap.FormFieldTitle_paymentMethodId}:</h3>
-          <table cellspacing="0" class="basic-table">
+          <table cellspacing="0" class="basic-table uk-table">
             <tr><td>
               <#if creditCardList?? || eftAccountList??>
                 <select name='paymentMethodId'>
@@ -66,14 +66,14 @@ under the License.
             </td></tr>
           </table>
           </#if>
-          <table cellspacing="0" class="basic-table">
+          <table cellspacing="0" class="basic-table uk-table">
             <tr><td colspan="8"><hr/></td></tr>
             <tr>
               <td colspan="8"><h3><#if "CUSTOMER_RETURN" == returnHeaderTypeId>${uiLabelMap.OrderReturnShipFromAddress}<#else>${uiLabelMap["checkhelper.select_shipping_destination"]}</#if></h3></td>
             </tr>
             <tr>
               <td colspan="8">
-                <table cellspacing="0" class="basic-table">
+                <table cellspacing="0" class="basic-table uk-table">
                   <#list shippingContactMechList as shippingContactMech>
                     <#assign shippingAddress = shippingContactMech.getRelatedOne("PostalAddress", false)>
                     <tr>

@@ -32,7 +32,7 @@ under the License.
     <li>Currency: ${(currencyUom.description)!} [${currencyUomId?default("No Currency Specified")}]</li>
 </ul>
 <div>NOTE: each set of numbers is: &lt;quantity&gt;:&lt;total amount&gt;:&lt;average amount&gt;</div>
-<table class="basic-table" cellspacing="0">
+<table class="basic-table uk-table" cellspacing="0">
     <#-- Create the header row -->
     <tr class="header-row">
         <td>Day</td>

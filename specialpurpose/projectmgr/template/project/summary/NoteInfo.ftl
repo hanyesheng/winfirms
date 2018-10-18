@@ -18,8 +18,8 @@ under the License.
 -->
 
 
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <ul>
         <li class="h3">&nbsp;${uiLabelMap.WorkEffortNotes}</li>
           <#--if project?has_content>
@@ -30,7 +30,7 @@ under the License.
       </ul>
       <br class="clear" />
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <table width='100%' border='0' cellspacing='0' cellpadding='0' class='boxbottom'>
         <tr>
           <td>
@@ -101,13 +101,13 @@ under the License.
         </tr>
       </table>
       <#if parameters.showForm??>
-        <div class="screenlet-title-bar">
+        <div class="screenlet-title-bar md-card-toolbar">
           <ul>
           <li class="h3">&nbsp;${uiLabelMap.OrderAddNote}</li>
           </ul>
           <br class="clear" />
         </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
           <form name="createnoteform" method="post"
             <#if project?has_content> action="<@ofbizUrl>createNewNotesForProject</@ofbizUrl>"
             <#else> action="<@ofbizUrl>createNewNotesForTask</@ofbizUrl>"

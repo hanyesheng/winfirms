@@ -24,8 +24,8 @@ under the License.
     }
 </script>
 
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.ProductPicklistManage}</li>
       <#if (picklistInfoList?has_content && 0 < picklistInfoList?size)>
@@ -51,7 +51,7 @@ under the License.
     <input type="hidden" name="viewIndex" value="${viewIndex}"/>
     <input type="hidden" name="facilityId" value="${facilityId}"/>
   </form>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <#if picklistInfoList?has_content>
       <#list picklistInfoList as picklistInfo>
         <#assign picklist = picklistInfo.picklist>
@@ -149,7 +149,7 @@ under the License.
             </div>
             <#if picklistBinInfo.picklistItemInfoList?has_content>
               <div style="margin-left: 30px;">
-                <table class="basic-table" cellspacing="0">
+                <table class="basic-table uk-table" cellspacing="0">
                   <tr class="header-row">
                     <td>${uiLabelMap.ProductOrderId}</td>
                     <td>${uiLabelMap.ProductOrderShipGroupId}</td>
@@ -202,7 +202,7 @@ under the License.
               </div>
               <#if picklistBinInfo.productStore.managedByLot?? && picklistBinInfo.productStore.managedByLot = "Y">
                 <div style="margin-left: 30px;">
-                  <table class="basic-table" cellspacing="0">
+                  <table class="basic-table uk-table" cellspacing="0">
                     <tr class="header-row"
                       <td>${uiLabelMap.ProductOrderId}</td>
                       <td>${uiLabelMap.ProductOrderShipGroupId}</td>

@@ -29,7 +29,7 @@
         </affiliation>
       </author>
 
-      <releaseinfo>$Id$</releaseinfo>
+      <releaseinfo>$Id: default.xsl 1395307 2012-10-07 14:02:53Z jleroux $</releaseinfo>
 
       <copyright>
         <year>2004</year>

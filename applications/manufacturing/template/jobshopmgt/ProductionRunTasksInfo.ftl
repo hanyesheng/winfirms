@@ -18,12 +18,12 @@ under the License.
 -->
 
 <#list taskInfos as taskInfo>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <#assign task = taskInfo.task>
     <h3>${task.workEffortName!} [${task.workEffortId}]</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     ${setRequestAttribute("records", taskInfo.records)}
     ${screens.render("component://manufacturing/widget/manufacturing/JobshopScreens.xml#ProductionRunTasksInfo")}
   </div>

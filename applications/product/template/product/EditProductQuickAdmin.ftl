@@ -56,18 +56,18 @@ function doPublish() {
 }
 
 </script>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.PageTitleEditProductQuickAdmin}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <!-- Name update section -->
         <form action="<@ofbizUrl>updateProductQuickAdminName</@ofbizUrl>" method="post" style="margin: 0;" name="editProduct">
             <input type="hidden" name="productId" value="${productId!}"/>
             <#if (product.isVirtual)! == "Y">
                 <input type="hidden" name="isVirtual" value="Y"/>
             </#if>
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
                 <tr>
                     <td><h2>${productId!}</h2></td>
                     <td><input type="text" name="productName" size="40" maxlength="40" value="${product.productName!}"/></td>
@@ -78,15 +78,15 @@ function doPublish() {
     </div>
 </div>
 <#if (product.isVirtual)! == "Y">
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductSelectableFeatures}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <!-- ***************************************************** Selectable features section -->
         <form action="<@ofbizUrl>EditProductQuickAdmin</@ofbizUrl>" method="post" style="margin: 0;" name="selectableFeatureTypeSelector">
             <input type="hidden" name="productId" value="${product.productId!}"/>
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
                 <tr>
                     <td colspan="2"><span class="label">${uiLabelMap.CommonType}</span>
                         <select name="productFeatureTypeId" onchange="javascript:document.selectableFeatureTypeSelector.submit();">
@@ -108,7 +108,7 @@ function doPublish() {
         <form action="<@ofbizUrl>updateProductQuickAdminSelFeat</@ofbizUrl>" method="post" style="margin: 0;" name="selectableFeature">
         <input type="hidden" name="productId" value="${product.productId!}"/>
         <input type="hidden" name="productFeatureTypeId" value="${(productFeatureTypeId)!}"/>
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr class="header-row">
                 <td><b>${uiLabelMap.ProductProductId}</b></td>
                 <td><b>&nbsp;</b></td>
@@ -149,7 +149,7 @@ function doPublish() {
             <tr>
                 <td colspan="2">&nbsp;</td>
                 <td>
-                    <table cellspacing="0" class="basic-table">
+                    <table cellspacing="0" class="basic-table uk-table">
                         <#list selectableFeatureTypes as selectableFeatureType>
                         <tr><td><a class="buttontext" href="javascript:removeSelectable('${(selectableFeatureType.get("description",locale))!}','${selectableFeatureType.productFeatureTypeId}','${product.productId}')">x</a>
                             <a class="buttontext" href="<@ofbizUrl>EditProductQuickAdmin?productFeatureTypeId=${(selectableFeatureType.productFeatureTypeId)!}&amp;productId=${product.productId!}</@ofbizUrl>">${(selectableFeatureType.get("description",locale))!}</a></td></tr>
@@ -157,7 +157,7 @@ function doPublish() {
                     </table>
                 </td>
                 <td align="right">
-                    <table cellspacing="0" class="basic-table">
+                    <table cellspacing="0" class="basic-table uk-table">
                         <tr><td align="right"><input name="applyToAll" type="submit" value="${uiLabelMap.ProductAddSelectableFeature}"/></td></tr>
                     </table>
                 </td>
@@ -168,14 +168,14 @@ function doPublish() {
 </div>
 </#if>
 <#if (product.isVariant)! == "Y">
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductDistinguishingFeatures}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <form action="<@ofbizUrl>updateProductQuickAdminDistFeat</@ofbizUrl>" method="post" style="margin: 0;" name="distFeature">
             <input type="hidden" name="productId" value="${product.productId!}"/>
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
                 <tr class="header-row">
                     <td><b>${uiLabelMap.ProductProductId}</b></td>
                 </tr>
@@ -201,11 +201,11 @@ function doPublish() {
 </div>
 </#if>
 <!-- ***************************************************** end Selectable features section -->
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductShippingDimensionsAndWeights}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <!-- ***************************************************** Shipping dimensions section -->
         <form action="<@ofbizUrl>updateProductQuickAdminShipping</@ofbizUrl>" method="post" name="updateShipping">
             <input type="hidden" name="productId" value="${product.productId!}"/>
@@ -213,7 +213,7 @@ function doPublish() {
             <input type="hidden" name="widthUomId" value="LEN_in"/>
             <input type="hidden" name="depthUomId" value="LEN_in"/>
             <input type="hidden" name="weightUomId" value="WT_oz"/>
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
                 <tr class="header-row">
                     <td><b>${uiLabelMap.ProductProductHeight}</b></td>
                     <td><b>${uiLabelMap.ProductProductWidth}</b></td>
@@ -280,14 +280,14 @@ function doPublish() {
     <!--  **************************************************** end - Shipping dimensions section -->
     </div>
 </div>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductStandardFeatures}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <!--  **************************************************** Standard Features section -->
         <#if addedFeatureTypeIds?has_content || standardFeatureAppls?has_content>
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
         <tr>
         <td>
             <#if addedFeatureTypeIds?has_content>
@@ -295,7 +295,7 @@ function doPublish() {
             <input type="hidden" name="productId" value="${product.productId!}"/>
             <input type="hidden" name="productFeatureApplTypeId" value="STANDARD_FEATURE"/>
             <input type="hidden" name="fromDate" value="${nowTimestampString}"/>
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
                 <#assign rowClass = "2">
                 <#list addedFeatureTypeIds as addedFeatureTypeId>
                     <tr valign="middle"<#if rowClass == "1"> class="alternate-row"</#if>>
@@ -324,7 +324,7 @@ function doPublish() {
         <td width="20">&nbsp;</td>
         <td valign="top">
             <#if standardFeatureAppls?has_content>
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
                 <#assign rowClass = "2">
                 <#list standardFeatureAppls as standardFeatureAppl>
                     <#assign featureId = standardFeatureAppl.productFeatureId/>
@@ -356,7 +356,7 @@ function doPublish() {
         <form action="<@ofbizUrl>EditProductQuickAdmin</@ofbizUrl>">
         <input type="hidden" name="productFeatureTypeId" value="${(productFeatureTypeId)!}"/>
         <input type="hidden" name="productId" value="${product.productId!}"/>
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr>
                 <td align="right">${uiLabelMap.ProductFeatureTypes}</td>
                 <td>
@@ -373,19 +373,19 @@ function doPublish() {
         <!--  **************************************************** end - Standard Features section -->
     </div>
 </div>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductCategories}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <!--  **************************************************** Categories section -->
         <form action="<@ofbizUrl>quickAdminAddCategories</@ofbizUrl>">
             <input type="hidden" name="fromDate" value="${nowTimestampString}"/>
             <input type="hidden" name="productId" value="${product.productId!}"/>
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
               <tr>
               <td>
-                  <table cellspacing="0" class="basic-table">
+                  <table cellspacing="0" class="basic-table uk-table">
                       <tr>
                           <td>
                               <select multiple="multiple" name="categoryId">
@@ -403,10 +403,10 @@ function doPublish() {
               </tr>
             </table>
         </form>
-        <table>
+        <table class="basic-table uk-table">
           <tr>
             <td valign="top">
-                <table cellspacing="0" class="basic-table">
+                <table cellspacing="0" class="basic-table uk-table">
                     <#assign rowClass = "2">
                     <#list productCategoryMembers as prodCatMemb>
                         <#assign prodCat = prodCatMemb.getRelatedOne("ProductCategory", false)/>
@@ -435,17 +435,17 @@ function doPublish() {
         <!--  **************************************************** end - Categories section -->
     </div>
 </div>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductPublishAndView}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
     <!--  **************************************************** publish section -->
     <#if (showPublish == "true")>
         <form action="<@ofbizUrl>quickAdminAddCategories</@ofbizUrl>" name="publish">
         <input type="hidden" name="productId" value="${product.productId!}"/>
         <input type="hidden" name="categoryId" value="${allCategoryId!}"/>
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr>
                 <td>
                     <@htmlTemplate.renderDateTimeField name="fromDate" event="" action="" className="" alert="" title="Format: yyyy-MM-dd HH:mm:ss.SSS" value="" size="25" maxlength="30" id="fromDate1" dateType="date" shortDateInput=false timeDropdownParamName="" defaultDateTimeString="" localizedIconTitle="" timeDropdown="" timeHourName="" classString="" hour1="" hour2="" timeMinutesName="" minutes="" isTwelveHour="" ampmName="" amSelected="" pmSelected="" compositeType="" formName=""/>
@@ -458,7 +458,7 @@ function doPublish() {
         <form action="<@ofbizUrl>quickAdminUnPublish</@ofbizUrl>" name="unpublish">
         <input type="hidden" name="productId" value="${product.productId!}"/>
         <input type="hidden" name="productCategoryId" value="${allCategoryId!}"/>
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr>
                 <td>
                     <@htmlTemplate.renderDateTimeField name="thruDate" event="" action="" className="" alert="" title="Format: yyyy-MM-dd HH:mm:ss.SSS" value="" size="25" maxlength="30" id="thruDate1" dateType="date" shortDateInput=false timeDropdownParamName="" defaultDateTimeString="" localizedIconTitle="" timeDropdown="" timeHourName="" classString="" hour1="" hour2="" timeMinutesName="" minutes="" isTwelveHour="" ampmName="" amSelected="" pmSelected="" compositeType="" formName=""/>

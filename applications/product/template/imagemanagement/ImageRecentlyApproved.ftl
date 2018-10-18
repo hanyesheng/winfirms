@@ -17,9 +17,9 @@ specific language governing permissions and limitations
 under the License.
 -->
         
-<table cellspacing="0" class="basic-table">
+<table cellspacing="0" class="basic-table uk-table">
     <td style="vertical-align:top;">
-        <table>
+        <table class="basic-table uk-table">
             <#if approved_0?has_content>
                 <div class="label">${date0}</div>
                 <br/>
@@ -35,7 +35,7 @@ under the License.
         </table>
     </td>
     <td style="vertical-align:top;">
-        <table>
+        <table class="basic-table uk-table">
             <#if approved_1?has_content>
                 <div class="label">${date1}</div>
                 <br/>
@@ -51,7 +51,7 @@ under the License.
         </table>
     </td>
     <td style="vertical-align:top;">
-        <table>
+        <table class="basic-table uk-table">
             <#if approved_2?has_content>
                 <div class="label">${date2}</div>
                 <br/>
@@ -67,7 +67,7 @@ under the License.
         </table>
     </td>
     <td style="vertical-align:top;">
-        <table>
+        <table class="basic-table uk-table">
             <#if approved_3?has_content>
                 <div class="label">${date3}</div>
                 <br/>
@@ -83,7 +83,7 @@ under the License.
         </table>
     </td>
     <td style="vertical-align:top;">
-        <table>
+        <table class="basic-table uk-table">
             <#if approved_4?has_content>
                 <div class="label">${date4}</div>
                 <br/>
@@ -99,7 +99,7 @@ under the License.
         </table>
     </td>
     <td style="vertical-align:top;">
-        <table>
+        <table class="basic-table uk-table">
             <#if approved_5?has_content>
                 <div class="label">${date5}</div>
                 <br/>
@@ -115,7 +115,7 @@ under the License.
         </table>
     </td>
     <td style="vertical-align:top;">
-        <table>
+        <table class="basic-table uk-table">
             <#if approved_6?has_content>
                 <div class="label">${date6}</div>
                 <br/>
@@ -131,7 +131,7 @@ under the License.
         </table>
     </td>
     <td style="vertical-align:top;">
-        <table>
+        <table class="basic-table uk-table">
             <#if approved_7?has_content>
                 <div class="label">${date7}</div>
                 <br/>
@@ -147,7 +147,7 @@ under the License.
         </table>
     </td>
     <td style="vertical-align:top;">
-        <table>
+        <table class="basic-table uk-table">
             <#if approved_8?has_content>
                 <div class="label">${date8}</div>
                 <br/>
@@ -163,7 +163,7 @@ under the License.
         </table>
     </td>
     <td style="vertical-align:top;">
-        <table>
+        <table class="basic-table uk-table">
             <#if approved_9?has_content>
                 <div class="label">${date9}</div>
                 <br/>
@@ -179,7 +179,7 @@ under the License.
         </table>
     </td>
     <td style="vertical-align:top;">
-        <table>
+        <table class="basic-table uk-table">
             <#if approved_10?has_content>
                 <div class="label">${date10}</div>
                 <br/>
@@ -195,7 +195,7 @@ under the License.
         </table>
     </td>
     <td style="vertical-align:top;">
-        <table>
+        <table class="basic-table uk-table">
             <#if approved_11?has_content>
                 <div class="label">${date11}</div>
                 <br/>
@@ -211,7 +211,7 @@ under the License.
         </table>
     </td>
     <td style="vertical-align:top;">
-        <table>
+        <table class="basic-table uk-table">
             <#if approved_12?has_content>
                 <div class="label">${date12}</div>
                 <br/>
@@ -227,7 +227,7 @@ under the License.
         </table>
     </td>
     <td style="vertical-align:top;">
-        <table>
+        <table class="basic-table uk-table">
             <#if approved_13?has_content>
                 <div class="label">${date13}</div>
                 <br/>

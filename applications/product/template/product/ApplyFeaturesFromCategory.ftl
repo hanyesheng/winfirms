@@ -33,7 +33,7 @@ under the License.
     <#if productId?has_content>
       <#assign productString = "&amp;productId=" + productId>
     </#if>
-    <table cellspacing="0" class="basic-table">
+    <table cellspacing="0" class="basic-table uk-table">
         <tr>
         <td align="right">
             <span>
@@ -52,7 +52,7 @@ under the License.
     </table>
 </#if>
 <form method="post" action="<@ofbizUrl>ApplyFeaturesToProduct</@ofbizUrl>" name="selectAllForm">
-<table cellspacing="0" class="basic-table">
+<table cellspacing="0" class="basic-table uk-table">
   <input type="hidden" name="_useRowSubmit" value="Y" />
   <input type="hidden" name="_checkGlobalScope" value="Y" />
   <input type="hidden" name="productId" value="${productId}" />

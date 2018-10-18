@@ -18,15 +18,15 @@ under the License.
 -->
 
 <!-- begin EditEftAccount.ftl -->
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <#if !eftAccount??>
       <h3>${uiLabelMap.AccountingAddNewEftAccount}</h3>
     <#else>
       <h3>${uiLabelMap.PageTitleEditEftAccount}</h3>
     </#if>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
         <div class="button-bar">
           <a href="<@ofbizUrl>${donePage}?partyId=${partyId}</@ofbizUrl>" class="smallSubmit">${uiLabelMap.CommonCancelDone}</a>
           <a href="javascript:document.editeftaccountform.submit()" class="smallSubmit">${uiLabelMap.CommonSave}</a>
@@ -38,7 +38,7 @@ under the License.
         <input type="hidden" name='paymentMethodId' value='${paymentMethodId}' />
     </#if>
         <input type="hidden" name="partyId" value="${partyId}"/>
-        <table class="basic-table" cellspacing="0">
+        <table class="basic-table uk-table" cellspacing="0">
         <tr>
           <td class="label">${uiLabelMap.AccountingNameAccount}</td>
           <td>

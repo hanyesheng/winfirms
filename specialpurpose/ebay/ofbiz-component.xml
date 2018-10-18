@@ -35,7 +35,7 @@ under the License.
     <service-resource type="model" loader="main" location="servicedef/services.xml"/>
     <service-resource type="eca" loader="main" location="servicedef/secas.xml"/>
 
-    <webapp name="ebay"
+    <webapp name="shopping_basket"
         title="Ebay"
         menu-name="secondary"
         server="default-server"

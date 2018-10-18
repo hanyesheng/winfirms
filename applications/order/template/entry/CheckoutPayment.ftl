@@ -92,8 +92,8 @@ var issuerId = "";
     <input type="hidden" name="BACK_PAGE" value="checkoutoptions" />
     <input type="hidden" name="issuerId" id="issuerId" value="" />
 
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <h3>3)${uiLabelMap.OrderHowShallYouPay}?</h3>
         </div>
         <div class="screenlet-body inline">
@@ -133,6 +133,21 @@ var issuerId = "";
                   <label for="checkOutPaymentId_PAYPAL">
                   <input type="radio" id="checkOutPaymentId_PAYPAL" name="checkOutPaymentId" value="EXT_PAYPAL" <#if "EXT_PAYPAL" == checkOutPaymentId>checked="checked"</#if> />
                   ${uiLabelMap.AccountingPayWithPayPal}</label>
+              </div>
+              </#if>
+              
+              <!--20170110clgalipay24-->
+              <#if productStorePaymentMethodTypeIdMap.EXT_ALIPAY??>
+              <div>
+                  <input type="radio" id="checkOutPaymentId_ALIPAY" name="checkOutPaymentId" value="EXT_ALIPAY" <#if "EXT_ALIPAY" == checkOutPaymentId>checked="checked"</#if> />
+                  <label for="checkOutPaymentId_ALIPAY" style="display:inline-block;">${uiLabelMap.Alipay}</label>
+              </div>
+              </#if>
+              <!--unionpay-->
+              <#if productStorePaymentMethodTypeIdMap.EXT_UNIONPAY??>
+              <div>
+                  <input type="radio" id="checkOutPaymentId_UNIONPAY" name="checkOutPaymentId" value="EXT_UNIONPAY" <#if "EXT_UNIONPAY" == checkOutPaymentId>checked="checked"</#if> />
+                  <label for="checkOutPaymentId_UNIONPAY" style="display:inline-block;">${uiLabelMap.Unionpay}</label>
               </div>
               </#if>
               <#if productStorePaymentMethodTypeIdMap.EXT_IDEAL??>
@@ -184,7 +199,7 @@ var issuerId = "";
                       <label for="checkOutPayment_${paymentMethod.paymentMethodId}">${uiLabelMap.AccountingGift}:${giftCardNumber}</label>
                         <#if paymentMethod.description?has_content>(${paymentMethod.description})</#if>
                         <a href="javascript:submitForm(document.getElementById('checkoutInfoForm'), 'EG', '${paymentMethod.paymentMethodId}');" class="button">${uiLabelMap.CommonUpdate}</a>
-                        <strong>${uiLabelMap.OrderBillUpTo}:</strong> <input type="text" size="5" class="inputBox" name="amount_${paymentMethod.paymentMethodId}" value="<#if (cart.getPaymentAmount(paymentMethod.paymentMethodId)?default(0) > 0)><@ofbizAmount amount=cart.getPaymentAmount(paymentMethod.paymentMethodId)!/></#if>"/>
+                        <strong>${uiLabelMap.OrderBillUpTo}:</strong> <input type="text" size="5" class="inputBox" name="amount_${paymentMethod.paymentMethodId}" value="<#if (cart.getPaymentAmount(paymentMethod.paymentMethodId)?default(0) > 0)>${cart.getPaymentAmount(paymentMethod.paymentMethodId)?string("##0.00")}</#if>" />
                   </div>
                  </#if>
                 <#elseif paymentMethod.paymentMethodTypeId == "CREDIT_CARD">
@@ -195,7 +210,7 @@ var issuerId = "";
                       <label for="checkOutPayment_${paymentMethod.paymentMethodId}">CC:${Static["org.apache.ofbiz.party.contact.ContactHelper"].formatCreditCard(creditCard)}</label>
                         <#if paymentMethod.description?has_content>(${paymentMethod.description})</#if>
                         <a href="javascript:submitForm(document.getElementById('checkoutInfoForm'), 'EC', '${paymentMethod.paymentMethodId}');" class="button">${uiLabelMap.CommonUpdate}</a>
-                        <label for="amount_${paymentMethod.paymentMethodId}"><strong>${uiLabelMap.OrderBillUpTo}:</strong></label><input type="text" size="5" class="inputBox" id="amount_${paymentMethod.paymentMethodId}" name="amount_${paymentMethod.paymentMethodId}" value="<#if (cart.getPaymentAmount(paymentMethod.paymentMethodId)?default(0) > 0)><@ofbizAmount amount=cart.getPaymentAmount(paymentMethod.paymentMethodId)!/></#if>" />
+                        <label for="amount_${paymentMethod.paymentMethodId}"><strong>${uiLabelMap.OrderBillUpTo}:</strong></label><input type="text" size="5" class="inputBox" id="amount_${paymentMethod.paymentMethodId}" name="amount_${paymentMethod.paymentMethodId}" value="<#if (cart.getPaymentAmount(paymentMethod.paymentMethodId)?default(0) > 0)>${cart.getPaymentAmount(paymentMethod.paymentMethodId)?string("##0.00")}</#if>" />
                   </div>
                  </#if>
                 <#elseif paymentMethod.paymentMethodTypeId == "EFT_ACCOUNT">

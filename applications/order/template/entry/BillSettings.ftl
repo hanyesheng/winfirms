@@ -34,8 +34,8 @@ function makeExpDate() {
 </script>
 
 <#if security.hasEntityPermission("ORDERMGR", "_CREATE", session) || security.hasEntityPermission("ORDERMGR", "_PURCHASE_CREATE", session)>
-<div class="screenlet">
-    <div class="screenlet-body">
+<div class="screenlet md-card">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <#if request.getAttribute("paymentMethodId")?? || ( (paymentMethodList?has_content || billingAccountList?has_content) && !requestParameters.createNew??)>
           <#-- initial screen when we have a associated party -->
           <form method="post" action="<@ofbizUrl>finalizeOrder</@ofbizUrl>" name="checkoutsetupform">

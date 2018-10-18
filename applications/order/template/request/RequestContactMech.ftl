@@ -30,12 +30,12 @@ under the License.
   <#assign telecomNumber = fulfillContactMech.getRelatedOne("TelecomNumber", true)!>
 </#if>
 
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <div class="h3">${uiLabelMap.PartyContactInformation}</div>
     </div>
-    <div class="screenlet-body">
-        <table cellspacing="0" class="basic-table">
+    <div class="screenlet-body md-card-content uk-overflow-container">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr>
                 <td align="right" valign="top" width="25%" class="label">
                     &nbsp;${label?default(uiLabelMap.PartyUnknown)}

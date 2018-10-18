@@ -16,13 +16,13 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.PageTitleScheduleJob}</h3>
   </div>
   <div class="screenlet-body" align="center">
     <form method="post" action="<@ofbizUrl>saveServiceResultsToSession</@ofbizUrl>"
-        <table class="basic-table" cellspacing="0">
+        <table class="basic-table uk-table" cellspacing="0">
           <tr class="header-row">
             <td>${uiLabelMap.WebtoolsParameterName}</td>
             <td>${uiLabelMap.WebtoolsParameterValue}</td>

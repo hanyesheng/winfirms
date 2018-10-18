@@ -17,11 +17,11 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#if productPromoCategoryIncludeList?has_content || productPromoCategoryExcludeList?has_content || productPromoCategoryAlwaysList?has_content>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <div class="h3">${uiLabelMap.OrderPromotionCategories}:</div>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <#if productPromoCategoryIncludeList?has_content>
           <div>${uiLabelMap.OrderPromotionProductsInCategories}:</div>
           <#list productPromoCategoryIncludeList as productPromoCategory>

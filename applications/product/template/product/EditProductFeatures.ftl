@@ -17,16 +17,16 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#if productId??>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.PageTitleEditProductFeatures}</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form method="post" action="<@ofbizUrl>UpdateFeatureToProductApplication</@ofbizUrl>" name="selectAllForm">
       <input type="hidden" name="_useRowSubmit" value="Y"/>
       <input type="hidden" name="_checkGlobalScope" value="Y"/>
       <input type="hidden" name="productId" value="${productId}"/>
-      <table cellspacing="0" class="basic-table">
+      <table cellspacing="0" class="basic-table uk-table">
         <tr class="header-row">
           <td><b>${uiLabelMap.CommonId}</b></td>
           <td><b>${uiLabelMap.CommonDescription}</b></td>
@@ -110,11 +110,11 @@ under the License.
   </#list>
   </div>
 </div>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.ProductAddProductFeatureFromCategory}</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form method="post" action="<@ofbizUrl>ApplyFeaturesFromCategory</@ofbizUrl>" style='margin: 0;'>
       <input type="hidden" name="productId" value="${productId}"/>
       <select name='productFeatureCategoryId' size="1">
@@ -142,11 +142,11 @@ under the License.
     </form>
   </div>
 </div>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.ProductAddProductFeatureTypeId}</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form method="post" action="<@ofbizUrl>ApplyFeatureToProductFromTypeAndCode</@ofbizUrl>" name='addFeatureByTypeIdCode'>
       <input type="hidden" name="productId" value="${productId}"/>
       <span class='label'>${uiLabelMap.ProductFeatureType}: </span>
@@ -176,11 +176,11 @@ under the License.
     </form>
   </div>
 </div>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.ProductAddProductFeatureID}</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form method="post" action="<@ofbizUrl>ApplyFeatureToProduct</@ofbizUrl>" name="addFeatureById">
       <input type="hidden" name="productId" value="${productId}"/>
       <span class="label">${uiLabelMap.CommonId}: </span>

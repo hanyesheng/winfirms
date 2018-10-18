@@ -18,12 +18,12 @@ under the License.
 -->
 
 <#if productCategoryId?? && productCategory??>
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <h3>${uiLabelMap.PageTitleEditCategoryProductCatalogs}</h3>
     </div>
-        <div class="screenlet-body">
-            <table cellspacing="0" class="basic-table">
+        <div class="screenlet-body md-card-content uk-overflow-container">
+            <table cellspacing="0" class="basic-table uk-table">
             <tr class="header-row">
                 <td><b>${uiLabelMap.ProductCatalogNameId}</b></td>
                 <td><b>${uiLabelMap.CommonType}</b></td>
@@ -80,12 +80,12 @@ under the License.
             <br />
         </div>
     </div>
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <h3>${uiLabelMap.ProductAddCatalogProductCategory}</h3>
         </div>
-        <div class="screenlet-body">
-            <table cellspacing="0" class="basic-table">
+        <div class="screenlet-body md-card-content uk-overflow-container">
+            <table cellspacing="0" class="basic-table uk-table">
                 <tr><td>
                     <form method="post" action="<@ofbizUrl>category_addProductCategoryToProdCatalog</@ofbizUrl>" style="margin: 0;" name="addNewForm">
                         <input type="hidden" name="productCategoryId" value="${productCategoryId!}"/>

@@ -54,7 +54,7 @@ under the License.
 </script>
 
 <#macro pagination>
-    <table class="basic-table" cellspacing='0'>
+    <table class="basic-table uk-table" cellspacing='0'>
          <tr>
         <td>
           <#if state.hasPrevious()>
@@ -71,17 +71,17 @@ under the License.
 </#macro>
 
 <#-- order list -->
-<div id="orderLookup" class="screenlet">
-    <div class="screenlet-title-bar">
+<div id="orderLookup" class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <ul>
         <li class="h3">${uiLabelMap.OrderLookupOrder}</li>
       </ul>
       <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <form method="post" name="findorder" action="<@ofbizUrl>orderlist</@ofbizUrl>">
         <input type="hidden" name="changeStatusAndTypeState" value="Y" />
-        <table class="basic-table" cellspacing='0'>
+        <table class="basic-table uk-table" cellspacing='0'>
           <tr>
             <td align="right" class="label">${uiLabelMap.CommonStatus}</td>
             <td>&nbsp;&nbsp;</td>
@@ -159,15 +159,15 @@ under the License.
     </div>
  </div>
 <#if hasPermission>
-  <div id="findOrdersList" class="screenlet">
-    <div class="screenlet-title-bar">
+  <div id="findOrdersList" class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <ul>
         <li class="h3">${uiLabelMap.OrderOrderList}</li>
       </ul>
       <br class="clear"/>
     </div>
-    <div class="screenlet-body">
-        <table class="basic-table hover-bar" cellspacing='0'>
+    <div class="screenlet-body md-card-content uk-overflow-container">
+        <table class="basic-table hover-bar uk-table" cellspacing='0'>
           <tr class="header-row">
             <td width="15%">${uiLabelMap.CommonDate}</td>
             <td width="10%">${uiLabelMap.OrderOrder} ${uiLabelMap.CommonNbr}</td>

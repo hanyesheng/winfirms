@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<table cellspacing="0" class="basic-table hover-bar">
+<table cellspacing="0" class="basic-table hover-bar uk-table">
   <tr class="header-row">
     <#assign firstRecord = records[0]!/>
     <#list columnNames as columnName>

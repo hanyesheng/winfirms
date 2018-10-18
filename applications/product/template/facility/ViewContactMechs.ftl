@@ -19,7 +19,7 @@ under the License.
 
 <div>
   <#if contactMeches?has_content>
-    <table class="basic-table" cellspacing="0">
+    <table class="basic-table uk-table" cellspacing="0">
       <#list contactMeches as contactMechMap>
           <#assign contactMech = contactMechMap.contactMech>
           <#assign facilityContactMech = contactMechMap.facilityContactMech>
@@ -104,6 +104,6 @@ under the License.
       </#list>
     </table>
   <#else>
-    <div class="screenlet-body">${uiLabelMap.CommonNoContactInformationOnFile}.</div>
+    <div class="screenlet-body md-card-content uk-overflow-container">${uiLabelMap.CommonNoContactInformationOnFile}.</div>
   </#if>
 </div>

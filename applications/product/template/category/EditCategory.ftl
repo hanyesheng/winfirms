@@ -22,11 +22,11 @@ function insertImageName(type,nameValue) {
 };
 </script>
 <#if fileType?has_content>
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <h3>${uiLabelMap.ProductResultOfImageUpload}</h3>
         </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <#if !(clientFileName?has_content)>
                 <div>${uiLabelMap.ProductNoFileSpecifiedForUpload}.</div>
             <#else>
@@ -38,18 +38,18 @@ function insertImageName(type,nameValue) {
         </div>
     </div>
 </#if>
-<div class="screenlet">
+<div class="screenlet md-card">
 <#if ! productCategory?has_content>
     <#if productCategoryId?has_content>
-        <div class="screenlet-title-bar">
+        <div class="screenlet-title-bar md-card-toolbar">
           <ul>
             <li class="h3">${uiLabelMap.ProductCouldNotFindProductCategoryWithId} "${productCategoryId}".</li>
           </ul>
           <br class="clear" />
         </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <form action="<@ofbizUrl>createProductCategory</@ofbizUrl>" method="post" style="margin: 0;" name="productCategoryForm">
-                <table cellspacing="0" class="basic-table">
+                <table cellspacing="0" class="basic-table uk-table">
                     <tr>
                         <td align="right" class="label">${uiLabelMap.ProductProductCategoryId}</td>
                         <td>&nbsp;</td>
@@ -58,15 +58,15 @@ function insertImageName(type,nameValue) {
                         </td>
                     </tr>
     <#else>
-        <div class="screenlet-title-bar">
+        <div class="screenlet-title-bar md-card-toolbar">
           <ul>
             <li class="h3">${uiLabelMap.PageTitleCreateProductCategory}</li>
           </ul>
           <br class="clear" />
         </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <form action="<@ofbizUrl>createProductCategory</@ofbizUrl>" method="post" style="margin: 0;" name="productCategoryForm">
-                <table cellspacing="0" class="basic-table">
+                <table cellspacing="0" class="basic-table uk-table">
                     <tr>
                         <td align="right" class="label">${uiLabelMap.ProductProductCategoryId}</td>
                         <td>&nbsp;</td>
@@ -76,13 +76,13 @@ function insertImageName(type,nameValue) {
                     </tr>
     </#if>
 <#else>
-    <div class="screenlet-title-bar">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.PageTitleEditProductCategories}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <form action="<@ofbizUrl>updateProductCategory</@ofbizUrl>" method="post" style="margin: 0;" name="productCategoryForm">
             <input type="hidden" name="productCategoryId" value="${productCategoryId}"/>
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
                 <tr>
                     <td align="right" class="label">${uiLabelMap.ProductProductCategoryId}</td>
                     <td>&nbsp;</td>
@@ -182,7 +182,19 @@ function insertImageName(type,nameValue) {
                     <td width="26%" align="right" class="label">${uiLabelMap.ProductDetailScreen}</td>
                     <td>&nbsp;</td>
                     <td width="74%">
-                        <input type="text" <#if productCategory?has_content>value="${productCategory.detailScreen!}"</#if> name="detailScreen" size="60" maxlength="250"/>
+                        <select name="detailScreen" size="1">
+                           <#if productCategory?has_content><option value="${productCategory.detailScreen!}" selected="selected">${productCategory.detailScreen!}</option></#if>
+                           <option value="component://ecommerce/widget/winfirms/CatalogScreens.xml#projectCategorydetail">${uiLabelMap.ProjectDetail}</option>
+                           <option value="component://ecommerce/widget/winfirms/CatalogScreens.xml#activityCategorydetail">${uiLabelMap.ActivityDetail}</option>
+                           <option value="component://ecommerce/widget/winfirms/CatalogScreens.xml#serviceCategorydetail">${uiLabelMap.ServiceDetail}</option>
+                           <option value="component://ecommerce/widget/winfirms/CatalogScreens.xml#courseCategorydetail">${uiLabelMap.CourseDetail}</option>
+                           <option value="component://ecommerce/widget/winfirms/CatalogScreens.xml#crowdCategorydetail">${uiLabelMap.CrowdDetail}</option>
+                           <option value="component://ecommerce/widget/winfirms/CatalogScreens.xml#companyCategorydetail">${uiLabelMap.CompanyDetail}</option>
+                           <option value="component://ecommerce/widget/winfirms/CatalogScreens.xml#investorsCategorydetail">${uiLabelMap.InvestorsDetail}</option>
+                           <option value="component://ecommerce/widget/winfirms/CatalogScreens.xml#incubatorCategorydetail">${uiLabelMap.IncubatorDetail}</option>
+                           <option value="component://ecommerce/widget/winfirms/CatalogScreens.xml#businessmanCategorydetail">${uiLabelMap.BusinessmanDetail}</option>
+                           <option value="component://ecommerce/widget/winfirms/CatalogScreens.xml#newsCategorydetail">${uiLabelMap.NewsDetail}</option>
+												</select>
                         <br /><span class="tooltip">${uiLabelMap.ProductDefaultsTo} &quot;categorydetail&quot;, ${uiLabelMap.ProductDetailScreenMessage}: &quot;component://ecommerce/widget/CatalogScreens.xml#categorydetail&quot;</span>
                     </td>
                 </tr>
@@ -208,13 +220,13 @@ function insertImageName(type,nameValue) {
         eval(toExec);
         };
     </script>
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <h3>${uiLabelMap.ProductCategoryUploadImage}</h3>
         </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <form method="post" enctype="multipart/form-data" action="<@ofbizUrl>UploadCategoryImage?productCategoryId=${productCategoryId!}&amp;upload_file_type=category</@ofbizUrl>" name="imageUploadForm">
-                <table cellspacing="0" class="basic-table">
+                <table cellspacing="0" class="basic-table uk-table">
                     <tr><td>
                         <input type="file" size="50" name="fname"/>
                         <br />
@@ -229,13 +241,13 @@ function insertImageName(type,nameValue) {
             </form>
         </div>
     </div>
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <h3>${uiLabelMap.ProductDuplicateProductCategory}</h3>
         </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <form action="<@ofbizUrl>DuplicateProductCategory</@ofbizUrl>" method="post" style="margin: 0;">
-                <table cellspacing="0" class="basic-table">
+                <table cellspacing="0" class="basic-table uk-table">
                     <tr><td>
                         ${uiLabelMap.ProductDuplicateProductCategorySelected}:
                         <input type="hidden" name="oldProductCategoryId" value="${productCategoryId}"/>

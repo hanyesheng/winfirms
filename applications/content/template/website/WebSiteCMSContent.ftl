@@ -91,7 +91,7 @@
         <#assign dataResourceTypeId = "NONE"/>
     <#else>
         <form name="cmsdatatype">
-            <table>
+            <table class="basic-table uk-table">
                 <tr>
                     <td class="label">${uiLabelMap.ContentDataType}</td>
                     <td>
@@ -181,7 +181,7 @@
         <input type="hidden" name="webSiteId" value="${webSiteId}"/>
         <input type="hidden" name="dataResourceName" value="${(dataResource.dataResourceName)!}"/>
 
-        <table>
+        <table class="basic-table uk-table">
           <#if (content?has_content)>
             <tr>
                 <td class="label">${uiLabelMap.FormFieldTitle_contentId}</td>

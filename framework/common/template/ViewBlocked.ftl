@@ -19,10 +19,10 @@ under the License.
 
 <center>
   <div class="screenlet login-screenlet">
-    <div class="screenlet-title-bar">
+    <div class="screenlet-title-bar md-card-toolbar">
       <h3>${uiLabelMap.CommonViewBlocked}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       ${errorMessage!}
       <br />
     </div>

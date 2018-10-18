@@ -18,8 +18,8 @@ under the License.
 -->
 
 <#-- ==================== Party Selection dialog box ========================= -->
-<div class="screenlet">
-    <div class="screenlet-body">
+<div class="screenlet md-card">
+    <div class="screenlet-body md-card-content uk-overflow-container">
 <table border="0" width="100%" cellspacing="0" cellpadding="0">
   <form method="post" action="<@ofbizUrl>finalizeOrder</@ofbizUrl>" name="checkoutsetupform">
     <input type="hidden" name="finalizeReqAdditionalParty" value="false"/>

@@ -19,8 +19,8 @@ under the License.
 
 <#if security.hasEntityPermission("FACILITY", "_VIEW", session)>
   <#assign showInput = "Y">
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <ul>
         <li class="h3">${uiLabelMap.ProductVerify}&nbsp;${uiLabelMap.OrderOrder}&nbsp;${uiLabelMap.CommonIn}&nbsp;${facility.facilityName!} [${facility.facilityId!}]</li>
       </ul>
@@ -48,10 +48,10 @@ under the License.
       </#if>
     </#if>
     <br />
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
       <form name="selectOrderForm" method="post" action="<@ofbizUrl>VerifyPick</@ofbizUrl>">
         <input type="hidden" name="facilityId" value="${facility.facilityId!}"/>
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
           <tr>
             <td width="25%" align="right"><span class="label">${uiLabelMap.ProductOrderId}</span></td>
             <td width="1">&nbsp;</td>
@@ -78,7 +78,7 @@ under the License.
       <!-- select picklist bin form -->
       <form name="selectPicklistBinForm" method="post" action="<@ofbizUrl>VerifyPick</@ofbizUrl>" style="margin: 0;">
         <input type="hidden" name="facilityId" value="${facility.facilityId!}"/>
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
           <tr>
             <td width="25%" align='right'><span class="label">${uiLabelMap.FormFieldTitle_picklistBinId}</span></td>
             <td width="1">&nbsp;</td>
@@ -103,18 +103,18 @@ under the License.
     </div>
   </div>
   <#if showInput != "N" && orderHeader?? && orderHeader?has_content>
-    <div class="screenlet">
-      <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+      <div class="screenlet-title-bar md-card-toolbar">
         <ul>
           <li class="h3">${uiLabelMap.ProductOrderId} ${uiLabelMap.CommonNbr}<a href="/ordermgr/control/orderview?orderId=${orderId}">${orderId}</a> / ${uiLabelMap.ProductOrderShipGroupId} #${shipGroupSeqId}</li>
         </ul>
         <br class="clear"/>
       </div>
-      <div class="screenlet-body">
+      <div class="screenlet-body md-card-content uk-overflow-container">
         <#if orderItemShipGroup?has_content>
           <#assign postalAddress = orderItemShipGroup.getRelatedOne("PostalAddress", false)>
           <#assign carrier = orderItemShipGroup.carrierPartyId?default("N/A")>
-          <table cellpadding="4" cellspacing="4" class="basic-table">
+          <table cellpadding="4" cellspacing="4" class="basic-table uk-table">
             <tr>
               <td valign="top">
                 <span class="label">${uiLabelMap.ProductShipToAddress}</span>
@@ -167,7 +167,7 @@ under the License.
           <input type="hidden" name="orderId" value="${orderId!}"/>
           <input type="hidden" name="shipGroupSeqId" value="${shipGroupSeqId!}"/>
           <input type="hidden" name="facilityId" value="${facility.facilityId!}"/>
-          <table cellpadding="2" cellspacing="0" class="basic-table">
+          <table cellpadding="2" cellspacing="0" class="basic-table uk-table">
             <tr>
               <td>
                 <div>
@@ -188,7 +188,7 @@ under the License.
           <input type="hidden" name="userLoginId" value="${userLoginId!}"/>
           <input type="hidden" name="orderId" value="${orderId!}"/>
           <input type="hidden" name="shipGroupSeqId" value="${shipGroupSeqId!}"/>
-          <table class="basic-table" cellspacing='0'>
+          <table class="basic-table uk-table" cellspacing='0'>
             <tr class="header-row">
               <td>&nbsp;</td>
               <td>${uiLabelMap.ProductItem} ${uiLabelMap.CommonNbr}</td>
@@ -324,15 +324,15 @@ under the License.
       <input type="hidden" name="facilityId" value="${facility.facilityId!}"/>
       <input type="hidden" name="userLoginId" value="${userLoginId!}"/>
       <#if pickRows?has_content>
-        <div class="screenlet">
-          <div class="screenlet-title-bar">
+        <div class="screenlet md-card">
+          <div class="screenlet-title-bar md-card-toolbar">
             <ul>
               <li class="h3">${uiLabelMap.ProductVerified}&nbsp;${uiLabelMap.OrderItems} : ${pickRows.size()!}</li>
             </ul>
             <br class="clear"/>
           </div>
-          <div class="screenlet-body">
-            <table class="basic-table" cellspacing='0'>
+          <div class="screenlet-body md-card-content uk-overflow-container">
+            <table class="basic-table uk-table" cellspacing='0'>
               <tr class="header-row">
                 <td>${uiLabelMap.ProductItem} ${uiLabelMap.CommonNbr}</td>
                 <td>${uiLabelMap.ProductProductId}</td>

@@ -29,20 +29,20 @@ under the License.
     <entity-resource type="data" reader-name="seed" loader="main" location="data/OrderPortletData.xml"/>
     <service-resource type="model" loader="main" location="servicedef/services.xml"/>
    
-    <webapp name="accounting"
+    <webapp name="account_balance_wallet"
         title="Accounting"
         server="default-server"
         location="webapp/accounting"
         base-permission="OFBTOOLS,ACCOUNTING"
         mount-point="/accounting"/>
-    <webapp name="facility"
+    <webapp name="devices_other"
         title="Facility"
         description="FacilityComponentDescription"
         server="default-server"
         location="webapp/facility"
         base-permission="OFBTOOLS,FACILITY"
         mount-point="/facility"/>
-    <webapp name="order"
+    <webapp name="receipt"
         title="Order"
         description="OrderComponentDescription"
         server="default-server"
@@ -50,7 +50,7 @@ under the License.
         base-permission="OFBTOOLS,ORDERMGR"
         mount-point="/ordermgr"/>
 
-    <webapp name="birt"
+    <webapp name="report"
         title="BIRT"
         server="default-server"
         location="webapp/birt"

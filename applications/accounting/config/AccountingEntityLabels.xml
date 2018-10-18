@@ -4972,6 +4972,14 @@
         <value xml:lang="th">อีเบย์</value>
         <value xml:lang="zh">eBay</value>
     </property>
+    <property key="PaymentMethodType.description.EXT_ALIPAY">
+        <value xml:lang="en">Alipay</value>
+        <value xml:lang="zh">支付宝</value>
+    </property>
+    <property key="PaymentMethodType.description.EXT_UNIONPAY">
+        <value xml:lang="en">UnionPay</value>
+        <value xml:lang="zh">银联支付</value>
+    </property>
     <property key="PaymentMethodType.description.EXT_OFFLINE">
         <value xml:lang="ar">دفعة offline</value>
         <value xml:lang="de">Offline Zahlung</value>

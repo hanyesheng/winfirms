@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+    <SecurityPermission description="View operations in the WebManager Component." permissionId="DISTRIBUTION_VIEW"/>
+    <SecurityPermission description="Create operations in the WebManager Component." permissionId="DISTRIBUTION_CREATE"/>
+    <SecurityPermission description="Update operations in the WebManager Component." permissionId="DISTRIBUTION_UPDATE"/>
+    <SecurityPermission description="Delete operations in the WebManager Component." permissionId="DISTRIBUTION_DELETE"/>
+    <SecurityPermission description="ALL operations in the WebManager Component." permissionId="DISTRIBUTION_ADMIN"/>
+
+    <SecurityGroupPermission groupId="SUPER" permissionId="DISTRIBUTION_ADMIN"/>
+
+</entity-engine-xml>

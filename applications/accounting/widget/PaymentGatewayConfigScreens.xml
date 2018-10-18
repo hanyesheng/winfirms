@@ -105,6 +105,11 @@ under the License.
                 <entity-one entity-name="PaymentGatewayPayPal" value-field="paymentGatewayPayPal">
                     <field-map field-name="paymentGatewayConfigId" from-field="parameters.paymentGatewayConfigId"/>
                 </entity-one>
+                
+                <!--20170110clgalipay19-->
+                <entity-one entity-name="PaymentGatewayAliPay" value-field="paymentGatewayAliPay">
+                    <field-map field-name="paymentGatewayConfigId" from-field="parameters.paymentGatewayConfigId"/>
+                </entity-one>
                 <entity-one entity-name="PaymentGatewayClearCommerce" value-field="paymentGatewayClearCommerce">
                     <field-map field-name="paymentGatewayConfigId" from-field="parameters.paymentGatewayConfigId"/>
                 </entity-one>
@@ -185,6 +190,19 @@ under the License.
                                 </screenlet>
                             </widgets>
                         </section>
+                        
+                        <!--20170110clgalipay19-->
+                        <section>
+                            <condition>
+                                <not><if-empty field="paymentGatewayAliPay"/></not>
+                            </condition>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.PageTitleUpdatePaymentGatewayConfigAliPay}">
+                                    <include-form name="EditPaymentGatewayConfigAliPay" location="component://accounting/widget/PaymentGatewayConfigForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                        
                         <section>
                             <condition>
                                 <not><if-empty field="paymentGatewayClearCommerce"/></not>

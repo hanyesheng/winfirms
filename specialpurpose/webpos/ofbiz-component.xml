@@ -44,7 +44,7 @@ under the License.
     <service-resource type="model" loader="main" location="servicedef/services_payment.xml"/>
     <service-resource type="model" loader="main" location="servicedef/services_promo.xml"/>
 
-    <webapp name="webpos"
+    <webapp name="monetization_on"
         title="Web Pos"
         server="default-server"
         menu-name="secondary"

@@ -21,7 +21,7 @@ under the License.
         <div class="h3">${uiLabelMap.OrderRequest}&nbsp;${custRequest.custRequestId}&nbsp;${uiLabelMap.CommonInformation}</div>
     </div>
     <div class="screenlet-body">
-        <table cellspacing="0" class="basic-table">
+        <table cellspacing="0" class="basic-table uk-table">
             <#-- request header information -->
             <tr>
                 <td align="right" valign="top" width="15%" class="label">

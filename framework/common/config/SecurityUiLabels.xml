@@ -701,6 +701,7 @@
     </property>
     <property key="SecurityAnswer">
         <value xml:lang="en">Security Answer</value>
+        <value xml:lang="zh">安全问题答案</value>
         <value xml:lang="fr">Réponse de sécurité</value>
     </property>
     <property key="SecurityGroups">
@@ -739,6 +740,7 @@
     </property>
     <property key="SecurityQuestion">
         <value xml:lang="en">Security Question</value>
+        <value xml:lang="zh">安全问题</value>
         <value xml:lang="fr">Question de sécurité</value>
     </property>
     <property key="SecurityViewPermissionError">

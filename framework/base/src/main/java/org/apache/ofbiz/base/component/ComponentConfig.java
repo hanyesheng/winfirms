@@ -324,21 +324,6 @@ public final class ComponentConfig {
         }
         return info;
     }
-    
-    public static WebappInfo getWebappInfo(String serverName, String webAppName) {
-        WebappInfo webappInfo = null;
-        List<WebappInfo> webappsInfo = getAppBarWebInfos(serverName);
-        for(WebappInfo currApp : webappsInfo) {
-            String currWebAppName = currApp.getMountPoint().replace("/", "").replace("*", "");
-            if (webAppName.equals(currWebAppName)) {
-                webappInfo = currApp;
-                break;
-            }
-        }
-        return webappInfo;
-    }    
-
-    
 
     public static boolean isFileResourceLoader(String componentName, String resourceLoaderName) throws ComponentException {
         ComponentConfig cc = getComponentConfig(componentName);
@@ -844,7 +829,6 @@ public final class ComponentConfig {
         // CatalinaContainer modifies this field.
         private volatile boolean appBarDisplay;
         private final String accessPermission;
-        private final boolean keepAutologinCookie;
 
         private WebappInfo(ComponentConfig componentConfig, Element element) {
             this.componentConfig = componentConfig;
@@ -884,7 +868,6 @@ public final class ComponentConfig {
             this.appBarDisplay = !"false".equals(element.getAttribute("app-bar-display"));
             this.privileged = !"false".equals(element.getAttribute("privileged"));
             this.accessPermission = element.getAttribute("access-permission");
-            this.keepAutologinCookie = !"false".equals(element.getAttribute("keep-autologin-cookie"));
             String basePermStr = element.getAttribute("base-permission");
             if (!basePermStr.isEmpty()) {
                 this.basePermission = basePermStr.split(",");
@@ -962,20 +945,12 @@ public final class ComponentConfig {
             return name;
         }
 
-        public String getMountPoint() {
-            return mountPoint;
-        }
-
         public String getTitle() {
             return title;
         }
 
         public List<String> getVirtualHosts() {
             return virtualHosts;
-        }
-
-        public boolean getKeepAutologinCookie() {
-            return keepAutologinCookie;
         }
 
         public synchronized void setAppBarDisplay(boolean appBarDisplay) {

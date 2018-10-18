@@ -45,11 +45,11 @@ function submitForm(form, mode, value) {
 //]]>
 </script>
 
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <div class="h3">${uiLabelMap.OrderItemGroups}</div>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <table width="100%" cellspacing="0" cellpadding="1" border="0">
           <#assign shipGroups = cart.getShipGroups()>
           <#if (shipGroups.size() > 0)>
@@ -151,11 +151,11 @@ function submitForm(form, mode, value) {
     </div>
 </div>
 
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <div class="h3">${uiLabelMap.OrderAssignItems}</div>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <table width="100%" cellspacing="0" cellpadding="1" border="0">
           <tr>
             <td><div class="tabletext"><b>${uiLabelMap.OrderProduct}</b></div></td>
@@ -251,7 +251,7 @@ function submitForm(form, mode, value) {
     </div>
 </div>
 
-<table>
+<table class="basic-table uk-table">
   <tr valign="top">
     <td>
       &nbsp;<a href="<@ofbizUrl>updateCheckoutOptions/showcart</@ofbizUrl>" class="buttontextbig">${uiLabelMap.OrderBacktoShoppingCart}</a>

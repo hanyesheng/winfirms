@@ -127,6 +127,50 @@ if (productId) {
         if (product.productTypeId && ("AGGREGATED".equals(product.productTypeId) || "AGGREGATED_SERVICE".equals(product.productTypeId)) && context.configproductdetailScreen) {
             detailScreen = context.configproductdetailScreen
         }
+        
+        if (product.productTypeId && ("COURSE".equals(product.productTypeId)) && context.courseproductdetailScreen) {
+            detailScreen = context.courseproductdetailScreen
+        }
+        
+        if (product.productTypeId && ("ACTIVITY".equals(product.productTypeId)) && context.activityproductdetailScreen) {
+            detailScreen = context.activityproductdetailScreen
+        }
+        
+        if (product.productTypeId && ("PROJECT".equals(product.productTypeId)) && context.projectproductdetailScreen) {
+            detailScreen = context.projectproductdetailScreen
+        }
+        
+        if (product.productTypeId && ("SERVICE".equals(product.productTypeId)) && context.serviceproductdetailScreen) {
+            detailScreen = context.serviceproductdetailScreen
+        }
+        
+        if (product.productTypeId && ("POLICY".equals(product.productTypeId)) && context.policyproductdetailScreen) {
+            detailScreen = context.policyproductdetailScreen
+        }
+        
+        if (product.productTypeId && ("CROWD_FUNDING".equals(product.productTypeId)) && context.crowdproductdetailScreen) {
+            detailScreen = context.crowdproductdetailScreen
+        }
+        
+        if (product.productTypeId && ("BUSINESSMAN".equals(product.productTypeId)) && context.businessmanproductdetailScreen) {
+            detailScreen = context.businessmanproductdetailScreen
+        }
+        
+        if (product.productTypeId && ("INVESTORS".equals(product.productTypeId)) && context.investorsproductdetailScreen) {
+            detailScreen = context.investorsproductdetailScreen
+        }
+        
+        if (product.productTypeId && ("COMPANY".equals(product.productTypeId)) && context.companyproductdetailScreen) {
+            detailScreen = context.companyproductdetailScreen
+        }
+        
+        if (product.productTypeId && ("INCUBATOR".equals(product.productTypeId)) && context.incubatorproductdetailScreen) {
+            detailScreen = context.incubatorproductdetailScreen
+        }
+        
+        if (product.productTypeId && ("NEWS".equals(product.productTypeId)) && context.newsproductdetailScreen) {
+            detailScreen = context.newsproductdetailScreen
+        }
 
         productTemplate = product.detailScreen
         if (productTemplate) {

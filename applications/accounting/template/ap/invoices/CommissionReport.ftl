@@ -21,7 +21,7 @@ under the License.
   <div>
     <a href="<@ofbizUrl>CommissionReport.pdf?isSearch=Y&amp;productId=${parameters.productId!}&amp;partyId=${parameters.partyId!}&amp;fromDate=${parameters.fromDate!}&amp;thruDate=${parameters.thruDate!}</@ofbizUrl>" target="_BLANK" class="buttontext">${uiLabelMap.AccountingInvoicePDF}</a>
   </div>
-  <table class="basic-table hover-bar" cellspacing="0">
+  <table class="basic-table hover-bar uk-table" cellspacing="0">
     <#-- Header Begins -->
     <tr class="header-row-2">
       <th>${uiLabelMap.AccountingLicensedProduct}</th>
@@ -62,7 +62,7 @@ under the License.
       <#assign alt_row = !alt_row>
     </#list>
   </table>
-  <div class="screenlet">
+  <div class="screenlet md-card">
     <ul>
       <li class="label"></li>
       <li class="label"><h3>${uiLabelMap.CommonSummary} :</h3></li>

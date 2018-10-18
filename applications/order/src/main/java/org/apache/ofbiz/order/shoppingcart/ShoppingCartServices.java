@@ -200,11 +200,7 @@ public class ShoppingCartServices {
         cart.setOrderType(orderTypeId);
         cart.setChannelType(orderHeader.getString("salesChannelEnumId"));
         cart.setInternalCode(orderHeader.getString("internalCode"));
-        if ("Y".equals(createAsNewOrder)) {
-            cart.setOrderDate(UtilDateTime.nowTimestamp());
-        } else {
-            cart.setOrderDate(orderHeader.getTimestamp("orderDate"));
-        }
+        cart.setOrderDate(UtilDateTime.nowTimestamp());
         cart.setOrderId(orderHeader.getString("orderId"));
         cart.setOrderName(orderHeader.getString("orderName"));
         cart.setOrderStatusId(orderHeader.getString("statusId"));
@@ -216,6 +212,12 @@ public class ShoppingCartServices {
         } catch (CartItemModifyException e) {
             Debug.logError(e, module);
             return ServiceUtil.returnError(e.getMessage());
+        }
+
+        // set the order name
+        String orderName = orh.getOrderName();
+        if (orderName != null) {
+            cart.setOrderName(orderName);
         }
 
         // set the role information
@@ -499,7 +501,7 @@ public class ShoppingCartServices {
                 }
                 // attach surveyResponseId for each item
                 if (UtilValidate.isNotEmpty(surveyResponseResult)){
-                    cartItem.setAttribute("surveyResponses", UtilMisc.toList(surveyResponseResult.get("surveyResponseId")));
+                    cartItem.setAttribute("surveyResponseId",surveyResponseResult.get("surveyResponseId"));
                 }
                 // attach addition item information
                 cartItem.setStatusId(item.getString("statusId"));

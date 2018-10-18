@@ -25,13 +25,13 @@ function uploadTrackingCode(orderId, productStoreId) {
 }
 // -->
 </script>
-<div id="findOrdersList" class="screenlet">
-  <div class="screenlet-title-bar">
+<div id="findOrdersList" class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.EbayListOrderImported}</li>
     </ul>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <form name="uploadTracking" action="<@ofbizUrl>uploadTrackingCodeBack</@ofbizUrl>" method="post">
       <input type="hidden" name="orderId" value=""/>
       <input type="hidden" name="productStoreId" value=""/>
@@ -39,7 +39,7 @@ function uploadTrackingCode(orderId, productStoreId) {
     <form name="listOrdersImported" method="post">
       <input type="hidden" name="viewSize"/>
       <input type="hidden" name="viewIndex"/>
-      <table class="basic-table hover-bar" cellspacing='0'>
+      <table class="basic-table hover-bar uk-table" cellspacing='0'>
         <tr class="header-row">
           <td width="5%">${uiLabelMap.OrderOrderType}</td>
           <td width="5%">${uiLabelMap.OrderOrderId}</td>

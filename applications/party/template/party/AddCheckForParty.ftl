@@ -1,12 +1,12 @@
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <#if !checkAccountData.paymentMethodId??>
       <h3>${uiLabelMap.AccountingAddCheckAccount}</h3>
     <#else>
       <h3>${uiLabelMap.PageTitleEditCheckAccount}</h3>
     </#if>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <#if !checkAccountData.paymentMethodId??>
       <form method="post" action='<@ofbizUrl>createCheckForParty?DONE_PAGE=${donePage}</@ofbizUrl>' name="addcheckform" style='margin: 0;'>
     <#else>
@@ -14,7 +14,7 @@
       <input type="hidden" name='paymentMethodId' value='${paymentMethodData.paymentMethodId}' />
     </#if>
       <input type="hidden" name="partyId" value="${parameters.partyId}"/>
-      <table class="basic-table" cellspacing="0">
+      <table class="basic-table uk-table" cellspacing="0">
         <tr>
           <td class="label">${uiLabelMap.AccountingNameAccount}</td>
           <td>

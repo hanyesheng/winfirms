@@ -504,9 +504,9 @@ under the License.
                 <fail-property resource="WorkEffortUiLabels" property="WorkEffortRequiredFieldMissingWorkEffortId"/>
             </type-validate>
         </override>
-        <override name="requirementId" optional="false">
+        <override name="requirementTypeId" optional="false">
             <type-validate>
-                <fail-property resource="WorkEffortUiLabels" property="WorkEffortRequiredFieldMissingRequirementId"/>
+                <fail-property resource="WorkEffortUiLabels" property="WorkEffortRequiredFieldMissingRequirementTypeId"/>
             </type-validate>
         </override>
     </service>
@@ -534,7 +534,7 @@ under the License.
         <auto-attributes include="all" mode="IN" optional="true" entity-name="OrderHeader"/>
         <override name="orderId" optional="true" mode="INOUT"/>
     </service>
-    <service name="deleteOrderHeaderWorkEffort" default-entity-name="OrderHeaderWorkEffort" engine="entity-auto" auth="true" invoke="delete">
+    <service name="deleteOrderHeaderWorkEffort" default-entity-name="OrderHeaderWorkEffort" engine="entity-auto" auth="true" invoke="deleteOrderHeaderWorkEffort">
         <description>Deletes a OrderHeaderWorkEffort</description>
         <auto-attributes include="pk" mode="IN" optional="false"/>
     </service>

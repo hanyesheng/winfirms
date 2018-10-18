@@ -2305,7 +2305,7 @@
         <value xml:lang="ru">OFBiz: WorkEffort Manager</value>
         <value xml:lang="th">OFBiz: การจัดการความพยายามในการทำงาน</value>
         <value xml:lang="vi">OFBiz: Quản lý công việc (Lượng giá nguồn lực)</value>
-        <value xml:lang="zh">OFBiz: 人工服务管理程序</value>
+        <value xml:lang="zh">浴火: 人工服务管理程序</value>
         <value xml:lang="zh-TW">OFBiz: 工作投入管理程式</value>
     </property>
     <property key="WorkEffortCompanySubtitle">
@@ -5415,8 +5415,11 @@
     <property key="WorkEffortRequiredFieldMissingWorkEffortId">
         <value xml:lang="en">Required Field Missing : WorkEffort Id.</value>
     </property>
-    <property key="WorkEffortRequiredFieldMissingRequirementId">
-        <value xml:lang="en">Required Field Missing : Requirement Id.</value>
+    <property key="WorkEffortRequiredFieldMissingWorkEffortId">
+        <value xml:lang="en">Required Field Missing : WorkEffort Id.</value>
+    </property>
+    <property key="WorkEffortRequiredFieldMissingRequirementTypeId">
+        <value xml:lang="en">Required Field Missing : Requirement Type Id.</value>
     </property>
     <property key="WorkEffortRequiredFieldMissingContactMechTypeId">
         <value xml:lang="en">Required Field Missing : ContactMech Type Id.</value>

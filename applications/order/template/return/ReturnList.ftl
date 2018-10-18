@@ -21,7 +21,7 @@ under the License.
 <div><a href="<@ofbizUrl>returnMain</@ofbizUrl>" class="buttontext">${uiLabelMap.OrderCreateReturn}</a></div>
 
 <br />
-<table cellspacing="0" class="basic-table">
+<table cellspacing="0" class="basic-table uk-table">
   <tr class="header-row">
     <td>${uiLabelMap.OrderReturnId} ${uiLabelMap.CommonNbr}</td>
     <td>${uiLabelMap.FormFieldTitle_entryDate}</td>

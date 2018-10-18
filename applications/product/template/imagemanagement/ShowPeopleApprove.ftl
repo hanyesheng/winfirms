@@ -32,12 +32,12 @@ jQuery(document).ready(function(){
 });
 </script>
         
-<table>
+<table class="basic-table uk-table">
     <#if partyRoles?has_content>
         <#assign alt_row = false>
         <#list partyRoles as partyRole>
             <td>
-                <table>
+                <table class="basic-table uk-table">
                     <#assign userLoginApprovers  = delegator.findByAnd("UserLogin",Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", partyRole.partyId), null, false)/>
                     <#assign userLoginApprover = userLoginApprovers[0]>
                     <#assign userLoginAndPartyDetails = delegator.findOne("UserLoginAndPartyDetails", Static["org.apache.ofbiz.base.util.UtilMisc"].toMap("partyId", userLoginApprover.partyId, "userLoginId", userLoginApprover.userLoginId), false)!>

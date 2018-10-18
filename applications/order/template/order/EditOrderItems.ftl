@@ -26,8 +26,8 @@ under the License.
     <#assign allowPriceChange = true/>
 </#if>
 
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <ul>
           <li class="h3">&nbsp;${uiLabelMap.OrderOrderItems}</li>
           <#if security.hasEntityPermission("ORDERMGR", "_UPDATE", session)>
@@ -40,7 +40,7 @@ under the License.
         </ul>
         <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <#if !orderItemList?has_content>
             <span class="alert">${uiLabelMap.checkhelper_sales_order_lines_lookup_failed}</span>
         <#else>
@@ -230,11 +230,7 @@ under the License.
                                   <td>&nbsp;</td>
                                   <td>&nbsp;</td>
                                   <td class="align-text">
-                                      <#if orderItemAdjustment.amountAlreadyIncluded?has_content>
-                                            <@ofbizCurrency amount=orderItemAdjustment.amountAlreadyIncluded isoCode=currencyUomId/>
-                                        <#else>
-                                          <@ofbizCurrency amount=Static["org.apache.ofbiz.order.order.OrderReadHelper"].calcItemAdjustment(orderItemAdjustment, orderItem) isoCode=currencyUomId/>
-                                      </#if>
+                                      <@ofbizCurrency amount=Static["org.apache.ofbiz.order.order.OrderReadHelper"].calcItemAdjustment(orderItemAdjustment, orderItem) isoCode=currencyUomId/>
                                   </td>
                                   <td colspan="3">&nbsp;</td>
                               </tr>
@@ -321,7 +317,7 @@ under the License.
                 <form name="updateOrderAdjustmentForm${orderAdjustmentId}" method="post" action="<@ofbizUrl>updateOrderAdjustment</@ofbizUrl>">
                     <input type="hidden" name="orderAdjustmentId" value="${orderAdjustmentId!}"/>
                     <input type="hidden" name="orderId" value="${orderId!}"/>
-                    <table class="basic-table" cellspacing="0">
+                    <table class="basic-table uk-table" cellspacing="0">
                         <tr>
                             <td class="align-text" width="55%">
                                 <span class="label">${adjustmentType.get("description",locale)}</span>&nbsp;${orderHeaderAdjustment.comments!}
@@ -361,7 +357,7 @@ under the License.
                 <input type="hidden" name="comments" value="Added manually by [${userLogin.userLoginId}]"/>
                 <input type="hidden" name="isManual" value="Y"/>
                 <input type="hidden" name="orderId" value="${orderId!}"/>
-                <table class="basic-table" cellspacing="0">
+                <table class="basic-table uk-table" cellspacing="0">
                     <tr><td colspan="3"><hr /></td></tr>
                     <tr>
                         <td class="align-text" width="55%">
@@ -389,7 +385,7 @@ under the License.
         </#if>
 
         <#-- subtotal -->
-        <table class="basic-table" cellspacing="0">
+        <table class="basic-table uk-table" cellspacing="0">
             <tr><td colspan="4"><hr /></td></tr>
             <tr class="align-text">
               <td width="80%"><span class="label">${uiLabelMap.OrderItemsSubTotal}</span></td>

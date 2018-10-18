@@ -32,9 +32,9 @@
     </div>
 </#if>
 
-<table>
+<table class="basic-table uk-table">
   <tr><td>
-    <table border="2" cellpadding="2" cellspacing="4" class="basic-table">
+    <table border="2" cellpadding="2" cellspacing="4" class="basic-table uk-table">
       <#if (aliases?has_content)>
           <tr class="header-row">
             <td>Content ID</td>
@@ -66,7 +66,7 @@
     <form name="cmspathform" method="post" action="<@ofbizUrl>/createWebSitePathAliasJson</@ofbizUrl>" style="margin: 0;">
         <input type="hidden" name="webSiteId" value="${webSiteId}"/>
         <input type="hidden" name="contentId" value="${contentId}"/>
-        <table>
+        <table class="basic-table uk-table">
             <tr><td colspan="2">&nbsp;</td></tr>
             <tr>
                 <td class="label">Content</td>

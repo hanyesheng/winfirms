@@ -27,11 +27,11 @@ standard order confirmation page and to be re-usable by other screens.
 <#if !(cart??)><#assign cart = shoppingCart!/></#if>
 
 <#if cart??>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <div class="h3">${uiLabelMap.OrderShippingInformation}</div>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <table width="100%">
 
       <#-- header -->

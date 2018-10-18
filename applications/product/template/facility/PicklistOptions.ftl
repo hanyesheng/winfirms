@@ -17,8 +17,8 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.FacilitySelectOptionsToGroupBy}</li>
     </ul>
@@ -26,7 +26,7 @@ under the License.
   </div>
   <form method="post" name="selectFactors" action="<@ofbizUrl>PicklistOptions</@ofbizUrl>">
     <input type="hidden" name="facilityId" value="${facilityId}"/>
-    <table class="basic-table" cellspacing='0'>
+    <table class="basic-table uk-table" cellspacing='0'>
       <tr>
         <td><label class='label'>${uiLabelMap.FacilityGroupByShippingMethod} <input type="checkbox" name="groupByShippingMethod" value="Y" <#if "${requestParameters.groupByShippingMethod!}" == "Y">checked="checked"</#if>/></label></td>
         <td><label class='label'>${uiLabelMap.FacilityGroupByWarehouseArea} <input type="checkbox" name="groupByWarehouseArea" value="Y" <#if "${requestParameters.groupByWarehouseArea!}" == "Y">checked="checked"</#if>/></label></td>
@@ -40,17 +40,17 @@ under the License.
       <input type="submit" value="Submit" class="buttontext" align='right'/>
     </div>
   </form>
-  <div class="screenlet-title-bar">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.ProductFindOrdersToPick}</li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <div align ='right'>
       <a class="buttontext" href="<@ofbizUrl>ReviewOrdersNotPickedOrPacked?facilityId=${facilityId}</@ofbizUrl>">${uiLabelMap.FormFieldTitle_reviewOrdersNotPickedOrPacked}</a>
     </div>
-    <table cellspacing="0" class="basic-table">
+    <table cellspacing="0" class="basic-table uk-table">
       <#if pickMoveInfoList?has_content || rushOrderInfo?has_content>
         <tr class="header-row">
           <#if !((requestParameters.groupByShippingMethod?? && requestParameters.groupByShippingMethod == "Y") || (requestParameters.groupByWarehouseArea?? && requestParameters.groupByWarehouseArea == "Y") || (requestParameters.groupByNoOfOrderItems?? && requestParameters.groupByNoOfOrderItems == "Y"))>
@@ -244,15 +244,15 @@ under the License.
 </#if>
 
 <#if toPickList?has_content>
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <ul>
         <li class="h3">${uiLabelMap.ProductPickingDetail}</li>
       </ul>
       <br class="clear"/>
     </div>
-    <div class="screenlet-body">
-      <table cellspacing="0" class="basic-table">
+    <div class="screenlet-body md-card-content uk-overflow-container">
+      <table cellspacing="0" class="basic-table uk-table">
         <tr class="header-row">
           <td>${uiLabelMap.ProductOrderId}</td>
           <td>${uiLabelMap.FormFieldTitle_orderDate}</td>

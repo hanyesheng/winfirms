@@ -30,21 +30,21 @@ under the License.
     }
 </script>
 
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <ul>
             <li class="h3">${uiLabelMap.ProductStockMovesNeeded}</li>
             <li><a href="<@ofbizUrl>PickMoveStockSimple?facilityId=${facilityId!}</@ofbizUrl>">${uiLabelMap.CommonPrint}</a></li>
         </ul>
         <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
           <form method="post" action="<@ofbizUrl>processPhysicalStockMove</@ofbizUrl>" name='selectAllForm' style='margin: 0;'>
               <#-- general request fields -->
               <input type="hidden" name="facilityId" value="${facilityId!}" />
               <input type="hidden" name="_useRowSubmit" value="Y" />
               <#assign rowCount = 0>
-              <table cellspacing="0" class="basic-table hover-bar">
+              <table cellspacing="0" class="basic-table hover-bar uk-table">
                 <tr class="header-row">
                     <td>${uiLabelMap.ProductProductId}</td>
                     <td>${uiLabelMap.ProductProduct}</td>
@@ -147,16 +147,16 @@ under the License.
             <input type="hidden" name="_rowCount" value="${rowCount}" />
         </form>
     </div>
-    <div class="screenlet-title-bar">
+    <div class="screenlet-title-bar md-card-toolbar">
         <ul>
             <li class="h3">${uiLabelMap.ProductQuickStockMove}</li>
         </ul>
         <br class="clear"/>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <form method="post" action="<@ofbizUrl>processQuickStockMove</@ofbizUrl>" name='quickStockMove'>
             <input type="hidden" name="facilityId" value="${facilityId!}" />
-            <table cellspacing="0" class="basic-table hover-bar">
+            <table cellspacing="0" class="basic-table hover-bar uk-table">
                 <tr class="header-row">
                     <td>${uiLabelMap.ProductProduct}</td>
                     <td>${uiLabelMap.ProductFromLocation}</td>

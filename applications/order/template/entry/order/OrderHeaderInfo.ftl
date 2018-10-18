@@ -17,8 +17,8 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<div class="screenlet">
-    <div class="screenlet-body">
+<div class="screenlet md-card">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <table width="100%" border="0" cellpadding="1">
         <#-- order name -->
         <#if (orderName?has_content)>
@@ -65,7 +65,7 @@ under the License.
                 </td>
                 <td width="5">&nbsp;</td>
                 <td valign="top" width="80%">
-                    <table>
+                    <table class="basic-table uk-table">
                         <tr>
                             <td width="35%"><div><b>${uiLabelMap.OrderOrderTermType}</b></div></td>
                             <td width="10%"><div><b>${uiLabelMap.OrderOrderTermValue}</b></div></td>

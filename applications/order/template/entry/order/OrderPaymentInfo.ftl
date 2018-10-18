@@ -18,11 +18,11 @@ under the License.
 -->
 
 <#if paymentMethod?has_content || paymentMethodType?has_content || billingAccount?has_content>
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <div class="h3">${uiLabelMap.AccountingPaymentInformation}</div>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
         <#-- order payment info -->
       <table width="100%" border="0" cellpadding="1">
         <#-- offline payment address infomation :: change this to use Company's address -->

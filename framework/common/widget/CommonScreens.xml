@@ -174,6 +174,11 @@ under the License.
                         <set field="appbarCloseTemplateLocation" from-field="layoutSettings.VT_NAV_CLOSE_TMPLT[0]" />
                         <set field="messagesTemplateLocation" from-field="layoutSettings.VT_MSG_TMPLT_LOC[0]" />
                         <set field="layoutSettings.suppressTab" value="ofbizsetup"/><!-- diseable ofbiz setup by default -->
+						<entity-and list="PartyContent" entity-name="PartyContent">
+		                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+		                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+		                    <order-by field-name="-fromDate"/>
+		               	</entity-and>
                     </actions>
                     <widgets />
                 </section>
@@ -295,21 +300,21 @@ under the License.
                 <!-- render content area -->
                 <container style="contentarea">
                     <decorator-section-include name="pre-body" />
-                    <container id="column-container">
+                    <container id="column-container" style="uk-grid">
                         <section>
                             <condition>
                                 <if-empty-section section-name="left-column" />
                             </condition>
                             <widgets>
-                                <container id="content-main-section">
+                                <container id="content-main-section"  style="uk-width-large-1-1">
                                     <decorator-section-include name="body" />
                                 </container>
                             </widgets>
                             <fail-widgets>
-                                <container style="left">
+                                <container style="left uk-width-large-1-5 uk-row-first">
                                     <decorator-section-include name="left-column" />
                                 </container>
-                                <container id="content-main-section" style="leftonly">
+                                <container id="content-main-section" style="leftonly uk-width-large-4-5">
                                     <container style="no-clear" id="centerdiv">
                                         <decorator-section-include name="body" />
                                     </container>
@@ -550,21 +555,47 @@ under the License.
         <section>
             <actions>
                 <set field="titleProperty" value="PageTitleLogin" />
+                <set field="visualThemeId" from-field="userPreferences.VISUAL_THEME" global="true" />
+                <service service-name="getVisualThemeResources">
+                    <field-map field-name="visualThemeId" />
+                    <field-map field-name="themeResources" from-field="layoutSettings" />
+                </service>
+                <set field="layoutSettings" from-field="themeResources" default-value="${layoutSettings}" global="true" />
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="initialLocaleComplete" type="String" value="${groovy:parameters?.userLogin?.lastLocale}" default-value="${groovy:locale.toString()}" />
+                <set field="layoutSettings.javaScripts[+0]" value="${groovy: org.apache.ofbiz.common.JsLanguageFilesMapping.datejs.getFilePath(initialLocaleComplete)}" global="true" />
+                <set field="layoutSettings.javaScripts[+0]" value="${groovy: org.apache.ofbiz.common.JsLanguageFilesMapping.jquery.getFilePath(initialLocaleComplete)}" global="true" />
+                <set field="layoutSettings.javaScripts[+0]" value="${groovy: org.apache.ofbiz.common.JsLanguageFilesMapping.validation.getFilePath(initialLocaleComplete)}" global="true" />
+                <set field="layoutSettings.javaScripts[+0]" value="${groovy: org.apache.ofbiz.common.JsLanguageFilesMapping.dateTime.getFilePath(initialLocaleComplete)}" global="true" />
+                <!-- Jgrowl -->
+                <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/Readmore.js-master/readmore.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.js" global="true"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.css" global="true" />
+                <set field="layoutSettings.commonHeaderImageLinkUrl" from-field="layoutSettings.commonHeaderImageLinkUrl" default-value="main" global="true" />
+                <set field="iconsLocation" from-field="layoutSettings.VT_ICONS_LOC[0]" default-value="/images/icons/famfamfam" global="true" />
+                <set field="headerTemplateLocation" from-field="layoutSettings.VT_HDR_TMPLT_LOC[0]" />
+                <set field="footerTemplateLocation" from-field="layoutSettings.VT_FTR_TMPLT_LOC[0]" />
+                <set field="appbarTemplateLocation" from-field="layoutSettings.VT_NAV_TMPLT_LOC[0]" />
+                <set field="appbarOpenTemplateLocation" from-field="layoutSettings.VT_NAV_OPEN_TMPLT[0]" />
+                <set field="appbarCloseTemplateLocation" from-field="layoutSettings.VT_NAV_CLOSE_TMPLT[0]" />
+                <set field="messagesTemplateLocation" from-field="layoutSettings.VT_MSG_TMPLT_LOC[0]" />
+                <set field="layoutSettings.suppressTab" value="ofbizsetup"/><!-- diseable ofbiz setup by default -->
+				<entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
             </actions>
             <widgets>
-                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">
-                        <section>
-                            <actions>
-                                <set field="loginTemplateLocation" from-field="layoutSettings.VT_LOGIN_TMPLT_LOC[0]" default-value="component://common/template/Login.ftl"/>
-                            </actions>
-                            <widgets />
-                        </section>
-                        <platform-specific>
-                            <html><html-template location="${loginTemplateLocation}"/></html>
-                        </platform-specific>
-                    </decorator-section>
-                </decorator-screen>
+                <section>
+                    <actions>
+                        <set field="loginTemplateLocation" from-field="layoutSettings.VT_LOGIN_TMPLT_LOC[0]" default-value="component://altair/template/Login.ftl"/>
+                    </actions>
+                    <widgets />
+                </section>
+                <platform-specific>
+                    <html><html-template location="${loginTemplateLocation}"/></html>
+                </platform-specific>
             </widgets>
         </section>
     </screen>

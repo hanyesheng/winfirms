@@ -21,13 +21,13 @@ under the License.
 <#else>
 <a href="EditProductInventoryItems?productId=${productId}&amp;showAllFacilities=Y" class="buttontext">${uiLabelMap.ProductShowAllFacilities}</a>
 </#if>
-<div class="screenlet">
+<div class="screenlet md-card">
   <#if product??>
-    <div class="screenlet-title-bar">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.ProductInventorySummary}</h3>
     </div>
-    <div class="screenlet-body">
-        <table cellspacing="0" class="basic-table">
+    <div class="screenlet-body md-card-content uk-overflow-container">
+        <table cellspacing="0" class="basic-table uk-table">
             <tr class="header-row">
                 <td><b>${uiLabelMap.ProductFacility}</b></td>
                 <td><b>${uiLabelMap.ProductAtp}</b></td>

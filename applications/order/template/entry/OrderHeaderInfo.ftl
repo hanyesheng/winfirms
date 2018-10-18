@@ -30,11 +30,11 @@ under the License.
     <#assign shoppingCartSize = 0>
 </#if>
 
-<div class="screenlet">
-    <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
         <h3>${uiLabelMap.OrderOrderHeaderInfo}</h3>
     </div>
-    <div class="screenlet-body">
+    <div class="screenlet-body md-card-content uk-overflow-container">
               <form method="post" action="setOrderName" name="setCartOrderNameForm">
                 <fieldset>
                   <label for="orderName"><strong>${uiLabelMap.OrderOrderName}</strong>:</label>

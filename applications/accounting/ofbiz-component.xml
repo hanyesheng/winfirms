@@ -45,7 +45,12 @@ under the License.
     <entity-resource type="data" reader-name="demo" loader="main" location="data/DemoAccountingUserData.xml"/>
     <entity-resource type="data" reader-name="demo" loader="main" location="data/DemoAssetMaintData.xml"/>
     <entity-resource type="data" reader-name="demo" loader="main" location="data/DemoBudgetData.xml"/>
-
+	<!--20170110clgalipay20-->
+    <entity-resource type="data" reader-name="seed-alipay" loader="main" location="data/DemoGlSetupData.xml"/>
+    <entity-resource type="data" reader-name="EXT_ALIPAY" loader="main" location="data/AlipayData.xml"/>
+    <entity-resource type="data" reader-name="EXT_UNIONPAY" loader="main" location="data/UnionpayData.xml"/>
+    
+    
     <!-- General Payment Service Definitions -->
     <service-resource type="model" loader="main" location="servicedef/services_agreement.xml"/>
     <service-resource type="model" loader="main" location="servicedef/services_admin.xml"/>
@@ -94,21 +99,21 @@ under the License.
     <test-suite loader="main" location="testdef/fixedassettests.xml"/>
     <test-suite loader="main" location="testdef/ratetests.xml"/>
 
-    <webapp name="accounting"
+    <webapp name="account_balance_wallet"
         title="Accounting"
         server="default-server"
         location="webapp/accounting"
         base-permission="OFBTOOLS,ACCOUNTING"
         mount-point="/accounting"/>
 
-    <webapp name="ar"
+    <webapp name="archive"
         title="Accounting - AR"
         server="default-server"
         location="webapp/ar"
         base-permission="OFBTOOLS,ACCOUNTING"
         mount-point="/ar"/>
 
-    <webapp name="ap"
+    <webapp name="unarchive"
         title="Accounting - AP"
         server="default-server"
         location="webapp/ap"

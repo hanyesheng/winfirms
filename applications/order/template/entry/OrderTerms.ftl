@@ -28,7 +28,7 @@ under the License.
                             <input type="hidden" name="finalizeMode" value="term" />
                         </form>
                         <#if orderTerms?has_content && parameters.createNew?default('') != 'Y'>
-                            <table class="basic-table hover-bar">
+                            <table class="basic-table hover-bar uk-table">
                                 <tr class="header-row">
                                     <td>${uiLabelMap.OrderOrderTermType}</td>
                                     <td align="center">${uiLabelMap.OrderOrderTermValue}</td>
@@ -59,7 +59,7 @@ under the License.
                         <#else>
                             <form method="post" action="<@ofbizUrl>addOrderTerm</@ofbizUrl>" name="termform">
                                 <input type="hidden" name="termIndex" value="${termIndex!}" />
-                                <table class="basic-table">
+                                <table class="basic-table uk-table">
                                     <tr>
                                         <td width="26%" align="right" valign="top">
                                             ${uiLabelMap.OrderOrderTermType}

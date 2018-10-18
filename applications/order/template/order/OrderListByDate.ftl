@@ -17,8 +17,8 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<div id="findOrdersList" class="screenlet">
-  <div class="screenlet-title-bar">
+<div id="findOrdersList" class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.OrderOrderReceivedOn} ${Static["org.apache.ofbiz.base.util.UtilDateTime"].toDateString(filterDate)}</li>
       <#assign listSize = state.getSize()>
@@ -31,9 +31,9 @@ under the License.
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <#if orderHeaderList?has_content>
-      <table class="basic-table hover-bar" cellspacing='0'>
+      <table class="basic-table hover-bar uk-table" cellspacing='0'>
         <tr class="header-row">
           <td width="10%">${uiLabelMap.OrderOrder} ${uiLabelMap.CommonNbr}</td>
           <td width="15%">${uiLabelMap.OrderOrderBillToParty}</td>

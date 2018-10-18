@@ -54,7 +54,7 @@
         <value xml:lang="en">OFBiz: Web Pos Manager</value>
         <value xml:lang="it">OFBiz: Gestione Pos Web</value>
         <value xml:lang="ja">OFBiz: Web POS 管理</value>
-        <value xml:lang="zh">OFBiz：网页POS管理程序</value>
+        <value xml:lang="zh">浴火：网页POS管理程序</value>
         <value xml:lang="zh-TW">OFBiz:網頁POS管理程式</value>
     </property>
     <property key="WebPosCompanySubtitle">

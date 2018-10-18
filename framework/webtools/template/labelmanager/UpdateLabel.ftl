@@ -22,9 +22,9 @@ under the License.
         document.UpdateLabelForm.submit();
     }
 </script>
-<div class="screenlet-body">
+<div class="screenlet-body md-card-content uk-overflow-container">
     <form method="post" action="<@ofbizUrl>SaveLabelsToXmlFile</@ofbizUrl>" name="UpdateLabelForm">
-        <table class="basic-table" cellspacing="3">
+        <table class="basic-table uk-table" cellspacing="3">
             <tr>
                 <td colspan="2">&nbsp;</td>
             </tr>

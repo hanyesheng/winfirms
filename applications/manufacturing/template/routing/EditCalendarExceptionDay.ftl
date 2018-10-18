@@ -18,33 +18,33 @@ under the License.
 -->
 
 <#if techDataCalendar?has_content>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.ManufacturingEditCalendarExceptionDayFor}&nbsp;
     <#if (techDataCalendar.description)?has_content>"${(techDataCalendar.get("description",locale))}"</#if>
     [${uiLabelMap.CommonId} ${techDataCalendar.calendarId!}]</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     ${setRequestAttribute("calendarExceptionDays", calendarExceptionDays!)}
     ${screens.render("component://manufacturing/widget/manufacturing/CalendarScreens.xml#ListCalendarExceptionDay")}
   </div>
 </div>
 <#if calendarExceptionDay?has_content>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.PageTitleEditCalendarExceptionWeek}</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     ${setRequestAttribute("calendarExceptionDay", calendarExceptionDay!)}
     ${screens.render("component://manufacturing/widget/manufacturing/CalendarScreens.xml#UpdateCalendarExceptionDay")}
   </div>
 </div>
 </#if>
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <h3>${uiLabelMap.PageTitleAddCalendarExceptionWeek}</h3>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     ${setRequestAttribute("techDataCalendar", techDataCalendar!)}
     ${screens.render("component://manufacturing/widget/manufacturing/CalendarScreens.xml#AddCalendarExceptionDay")}
   </div>

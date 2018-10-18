@@ -4,7 +4,7 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:doc="http://nwalsh.com/xsl/documentation/1.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/1999/xhtml" exclude-result-prefixes="doc" version="1.0">
 
 <!-- ********************************************************************
-     $Id$
+     $Id: pi.xsl 1395307 2012-10-07 14:02:53Z jleroux $
      ********************************************************************
 
      This file is part of the XSL DocBook Stylesheet distribution.
@@ -15,7 +15,7 @@
 
 <doc:reference xmlns=""><info xmlns="http://www.w3.org/1999/xhtml"><title>HTML Processing Instruction Reference</title>
     <releaseinfo role="meta">
-      $Id$
+      $Id: pi.xsl 1395307 2012-10-07 14:02:53Z jleroux $
     </releaseinfo>
   </info>
   <partintro xmlns="http://www.w3.org/1999/xhtml" xml:id="partintro">

@@ -46,7 +46,7 @@ under the License.
 
     <test-suite loader="main" location="testdef/workefforttests.xml"/>
 
-     <webapp name="workeffort"
+     <webapp name="assignment"
         title="WorkEffort"
         server="default-server"
         location="webapp/workeffort"

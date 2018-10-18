@@ -1249,7 +1249,6 @@ under the License.
                         <screenlet title="${uiLabelMap.PageTitleEditProductParties}">
                             <include-form name="UpdateProductRole" location="component://product/widget/catalog/ProductForms.xml"/>
                         </screenlet>
-                        
                         <screenlet title="${uiLabelMap.ProductAssociatePartyToProduct}">
                             <include-form name="AddProductRole" location="component://product/widget/catalog/ProductForms.xml"/>
                         </screenlet>

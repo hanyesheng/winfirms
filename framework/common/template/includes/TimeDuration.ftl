@@ -37,7 +37,7 @@ under the License.
     }
 </script>
 <form name="TimeDuration" action="javascript:setTimeDuration()">
-  <table cellspacing="0" class="basic-table">
+  <table cellspacing="0" class="basic-table uk-table">
     <tr>
       <td class="label">${uiLabelMap.CommonYear}</td>
       <td><input type="text" name="years" size="4" maxlength="4"/></td>

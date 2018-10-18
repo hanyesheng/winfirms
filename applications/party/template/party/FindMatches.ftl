@@ -17,16 +17,16 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<div id="address-match-map" class="screenlet">
-  <div class="screenlet-title-bar">
+<div id="address-match-map" class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <ul>
       <li class="h3">${uiLabelMap.PageTitleAddressMatches}</li>
       <li><a href="<@ofbizUrl>addressMatchMap</@ofbizUrl>">${uiLabelMap.PageTitleAddressMatchMap}</a></li>
     </ul>
     <br class="clear"/>
   </div>
-  <div class="screenlet-body">
-    <table class="basic-table" cellspacing="0">
+  <div class="screenlet-body md-card-content uk-overflow-container">
+    <table class="basic-table uk-table" cellspacing="0">
       <form name="matchform" method="post" action="<@ofbizUrl>findAddressMatch?match=true</@ofbizUrl>">
         <tr>
           <td class="label">${uiLabelMap.PartyLastName}</td>
@@ -75,7 +75,7 @@ under the License.
         <tr>
           <td colspan="2">
             <#if matches?has_content>
-              <table cellspacing="0" class="basic-table">
+              <table cellspacing="0" class="basic-table uk-table">
                 <tr>
                   <td class="label" colspan="7">${uiLabelMap.PartyAddressMatching} ${lastName} / ${firstName} @ ${addressString}</td>
                 </tr>

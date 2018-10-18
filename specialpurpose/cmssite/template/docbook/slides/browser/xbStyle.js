@@ -1,6 +1,6 @@
 /*
  * xbStyle.js
- * $Revision$ $Date$
+ * $Revision: 1395307 $ $Date: 2012-10-07 16:02:53 +0200 (Sun, 07 Oct 2012) $
  */
 
 /* ***** BEGIN LICENSE BLOCK *****

@@ -18,15 +18,15 @@ under the License.
 -->
 
 <!-- begin EditGiftCard.ftl -->
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
     <#if !giftCard??>
       <h3>${uiLabelMap.AccountingCreateGiftCard}</h3>
     <#else>
       <h3>${uiLabelMap.AccountingEditGiftCard}</h3>
     </#if>
   </div>
-  <div class="screenlet-body">
+  <div class="screenlet-body md-card-content uk-overflow-container">
     <#if !giftCard??>
       <form method="post" action="<@ofbizUrl>createGiftCard?DONE_PAGE=${donePage}</@ofbizUrl>" name="editgiftcardform" style="margin: 0;">
     <#else>
@@ -38,7 +38,7 @@ under the License.
           <a href="<@ofbizUrl>${donePage}?partyId=${partyId}</@ofbizUrl>" class="smallSubmit">${uiLabelMap.CommonCancelDone}</a>
           <a href="javascript:document.editgiftcardform.submit()" class="smallSubmit">${uiLabelMap.CommonSave}</a>
         </div>
-        <table class="basic-table" cellspacing="0">
+        <table class="basic-table uk-table" cellspacing="0">
         <tr>
           <td class="label">${uiLabelMap.AccountingCardNumber}</td>
           <td>

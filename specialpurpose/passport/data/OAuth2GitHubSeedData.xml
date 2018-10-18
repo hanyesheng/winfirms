@@ -29,6 +29,11 @@ under the License.
                     returnUrl=""
                     localRedirectUri="/ecomseo/gitHubRedirect" 
                     iconUrl="/passport/images/github.png" fromDate="2011-01-01 00:00:00.0" thruDate=""/>
+    <OAuth2GitHub productStoreId="10000" 
+                    clientId="" clientSecret=""
+                    returnUrl=""
+                    localRedirectUri="/gitHubRedirect" 
+                    iconUrl="/passport/images/github.png" fromDate="2011-01-01 00:00:00.0" thruDate=""/>
     <!-- The returnUrl, i.e. https://yourWebSiteOrIp:8443/ecomseo/githubResponse -->
     
 </entity-engine-xml>

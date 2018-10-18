@@ -22,13 +22,13 @@ under the License.
 <a href="javascript:document.attachProductFeaturesToCategory.submit()" class="buttontext">${uiLabelMap.ProductFeatureCategoryAttach}</a>
 
 <#if productCategoryId?? && productCategory??>
-  <div class="screenlet">
-    <div class="screenlet-title-bar">
+  <div class="screenlet md-card">
+    <div class="screenlet-title-bar md-card-toolbar">
       <h3>${uiLabelMap.PageTitleEditCategoryFeatureCategories}</h3>
     </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <#-- Feature Groups -->
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
                 <tr class="header-row">
                     <td><b>${uiLabelMap.ProductFeatureGroup}</b></td>
                     <td><b>${uiLabelMap.CommonFromDateTime}</b></td>
@@ -76,13 +76,13 @@ under the License.
             </table>
         </div>
     </div>
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <h3>${uiLabelMap.ProductApplyFeatureGroupFromCategory}</h3>
         </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <#if productFeatureGroups?has_content>
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
                 <tr><td>
                     <form method="post" action="<@ofbizUrl>createProductFeatureCatGrpAppl</@ofbizUrl>" style="margin: 0;" name="addNewGroupForm">
                     <input type="hidden" name="productCategoryId" value="${productCategoryId!}" />
@@ -101,13 +101,13 @@ under the License.
             </#if>
         </div>
     </div>
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <h3>${uiLabelMap.ProductApplyFeatureGroupFromCategory}</h3>
         </div>
-        <div class="screenlet-body">
+        <div class="screenlet-body md-card-content uk-overflow-container">
             <#-- Feature Categories -->
-            <table cellspacing="0" class="basic-table">
+            <table cellspacing="0" class="basic-table uk-table">
                 <tr class="header-row">
                     <td><b>${uiLabelMap.ProductFeatureCategory}</b></td>
                     <td><b>${uiLabelMap.CommonFromDateTime}</b></td>
@@ -155,12 +155,12 @@ under the License.
             </table>
         </div>
     </div>
-    <div class="screenlet">
-        <div class="screenlet-title-bar">
+    <div class="screenlet md-card">
+        <div class="screenlet-title-bar md-card-toolbar">
             <h3>${uiLabelMap.ProductApplyFeatureGroupToCategory}</h3>
         </div>
-        <div class="screenlet-body">
-            <table cellspacing="0" class="basic-table">
+        <div class="screenlet-body md-card-content uk-overflow-container">
+            <table cellspacing="0" class="basic-table uk-table">
                 <tr><td>
                     <form method="post" action="<@ofbizUrl>createProductFeatureCategoryAppl</@ofbizUrl>" style="margin: 0;" name="addNewCategoryForm">
                         <input type="hidden" name="productCategoryId" value="${productCategoryId!}" />

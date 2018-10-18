@@ -40,7 +40,7 @@ under the License.
 <#if autoUpdateLink?has_content>
 <script type="text/javascript">ajaxUpdateAreaPeriodic('${id}', '${autoUpdateLink}', '', '${autoUpdateInterval}');</script>
 </#if>
-<div<#if id?has_content> id="${id}"</#if><#if style?has_content> class="${style}"</#if>>
+<div<#if id?has_content> id="${id}"</#if><#if style?has_content> class="${style}"</#if><#if id?has_content&&id = "uk_grid"> data-uk-grid="{gutter: 20}"</#if>>
 </#macro>
 <#macro renderContainerEnd></div></#macro>
 <#macro renderContentBegin editRequest enableEditValue editContainerStyle><#if editRequest?has_content && enableEditValue == "true"><div class=${editContainerStyle}></#if></#macro>
@@ -154,9 +154,9 @@ under the License.
 
 <#macro renderContentFrame fullUrl width height border><iframe src="${fullUrl}" width="${width}" height="${height}" <#if border?has_content>border="${border}"</#if> /></#macro>
 <#macro renderScreenletBegin id title collapsible saveCollapsed collapsibleAreaId expandToolTip collapseToolTip fullUrlString padded menuString showMore collapsed javaScriptEnabled>
-<div class="screenlet"<#if id?has_content> id="${id}"</#if>><#rt/>
+<div class="screenlet md-card"<#if id?has_content> id="${id}"</#if>><#rt/>
 <#if showMore>
-<div class="screenlet-title-bar"><ul><#if title?has_content><li class="h3">${title}</li></#if>
+<div class="screenlet-title-bar md-card-toolbar"><ul><#if title?has_content><li class="h3">${title}</li></#if>
 <#if collapsible>
 <li class="<#rt/>
 <#if collapsed>
@@ -164,7 +164,7 @@ collapsed"><a <#if javaScriptEnabled>onclick="javascript:toggleScreenlet(this, '
 <#else>
 expanded"><a <#if javaScriptEnabled>onclick="javascript:toggleScreenlet(this, '${collapsibleAreaId}', '${saveCollapsed?string}', '${expandToolTip}', '${collapseToolTip}');"<#else>href="${fullUrlString}"</#if><#if collapseToolTip?has_content> title="${collapseToolTip}"</#if>
 </#if>
->&nbsp;</a></li>
+>&nbsp;</a></li><div class="md-card-toolbar-actions"><i class="md-icon material-icons md-card-toggle">&#xE316;</i></div>
 </#if>
 <#--
 <#if !collapsed>
@@ -174,7 +174,7 @@ ${menuString}
 ${menuString}
 </ul><br class="clear" /></div>
 </#if>
-<div <#if collapsibleAreaId?has_content> id="${collapsibleAreaId}" <#if collapsed> style="display: none;"</#if></#if><#if padded> class="screenlet-body"<#else> class="screenlet-body no-padding"</#if>>
+<div <#if collapsibleAreaId?has_content> id="${collapsibleAreaId}" <#if collapsed> style="display: none;"</#if></#if><#if padded> class="screenlet-body md-card-content uk-overflow-container"<#else> class="screenlet-body no-padding md-card-content uk-overflow-container"</#if>>
 </#macro>
 <#macro renderScreenletSubWidget></#macro>
 <#macro renderScreenletEnd></div></div></#macro>
@@ -188,7 +188,7 @@ ${menuString}
 
 <#macro renderPortalPageBegin originalPortalPageId portalPageId confMode="false" addColumnLabel="Add column" addColumnHint="Add a new column to this portal">
   <#if confMode == "true">
-    <a class="buttontext" href="javascript:document.addColumn_${portalPageId}.submit()" title="${addColumnHint}">${addColumnLabel}</a> <b>PortalPageId: ${portalPageId}</b>
+    <a class="buttontext md-btn md-btn-primary md-btn-small md-btn-wave-light waves-effect waves-button waves-light" href="javascript:document.addColumn_${portalPageId}.submit()" title="${addColumnHint}">${addColumnLabel}</a> <b>PortalPageId: ${portalPageId}</b>
     <form method="post" action="addPortalPageColumn" name="addColumn_${portalPageId}">
       <input name="portalPageId" value="${portalPageId}" type="hidden"/>
     </form>
@@ -222,19 +222,19 @@ ${menuString}
             <form method="post" action="deletePortalPageColumn" name="delColumn_${columnKey}">
               ${columnKeyFields}
             </form>
-            <a class="buttontext" href="javascript:document.delColumn_${columnKey}.submit()" title="${delColumnHint}">${delColumnLabel}</a>
+            <a class="buttontext md-btn md-btn-primary md-btn-small md-btn-wave-light waves-effect waves-button waves-light" href="javascript:document.delColumn_${columnKey}.submit()" title="${delColumnHint}">${delColumnLabel}</a>
           </li>
           <li>
             <form method="post" action="addPortlet" name="addPortlet_${columnKey}">
               ${columnKeyFields}
             </form>
-            <a class="buttontext" href="javascript:document.addPortlet_${columnKey}.submit()" title="${addPortletHint}">${addPortletLabel}</a>
+            <a class="buttontext md-btn md-btn-primary md-btn-small md-btn-wave-light waves-effect waves-button waves-light" href="javascript:document.addPortlet_${columnKey}.submit()" title="${addPortletHint}">${addPortletLabel}</a>
           </li>
           <li>
             <form method="post" action="editPortalPageColumnWidth" name="setColumnSize_${columnKey}">
               ${columnKeyFields}
             </form>
-            <a class="buttontext" href="javascript:document.setColumnSize_${columnKey}.submit()" title="${setColumnSizeHint}">${colWidthLabel}: ${width}</a>
+            <a class="buttontext md-btn md-btn-primary md-btn-small md-btn-wave-light waves-effect waves-button waves-light" href="javascript:document.setColumnSize_${columnKey}.submit()" title="${setColumnSizeHint}">${colWidthLabel}: ${width}</a>
           </li>
         </ul>
       </div>

@@ -103,6 +103,12 @@ under the License.
         <auto-attributes entity-name="PaymentGatewayPayPal" include="nonpk" mode="IN" optional="true"/>
     </service>
     
+    <!--20170110clgalipay9-->
+    <service name="updatePaymentGatewayConfigAliPay" engine="simple" location="component://accounting/minilang/payment/PaymentGatewayConfigServices.xml" invoke="updatePaymentGatewayConfigAliPay">
+        <description>Update Payment Gateway Config AliPay</description>
+        <auto-attributes entity-name="PaymentGatewayAliPay" include="pk" mode="IN" optional="false"/>
+        <auto-attributes entity-name="PaymentGatewayAliPay" include="nonpk" mode="IN" optional="true"/>
+    </service>
     <service name="updatePaymentGatewayConfigWorldPay" engine="simple" location="component://accounting/minilang/payment/PaymentGatewayConfigServices.xml" invoke="updatePaymentGatewayConfigWorldPay">
         <description>Update Payment Gateway Config WorldPay</description>
         <auto-attributes entity-name="PaymentGatewayWorldPay" include="pk" mode="IN" optional="false"/>

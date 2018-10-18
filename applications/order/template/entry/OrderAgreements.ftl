@@ -19,16 +19,16 @@ under the License.
 
 
 <form method="post" name="agreementForm" action="<@ofbizUrl>setOrderCurrencyAgreementShipDates</@ofbizUrl>">
-<div class="screenlet">
-  <div class="screenlet-title-bar">
+<div class="screenlet md-card">
+  <div class="screenlet-title-bar md-card-toolbar">
       <ul>
         <li class="h3">${uiLabelMap.OrderOrderEntryCurrencyAgreementShipDates}</li>
         <li><a href="javascript:document.agreementForm.submit()">${uiLabelMap.CommonContinue}</a></li>
       </ul>
       <br class="clear" />
   </div>
-  <div class="screenlet-body">
-    <table>
+  <div class="screenlet-body md-card-content uk-overflow-container">
+    <table class="basic-table uk-table">
 
       <#if agreements??>
       <tr><td colspan="4">&nbsp;<input type='hidden' name='hasAgreements' value='Y'/></td></tr>

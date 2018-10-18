@@ -397,7 +397,7 @@
         <value xml:lang="ro">OFBiz: Gestione Vendite</value>
         <value xml:lang="th">OFBiz: การจัดการทางการตลาด</value>
         <value xml:lang="vi">OFBiz: Quản trị Tiếp thị</value>
-        <value xml:lang="zh">OFBiz: 市场宣传管理</value>
+        <value xml:lang="zh">浴火: 市场宣传管理</value>
         <value xml:lang="zh-TW">OFBiz: 行銷管理</value>
     </property>
     <property key="MarketingCompanySubtitle">
@@ -2921,7 +2921,7 @@
         <value xml:lang="ja">OFBiz: 営業支援(SFA)管理</value>
         <value xml:lang="pt-BR">OFBiz: gestor da equipe de vendas</value>
         <value xml:lang="vi">OFBiz: Quản trị Chiến dịch tiếp thị</value>
-        <value xml:lang="zh">OFBiz: 销售管理程序</value>
+        <value xml:lang="zh">浴火: 销售管理程序</value>
         <value xml:lang="zh-TW">OFBiz: 營業支援(SFA)管理</value>
     </property>
     <property key="SfaCompetitors">

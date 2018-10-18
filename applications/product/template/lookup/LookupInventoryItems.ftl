@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<table class="basic-table hover-bar" cellspacing="0">
+<table class="basic-table hover-bar uk-table" cellspacing="0">
   <tr class="header-row-2">
     <td>${uiLabelMap.ProductInventoryItemId}</td>
     <td>${uiLabelMap.ProductFacilityId}</td>

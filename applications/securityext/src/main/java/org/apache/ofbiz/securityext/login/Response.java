@@ -1,0 +1,13 @@
+package org.apache.ofbiz.securityext.login;
+
+public class Response{
+
+    private String code;
+
+    public String getCode() {
+        return code;
+    }
+    public void getCode(String code) {
+        this.code = code;
+    }
+}

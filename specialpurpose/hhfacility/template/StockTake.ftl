@@ -28,7 +28,7 @@ under the License.
 
 <#if productList?has_content>
     <span>Products Found:</span>
-    <table>
+    <table class="basic-table uk-table">
         <#list productList as product>
             <tr>
                 <td>

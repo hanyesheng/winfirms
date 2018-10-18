@@ -41,7 +41,7 @@ under the License.
 
     <service-resource type="model" loader="main" location="servicedef/services.xml"/>
 
-    <webapp name="projectmgr"
+    <webapp name="group_work"
         title="Project"
         server="default-server"
         location="webapp/projectmgr"

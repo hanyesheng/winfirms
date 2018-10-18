@@ -56,7 +56,6 @@ import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.SSLContexts;
-import org.apache.ofbiz.entity.util.EntityUtilProperties;
 import org.apache.oro.text.regex.MalformedPatternException;
 import org.apache.oro.text.regex.Pattern;
 import org.apache.oro.text.regex.PatternMatcher;
@@ -1048,6 +1047,8 @@ public final class UtilHttp {
      * @throws IOException
      */
     public static void streamContent(OutputStream out, InputStream in, int length) throws IOException {
+        int bufferSize = 512; // same as the default buffer size; change as needed
+
         // make sure we have something to write to
         if (out == null) {
             throw new IOException("Attempt to write to null output stream");
@@ -1064,17 +1065,28 @@ public final class UtilHttp {
         }
 
         // initialize the buffered streams
-        int bufferSize = EntityUtilProperties.getPropertyAsInteger("content", "stream.buffersize", 8192);
-        byte[] buffer = new byte[bufferSize];
+        BufferedOutputStream bos = new BufferedOutputStream(out, bufferSize);
+        BufferedInputStream bis = new BufferedInputStream(in, bufferSize);
+
+        byte[] buffer = new byte[length];
         int read = 0;
-        try (BufferedOutputStream bos = new BufferedOutputStream(out, bufferSize);
-                BufferedInputStream bis = new BufferedInputStream(in, bufferSize)) {
+        try {
             while ((read = bis.read(buffer, 0, buffer.length)) != -1) {
                 bos.write(buffer, 0, read);
             }
         } catch (IOException e) {
             Debug.logError(e, "Problem reading/writing buffers", module);
+            bis.close();
+            bos.close();
             throw e;
+        } finally {
+            if (bis != null) {
+                bis.close();
+            }
+            if (bos != null) {
+                bos.flush();
+                bos.close();
+            }
         }
     }
 
@@ -1187,7 +1199,7 @@ public final class UtilHttp {
 
     /**
      * Utility to make a composite parameter from the given prefix and suffix.
-     * The prefix should be a regular parameter name such as meetingDate. The
+     * The prefix should be a regular paramter name such as meetingDate. The
      * suffix is the composite field, such as the hour of the meeting. The
      * result would be meetingDate_${COMPOSITE_DELIMITER}_hour.
      *

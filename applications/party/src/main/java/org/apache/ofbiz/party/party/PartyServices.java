@@ -1625,6 +1625,7 @@ public class PartyServices {
         String roleTypeId = (String) context.get("roleTypeId");
         String statusId = (String) context.get("statusId");
         String userLoginId = (String) context.get("userLoginId");
+        String productStoreId = (String) context.get("productStoreId");
         String externalId = (String) context.get("externalId");
         String firstName = (String) context.get("firstName");
         String lastName = (String) context.get("lastName");
@@ -1665,6 +1666,19 @@ public class PartyServices {
             // add the expr
             andExprs.add(EntityCondition.makeCondition(EntityFunction.UPPER_FIELD("userLoginId"), EntityOperator.LIKE, EntityFunction.UPPER("%"+userLoginId+"%")));
             fieldsToSelect.add("userLoginId");
+        }
+        
+        // filter on productStoreId
+        if (UtilValidate.isNotEmpty(productStoreId)) {
+
+            // modify the dynamic view
+            dynamicView.addMemberEntity("UL", "ProductStoreRole");
+            dynamicView.addAlias("UL", "productStoreId");
+            dynamicView.addViewLink("PT", "UL", Boolean.FALSE, ModelKeyMap.makeKeyMapList("partyId"));
+
+            // add the expr
+            andExprs.add(EntityCondition.makeCondition(EntityFunction.UPPER_FIELD("productStoreId"), EntityOperator.LIKE, EntityFunction.UPPER("%"+productStoreId+"%")));
+            fieldsToSelect.add("productStoreId");
         }
 
         // ----

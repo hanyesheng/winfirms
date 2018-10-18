@@ -1183,7 +1183,7 @@
         <value xml:lang="nl">OFBiz: Credit Manager</value>
         <value xml:lang="pt">OFBiz: Gestão de Contas a Pagar</value>
         <value xml:lang="vi">OFBiz: Quản trị Phải Trả (AP)</value>
-        <value xml:lang="zh">OFBiz: 应付账户管理</value>
+        <value xml:lang="zh">浴火: 应付账户管理</value>
         <value xml:lang="zh-TW">OFBiz: 應付帳款管理</value>
     </property>
     <property key="AccountingApManager">
@@ -1519,7 +1519,7 @@
         <value xml:lang="nl">OFBiz: Debiteuren Manager</value>
         <value xml:lang="pt">OFBiz: Gestão de contas a receber</value>
         <value xml:lang="vi">OFBiz: Quản trị Phải Thu (AR)</value>
-        <value xml:lang="zh">OFBiz: 应收账户管理</value>
+        <value xml:lang="zh">浴火: 应收账户管理</value>
         <value xml:lang="zh-TW">OFBiz: 應收帳款管理</value>
     </property>
     <property key="AccountingArManager">
@@ -3220,7 +3220,7 @@
         <value xml:lang="ru">OFBiz: Менеджер учета</value>
         <value xml:lang="th">OFBiz: การจัดการบัญชี</value>
         <value xml:lang="vi">OFBiz: Quản trị kế toán</value>
-        <value xml:lang="zh">OFBiz: 财务管理</value>
+        <value xml:lang="zh">浴火: 财务管理</value>
         <value xml:lang="zh-TW">OFBiz: 會計管理</value>
     </property>
     <property key="AccountingCompanyNameAccount">
@@ -24058,5 +24058,32 @@
         <value xml:lang="vi">Xem điểm nhập Bút toán</value>
         <value xml:lang="zh">浏览交易记录</value>
         <value xml:lang="zh-TW">檢視交易記錄</value>
+    </property>
+    <!--20170110clgalipay1-->
+    <property key="AccountingPayWithAliPay">
+        <value xml:lang="en">Pay With AliPay</value>
+        <value xml:lang="zh">用支付宝支付</value>
+    </property>
+    <!--20170110clgalipay1-->
+    <property key="AccountingPaymentReceiveViaAliPay">
+        <value xml:lang="en">Payment receive via AliPay</value>
+        <value xml:lang="zh">通过支付宝收到的支付</value>
+    </property>
+    <!--20170110clgalipay1-->
+    <property key="PageTitleUpdatePaymentGatewayConfigUnionPay">
+        <value xml:lang="en">Update Payment Gateway Config PayPal</value>
+        <value xml:lang="zh">更新银联支付的支付网关配置</value>
+    </property>
+    <property key="AccountingPayWithUnionPay">
+        <value xml:lang="en">Pay With UnionPay</value>
+        <value xml:lang="zh">用银联支付支付</value>
+    </property>
+    <property key="AccountingPaymentReceiveViaUnionPay">
+        <value xml:lang="en">Payment receive via UnionPay</value>
+        <value xml:lang="zh">通过银联支付收到的支付</value>
+    </property>
+    <property key="PageTitleUpdatePaymentGatewayConfigUnionPay">
+        <value xml:lang="en">Update Payment Gateway Config PayPal</value>
+        <value xml:lang="zh">更新银联支付的支付网关配置</value>
     </property>
 </resource>

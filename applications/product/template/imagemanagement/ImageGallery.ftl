@@ -27,7 +27,7 @@ under the License.
         <#list productImageList as productImage>
             <#if imageIndex < 5>
                 <td style="vertical-align:bottom">
-                    <table>
+                    <table class="basic-table uk-table">
                         <tbody>
                             <tr valign="middle">
                                 <td align="center"><a href="<@ofbizContentUrl>${(productImage.productImage)!}</@ofbizContentUrl>" target="_blank"><img src="<@ofbizContentUrl>${(productImage.productImageThumb)!}</@ofbizContentUrl>" vspace="5" hspace="5" alt=""/></a></td>
@@ -44,7 +44,7 @@ under the License.
                 <#assign imageIndex = 0>
                 <tr></tr>
                 <td style="vertical-align:bottom">
-                    <table>
+                    <table class="basic-table uk-table">
                         <tbody>
                             <tr valign="middle">
                                 <td align="center"><a href="<@ofbizContentUrl>${(productImage.productImage)!}</@ofbizContentUrl>" target="_blank"><img src="<@ofbizContentUrl>${(productImage.productImageThumb)!}</@ofbizContentUrl>" vspace="5" hspace="5" alt=""/></a></td>

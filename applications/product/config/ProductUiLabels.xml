@@ -125,7 +125,7 @@
         <value xml:lang="ru">OFBiz: Управление объектами</value>
         <value xml:lang="th">OFBiz: การจัดการคลังสินค้า</value>
         <value xml:lang="vi">OFBiz: Quản trị Chi nhánh / Cơ sở</value>
-        <value xml:lang="zh">OFBiz：场所管理程序</value>
+        <value xml:lang="zh">浴火：场所管理程序</value>
         <value xml:lang="zh-TW">OFBiz:場所管理程式</value>
     </property>
     <property key="FacilityCompanySubtitle">
@@ -14267,7 +14267,7 @@
         <value xml:lang="ru">OFBiz: Управление каталогами</value>
         <value xml:lang="th">OFBiz: การจัดการหมวดหมู่</value>
         <value xml:lang="vi">Ofbiz: Quản trị Phân loại Trình diễn</value>
-        <value xml:lang="zh">OFBiz：目录管理程序</value>
+        <value xml:lang="zh">浴火：目录管理程序</value>
         <value xml:lang="zh-TW">OFBiz:型錄管理程式</value>
     </property>
     <property key="ProductCatalogDetailList">
@@ -32393,5 +32393,13 @@
         <value xml:lang="vi">Số lượng trên giỏ hàng</value>
         <value xml:lang="zh">使用购物车数量</value>
         <value xml:lang="zh-TW">使用購物車數量</value>
+    </property>
+    <property key="FormFieldTitle_prodCatalogId">
+        <value xml:lang="en">prodCatalogId</value>
+        <value xml:lang="zh">产品目录标识</value>
+    </property>
+    <property key="FormFieldTitle_catalogName">
+        <value xml:lang="en">catalogName</value>
+        <value xml:lang="zh">目录名称</value>
     </property>
 </resource>

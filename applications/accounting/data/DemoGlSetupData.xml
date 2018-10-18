@@ -202,7 +202,9 @@ under the License.
     <PaymentMethodType paymentMethodTypeId="EXT_OFFLINE" defaultGlAccountId="122000"/>
     <PaymentMethodType paymentMethodTypeId="EXT_PAYPAL" defaultGlAccountId="122000"/>
     <PaymentMethodType paymentMethodTypeId="EXT_WORLDPAY" defaultGlAccountId="122000"/>
-
+	<!--20170110clgalipay5-->
+    <PaymentMethodType paymentMethodTypeId="EXT_ALIPAY" defaultGlAccountId="122000"/>
+    <PaymentMethodType paymentMethodTypeId="EXT_UNIONPAY" defaultGlAccountId="122000"/>
     <CostComponentCalc costComponentCalcId="GEN_COST_CALC" costGlAccountTypeId="OPERATING_EXPENSE"/>
     <CostComponentCalc costComponentCalcId="TASK_COST_CALC" costGlAccountTypeId="OPERATING_EXPENSE"/>
 
