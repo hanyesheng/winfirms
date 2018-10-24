@@ -24,7 +24,8 @@ under the License.
   <div>${uiLabelMap.SecurityExtThisEmailIsInResponseToYourRequestToHave} <#if useEncryption>${uiLabelMap.SecurityExtANew}<#else>${uiLabelMap.SecurityExtYour}</#if> ${uiLabelMap.SecurityExtPasswordSentToYou}.</div>
   <br />
   <br />
-  --${password}
+  autoPassword--${autoPassword}
+  <br />
   --${productStoreId}
   
   <div>

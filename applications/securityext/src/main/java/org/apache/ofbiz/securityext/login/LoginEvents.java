@@ -252,7 +252,7 @@ public class LoginEvents {
                     passwordToSend=passwordToSend.toLowerCase();
                 }
                 autoPassword = RandomStringUtils.randomAlphanumeric(EntityUtilProperties.getPropertyAsInteger("security", "password.length.min", 5).intValue());
-                EntityCrypto entityCrypto = new EntityCrypto(delegator,null); 
+				EntityCrypto entityCrypto = new EntityCrypto(delegator,null); 
                 try {
                     passwordToSend = entityCrypto.encrypt(loginSecretKeyString, EncryptMethod.TRUE, autoPassword);
                 } catch (GeneralException e) {
@@ -323,6 +323,7 @@ public class LoginEvents {
         Map<String, Object> bodyParameters = new HashMap<String, Object>();
         bodyParameters.put("useEncryption", Boolean.valueOf(useEncryption));
         bodyParameters.put("password", UtilFormatOut.checkNull(passwordToSend));
+		bodyParameters.put("autoPassword", autoPassword);
         bodyParameters.put("locale", UtilHttp.getLocale(request));
         bodyParameters.put("userLogin", supposedUserLogin);
         bodyParameters.put("productStoreId", productStoreId);
