@@ -27,7 +27,7 @@ under the License.
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
-  	${(productStore.storeName)!}-${(productStore.subtitle)!} : <#if title?has_content>${title}<#elseif titleProperty?has_content>${uiLabelMap.get(titleProperty)}</#if>
+  	${(productStore.storeName)!}<#if productStore.subtitle?has_content>-${(productStore.subtitle)!}</#if> : <#if title?has_content>${title}<#elseif titleProperty?has_content>${uiLabelMap.get(titleProperty)}</#if>
   </title>
   <#if layoutSettings.VT_SHORTCUT_ICON?has_content>
     <#assign shortcutIcon = layoutSettings.VT_SHORTCUT_ICON.get(0)/>

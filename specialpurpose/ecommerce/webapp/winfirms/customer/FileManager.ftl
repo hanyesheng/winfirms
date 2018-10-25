@@ -16,7 +16,15 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-<#if partyGroup??>
+	<#list RoleTypeAndParty as RoleTypeAndParty>
+		<#if RoleTypeAndParty.roleTypeId = "BUSINESSMAN">
+			<#assign Businessman = 1>
+		</#if>
+		<#if RoleTypeAndParty.roleTypeId = "TEACHER">
+			<#assign Teacher = 1>
+		</#if>
+	</#list>
+<#if Teacher??>
 	<ul class="uk-tab" data-uk-tab="{connect:'#tabs_anim2', animation:'slide-horizontal'}">
 		<#assign ClassCol = 0>
         <#list PartyRelationship as PartyRelationship>
@@ -28,6 +36,7 @@ under the License.
 			</#list>		
         </#list>
     </ul>
+    
     <ul id="tabs_anim2" class="uk-switcher uk-margin">
     <#list PartyRelationship as PartyRelationship>
     	<#list PartyGroup as PartyGroup>
@@ -41,24 +50,34 @@ under the License.
 	        <div class="md-card">
 	        	<div class="md-card-toolbar">
 	                <h3 class="md-card-toolbar-heading-text">
-	                    ${uiLabelMap.AttachFile}
+	                    ${uiLabelMap.StudentUploadFile}
 	                </h3>
 	            </div>
 	            <div class="md-card-content">
 	        	<table class="uk-table uk-table-hover">
-	           		<tbody>
-		            <#list StudentsPartyContentUpload as StudentsPartyContentUpload>
-						<#if StudentsPartyContentUpload.partyId = PartyRelationship.partyIdTo>		
-						<tr>
-							<td>${StudentsPartyContentUpload.contentName}</td>
-							<td>
-								<a href="ViewBinaryDataResource?externalLoginKey=${requestAttributes.externalLoginKey!}&contentId=${StudentsPartyContentUpload.contentId}">
-									${uiLabelMap.CommonDownload}
-								</a>
-							</td>
-	         			</tr>	
-						</#if>
-					</#list>
+           		<tbody>
+	            <#list StudentsPartyContentUpload as StudentsPartyContentUpload>
+	            	<#if StudentsPartyContentUpload.partyId = PartyRelationship.partyIdTo>
+	            	<#assign lastname = "null">
+            		<#assign firstname = "null">
+	        		<#list PartyAndUserLoginAndPerson as PartyAndUserLoginAndPerson>
+				  		<#if PartyAndUserLoginAndPerson.userLoginId = StudentsPartyContentUpload.createdByUserLogin>	
+				  			<#assign lastname = PartyAndUserLoginAndPerson.lastName!>
+			  				<#assign firstname = PartyAndUserLoginAndPerson.firstName!>
+			  				<#break>
+	        			</#if>
+				  	</#list>
+		        	<tr>
+						<td>${StudentsPartyContentUpload.contentName}</td>
+						<td>${lastname!}${firstname!}</td>
+						<td>
+							<a href="/partymgr/control/img/${StudentsPartyContentUpload.contentName}?imgId=${(StudentsPartyContentUpload.dataResourceId)!}">
+								${uiLabelMap.CommonDownload}
+							</a>
+						</td>
+				    </tr>
+				    </#if>
+	            </#list>
 					</tbody>
 	           	</table>
 	        	</div>
@@ -69,7 +88,7 @@ under the License.
 	        <div class="md-card">
 	        	<div class="md-card-toolbar">
 	                <h3 class="md-card-toolbar-heading-text">
-	                    ${uiLabelMap.CommonUpload}
+	                    ${uiLabelMap.ClassFile}
 	                </h3>
 	            </div>
 	            <div class="md-card-content">
@@ -88,7 +107,7 @@ under the License.
 				                  <a href="javascript:document.removePartyContent_${PartyContentDownload_index}.submit()">${uiLabelMap.CommonDelete}</a>
 				                </form>
 								
-								<a href="ViewBinaryDataResource?externalLoginKey=${requestAttributes.externalLoginKey!}&contentId=${PartyContentDownload.contentId}">${uiLabelMap.CommonDownload}</a>
+								<a href="/partymgr/control/img/${PartyContentDownload.contentName}?imgId=${(PartyContentDownload.dataResourceId)!}">${uiLabelMap.CommonDownload}</a>
 							</td>
 						</tr>
 						</#if>
@@ -107,8 +126,7 @@ under the License.
 	                </h3>
 	            </div>
 	    <form id="uploadParentPartyContent" method="post" enctype="multipart/form-data" action="<@ofbizUrl>uploadParentPartyContent</@ofbizUrl>">
-	        
-	            <div class="md-card-content">
+	        <div class="md-card-content">
 		        	<input type="hidden" name="dataCategoryId" value="PERSONAL"/>
 			        <input type="hidden" name="statusId" value="CTNT_PUBLISHED"/>
 			        <input name="contentTypeId" value="DOCUMENT" type="hidden">
@@ -118,8 +136,7 @@ under the License.
 			        <input type="hidden" name="roleTypeId" value="_NA_"/>
 					<input type="file" name="uploadedFile" id="input-file-b" class="dropify"/>
 		            <input style="margin-top: 10px;" class="md-btn md-btn-block md-btn-icon" type="submit"  value="${uiLabelMap.CommonUpload}"/>
-	            </div>
-            
+	           </div>
         </form>
             </div>
 		</div>
@@ -127,11 +144,8 @@ under the License.
 	</li>
 	</#list>
     </ul>
-
-
-
-
-<#elseif person??>
+    
+<#elseif Businessman??>
 	<ul class="uk-tab" data-uk-tab="{connect:'#tabs_anim2', animation:'slide-horizontal'}">
 		<#assign ClassCol = 0>
         <#list PartyRelationship as PartyRelationship>
@@ -143,7 +157,6 @@ under the License.
 			</#list>		
         </#list>
     </ul>
-    
     
     <ul id="tabs_anim2" class="uk-switcher uk-margin">
     <#list PartyRelationship as PartyRelationship>
@@ -168,7 +181,7 @@ under the License.
 						<tr>
 							<td>${PartyContentDownload.contentName}</td>
 							<td>
-								<a href="ViewBinaryDataResource?externalLoginKey=${requestAttributes.externalLoginKey!}&contentId=${PartyContentDownload.contentId}">
+								<a href="/partymgr/control/img/${PartyContentDownload.contentName}?imgId=${(PartyContentDownload.dataResourceId)!}">
 									${uiLabelMap.CommonDownload}
 								</a>
 							</td>
@@ -202,7 +215,7 @@ under the License.
 				                  <input name="fromDate" value="${PartyContentUpload.fromDate}" type="hidden">
 				                  <a href="javascript:document.removePartyContent_${PartyContentUpload_index}.submit()">${uiLabelMap.CommonDelete}</a>
 				                </form>
-								<a href="ViewBinaryDataResource?externalLoginKey=${requestAttributes.externalLoginKey!}&contentId=${PartyContentUpload.contentId}">
+								<a href="/partymgr/control/img/${PartyContentUpload.contentName}?imgId=${(PartyContentUpload.dataResourceId)!}">
 									${uiLabelMap.CommonDownload}
 								</a>
 							</td>
@@ -222,19 +235,21 @@ under the License.
 	                    ${uiLabelMap.UpTo}${ClassName!}
 	                </h3>
 	            </div>
-			    <form id="uploadParentPartyContent" method="post" enctype="multipart/form-data" action="<@ofbizUrl>uploadParentPartyContent</@ofbizUrl>">
-			        <div class="md-card-content">
-			        	<input type="hidden" name="dataCategoryId" value="PERSONAL"/>
-				        <input type="hidden" name="statusId" value="CTNT_PUBLISHED"/>
-				        <input name="contentTypeId" value="DOCUMENT" type="hidden">
-				        <input type="hidden" name="partyId" value="${PartyRelationship.partyIdTo}" id="contentPartyId"/>
-				        <input type="hidden" name="partyContentTypeId" value="VNDSHPINF"/>
-				        <input type="hidden" name="isPublic" value="Y"/>
-				        <input type="hidden" name="roleTypeId" value="_NA_"/>
-						<input type="file" name="uploadedFile" id="input-file-b" class="dropify"/>
-			            <input style="margin-top: 10px;" class="md-btn md-btn-block md-btn-icon" type="submit"  value="${uiLabelMap.CommonUpload}"/>
-		           </div>
-		        </form>
+	    <form id="uploadParentPartyContent" method="post" enctype="multipart/form-data" action="<@ofbizUrl>uploadParentPartyContent</@ofbizUrl>">
+	        
+	            <div class="md-card-content">
+		        	<input type="hidden" name="dataCategoryId" value="PERSONAL"/>
+			        <input type="hidden" name="statusId" value="CTNT_PUBLISHED"/>
+			        <input name="contentTypeId" value="DOCUMENT" type="hidden">
+			        <input type="hidden" name="partyId" value="${PartyRelationship.partyIdTo}" id="contentPartyId"/>
+			        <input type="hidden" name="partyContentTypeId" value="VNDSHPINF"/>
+			        <input type="hidden" name="isPublic" value="Y"/>
+			        <input type="hidden" name="roleTypeId" value="_NA_"/>
+					<input type="file" name="uploadedFile" id="input-file-b" class="dropify"/>
+		            <input style="margin-top: 10px;" class="md-btn md-btn-block md-btn-icon" type="submit"  value="${uiLabelMap.CommonUpload}"/>
+	            </div>
+            
+        </form>
             </div>
 		</div>
 	</div>

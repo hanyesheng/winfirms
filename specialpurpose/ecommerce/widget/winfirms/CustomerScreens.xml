@@ -178,10 +178,24 @@ under the License.
                     <field-map field-name="partyContentTypeId" value="VNDSHPINF"/>
                     <order-by field-name="-fromDate"/>
                	</entity-and>
+               	<entity-and list="PartyAndUserLoginAndPerson" entity-name="PartyAndUserLoginAndPerson">
+                </entity-and>
                	<entity-and entity-name="PartyAndPerson" list="PartyAndPerson">
                      <field-map field-name="partyTypeId" value="PERSON"/>
-                     <field-map field-name="partyId" from-field="StudentsPartyContentUpload[0].createdByUserLogin"/>
-               	</entity-and>
+                     <field-map field-name="partyId" from-field="PartyAndUserLoginAndPerson.partyId"/>
+               </entity-and>
+               <entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                    	<condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="TEACHER"/>
+	                    </condition-list>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
                	<!--会员组-->
                 <entity-and list="PartyGroup" entity-name="PartyGroup">
                	</entity-and>

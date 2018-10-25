@@ -952,6 +952,14 @@
         <value xml:lang="en">AttachFile</value>
         <value xml:lang="zh">相关文件</value>
     </property>
+    <property key="StudentUploadFile">
+        <value xml:lang="en">StudentUploadFile</value>
+        <value xml:lang="zh">学员上传文件</value>
+    </property>
+    <property key="ClassFile">
+        <value xml:lang="en">ClassFile</value>
+        <value xml:lang="zh">班级文件</value>
+    </property>
     <property key="UploadParentContentWarning">
         <value xml:lang="en">UploadParentContentWarning</value>
         <value xml:lang="zh">注意：上传文件的文件名注明学号，允许出现英文字符，但名字不能出现汉语，否则文件名称显示错误！！！</value>
@@ -1327,6 +1335,10 @@
     <property key="StudUploads">
         <value xml:lang="en">StudUploads</value>
         <value xml:lang="zh">学员上传</value>
+    </property>
+    <property key="UpTo">
+        <value xml:lang="en">File upload to</value>
+        <value xml:lang="zh">文件上传到</value>
     </property>
     <property key="SchoolAndInfo">
         <value xml:lang="en">SchoolAndInfo</value>
