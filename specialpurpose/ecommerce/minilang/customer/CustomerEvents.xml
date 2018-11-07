@@ -251,7 +251,33 @@ under the License.
         </if-compare>
 
         <!-- Create the email address -->
-
+        
+		<!-- Check for required E-Mail -->
+        <if-compare field="parameters.REQUIRE_EMAIL" operator="not-equals" value="false">
+            <call-map-processor in-map-name="parameters" out-map-name="emailContext">
+                <simple-map-processor name="newEmail">
+                    <process field="roleTypeId"><copy/></process>
+                    <process field="CUSTOMER_EMAIL">
+                        <copy to-field="emailAddress"/>
+                        <not-empty><fail-property resource="PartyUiLabels" property="PartyEmailAddressMissingError"/></not-empty>
+                        <validate-method method="isEmail"><fail-property resource="PartyUiLabels" property="PartyEmailAddressNotFormattedCorrectly"/></validate-method>
+                    </process>
+                    <process field="CUSTOMER_EMAIL_ALLOW_SOL"><copy to-field="allowSolicitation"/></process>
+                </simple-map-processor>
+            </call-map-processor>
+        <else>
+            <call-map-processor in-map-name="parameters" out-map-name="emailContext">
+                <simple-map-processor name="newEmail">
+                    <process field="roleTypeId"><copy/></process>
+                    <process field="CUSTOMER_EMAIL">
+                        <copy to-field="emailAddress"/>
+                        <validate-method method="isEmail"><fail-property resource="PartyUiLabels" property="PartyEmailAddressNotFormattedCorrectly"/></validate-method>
+                    </process>
+                    <process field="CUSTOMER_EMAIL_ALLOW_SOL"><copy to-field="allowSolicitation"/></process>
+                </simple-map-processor>
+            </call-map-processor>
+        </else>
+        </if-compare>
       
 
         <!-- create the PartyDataSource entry to track where this info came from... -->

@@ -25,7 +25,6 @@ under the License.
     </h3>
 	</div>
 	<div class="md-card-content uk-overflow-container">
-	  <#if partyContactMechValueMaps?has_content>
 	    <table class="uk-table uk-table-hover">
 	    	<thead>
 		      <tr valign="bottom">
@@ -35,6 +34,8 @@ under the License.
 		        <th colspan="2" style="text-align: center;"><a style="display: inline-table;" href="<@ofbizUrl>editcontactmech</@ofbizUrl>" class="button btn-border color3 btn-xs btn-radius"><i class="fa fa-edit"></i>${uiLabelMap.CommonCreateNew}</a></th>
 		      </tr>
 		    </thead>
+		    <tbody>
+	  <#if partyContactMechValueMaps?has_content>
 	      <#list partyContactMechValueMaps as partyContactMechValueMap>
 	        <#assign contactMech = partyContactMechValueMap.contactMech! />
 	        <#assign contactMechType = partyContactMechValueMap.contactMechType! />
@@ -125,10 +126,11 @@ under the License.
 	            </td>
 	          </tr>
 	      </#list>
-	    </table>
-	  <#else>
-	    <label>${uiLabelMap.PartyNoContactInformation}.</label><br />
-	  </#if>
+		  <#else>
+		    <label>${uiLabelMap.PartyNoContactInformation}.</label><br />
+		  </#if>
+		  </tbody>
+	   </table>
 	  </div>
 </div>
 <#else>

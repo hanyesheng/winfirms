@@ -122,6 +122,11 @@ under the License.
         <security https="false" auth="false"/>
         <response name="success" type="view" value="main"/>
     </request-map>
+    
+    <request-map uri="forgetpassword">
+        <security https="false" auth="false"/>
+        <response name="success" type="view" value="forgetpassword"/>
+    </request-map>
 <!--     <request-map uri="authview"> -->
 <!--         <security https="true" auth="true"/> -->
 <!--         <response name="success" type="view" value="main"/> -->
@@ -2773,6 +2778,7 @@ under the License.
     <view-map name="addRoleShowSecCk" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#addRoleShowSecCk"/>
     
     <view-map name="main" type="screen" page="component://ecommerce/widget/winfirms/CommonScreens.xml#main"/>
+    <view-map name="forgetpassword" type="screen" page="component://ecommerce/widget/winfirms/CommonScreens.xml#forgetpassword"/>
     <view-map name="policies" type="screen" page="component://ecommerce/widget/winfirms/CommonScreens.xml#policies"/>
     <view-map name="login" type="screen" page="component://ecommerce/widget/winfirms/CommonScreens.xml#login"/>
     <view-map name="requirePasswordChange" type="screen" page="component://ecommerce/widget/winfirms/CommonScreens.xml#requirePasswordChange"/>

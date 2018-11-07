@@ -124,7 +124,7 @@ under the License.
 				
 				<!-- Field 1 -->
 				<div class="input-text form-group">
-					<div class="input-text form-group"><label>${uiLabelMap.LoginPhoneNumber}</label>
+					<div class="input-text form-group"><label>${uiLabelMap.LoginPhoneNumber}*</label>
 					<label style="float:right;color:red;display:none;">${uiLabelMap.WrongMobileFormat}</label>
 					<label style="float:right;color:red;display:none;">${uiLabelMap.MobileNotEmpty}</label>
 					<label style="color:rgb(153, 143, 143);float:right;display:none;">${uiLabelMap.YourMobileFormat}</label></div>
@@ -133,9 +133,14 @@ under the License.
   				<input style="width: 25%;display: inline-block;" type="button" class="input-name form-control" value="${uiLabelMap.getMsgCode}" onclick="sendMsg(this)" /></div>
 				</div>
 				<input type="hidden" class="form-control" value="${requestParameters.CUSTOMER_MOBILE_CONTACT!}" name="USERNAME" id="USERNAME"/>
+				<div class="input-text form-group">
+				  <div class="input-text form-group"><label for="CUSTOMER_EMAIL">${uiLabelMap.PartyEmailAddress}</label></div>
+      	  <div class="input-text form-group"><input class="form-control" type="text" name="CUSTOMER_EMAIL" id="CUSTOMER_EMAIL" placeholder="****@***.***" value="${requestParameters.CUSTOMER_EMAIL!}" /></div>
+				</div>
+					
 				<!-- Field 1 -->
 				<div class="input-text form-group">
-					<label>${uiLabelMap.PartyNickName}</label>
+					<label>${uiLabelMap.PartyNickName}*</label>
 					<label style="float:right;color:red;display:none;">${uiLabelMap.WrongNickNameFormat}</label>
 					<label style="float:right;color:red;display:none;">${uiLabelMap.YourNickNameNotEmpty}</label>
 					<label style="color:rgb(153, 143, 143);float:right;display:none;">${uiLabelMap.YourNicknameFormat}</label>
@@ -144,14 +149,14 @@ under the License.
 				
 				<!-- Field 2 -->
 				<div class="input-email form-group">
-					<label>${uiLabelMap.CommonPassword}</label>
+					<label>${uiLabelMap.CommonPassword}*</label>
 					<label style="float:right;color:red;display:none;">${uiLabelMap.WrongPasswordFormat}</label>
 					<label style="float:right;color:red;display:none;">${uiLabelMap.YourPasswordNotEmpty}</label>
 					<label style="color:rgb(153, 143, 143);float:right;display:none;">${uiLabelMap.YourPasswordFormat}</label>
 					<input required="required" type="password" class="form-control" name="PASSWORD" id="PASSWORD" onfocus="setLastFocused(this);"   onblur="testPassword()" placeholder="${uiLabelMap.YourPassword}"/>
 				</div>
 				<div class="input-email form-group">
-					<label>${uiLabelMap.PartyRepeatPassword}</label>
+					<label>${uiLabelMap.PartyRepeatPassword}*</label>
 					<label style="float:right;color:red;display:none;">${uiLabelMap.NotAsYourPassword}</label>
 					<label style="float:right;color:red;display:none;">${uiLabelMap.YourPasswordNotEmpty}</label>
 					<label style="color:rgb(153, 143, 143);float:right;display:none;">${uiLabelMap.PartyRepeatPassword}</label>

@@ -30,8 +30,8 @@ under the License.
 					</div>
 				</div>
 			</div>
-			</div>
-			<div class="bcrumb-wrap">
+		</div>
+		<div class="bcrumb-wrap">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
@@ -172,8 +172,8 @@ under the License.
 	<div class="inner-content">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					<h4 class="uppercase space30">${uiLabelMap.CommonRegistered}</h4>
+				<div class="col-md-6 col-md-offset-3 box-content">
+					<h4 class="uppercase space30 text-center">${uiLabelMap.CommonRegistered}</h4>
 	    			<form method="post" action="<@ofbizUrl>login</@ofbizUrl>" name="loginform" class="horizontal">
 					<div class="form-group">
 						<label class="" for="userName">${uiLabelMap.LoginPhoneNumber}</label>
@@ -183,8 +183,9 @@ under the License.
 						<label class="" for="password">${uiLabelMap.CommonPassword}</label>
 						<input class="form-control" name="PASSWORD" id="password" required="required" type="password">
 					</div>
-					<input class="button btn-md" value="${uiLabelMap.CommonLogin}" type="submit">
+					<button class="button btn-border btn-md btn-radius btn-center" type="submit">${uiLabelMap.CommonLogin}</button>
 					<div class="space20"></div>
+					<div class="text-center"><a href="<@ofbizUrl>forgetpassword</@ofbizUrl>">${uiLabelMap.CommonForgotYourPassword}</a></div>
 	    			</form>
 	  			</div>
 			</div>

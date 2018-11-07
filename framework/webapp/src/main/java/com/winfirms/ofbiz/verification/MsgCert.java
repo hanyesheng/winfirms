@@ -27,8 +27,8 @@ public class MsgCert {
 	 static String sendStatus;
 	 static final String sendUrl = "https://api.netease.im/sms/sendcode.action";
 	 static final String checkUrl = "https://api.netease.im/sms/verifycode.action";
-	 static final String appKey = "ce8c1031070babf23274793e6e0dfee2";
-	 static final String appSecret = "f4b4ce566840";
+	 static final String appKey = "d77e9c4aa389083306d34a0268d1cee3";
+	 static final String appSecret = "753be5edf059";
 	 static final String nonce =  "1245167345";
 	 static String curTime = String.valueOf((new Date()).getTime() / 1000L);
 	 static String checkSum = CheckSumBuilder.getCheckSum(appSecret, nonce ,curTime);//参考 计算CheckSum的java代码
@@ -48,7 +48,7 @@ public class MsgCert {
         // 设置请求的参数
         List<NameValuePair> nvps = new ArrayList<NameValuePair>();
         nvps.add(new BasicNameValuePair("mobile", mobile));
-        nvps.add(new BasicNameValuePair("templateid", "4132316"));
+        nvps.add(new BasicNameValuePair("templateid", "3973153"));
         UrlEncodedFormEntity uefEntity;  
         try {  
             uefEntity = new UrlEncodedFormEntity(nvps, "UTF-8");  

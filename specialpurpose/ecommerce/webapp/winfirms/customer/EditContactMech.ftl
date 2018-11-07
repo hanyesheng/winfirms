@@ -37,9 +37,11 @@ under the License.
             <td>
               <select name="preContactMechTypeId" class='form-control'>
                 <#list contactMechTypes as contactMechType>
+                  <#if contactMechType.contactMechTypeId = "TELECOM_NUMBER" || contactMechType.contactMechTypeId = "EMAIL_ADDRESS">
                   <option value='${contactMechType.contactMechTypeId}'>
                     ${contactMechType.get("description",locale)}
                   </option>
+                  </#if>
                 </#list>
               </select>
             </td>
@@ -89,21 +91,27 @@ under the License.
     <div class="md-card-content">
     <table class="uk-table">
       <tr>
-        <td align="right" valign="top">${uiLabelMap.PartyContactPurposes}</td>
+        <td align="right" valign="top">${uiLabelMap.CommonStatus}</td>
         <td>
           <table class="uk-table">
             <#list partyContactMechPurposes! as partyContactMechPurpose>
               <#assign contactMechPurposeType = partyContactMechPurpose.getRelatedOne("ContactMechPurposeType", true) />
               <tr>
                 <td>
-                  <#if contactMechPurposeType??>
-                  ${contactMechPurposeType.get("description",locale)}
-                  <#else>
-                  ${uiLabelMap.PartyPurposeTypeNotFound}: "${partyContactMechPurpose.contactMechPurposeTypeId}"
-                  </#if>
-                  (${uiLabelMap.CommonSince}:${partyContactMechPurpose.fromDate.toString()})
-                  <#if partyContactMechPurpose.thruDate??>(${uiLabelMap.CommonExpires}
-                    :${partyContactMechPurpose.thruDate.toString()})</#if>
+                	<#if contactMechTypeId = "EMAIL_ADDRESS">
+                		<#if contactMechPurposeType?? && contactMechPurposeType.contactMechPurposeTypeId = "PRIMARY_EMAIL">
+                			<#assign emailType = "PRIMARY_EMAIL">
+                			<span class="uk-badge uk-badge-success">${uiLabelMap.HaveBinding}</span>
+                		</#if>
+                	<#else>
+	                  	<#if contactMechPurposeType??>
+	                  		${contactMechPurposeType.get("description",locale)}
+	                  	<#else>
+	                  		${uiLabelMap.PartyPurposeTypeNotFound}: "${partyContactMechPurpose.contactMechPurposeTypeId}"
+	                  	</#if>
+	                  	(${uiLabelMap.CommonSince}:${partyContactMechPurpose.fromDate.toString()})
+	                  	<#if partyContactMechPurpose.thruDate??>(${uiLabelMap.CommonExpires}:${partyContactMechPurpose.thruDate.toString()})</#if>
+                    </#if>
                 </td>
                 <td>
                   <form name="deletePartyContactMechPurpose_${partyContactMechPurpose.contactMechPurposeTypeId}"
@@ -122,30 +130,50 @@ under the License.
               </tr>
             </#list>
             <#if purposeTypes?has_content>
+        	  <#if emailType??  && emailType = "PRIMARY_EMAIL"><#else>	
               <tr>
                 <td>
-                  <form method="post" action='<@ofbizUrl>createPartyContactMechPurpose</@ofbizUrl>'
-                        name='newpurposeform'>
-                    <div>
-                      <input type="hidden" name="contactMechId" value="${contactMechId}"/>
-                      <input type="hidden" name="useValues" value="true"/>
-                      <select name='contactMechPurposeTypeId' class='form-control'>
-                        <option></option>
-                        <#list purposeTypes as contactMechPurposeType>
-                          <option value='${contactMechPurposeType.contactMechPurposeTypeId}'>
-                            ${contactMechPurposeType.get("description",locale)}
-                          </option>
-                        </#list>
-                      </select>
-                    </div>
-                  </form>
+                	<#if contactMechTypeId = "EMAIL_ADDRESS">
+	                  <form method="post" action='<@ofbizUrl>createPartyContactMechPurpose</@ofbizUrl>'
+	                        name='newpurposeform'>
+	                    <div>
+	                      <input type="hidden" name="contactMechId" value="${contactMechId}"/>
+	                      <input type="hidden" name="useValues" value="true"/>
+	                      <input type="hidden" name="contactMechPurposeTypeId" value="PRIMARY_EMAIL"/>
+	                    </div>
+	                  </form>
+	                  <span class="uk-badge uk-badge-warning">${uiLabelMap.UnBinding}</span>
+	                <#else>
+	                  <form method="post" action='<@ofbizUrl>createPartyContactMechPurpose</@ofbizUrl>'
+	                        name='newpurposeform'>
+	                    <div>
+	                      <input type="hidden" name="contactMechId" value="${contactMechId}"/>
+	                      <input type="hidden" name="useValues" value="true"/>
+	                      <select name='contactMechPurposeTypeId' class='form-control'>
+	                        <option></option>
+	                        <#list purposeTypes as contactMechPurposeType>
+	                          <option value='${contactMechPurposeType.contactMechPurposeTypeId}'>
+	                            ${contactMechPurposeType.get("description",locale)}
+	                          </option>
+	                        </#list>
+	                      </select>
+	                    </div>
+	                  </form>
+	                </#if>
                 </td>
                 <td>
-                	<div style="text-align: center;padding: 10px;">
-                  <a href='javascript:document.newpurposeform.submit()' class='button btn-small btn-center btn-radius'>${uiLabelMap.PartyAddPurpose}</a>
-                  </div>
+                	<#if contactMechTypeId = "EMAIL_ADDRESS">
+	                	<div style="text-align: center;padding: 10px;">
+	                  		<a href='javascript:document.newpurposeform.submit()' class='button btn-small btn-center btn-radius'>${uiLabelMap.ConfirmBinding}</a>
+	                  	</div>
+                  	<#else>
+                  		<div style="text-align: center;padding: 10px;">
+	                  		<a href='javascript:document.newpurposeform.submit()' class='button btn-small btn-center btn-radius'>${uiLabelMap.PartyAddPurpose}</a>
+	                  	</div>
+              		</#if>
                 </td>
               </tr>
+          	  </#if>
             </#if>
           </table>
         </td>
@@ -259,20 +287,6 @@ under the License.
         </td>
       </tr>
     </#if>
-    <tr>
-      <td align="right" valign="top">${uiLabelMap.PartyAllowSolicitation}?</td>
-      <td>
-        <select name="allowSolicitation" class='form-control' style="width: 60%;">
-          <#if (((partyContactMechData.allowSolicitation)!"") == "Y")>
-            <option value="Y">${uiLabelMap.CommonY}</option></#if>
-          <#if (((partyContactMechData.allowSolicitation)!"") == "N")>
-            <option value="N">${uiLabelMap.CommonN}</option></#if>
-          <option></option>
-          <option value="Y">${uiLabelMap.CommonY}</option>
-          <option value="N">${uiLabelMap.CommonN}</option>
-        </select>
-      </td>
-    </tr>
     <tr>
 	    <td colspan="2">
 					<div style="text-align: center;padding: 10px;">
