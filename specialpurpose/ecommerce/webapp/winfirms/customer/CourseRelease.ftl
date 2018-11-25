@@ -34,14 +34,14 @@
 	            	<form method="post" action="<@ofbizUrl>removePublicCourse</@ofbizUrl>" id="removePublicProject">
 			            <input type="hidden" name="productId" value="${product.productId}" />
 			            <input type="hidden" name="fromDate" value="${PublicFromDate}" />
-			            <input type="hidden" name="productCategoryId" value="${ProductCategoryPublicId}" />
+			            <input type="hidden" name="productCategoryId" value="${ProductCategoryPublicId!}" />
 						<a href="javascript:document.getElementById('removePublicProject').submit();" class="button btn-border color3 btn-xs btn-radius" type="submit"><i class="fa fa-trash"></i>&nbsp;${uiLabelMap.Hide}</a>
 					</form>
 	            <#else>
 	            	<form method="post" action="<@ofbizUrl>addPublicCourse</@ofbizUrl>" id="addPublicProject">
 			            <input type="hidden" name="productId" value="${product.productId}" />
 			            <input type="hidden" name="fromDate" value="${nowTimestamp}" />
-			            <input type="hidden" name="productCategoryId" value="${ProductCategoryPublicId}" />
+			            <input type="hidden" name="productCategoryId" value="${ProductCategoryPublicId!}" />
 						<a href="javascript:document.getElementById('addPublicProject').submit();" class="button btn-border color3 btn-xs btn-radius" type="submit"><i class="fa "></i>&nbsp;${uiLabelMap.Public}</a>
 					</form>
 	            </#if>

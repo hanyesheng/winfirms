@@ -27,27 +27,25 @@ under the License.
           <tr>
             <th>${uiLabelMap.CourseName}</th>
             <th>${uiLabelMap.CourseInfo}</th>
+            <th>${uiLabelMap.CourseProjectCategory}</th>
             
           </tr>
         </thead>
         <tbody>
     	<#assign ProCol = 0>
         <#list ProductAndRole as ProductAndRole>
-	      	<#list Product as Product>
-	      		<#if ProductAndRole.productId = Product.productId>
-	          	<tr>
-		            <td valign="center">
-		            	<#if Product.largeImageUrl?has_content><img alt="Large Image" src="<@ofbizContentUrl>${Product.largeImageUrl!}</@ofbizContentUrl>" width="100px"/></#if>
-		              <a href="<@ofbizUrl>product?product_id=${Product.productId}</@ofbizUrl>" target="_blank">${Product.productId} -
-		              ${Product.productName?default("No Name")}</a>
-		            </td>
-		            <td valign="center">
-		              ${Product.description!}
-		            </td>
-	          	</tr>
-	          	<#assign ProCol = ProCol + 1>
-	          	</#if>
-	      	</#list>
+          	<tr>
+	            <td valign="center">
+	            	<a href="<@ofbizUrl>product?product_id=${ProductAndRole.productId}</@ofbizUrl>" target="_blank">${ProductAndRole.productId} -
+	              	${ProductAndRole.productName?default("No Name")}</a>
+	            </td>
+	            <td valign="center">
+	              	${ProductAndRole.description!}
+	            </td>
+	            <td valign="center">
+	              	<a href="/products/${ProductAndRole.primaryProductCategoryId!}" target="_blank">${ProductAndRole.primaryProductCategoryId!}</a>
+	            </td>
+          	</tr>
 	    </#list>
       </tbody>
     </table>

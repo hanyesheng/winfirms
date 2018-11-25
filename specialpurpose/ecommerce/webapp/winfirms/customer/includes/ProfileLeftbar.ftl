@@ -69,12 +69,13 @@ under the License.
                     </a>
                     <ul style="display: block;">
                         <li <#if !menuCol?? || menuCol = "1">class="act_item"</#if>><a href="<@ofbizUrl>viewprofile</@ofbizUrl>">${uiLabelMap.PersonalInformation}</a></li>
-                        <li <#if menuCol?? && menuCol = "2">class="act_item"</#if>><a href="<@ofbizUrl>filemanager</@ofbizUrl>">${uiLabelMap.FileManager}</a></li>
                         <li <#if menuCol?? && menuCol = "3">class="act_item"</#if>><a href="<@ofbizUrl>viewcontactmech</@ofbizUrl>">${uiLabelMap.ContactInformation}</a></li>
+                        <li <#if menuCol?? && menuCol = "4">class="act_item"</#if>><a href="<@ofbizUrl>editCollection</@ofbizUrl>">${uiLabelMap.MyCollection}</a></li>
+                        <li <#if menuCol?? && menuCol = "5">class="act_item"</#if>><a href="<@ofbizUrl>editFollowing</@ofbizUrl>">${uiLabelMap.MyFollowing}</a></li>
                         <li <#if menuCol?? && menuCol = "orderhistory">class="act_item"</#if>><a href="<@ofbizUrl>orderhistory</@ofbizUrl>">${uiLabelMap.EcommerceOrderHistory}</a></li>
                     </ul>
                 </li>
-                <li class="act_section" title="${uiLabelMap.MyCollection}">
+                <!--<li class="act_section" title="${uiLabelMap.MyCollection}">
                     <a href="#">
                         <span class="menu_icon"><i class="material-icons">grade</i></span>
                         <span class="menu_title">${uiLabelMap.MyCollection}</span>
@@ -83,17 +84,17 @@ under the License.
                         <li <#if menuCol?? && menuCol = "4">class="act_item"</#if>><a href="<@ofbizUrl>editCollection</@ofbizUrl>">${uiLabelMap.MyCollection}</a></li>
                         <li <#if menuCol?? && menuCol = "5">class="act_item"</#if>><a href="<@ofbizUrl>editFollowing</@ofbizUrl>">${uiLabelMap.MyFollowing}</a></li>
                     </ul>
-                </li>
+                </li>-->
                 <li class="act_section" title="${uiLabelMap.BusinessMgr}">
                     <a href="#">
                         <span class="menu_icon"><i class="material-icons">extension</i></span>
                         <span class="menu_title">${uiLabelMap.BusinessMgr}</span>
                     </a>
                     <ul style="display: block;">
-                        <li <#if menuCol?? && menuCol = "6">class="act_item"</#if>><a href="<@ofbizUrl>projectscreated</@ofbizUrl>">${uiLabelMap.MyProjectCreate}</a></li>
-                        <li <#if menuCol?? && menuCol = "7">class="act_item"</#if>><a href="<@ofbizUrl>projectsin</@ofbizUrl>">${uiLabelMap.MyProjectJoin}</a></li>
-                    	<li <#if menuCol?? && menuCol = "activityin">class="act_item"</#if>><a href="<@ofbizUrl>activityin</@ofbizUrl>">${uiLabelMap.MyActivityJoin}</a></li>
-                    	<li <#if menuCol?? && menuCol = "coursein">class="act_item"</#if>><a href="<@ofbizUrl>coursein</@ofbizUrl>">${uiLabelMap.MyCourseJoin}</a></li>
+                        <li <#if menuCol?? && menuCol = "6">class="act_item"</#if>><a href="<@ofbizUrl>projectscreated</@ofbizUrl>">${uiLabelMap.MyProject}</a></li>
+                    	<!--<li <#if menuCol?? && menuCol = "activityin">class="act_item"</#if>><a href="<@ofbizUrl>activityin</@ofbizUrl>">${uiLabelMap.MyActivityJoin}</a></li>-->
+                        <li <#if menuCol?? && menuCol = "coursein">class="act_item"</#if>><a href="<@ofbizUrl>coursein</@ofbizUrl>">${uiLabelMap.MyCourse}</a></li>
+                    	<li <#if menuCol?? && menuCol = "2">class="act_item"</#if>><a href="<@ofbizUrl>filemanager</@ofbizUrl>">${uiLabelMap.FileManager}</a></li>
                     </ul>    
                 </li>
                 <#if IsInvestors??>
@@ -116,7 +117,8 @@ under the License.
                     </a>
                     <ul style="display: block;">
                         <!--<li <#if menuCol?? && menuCol = "InvestorsIntro">class="act_item"</#if>><a href="<@ofbizUrl>investorsIntro</@ofbizUrl>">${uiLabelMap.RoleManager}</a></li>-->
-                        <li <#if menuCol?? && menuCol = "courseCreated">class="act_item"</#if>><a href="<@ofbizUrl>courseCreated</@ofbizUrl>">${uiLabelMap.MyCourseCreate}</a></li>
+                        <li <#if menuCol?? && menuCol = "courseCreated">class="act_item"</#if>><a href="<@ofbizUrl>courseCreated</@ofbizUrl>">${uiLabelMap.CourseMgr}</a></li>
+                        <li <#if menuCol?? && menuCol = "categoryMgr">class="act_item"</#if>><a href="<@ofbizUrl>categoryMgr</@ofbizUrl>">${uiLabelMap.CategoryMgr}</a></li>
                     </ul>
                 </li>
                 </#if>

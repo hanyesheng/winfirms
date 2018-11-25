@@ -107,7 +107,7 @@ under the License.
                     <ul style="display: block;">
                         <!--<li <#if menuCol?? && menuCol = "InvestorsIntro">class="act_item"</#if>><a href="<@ofbizUrl>investorsIntro</@ofbizUrl>">${uiLabelMap.RoleManager}</a></li>-->
                         <li <#if menuCol?? && menuCol = "ProjectsInvest">class="act_item"</#if>><a href="<@ofbizUrl>projectsInvest</@ofbizUrl>">${uiLabelMap.MyProjectInvest}</a></li>
-                    </ul>
+                    </ul> 
                 </li>
                 </#if>
                 <#if IsTeacher??>
@@ -118,7 +118,8 @@ under the License.
                     </a>
                     <ul style="display: block;">
                         <!--<li <#if menuCol?? && menuCol = "InvestorsIntro">class="act_item"</#if>><a href="<@ofbizUrl>investorsIntro</@ofbizUrl>">${uiLabelMap.RoleManager}</a></li>-->
-                        <li <#if menuCol?? && menuCol = "courseCreated">class="act_item"</#if>><a href="<@ofbizUrl>courseCreated</@ofbizUrl>">${uiLabelMap.MyCourseCreate}</a></li>
+                        <li <#if menuCol?? && menuCol = "courseCreated">class="act_item"</#if>><a href="<@ofbizUrl>courseCreated</@ofbizUrl>">${uiLabelMap.CourseMgr}</a></li>
+                        <li <#if menuCol?? && menuCol = "categoryMgr">class="act_item"</#if>><a href="<@ofbizUrl>categoryMgr</@ofbizUrl>">${uiLabelMap.CategoryMgr}</a></li>
                     </ul>
                 </li>
                 </#if>

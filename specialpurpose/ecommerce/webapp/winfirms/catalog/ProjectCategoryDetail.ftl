@@ -32,7 +32,7 @@ under the License.
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
-						<h3><span>${categoryParentName}</span><#if categoryName?has_content>${categoryName} </#if><#if longDescription?has_content><br>${longDescription}</#if></h3>
+						<h3><span>${categoryParentName!}</span><#if categoryName?has_content>${categoryName} </#if><#if longDescription?has_content><br>${longDescription}</#if></h3>
 						<p class="white">${categoryDescription}</p>
 					</div>
 				</div>

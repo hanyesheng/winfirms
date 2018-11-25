@@ -1831,6 +1831,7 @@ under the License.
       <alias entity-alias="ULN" name="disabledDateTime"/>
       <alias entity-alias="ULN" name="successiveFailedLogins"/>
       <alias entity-alias="PER" name="lastName"/>
+      <alias entity-alias="PER" name="nickname"/>
       <alias entity-alias="PER" name="middleName"/>
       <alias entity-alias="PER" name="firstName"/>
       <view-link entity-alias="ULN" rel-entity-alias="PTY" rel-optional="true">

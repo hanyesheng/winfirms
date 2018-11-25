@@ -190,7 +190,7 @@ under the License.
 	<ul class="nav nav-tabs">
 		<li class="col-md-2 <#if !parameters.detailId??>active</#if>"  ><a href="/products/p_${productId}"><i class="fa fa-fire"></i>${uiLabelMap.Projdetail}</a></li>
 		<li class="col-md-2 <#if parameters.detailId?? && parameters.detailId = "team">active</#if>" ><a href="/products/p_${productId}?detailId=team"><i class="fa fa-pencil"></i>${uiLabelMap.ProjectTeam}</a></li>
-		<li class="col-md-2 <#if parameters.detailId?? && parameters.detailId = "discuss">active</#if>" ><a href="/products/p_${productId}?detailId=comm"><i class="fa fa-check"></i>${uiLabelMap.ProjectComm}</a></li>
+		<li class="col-md-2 <#if parameters.detailId?? && parameters.detailId = "comm">active</#if>" ><a href="/products/p_${productId}?detailId=comm"><i class="fa fa-check"></i>${uiLabelMap.ProjectComm}</a></li>
 		<li class="col-md-2 <#if parameters.detailId?? && parameters.detailId = "dynamic">active</#if>" ><a href="/products/p_${productId}?detailId=dynamic"><i class="fa fa-calendar"></i>${uiLabelMap.ProjectDynamic}</a></li>
 		<li class="col-md-2 <#if parameters.detailId?? && parameters.detailId = "plan">active</#if>" ><a href="/products/p_${productId}?detailId=plan"><i class="fa fa-calendar"></i>${uiLabelMap.BusinessPlan}</a></li>
 	</ul>

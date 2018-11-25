@@ -101,6 +101,9 @@ under the License.
                                             <span class="md-list-heading">
                                             	<#if (RoleTypeAndParty?size > 0)>
 													<#list RoleTypeAndParty as RoleTypeAndParty>
+														<#if RoleTypeAndParty.roleTypeId = "BUSINESSMAN">
+															<#assign IsBusinessman = 1>
+														</#if>
 														<span class="uk-badge uk-badge-primary">${RoleTypeAndParty.description}</span>
 													</#list>
 												<#else>
@@ -143,19 +146,19 @@ under the License.
                             <div class="uk-width-large-1-2">
                                 <h4 class="heading_c uk-margin-small-bottom">${uiLabelMap.Course}</h4>
                                 <ul class="md-list">
-                                	<#list PartyRelationship as PartyRelationship>
-										<#if PartyRelationship.partyIdTo??>
-											<#list PartyGroup as PartyGroup>
-												<#if PartyRelationship.partyIdTo = PartyGroup.partyId>
-													<li>
-				                                        <div class="md-list-content">
-				                                            <span class="md-list-heading"><a href="#">${PartyGroup.groupName!}</a></span>
-				                                            <span class="uk-text-small uk-text-muted">${PartyGroup.comments!}</span>
-				                                        </div>
-				                                   </li>
-												</#if>
-											</#list>
-										</#if>
+                                	<#list CourseAndRoleIn as CourseAndRoleIn>
+										<form method="post" action="<@ofbizUrl>removeCourse</@ofbizUrl>" name="RemoveCourse_${CourseAndRoleIn_index}">
+											<input name="fromDate" value="${CourseAndRoleIn.fromDate!}" type="hidden">
+											<input name="roleTypeId" value="${CourseAndRoleIn.roleTypeId!}" type="hidden">
+											<input name="productId" value="${CourseAndRoleIn.productId!}" type="hidden">
+											<input name="partyId" value="${CourseAndRoleIn.partyId!}" type="hidden">
+										</form>
+										<li>
+	                                        <div class="md-list-content">
+	                                            <span class="md-list-heading"><a href="<@ofbizUrl>product?product_id=${CourseAndRoleIn.productId!}</@ofbizUrl>" target="_blank">${CourseAndRoleIn.productName!}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a class="" href="javascript:document.RemoveCourse_${CourseAndRoleIn_index}.submit()">${uiLabelMap.CommonDelete}</a></span>
+	                                            <span class="uk-text-small uk-text-muted">${CourseAndRoleIn.description!}</span>
+	                                        </div>
+	                                  	</li>
 									</#list>
                                 </ul>
                             </div>
@@ -200,26 +203,29 @@ under the License.
             <div class="md-card-content">
                 <div class="md-list uk-margin-bottom">
                     <div class="md-list-content uk-input-group">
-                        <form method="post" action="<@ofbizUrl>createPartyRelationship</@ofbizUrl>" id="AddOtherPartyRelationship" class="basic-form" name="AddOtherPartyRelationship">
-							<select name="partyIdTo">
-							<option value="">---</option>
-							<#list PartyRole as PartyRole>
-								<#list PartyGroup as PartyGroup>
-									<#if PartyGroup.partyId = PartyRole.partyId>
-										<option value="${PartyGroup.partyId}">${PartyGroup.groupName}</option>
-									</#if>
+                    	<#if IsBusinessman??>
+                        <form method="post" action="<@ofbizUrl>addCourse</@ofbizUrl>" id="AddCourse" class="basic-form" name="AddCourse">
+							<input type="hidden" name="sequenceNum" id="AddCourse_sequenceNum">
+  							<input type="hidden" class="" value="${party.partyId}" name="partyId" size="25" id="AddCourse_partyId" require="">
+  							<input type="hidden" class="" value="BUSINESSMAN" name="roleTypeId" size="25" id="AddCourse_partyId" require="">
+  							<input type="hidden" name="fromDate" class="required hasDatepicker" title="" value="${nowTimestamp}" size="25" maxlength="30" id="AddCourse_fromDate">
+      						<input type="hidden" name="thruDate" title="" size="25" maxlength="30" id="AddCourse_thruDate" class="hasDatepicker">
+      						<input type="hidden" class="" name="comments" size="30" id="AddCourse_comments" require="">
+							<select name="productId">
+								<option value="">---</option>
+								<#list ProductAndCategoryMember as ProductAndCategoryMember>
+									<#assign CourseHas = 0>
+									<#list CourseAndRoleIn as CourseAndRoleIn>
+										<#if CourseAndRoleIn.productId = ProductAndCategoryMember.productId><#assign CourseHas = 1></#if>
+									</#list>
+									<option value="${ProductAndCategoryMember.productId}" <#if CourseHas = 1>disabled="disabled"</#if> >${ProductAndCategoryMember.productName}</option>
 								</#list>
-							</#list>
 							</select>
-							<input name="partyIdFrom" value="${party.partyId}" type="hidden">
-							<input name="roleTypeIdTo" value="CLASS" type="hidden">
-							<input name="partyRelationshipTypeId" value="CHILD" type="hidden">
-							<input name="statusId" value="PARTYREL_CREATED" type="hidden">
-							<input name="fromDate" value="${nowTimestamp}" type="hidden">
 						</form>
 						<span class="uk-input-group-addon">
-							<a class="md-btn" href="javascript:document.getElementById('AddOtherPartyRelationship').submit();"><i class="material-icons">note_add</i>${uiLabelMap.AddCommonParent}</a>
+							<a class="md-btn" href="javascript:document.getElementById('AddCourse').submit();"><i class="material-icons">note_add</i>${uiLabelMap.AddCommonParent}</a>
 						</span>
+						</#if>
                    </div>
                 </div>
             </div>

@@ -1771,9 +1771,60 @@ under the License.
         <security https="true" auth="true"/>
         <response name="success"  type="view" value="projectscreated"/>
     </request-map>
+    <!--我创建的课程-->
     <request-map uri="courseCreated">
         <security https="true" auth="true"/>
         <response name="success"  type="view" value="courseCreated"/>
+    </request-map>
+    <!--分类管理-->
+    <request-map uri="categoryMgr">
+        <security https="true" auth="true"/>
+        <response name="success"  type="view" value="categoryMgr"/>
+    </request-map>
+    <!--创建分类-->
+    <request-map uri="createCourseCategory">
+        <security https="true" auth="true"/>
+        <response name="success"  type="view" value="createCourseCategory"/>
+    </request-map>
+    <request-map uri="createProductCategory">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="createProductCategory"/>
+        <response name="success" type="view" value="createCourseCategory"/>
+        <response name="error" type="view" value="createCourseCategory"/>
+    </request-map>
+    <request-map uri="updateProductCategory">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="updateProductCategory"/>
+        <response name="success" type="view" value="createCourseCategory"/>
+        <response name="error" type="view" value="createCourseCategory"/>
+    </request-map>
+    <request-map uri="editCourseCategory">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="createCourseCategory"/>
+    </request-map>
+    <!--分类绑定课程页面-->
+    <request-map uri="courseCategoryCourse">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="courseCategoryCourse"/>
+    </request-map>
+    <!--分类绑定课程-->
+    <request-map uri="courseCategoryToCourse">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="updateProduct"/>
+        <response name="success" type="view" value="courseCategoryCourse"/>
+        <response name="error" type="view" value="courseCategoryCourse"/>
+    </request-map>
+    <!--删除课程项目-->
+    <request-map uri="deleteProjectFromCourseCategory">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="removeProductFromCategory"/>
+        <response name="success" type="view-last" />
+        <response name="error" type="view-last" />
+    </request-map>
+    <!--课程分类下项目-->
+    <request-map uri="courseCategoryProjects">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="courseCategoryProjects"/>
     </request-map>
     <!--我参与的项目-->
     <request-map uri="projectsin">
@@ -2437,6 +2488,33 @@ under the License.
         <response name="success" type="view" value="CourseVideoList"/>
         <response name="error" type="view" value="UpdateCourseVideoList"/>
     </request-map>
+    <!--课程文件-->
+    <request-map uri="courseFile">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="CourseFile" save-current-view="true"/>
+    </request-map>
+    <request-map uri="prepareCreateCourseFile">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="UpdateCourseFile" save-current-view="true"/>
+    </request-map>
+    <request-map uri="removeCourseFile">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="removeProductContent"/>
+        <response name="success" type="view" value="CourseFile"/>
+        <response name="error" type="view" value="CourseFile"/>
+    </request-map>
+    <request-map uri="updateCourseFile">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="updateDownloadContentForProduct"/>
+        <response name="success" type="view" value="UpdateCourseFile"/>
+        <response name="error" type="view" value="UpdateCourseFile"/>
+    </request-map>
+    <request-map uri="createCourseFile">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="createDownloadContentForProduct"/>
+        <response name="success" type="view" value="CourseFile"/>
+        <response name="error" type="view" value="UpdateCourseFile"/>
+    </request-map>
     <!--课程动态-->
     <request-map uri="courseDynamic">
         <security https="true" auth="true"/>
@@ -2491,6 +2569,11 @@ under the License.
     <request-map uri="courseDiscuss">
         <security https="true" auth="true"/>
         <response name="success" type="view" value="CourseDiscuss" save-current-view="true"/>
+    </request-map>
+    <!--课程项目-->
+    <request-map uri="courseProjects">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="CourseProjects" save-current-view="true"/>
     </request-map>
     <!--发布课程-->
     <request-map uri="courseRelease">
@@ -2761,6 +2844,29 @@ under the License.
         <response name="success" type="view-last"/>
         <response name="error" type="view-last"/>
     </request-map>
+    <!--添加课程-->
+    <request-map uri="addCourse">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="addPartyToProduct"/>
+        <response name="success" type="view" value="viewprofile"/>
+        <response name="error" type="view" value="viewprofile"/>
+    </request-map>
+    <request-map uri="removeCourse">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="removePartyFromProduct"/>
+        <response name="success" type="view" value="viewprofile"/>
+        <response name="error" type="view" value="viewprofile"/>
+    </request-map>
+    <request-map uri="uploadCourseFile">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="filemanager" save-current-view="true"/>
+    </request-map>
+    <request-map uri="removeUploadCourseFile">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="removeProductContent"/>
+        <response name="success" type="view" value="filemanager"/>
+        <response name="error" type="view" value="filemanager"/>
+    </request-map>
     <!-- End of Request Mappings -->
 
     <!-- View Mappings -->
@@ -2942,6 +3048,9 @@ under the License.
     <!--我创建的项目-->
     <view-map name="projectscreated" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#projectscreated"/>
     <view-map name="courseCreated" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#courseCreated"/>
+    <!--分类管理-->
+    <view-map name="categoryMgr" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#categoryMgr"/>
+    <view-map name="createCourseCategory" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#createCourseCategory"/>
     <!--我参与的项目-->
     <view-map name="projectsin" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#projectsin"/>
     <view-map name="activityin" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#activityin"/>
@@ -2970,19 +3079,26 @@ under the License.
    	<!--编辑课程·-->
    	<view-map name="CourseRelease" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#CourseRelease"/>
    	<view-map name="CourseDiscuss" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#CourseDiscuss"/>
+   	<view-map name="CourseProjects" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#CourseProjects"/>
    	<view-map name="CourseInfo" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#CourseInfo"/>
    	<view-map name="CourseRecruit" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#CourseRecruit"/>
    	<view-map name="UpdateCourseRecruit" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#UpdateCourseRecruit"/>
    	<view-map name="CourseVideoList" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#CourseVideoList"/>
+   	<view-map name="UpdateCourseVideoList" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#UpdateCourseVideoList"/>
    	<view-map name="CourseVideoIntro" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#CourseVideoIntro"/>
    	<view-map name="UpdateCourseVideoIntro" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#UpdateCourseVideoIntro"/>
-   	<view-map name="UpdateCourseVideoList" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#UpdateCourseVideoList"/>
+   	<view-map name="CourseFile" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#CourseFile"/>
+   	<view-map name="UpdateCourseFile" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#UpdateCourseFile"/>
    	<view-map name="CourseDynamic" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#CourseDynamic"/>
    	<view-map name="UpdateCourseDynamic" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#UpdateCourseDynamic"/>
    	<view-map name="CoursePlan" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#CoursePlan"/>
    	<view-map name="UpdateCoursePlan" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#UpdateCoursePlan"/>
    	<view-map name="CourseFeatures" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#CourseFeatures"/>
    	<view-map name="CourseParty" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#CourseParty"/>
+   	<!--分类绑定课程-->
+   	<view-map name="courseCategoryCourse" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#courseCategoryCourse"/>
+   	<!--课程分类项目-->
+   	<view-map name="courseCategoryProjects" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#courseCategoryProjects"/>
    	<!--下载-->
     <view-map name="ViewBinaryDataResource" page="" type="simplecontent"/>
     <!-- End of View Mappings -->

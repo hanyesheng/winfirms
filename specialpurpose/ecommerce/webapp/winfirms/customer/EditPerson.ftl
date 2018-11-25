@@ -103,42 +103,7 @@ under the License.
             </div>
         </div>
     </div>
-    <div class="uk-width-large-3-10">
-        <div class="md-card">
-        	<div class="md-card-toolbar">
-                <h3 class="md-card-toolbar-heading-text">
-                    ${uiLabelMap.Course}
-                </h3>
-            </div>
-            <div class="md-card-content">
-            	<table class="uk-table uk-table-hover"><tbody>
-            	<#assign hasParentCol = "0">
-				<#list PartyRelationship as PartyRelationship>
-					<#if PartyRelationship.partyIdTo??>
-						<#list PartyGroup as PartyGroup>
-							<#if PartyRelationship.partyIdTo = PartyGroup.partyId>
-								<tr>
-									<td><span class="label label-info">${PartyGroup.groupName!}</span></td>
-									<form method="post" id="deletePartyRelationship_${hasParentCol}" action="<@ofbizUrl>deletePartyRelationship</@ofbizUrl>" name="ListPartyRelationships">
-										<input name="roleTypeIdTo" value="CLASS" type="hidden">
-										<input name="fromDate" value="${PartyRelationship.fromDate!}" type="hidden">
-										<input name="partyIdFrom" value="${PartyRelationship.partyIdFrom!}" type="hidden">
-										<input name="partyIdTo" value="${PartyRelationship.partyIdTo!}" type="hidden">
-										<input name="roleTypeIdFrom" value="${PartyRelationship.roleTypeIdFrom!}" type="hidden">
-									</form>
-									<td width="10%">
-										<a style="float: right;" class="button btn-border color3 btn-xs btn-radius" href="javascript:document.getElementById('deletePartyRelationship_${hasParentCol}').submit();"><i class="fa fa-trash"></i>${uiLabelMap.CommonDelete}</a>
-									</td>
-								</tr>
-								<#assign hasParentCol = hasParentCol + 1>
-							</#if>
-						</#list>
-					</#if>
-				</#list>
-				</tbody></table>
-            </div>
-        </div>
-    </div>
+    
 </div>
 <#else>
     <h3>${uiLabelMap.PartyNoPartyForCurrentUserName}: ${userLogin.userLoginId}</h3>

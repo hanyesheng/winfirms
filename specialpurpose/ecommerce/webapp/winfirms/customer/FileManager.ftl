@@ -16,172 +16,32 @@ KIND, either express or implied.  See the License for the
 specific language governing permissions and limitations
 under the License.
 -->
-	<#list RoleTypeAndParty as RoleTypeAndParty>
-		<#if RoleTypeAndParty.roleTypeId = "BUSINESSMAN">
-			<#assign Businessman = 1>
-		</#if>
-		<#if RoleTypeAndParty.roleTypeId = "TEACHER">
-			<#assign Teacher = 1>
-		</#if>
-	</#list>
-<#if Teacher??>
-	<ul class="uk-tab" data-uk-tab="{connect:'#tabs_anim2', animation:'slide-horizontal'}">
-		<#assign ClassCol = 0>
-        <#list PartyRelationship as PartyRelationship>
-        	<#list PartyGroup as PartyGroup>
-				<#if PartyRelationship.partyIdTo = PartyGroup.partyId>
-				<li <#if ClassCol = 0>class="uk-active"</#if>><a href="<@ofbizUrl>filemanager</@ofbizUrl>">${PartyGroup.groupName!}</a></li>
-				</#if>
-				<#assign ClassCol = ClassCol + 1>
-			</#list>		
-        </#list>
-    </ul>
-    
-    <ul id="tabs_anim2" class="uk-switcher uk-margin">
-    <#list PartyRelationship as PartyRelationship>
-    	<#list PartyGroup as PartyGroup>
-    		<#if PartyRelationship.partyIdTo = PartyGroup.partyId>
-    			<#assign ClassName = PartyGroup.groupName!>
-    		</#if>
-		</#list>
+<#list RoleTypeAndParty as RoleTypeAndParty>
+	<#if RoleTypeAndParty.roleTypeId = "BUSINESSMAN">
+		<#assign Businessman = 1>
+	</#if>
+</#list>
+<#if Businessman??>
+    <ul style="list-style: none;">
 	<li>
 		<div class="uk-grid" data-uk-grid-margin data-uk-grid-match id="user_profile">
-			<div class="uk-width-large-1-2">
-	        <div class="md-card">
-	        	<div class="md-card-toolbar">
-	                <h3 class="md-card-toolbar-heading-text">
-	                    ${uiLabelMap.StudentUploadFile}
-	                </h3>
-	            </div>
-	            <div class="md-card-content">
-	        	<table class="uk-table uk-table-hover">
-           		<tbody>
-	            <#list StudentsPartyContentUpload as StudentsPartyContentUpload>
-	            	<#if StudentsPartyContentUpload.partyId = PartyRelationship.partyIdTo>
-	            	<#assign lastname = "null">
-            		<#assign firstname = "null">
-	        		<#list PartyAndUserLoginAndPerson as PartyAndUserLoginAndPerson>
-				  		<#if PartyAndUserLoginAndPerson.userLoginId = StudentsPartyContentUpload.createdByUserLogin>	
-				  			<#assign lastname = PartyAndUserLoginAndPerson.lastName!>
-			  				<#assign firstname = PartyAndUserLoginAndPerson.firstName!>
-			  				<#break>
-	        			</#if>
-				  	</#list>
-		        	<tr>
-						<td>${StudentsPartyContentUpload.contentName}</td>
-						<td>${lastname!}${firstname!}</td>
-						<td>
-							<a href="/partymgr/control/img/${StudentsPartyContentUpload.contentName}?imgId=${(StudentsPartyContentUpload.dataResourceId)!}">
-								${uiLabelMap.CommonDownload}
-							</a>
-						</td>
-				    </tr>
-				    </#if>
-	            </#list>
-					</tbody>
-	           	</table>
-	        	</div>
-	        </div>
-	    </div>
-	    
-	    <div class="uk-width-large-1-2">
-	        <div class="md-card">
-	        	<div class="md-card-toolbar">
-	                <h3 class="md-card-toolbar-heading-text">
-	                    ${uiLabelMap.ClassFile}
-	                </h3>
-	            </div>
-	            <div class="md-card-content">
-	           	<table class="uk-table uk-table-hover">
-	           		<tbody>
-           			<#list PartyContentDownload as PartyContentDownload>
-						<#if PartyContentDownload.partyId = PartyRelationship.partyIdTo>
-						<tr>
-							<td>${PartyContentDownload.contentName}</td>
-							<td>
-								<form name="removePartyContent_${PartyContentDownload_index}" style="display: inline-block;" method="post" action="<@ofbizUrl>removePartyContent</@ofbizUrl>">
-				                  <input name="contentId" value="${PartyContentDownload.contentId}" type="hidden">
-				                  <input name="partyId" value="${PartyContentDownload.partyId}" type="hidden">
-				                  <input name="partyContentTypeId" value="${PartyContentDownload.partyContentTypeId}" type="hidden">
-				                  <input name="fromDate" value="${PartyContentDownload.fromDate}" type="hidden">
-				                  <a href="javascript:document.removePartyContent_${PartyContentDownload_index}.submit()">${uiLabelMap.CommonDelete}</a>
-				                </form>
-								
-								<a href="/partymgr/control/img/${PartyContentDownload.contentName}?imgId=${(PartyContentDownload.dataResourceId)!}">${uiLabelMap.CommonDownload}</a>
-							</td>
-						</tr>
-						</#if>
-					</#list>
-					</tbody>
-	           	</table>
-	        	</div>
-	        </div>
-	    </div>
-	    
-	    <div class="uk-width-large-1-1">
-	    	<div class="md-card">
-	    	    <div class="md-card-toolbar">
-					<h3 class="md-card-toolbar-heading-text">
-	                    ${uiLabelMap.UpTo}${ClassName!}
-	                </h3>
-	            </div>
-	    <form id="uploadParentPartyContent" method="post" enctype="multipart/form-data" action="<@ofbizUrl>uploadParentPartyContent</@ofbizUrl>">
-	        <div class="md-card-content">
-		        	<input type="hidden" name="dataCategoryId" value="PERSONAL"/>
-			        <input type="hidden" name="statusId" value="CTNT_PUBLISHED"/>
-			        <input name="contentTypeId" value="DOCUMENT" type="hidden">
-			        <input type="hidden" name="partyId" value="${PartyRelationship.partyIdTo}" id="contentPartyId"/>
-			        <input type="hidden" name="partyContentTypeId" value="USERDEF"/>
-			        <input type="hidden" name="isPublic" value="Y"/>
-			        <input type="hidden" name="roleTypeId" value="_NA_"/>
-					<input type="file" name="uploadedFile" id="input-file-b" class="dropify"/>
-		            <input style="margin-top: 10px;" class="md-btn md-btn-block md-btn-icon" type="submit"  value="${uiLabelMap.CommonUpload}"/>
-	           </div>
-        </form>
-            </div>
-		</div>
-	</div>
-	</li>
-	</#list>
-    </ul>
-    
-<#elseif Businessman??>
-	<ul class="uk-tab" data-uk-tab="{connect:'#tabs_anim2', animation:'slide-horizontal'}">
-		<#assign ClassCol = 0>
-        <#list PartyRelationship as PartyRelationship>
-        	<#list PartyGroup as PartyGroup>
-				<#if PartyRelationship.partyIdTo = PartyGroup.partyId>
-				<li <#if ClassCol = 0>class="uk-active"</#if>><a href="<@ofbizUrl>filemanager</@ofbizUrl>">${PartyGroup.groupName!}</a></li>
-				</#if>
-				<#assign ClassCol = ClassCol + 1>
-			</#list>		
-        </#list>
-    </ul>
-    
-    <ul id="tabs_anim2" class="uk-switcher uk-margin">
-    <#list PartyRelationship as PartyRelationship>
-    	<#list PartyGroup as PartyGroup>
-    		<#if PartyRelationship.partyIdTo = PartyGroup.partyId>
-    			<#assign ClassName = PartyGroup.groupName!>
-    		</#if>
-		</#list>
-	<li><div class="uk-grid" data-uk-grid-margin data-uk-grid-match id="user_profile">
+		<#list CourseAndRoleIn as CourseAndRoleIn>
 		<div class="uk-width-large-1-2">
 	        <div class="md-card">
 	        	<div class="md-card-toolbar">
 	                <h3 class="md-card-toolbar-heading-text">
-	                    ${uiLabelMap.AttachFile}
+	                    <a href="#">${CourseAndRoleIn.productName}</a>${uiLabelMap.FileDownload}
 	                </h3>
 	            </div>
 	            <div class="md-card-content">
 	           	<table class="uk-table uk-table-hover">
 	           		<tbody>
-           			<#list PartyContentDownload as PartyContentDownload>
-						<#if PartyContentDownload.partyId = PartyRelationship.partyIdTo>
+           			<#list ProductContentAndInfoDownload as ProductContentAndInfoDownload>
+						<#if ProductContentAndInfoDownload.productId = CourseAndRoleIn.productId>
 						<tr>
-							<td>${PartyContentDownload.contentName}</td>
+							<td>${ProductContentAndInfoDownload.contentName}</td>
 							<td>
-								<a href="/partymgr/control/img/${PartyContentDownload.contentName}?imgId=${(PartyContentDownload.dataResourceId)!}">
+								<a href="/partymgr/control/img/${ProductContentAndInfoDownload.contentName}?imgId=${(ProductContentAndInfoDownload.dataResourceId)!}">
 									${uiLabelMap.CommonDownload}
 								</a>
 							</td>
@@ -197,64 +57,61 @@ under the License.
 	        <div class="md-card">
 	        	<div class="md-card-toolbar">
 	                <h3 class="md-card-toolbar-heading-text">
-	                    ${uiLabelMap.CommonUpload}
+	                    <a href="#">${CourseAndRoleIn.productName}</a>${uiLabelMap.CommonUpload}
 	                </h3>
 	            </div>
 	            <div class="md-card-content">
 	        	<table class="uk-table uk-table-hover">
 	           		<tbody>
-		            <#list PartyContentUpload as PartyContentUpload>
-						<#if PartyContentUpload.partyId = PartyRelationship.partyIdTo>
+			            <#list ProductContentAndInfoUpload as ProductContentAndInfoUpload>
+							<#if ProductContentAndInfoUpload.productId = CourseAndRoleIn.productId>
+							<tr>
+								<td>${ProductContentAndInfoUpload.contentName}</td>
+								<td>
+									<form name="removeUploadCourseFile_${ProductContentAndInfoUpload_index}" style="display: inline-block;" method="post" action="<@ofbizUrl>removeUploadCourseFile</@ofbizUrl>">
+					                  	<input name="fromDate" value="${ProductContentAndInfoUpload.fromDate!}" type="hidden">
+										<input name="productId" value="${ProductContentAndInfoUpload.productId!}" type="hidden">
+										<input name="contentId" value="${ProductContentAndInfoUpload.contentId!}" type="hidden">
+										<input name="productContentTypeId" value="${ProductContentAndInfoUpload.productContentTypeId!}" type="hidden">
+					                  <a href="javascript:document.removeUploadCourseFile_${ProductContentAndInfoUpload_index}.submit()">${uiLabelMap.CommonDelete}</a>
+					                </form>
+									<a href="/partymgr/control/img/${ProductContentAndInfoUpload.contentName}?imgId=${(ProductContentAndInfoUpload.dataResourceId)!}">
+										${uiLabelMap.CommonDownload}
+									</a>
+								</td>
+							</tr>
+							</#if>
+						</#list>
 						<tr>
-							<td>${PartyContentUpload.contentName}</td>
-							<td>
-								<form name="removePartyContent_${PartyContentUpload_index}" style="display: inline-block;" method="post" action="<@ofbizUrl>removePartyContent</@ofbizUrl>">
-				                  <input name="contentId" value="${PartyContentUpload.contentId}" type="hidden">
-				                  <input name="partyId" value="${PartyContentUpload.partyId}" type="hidden">
-				                  <input name="partyContentTypeId" value="${PartyContentUpload.partyContentTypeId}" type="hidden">
-				                  <input name="fromDate" value="${PartyContentUpload.fromDate}" type="hidden">
-				                  <a href="javascript:document.removePartyContent_${PartyContentUpload_index}.submit()">${uiLabelMap.CommonDelete}</a>
-				                </form>
-								<a href="/partymgr/control/img/${PartyContentUpload.contentName}?imgId=${(PartyContentUpload.dataResourceId)!}">
-									${uiLabelMap.CommonDownload}
-								</a>
+							<td colspan="2">
+								<form name="uploadCourseFile_${CourseAndRoleIn_index}" id="uploadCourseFile" method="post" enctype="multipart/form-data" action="<@ofbizUrl>uploadCourseFile</@ofbizUrl>">
+						        	<input type="hidden" name="productId" value="${CourseAndRoleIn.productId}" id="EditCourseFile_productId">
+								  	<input type="hidden" name="contentId" id="EditCourseFile_contentId">
+								  	<input type="hidden" name="productContentTypeId" value="DIGITAL_UPLOAD" id="EditCourseFile_productContentTypeId">
+								  	<input type="hidden" name="purchaseFromDate" id="EditCourseFile_purchaseFromDate">
+								  	<input type="hidden" name="purchaseThruDate" id="EditCourseFile_purchaseThruDate">
+								  	<input type="hidden" name="useCountLimit" id="EditCourseFile_useCountLimit">
+								  	<input type="hidden" name="useTime" id="EditCourseFile_useTime">
+								  	<input type="hidden" name="useTimeUomId" id="EditCourseFile_useTimeUomId">
+								  	<input type="hidden" name="useRoleTypeId" id="EditCourseFile_useRoleTypeId">
+								  	<input type="hidden" name="description" id="EditCourseFile_description">
+								  	<input type="hidden" name="fileDataResourceId" id="EditCourseFile_fileDataResourceId">
+						        	<input type="hidden" name="sequenceNum" size="6" id="EditCourseFile_sequenceNum">  
+								  	<input type="hidden" value="${nowTimestamp}" name="fromDate" title="" size="25" maxlength="30" id="EditCourseFile_fromDate_i18n">
+								  	<input type="hidden" name="thruDate"  maxlength="30" id="EditCourseFile_thruDate_i18n">
+									<input type="file" name="imageData"/>
+									<a href="javascript:document.uploadCourseFile_${CourseAndRoleIn_index}.submit()">${uiLabelMap.CommonUpload}</a>
+				        		</form>
 							</td>
 						</tr>
-						</#if>
-					</#list>
 					</tbody>
 	           	</table>
 	        	</div>
 	        </div>
 	    </div>
-	    
-	    <div class="uk-width-large-1-1">
-	    	<div class="md-card">
-	    	    <div class="md-card-toolbar">
-					<h3 class="md-card-toolbar-heading-text">
-	                    ${uiLabelMap.UpTo}${ClassName!}
-	                </h3>
-	            </div>
-	    <form id="uploadParentPartyContent" method="post" enctype="multipart/form-data" action="<@ofbizUrl>uploadParentPartyContent</@ofbizUrl>">
-	        
-	            <div class="md-card-content">
-		        	<input type="hidden" name="dataCategoryId" value="PERSONAL"/>
-			        <input type="hidden" name="statusId" value="CTNT_PUBLISHED"/>
-			        <input name="contentTypeId" value="DOCUMENT" type="hidden">
-			        <input type="hidden" name="partyId" value="${PartyRelationship.partyIdTo}" id="contentPartyId"/>
-			        <input type="hidden" name="partyContentTypeId" value="VNDSHPINF"/>
-			        <input type="hidden" name="isPublic" value="Y"/>
-			        <input type="hidden" name="roleTypeId" value="_NA_"/>
-					<input type="file" name="uploadedFile" id="input-file-b" class="dropify"/>
-		            <input style="margin-top: 10px;" class="md-btn md-btn-block md-btn-icon" type="submit"  value="${uiLabelMap.CommonUpload}"/>
-	            </div>
-            
-        </form>
-            </div>
-		</div>
+	    </#list>
 	</div>
 	</li>
-	</#list>
     </ul>
 <#else>
     <h3>${uiLabelMap.PartyNoPartyForCurrentUserName}: ${userLogin.userLoginId}</h3>

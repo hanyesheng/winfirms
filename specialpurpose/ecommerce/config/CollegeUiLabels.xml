@@ -1248,6 +1248,14 @@
         <value xml:lang="en">CourseMgr</value>
         <value xml:lang="zh">课程管理</value>
     </property>
+    <property key="MyCourseCategoryCreate">
+        <value xml:lang="en">MyCourseCategoryCreate</value>
+        <value xml:lang="zh">我创建的分类</value>
+    </property>
+    <property key="CategoryMgr">
+        <value xml:lang="en">CategoryMgr</value>
+        <value xml:lang="zh">分类管理</value>
+    </property>
     <property key="MyActivityJoin">
         <value xml:lang="en">MyActivityJoin</value>
         <value xml:lang="zh">我参加的活动</value>
@@ -1267,6 +1275,10 @@
  	<property key="CourseVideoList">
         <value xml:lang="en">CourseVideoList</value>
         <value xml:lang="zh">课程视频列表</value>
+    </property>
+    <property key="CourseFileList">
+        <value xml:lang="en">CourseFileList</value>
+        <value xml:lang="zh">课程文件列表</value>
     </property>
     <property key="CourseDynamic">
         <value xml:lang="en">CourseDynamic</value>
@@ -1419,5 +1431,65 @@
     <property key="UnBinding">
         <value xml:lang="en">UnBinding</value>
         <value xml:lang="zh">未绑定</value>
+    </property>
+    <property key="CourseCategoryId">
+        <value xml:lang="en">CourseCategoryId</value>
+        <value xml:lang="zh">分类ID</value>
+    </property>
+    <property key="CourseCategoryName">
+        <value xml:lang="en">CourseCategoryName</value>
+        <value xml:lang="zh">分类名称</value>
+    </property>
+    <property key="CategoryOfCourse">
+        <value xml:lang="en">CategoryOfCourse</value>
+        <value xml:lang="zh">所属课程</value>
+    </property>
+    <property key="CreateCategory">
+        <value xml:lang="en">CreateCategory</value>
+        <value xml:lang="zh">创建分类</value>
+    </property>
+    <property key="CourseCategoryDescription">
+        <value xml:lang="en">CourseCategoryDescription</value>
+        <value xml:lang="zh">分类描述</value>
+    </property>
+    <property key="CourseProjectCategory">
+        <value xml:lang="en">CourseProjectCategory</value>
+        <value xml:lang="zh">课程项目分类</value>
+    </property>
+    <property key="CategoryInfo">
+        <value xml:lang="en">CategoryInfo</value>
+        <value xml:lang="zh">分类信息</value>
+    </property>
+    <property key="CourseCategoryCourse">
+        <value xml:lang="en">CourseCategoryCourse</value>
+        <value xml:lang="zh">课程绑定</value>
+    </property>
+    <property key="CourseCategoryProjects">
+        <value xml:lang="en">CourseCategoryProjects</value>
+        <value xml:lang="zh">学生项目</value>
+    </property>
+    <property key="NowCourseCategoryCourse">
+        <value xml:lang="en">NowCourseCategoryCourse</value>
+        <value xml:lang="zh">当前绑定课程</value>
+    </property>
+    <property key="EidtCourseCategoryCourse">
+        <value xml:lang="en">EidtCourseCategoryCourse</value>
+        <value xml:lang="zh">更改绑定课程</value>
+    </property>
+    <property key="ProjectId">
+        <value xml:lang="en">ProjectId</value>
+        <value xml:lang="zh">项目ID</value>
+    </property>
+    <property key="CouldNotFindPrimaryProductCategoryId">
+        <value xml:lang="en">CouldNotFindPrimaryProductCategoryId</value>
+        <value xml:lang="zh">该课程没有设置课程项目分类，请先创建分类并在课程基本信息中添加</value>
+    </property>
+    <property key="ProductContentType">
+        <value xml:lang="en">ProductContentType</value>
+        <value xml:lang="zh">内容类型</value>
+    </property>
+    <property key="MyCourse">
+        <value xml:lang="en">MyCourse</value>
+        <value xml:lang="zh">我的课程</value>
     </property>
 </resource>

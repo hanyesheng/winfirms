@@ -45,6 +45,19 @@
                 </td>
             </tr>
             <tr>
+                <td align="right" valign="top"><b>${uiLabelMap.CourseProjectCategory}</b></td>
+                <td>&nbsp;</td>
+                <td colspan="4" valign="top">
+		            <select class="" name="primaryProductCategoryId" id="EditProduct_primaryProductCategoryId" >              
+		            	<option value="">${(product.primaryProductCategoryId)!}</option>
+		            	<option value=""></option>
+		          		<#list ProductCategory as ProductCategory>
+		          			<option value="${ProductCategory.productCategoryId}">[${ProductCategory.productCategoryId}]-${ProductCategory.categoryName}</option>     
+		          		</#list>
+		            </select>
+	            </td>
+            </tr>
+            <tr>
                 <td align="right" valign="top"><b>${uiLabelMap.ProductLongDescription}</b></td>
                 <td>&nbsp;</td>
                 <td colspan="4" valign="top">

@@ -242,7 +242,7 @@ under the License.
                 </entity-and>
             </actions>
             <widgets>
-                <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/catalog/CourseCategoryDetail.ftl"/></html></platform-specific>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/catalog/ProjectCategoryDetail.ftl"/></html></platform-specific>
                 <include-screen name="projectCategorydetails"/>
             </widgets>
         </section>
@@ -1960,7 +1960,7 @@ under the License.
                         </section>
                         <section>
                             <condition>
-                                <if-compare field="parameters.detailId" operator="equals" value="discuss"/>
+                                <if-compare field="parameters.detailId" operator="equals" value="comm"/>
                             </condition>
                             <widgets>
                                 <include-screen name="productdetailcomm"/>
@@ -2856,7 +2856,7 @@ under the License.
                     <field-map field-name="productId" from-field="product.productId"/>
                     <field-map field-name="productContentTypeId" value="DIGITAL_DOWNLOAD"/>
                     <order-by field-name="+sequenceNum"/>
-               </entity-and>
+               	</entity-and>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/product/ProductDetailDownload.ftl"/></html></platform-specific>

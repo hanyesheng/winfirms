@@ -34,7 +34,7 @@ under the License.
 				            	</#if>
 							</td>
 							<td>
-								<a href="<@ofbizUrl>ViewBinaryDataResource?externalLoginKey=${requestAttributes.externalLoginKey!}&contentId=${downloadProductContentAndInfo.contentId}</@ofbizUrl>">
+								<a href="/partymgr/control/img/${downloadProductContentAndInfo.contentName}?imgId=${(downloadProductContentAndInfo.dataResourceId)!}">
 									${uiLabelMap.CommonDownload}
 								</a>
 							</td>

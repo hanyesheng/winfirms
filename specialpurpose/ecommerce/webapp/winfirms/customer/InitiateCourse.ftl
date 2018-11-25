@@ -1,9 +1,6 @@
 <#list RoleTypeAndParty as RoleTypeAndParty>
 	<#assign bus = RoleTypeAndParty.roleTypeId>
 </#list>
-<#list ProductCategory as ProductCategory>
-	<#assign categorySeedId = ProductCategory.productCategoryId>
-</#list>
 <#list Person as Person>
 	<#assign nickname = Person.nickname!/>
 </#list> 
@@ -14,7 +11,6 @@
 	    	<h3 class="md-card-toolbar-heading-text">${uiLabelMap.InitiateCourse}</h3>
 	   	</div>
 	   	<div class="md-card-content">
-		<#if categorySeedId?has_content>
 			<form method="post" action="<@ofbizUrl>createCourse</@ofbizUrl>">
 			<table class="uk-table uk-table-hover uk-table-bordered">
 				<input type="hidden" name="isCreate" id="isCreate" value="true"/>
@@ -54,15 +50,6 @@
 			  type: 'datetime'
 			});
 			</script>
-		<#else/>
-			<div class="md-card md-card-danger">
-				<div class="md-card-content">
-					<a href="javascript: void(0);" class="button btn-border btn-small btn-radius white btn-center" data-container="body" data-toggle="popover" data-placement="top" title="${uiLabelMap.CannotCreatNow}" data-content="${uiLabelMap.CannotCreatNow}">
-					  ${uiLabelMap.CannotCreatNow}
-					</a>
-				</div>
-			</div>
-		</#if>	
 		</div>
 	<#else>
 		<div class="md-card md-card-danger">

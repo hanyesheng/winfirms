@@ -56,7 +56,7 @@ under the License.
 			<div class="sorter">
 				<div class="col-md-10">
 					<ol class="breadcrumb" style="background-color: inherit;margin-bottom: 0px;">
-						<li>${categoryParentName}&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li>${categoryParentName!}&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<#list ProductCategoryRollupAndChildItem as ProductCategoryRollupAndChildItem>
 						<li><a <#if ProductCategoryRollupAndChildItem.productCategoryId = productCategory.productCategoryId>class="active"</#if> href="/products/${ProductCategoryRollupAndChildItem.productCategoryId!}">${ProductCategoryRollupAndChildItem.categoryName!}</a></li>
 						</#list>

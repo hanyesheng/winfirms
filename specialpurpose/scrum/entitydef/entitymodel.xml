@@ -383,6 +383,9 @@ under the License.
             <exclude field="statusId"/>
         </alias-all>
         <alias entity-alias="PD" name="internalName"/>
+        <alias entity-alias="PD" name="productName"/>
+        <alias entity-alias="PD" name="description"/>
+        <alias entity-alias="PD" name="primaryProductCategoryId"/>
         <alias entity-alias="PD" name="productTypeId"/>
         <alias entity-alias="PD" name="introductionDate"/>
         <alias entity-alias="PD" name="supportDiscontinuationDate"/>
