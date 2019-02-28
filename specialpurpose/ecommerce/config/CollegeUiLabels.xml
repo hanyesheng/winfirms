@@ -1384,6 +1384,10 @@
         <value xml:lang="en">LoginPhoneNumber</value>
         <value xml:lang="zh">登录手机号码</value>
     </property>
+    <property key="YourPhoneNumber">
+        <value xml:lang="en">YourPhoneNumber</value>
+        <value xml:lang="zh">手机号码</value>
+    </property>
     <property key="Alipay">
         <value xml:lang="en">Alipay</value>
         <value xml:lang="zh">支付宝</value>
@@ -1491,5 +1495,41 @@
     <property key="MyCourse">
         <value xml:lang="en">MyCourse</value>
         <value xml:lang="zh">我的课程</value>
+    </property>
+    <property key="SchoolStudentsUseId">
+        <value xml:lang="en">SchoolStudentsUseId</value>
+        <value xml:lang="zh">校内学生注册请使用学号作为</value>
+    </property>
+    <property key="UsernameForLogin">
+        <value xml:lang="en">UsernameForLogin</value>
+        <value xml:lang="zh">用户名为你的登录账号</value>
+    </property>
+    <property key="AddTo">
+        <value xml:lang="en">AddTo</value>
+        <value xml:lang="zh">绑定</value>
+    </property>
+    <property key="TemporaryPassword">
+        <value xml:lang="en">TemporaryPassword</value>
+        <value xml:lang="zh">临时密码</value>
+    </property>
+    <property key="SendNewPasswordToEmail_1">
+        <value xml:lang="en">SendNewPasswordToEmail</value>
+        <value xml:lang="zh">请填写你的用户名，我们将会发送一个新密码到你的绑定邮箱</value>
+    </property>
+    <property key="SendNewPasswordToEmail_2">
+        <value xml:lang="en">SendNewPasswordToEmail</value>
+        <value xml:lang="zh">某些邮箱会将邮件误判为垃圾邮件，如未及时收到邮件，请检查您的垃圾箱</value>
+    </property>
+    <property key="SendNewPasswordToEmail_3">
+        <value xml:lang="en">SendNewPasswordToEmail</value>
+        <value xml:lang="zh">新密码为临时密码，请及时更改密码，确保账户安全</value>
+    </property>
+    <property key="EmailTrueForPassword">
+        <value xml:lang="en">EmailTrueForPassword</value>
+        <value xml:lang="zh">邮箱用于密码找回，请确保填写正确</value>
+    </property>
+    <property key="SchoolForName">
+        <value xml:lang="en">SchoolForName</value>
+        <value xml:lang="zh">校内注册用户请使用姓名作为昵称</value>
     </property>
 </resource>

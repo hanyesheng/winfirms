@@ -65,6 +65,7 @@ under the License.
             <simple-map-processor name="newUserLogin">
                 <process field="USERNAME"><copy to-field="userLoginId"/><not-empty><fail-property resource="PartyUiLabels" property="PartyUserLoginMissingError"/></not-empty></process>
                 <process field="PASSWORD"><copy to-field="currentPassword"/><not-empty><fail-property resource="PartyUiLabels" property="PartyPasswordMissing"/></not-empty></process>
+                <process field="CUSTOMER_MOBILE_CONTACT"><copy to-field="contactNumber"/><not-empty><fail-property resource="PartyUiLabels" property="PartyContactNumberMissing"/></not-empty></process>
                 <process field="MSGCODE"><copy to-field="msgCode"/></process>
                 <process field="CONFIRM_PASSWORD">
                     <compare-field operator="equals" field="PASSWORD"><fail-property resource="PartyUiLabels" property="PartyPasswordMatchError"/></compare-field>                    
@@ -75,7 +76,7 @@ under the License.
         </call-map-processor>
         <script>groovy:
             String msgCode = (String) userLoginContext.get("msgCode");
-            String mobile = (String) userLoginContext.get("userLoginId");
+            String mobile = (String) userLoginContext.get("contactNumber");
             com.winfirms.ofbiz.verification.MsgCert.checkMsg(mobile,msgCode,error_list,locale);
         </script>
         <if-not-empty field="userLoginContext.userLoginId">

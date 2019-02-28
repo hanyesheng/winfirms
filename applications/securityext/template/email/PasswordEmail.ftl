@@ -1,37 +1,94 @@
-<#--
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
 
 <html>
 <head>
+	
 </head>
 <body>
-  <div>${uiLabelMap.SecurityExtThisEmailIsInResponseToYourRequestToHave} <#if useEncryption>${uiLabelMap.SecurityExtANew}<#else>${uiLabelMap.SecurityExtYour}</#if> ${uiLabelMap.SecurityExtPasswordSentToYou}.</div>
-  <br />
-  <br />
-  autoPassword--${autoPassword}
-  <br />
-  --${productStoreId}
+<style>
+	.container {
+		padding-right: 15px;
+		padding-left: 15px;
+		margin-right: auto;
+		margin-left: auto;
+		max-width: 600px;
+	}
+	.panel {
+	    margin-bottom: 20px;
+	    background-color: #fff;
+	    border: 1px solid transparent;
+	    border-radius: 4px;
+	    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+	    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+	}
+	.panel-success {
+	    border-color: #d6e9c6;
+	}
+	.panel-success>.panel-heading {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+	}
+	.panel-heading {
+	    padding: 10px 15px;
+	    border-bottom: 1px solid transparent;
+	    border-top-left-radius: 3px;
+	    border-top-right-radius: 3px;
+	}
+	.panel-body {
+    padding: 15px;
+	}
+	.panel-footer {
+    padding: 10px 15px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+	}
+	.list-group {
+    padding-left: 0;
+    margin-bottom: 20px;
+	}
+	
+	ol, ul {
+	    margin-top: 0;
+	    margin-bottom: 10px;
+	}
+	.list-group-item:first-child {
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+	}
+	
+	.list-group-item {
+	    position: relative;
+	    display: block;
+	    padding: 10px 15px;
+	    margin-bottom: -1px;
+	    background-color: #fff;
+	    border: 1px solid #ddd;
+	}
+</style>
+<div class="container">
+	<div class="panel panel-success">
+	  <div class="panel-heading">${uiLabelMap.UserLoginChangePassword}</div>
+		  <div class="panel-body">
+		    ${uiLabelMap.SecurityExtThisEmailIsInResponseToYourRequestToHave}
+		    <!-- List group -->
+			</div>  
+			<div class="panel-body">
+			<ul class="list-group">
+		    <li class="list-group-item">${uiLabelMap.SecurityExtYourUserloginId}&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span>${userLoginId}</span></li>
+		    <li class="list-group-item">${uiLabelMap.SecurityExtNewPasswordMssgEncryptionOn}&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;<span style="color: #3c753c;font-size: 24px;display: inline-block;">${autoPassword}</span></li>
+		  </ul>
+		  </div> 
+		  <div class="panel-body" style="color: red;">
+		    ${uiLabelMap.SendNewPasswordToEmail_3}
+		    <!-- List group -->
+			</div> 
+			<div class="panel-footer">
+      	<a style="font-size: 18px;" href="${baseEcommerceSecureUrl}/partymgr/control/passwordChange?USERNAME=${userLogin.userLoginId!}&password=${password!}&forgotPwdFlag=true&tenantId=${tenantId!}" target="_blank">${uiLabelMap.ResetPassword}</a>
+			</div> 
+	 </div>
   
-  <div>
-      <form method="post" action="${baseEcommerceSecureUrl}/partymgr/control/passwordChange?USERNAME=${userLogin.userLoginId!}&password=${password!}&forgotPwdFlag=true&tenantId=${tenantId!}" name="loginform" id="loginform" target="_blank">
-        <input type="submit" name="submit" value="${uiLabelMap.ResetPassword}" />
-      </form>
-  </div>
+</div>
 </body>
 </html>

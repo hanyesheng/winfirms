@@ -2859,7 +2859,9 @@ under the License.
     </request-map>
     <request-map uri="uploadCourseFile">
         <security https="true" auth="true"/>
-        <response name="success" type="view" value="filemanager" save-current-view="true"/>
+        <event type="service" path="" invoke="createDownloadContentForProduct"/>
+        <response name="success" type="view" value="filemanager"/>
+        <response name="error" type="view" value="filemanager"/>
     </request-map>
     <request-map uri="removeUploadCourseFile">
         <security https="true" auth="true"/>

@@ -43,18 +43,26 @@ under the License.
 	</div>
 </div>  
 <!-- PAGE HEADER -->
-<div class="screenlet">
-  <div class="screenlet-title-bar"><h3>${uiLabelMap.CommonForgotYourPassword}</h3></div>
-  <div class="screenlet-body">
-  <form method="post" action="<@ofbizUrl>forgotpassword</@ofbizUrl>" class="horizontal">
-    <div>
-      <label for="forgotpassword_userName">${uiLabelMap.CommonUsername}</label>
-      <input type="text" id="forgotpassword_userName" name="USERNAME" value="<#if requestParameters.USERNAME?has_content>${requestParameters.USERNAME}<#elseif autoUserLogin?has_content>${autoUserLogin.userLoginId}</#if>"/>
-    </div>
-    <div class="buttons">
-      <input type="submit" class="button" name="GET_PASSWORD_HINT" value="${uiLabelMap.CommonGetPasswordHint}"/>
-      <input type="submit" class="button" name="EMAIL_PASSWORD" value="${uiLabelMap.CommonEmailPassword}"/>
-    </div>
-  </form>
-  </div>
+<div class="inner-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3 box-content">
+				<h4 class="uppercase space30 text-center">${uiLabelMap.CommonForgotYourPassword}</h4>
+    			<form method="post" action="<@ofbizUrl>forgotpassword</@ofbizUrl>" name="loginform" class="horizontal">
+					<div class="form-group">
+				      	<input class="form-control" placeholder="${uiLabelMap.CommonUsername}" type="text" id="forgotpassword_userName" name="USERNAME" value="<#if requestParameters.USERNAME?has_content>${requestParameters.USERNAME}<#elseif autoUserLogin?has_content>${autoUserLogin.userLoginId}</#if>"/>
+			    		<div class="space20"></div>
+			    		<p class="btn-center">${uiLabelMap.SendNewPasswordToEmail_1}</p>
+			    		<p class="btn-center">${uiLabelMap.SendNewPasswordToEmail_3}</p>
+			    		<p class="btn-center" style="color: red;">${uiLabelMap.SendNewPasswordToEmail_2}</p>
+					</div>
+				    <div class="buttons">
+				      <!--<input type="submit" class="button btn-border btn-md btn-radius btn-center" name="GET_PASSWORD_HINT" value="${uiLabelMap.CommonGetPasswordHint}"/>-->
+				      <!--<div class="space20"></div>-->
+				      <input type="submit" class="button btn-border btn-md btn-radius btn-center" name="EMAIL_PASSWORD" value="${uiLabelMap.CommonSend}"/>
+				    </div>
+				</form>
+  			</div>
+		</div>
+	</div>
 </div>

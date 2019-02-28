@@ -698,6 +698,7 @@
     <property key="ResetPassword">
         <value xml:lang="en">Click Here To Reset Password</value>
         <value xml:lang="fr">Cliquez ici pour créer un nouveau mot de passe</value>
+        <value xml:lang="zh">修改密码</value>
     </property>
     <property key="SecurityAnswer">
         <value xml:lang="en">Security Answer</value>

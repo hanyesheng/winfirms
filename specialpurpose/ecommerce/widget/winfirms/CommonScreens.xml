@@ -680,9 +680,8 @@ under the License.
                 <set field="titleProperty" value="PageTitleLogin"/>
                 <set field="headerItem" value="login"/>
                 <set field="partyId" from-field="userLogin.partyId"/>
-                <entity-and list="Person" entity-name="Person">
-                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
-               	</entity-and>
+                <entity-one entity-name="Person" value-field="person"/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
                	<property-map resource="PassportUiLabels" map-name="uiLabelMap" global="true"/> 
               	<script location="component://passport/groovyScripts/login/GetThirdPartyLogins.groovy"/>
                 <script location="component://ecommerce/groovyScripts/Login.groovy"/>
@@ -701,7 +700,7 @@ under the License.
     <screen name="forgetpassword">
         <section>
             <actions>
-                <set field="titleProperty" value="PageTitleLogin"/>
+                <set field="titleProperty" value="CommonForgotYourPassword"/>
                 <set field="headerItem" value="login"/>
                 <set field="partyId" from-field="userLogin.partyId"/>
                 <entity-and list="Person" entity-name="Person">
@@ -726,8 +725,11 @@ under the License.
     <screen name="requirePasswordChange">
         <section>
             <actions>
-                <set field="titleProperty" value="PageTitleLogin"/>
+                <set field="titleProperty" value="CommonPasswordChange"/>
                 <set field="headerItem" value="login"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-one entity-name="Person" value-field="person"/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
                 <script location="component://ecommerce/groovyScripts/Login.groovy"/>
             </actions>
             <widgets>

@@ -327,6 +327,7 @@ public class LoginEvents {
         bodyParameters.put("locale", UtilHttp.getLocale(request));
         bodyParameters.put("userLogin", supposedUserLogin);
         bodyParameters.put("productStoreId", productStoreId);
+        bodyParameters.put("userLoginId", userLoginId);
 
         Map<String, Object> serviceContext = new HashMap<String, Object>();
         serviceContext.put("bodyScreenUri", bodyScreenLocation);

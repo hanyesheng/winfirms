@@ -20,7 +20,6 @@ under the License.
 <#assign appName = Static["org.apache.ofbiz.entity.util.EntityUtilProperties"].getPropertyValue("ecommerce", "janrain.appName", delegator)>
 <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
 <!-- PAGE HEADER -->
-<#list Person as Person><#assign userloginNickname = Person.nickname!></#list>
 	<div class="page_header">
 		<div class="page_header_parallax" style="background: url(/images/defaultCatgoryBg.jpg) no-repeat fixed center;background-size: cover;">
 			<div class="container">
@@ -47,7 +46,7 @@ under the License.
 	</div>
 	<div class="clearfix space40"></div>
 	<div class="text-center space40">
-		<h4>${uiLabelMap.CommonWelcome}&nbsp;${userloginNickname!}</h4>
+		<h4>${uiLabelMap.CommonWelcome}&nbsp;<#if person??>${person.nickname!}<#else>${partyGroup.groupName!}</#if></h4>
 		<div class="space30"></div>
 		<a href="<@ofbizUrl>main</@ofbizUrl>" style="display: inline-block;" class="button btn-small btn-center btn-radius space20">${uiLabelMap.CommonMain}</a>
 		<a href="<@ofbizUrl>viewprofile</@ofbizUrl>" style="display: inline-block;" class="button btn-small btn-center btn-radius space20">${uiLabelMap.PartyProfile}</a>
@@ -176,7 +175,7 @@ under the License.
 					<h4 class="uppercase space30 text-center">${uiLabelMap.CommonRegistered}</h4>
 	    			<form method="post" action="<@ofbizUrl>login</@ofbizUrl>" name="loginform" class="horizontal">
 					<div class="form-group">
-						<label class="" for="userName">${uiLabelMap.LoginPhoneNumber}</label>
+						<label class="" for="userName">${uiLabelMap.CommonUsername}</label>
 						<input  type="text" class="form-control" name="USERNAME" id="userName" value="<#if requestParameters.USERNAME?has_content>${requestParameters.USERNAME}<#elseif autoUserLogin?has_content>${autoUserLogin.userLoginId}</#if>" required="required" >
 					</div>
 					<div class="form-group">

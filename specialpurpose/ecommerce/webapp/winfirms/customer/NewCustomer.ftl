@@ -25,12 +25,13 @@ under the License.
          document.write.lastFocusedName;
          document.getElementsByTagName('label')[21].style.display='inline';
      }
-     function changePhone() {
-         document.getElementById('USERNAME').value = jQuery('#CUSTOMER_MOBILE_CONTACT').val();
-     }
-     (function() {
-		 document.getElementById('USERNAME').value = jQuery('#CUSTOMER_MOBILE_CONTACT').val();
-		 })();
+//   用户名自动使用手机
+//   function changePhone() {
+//       document.getElementById('USERNAME').value = jQuery('#CUSTOMER_MOBILE_CONTACT').val();
+//   }
+//   (function() {
+//		 document.getElementById('USERNAME').value = jQuery('#CUSTOMER_MOBILE_CONTACT').val();
+//		 })();
      function hideShowUsaStates() {
          var customerStateElement = document.getElementById('newuserform_stateProvinceGeoId');
           var customerCountryElement = document.getElementById('newuserform_countryGeoId');
@@ -124,7 +125,11 @@ under the License.
 				
 				<!-- Field 1 -->
 				<div class="input-text form-group">
-					<div class="input-text form-group"><label>${uiLabelMap.LoginPhoneNumber}*</label>
+					<div class="input-text form-group"><label>${uiLabelMap.CommonUsername}*<span style="color: #fa6900;">(${uiLabelMap.UsernameForLogin})</span></label>
+					<input type="text" required="required" class="form-control" value="${requestParameters.USERNAME!}" placeholder="${uiLabelMap.SchoolStudentsUseId}${uiLabelMap.CommonUsername}" name="USERNAME" id="USERNAME"/>
+				</div>
+				<div class="input-text form-group">
+					<div class="input-text form-group"><label>${uiLabelMap.AddTo}${uiLabelMap.YourPhoneNumber}*</label>
 					<label style="float:right;color:red;display:none;">${uiLabelMap.WrongMobileFormat}</label>
 					<label style="float:right;color:red;display:none;">${uiLabelMap.MobileNotEmpty}</label>
 					<label style="color:rgb(153, 143, 143);float:right;display:none;">${uiLabelMap.YourMobileFormat}</label></div>
@@ -132,15 +137,14 @@ under the License.
 					<input style="width: 25%;display: inline-block;" type="text" name="MSGCODE" id="MSGCODE" class="input-name form-control" placeholder="${uiLabelMap.writeMsgCode}" value="${requestParameters.code!}">
   				<input style="width: 25%;display: inline-block;" type="button" class="input-name form-control" value="${uiLabelMap.getMsgCode}" onclick="sendMsg(this)" /></div>
 				</div>
-				<input type="hidden" class="form-control" value="${requestParameters.CUSTOMER_MOBILE_CONTACT!}" name="USERNAME" id="USERNAME"/>
 				<div class="input-text form-group">
-				  <div class="input-text form-group"><label for="CUSTOMER_EMAIL">${uiLabelMap.PartyEmailAddress}</label></div>
-      	  <div class="input-text form-group"><input class="form-control" type="text" name="CUSTOMER_EMAIL" id="CUSTOMER_EMAIL" placeholder="****@***.***" value="${requestParameters.CUSTOMER_EMAIL!}" /></div>
+				  <div class="input-text form-group"><label for="CUSTOMER_EMAIL">${uiLabelMap.AddTo}${uiLabelMap.PartyEmailAddress}*<span style="color: #fa6900;">(${uiLabelMap.EmailTrueForPassword})</span></label></div>
+      	  <div class="input-text form-group"><input required="required" class="form-control" type="text" name="CUSTOMER_EMAIL" id="CUSTOMER_EMAIL" placeholder="****@***.***" value="${requestParameters.CUSTOMER_EMAIL!}" /></div>
 				</div>
 					
 				<!-- Field 1 -->
 				<div class="input-text form-group">
-					<label>${uiLabelMap.PartyNickName}*</label>
+					<label>${uiLabelMap.PartyNickName}*<span style="color: #fa6900;">(${uiLabelMap.SchoolForName})</span></label>
 					<label style="float:right;color:red;display:none;">${uiLabelMap.WrongNickNameFormat}</label>
 					<label style="float:right;color:red;display:none;">${uiLabelMap.YourNickNameNotEmpty}</label>
 					<label style="color:rgb(153, 143, 143);float:right;display:none;">${uiLabelMap.YourNicknameFormat}</label>
