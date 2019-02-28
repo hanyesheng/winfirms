@@ -26,7 +26,7 @@ under the License.
             <actions>
                 <property-map resource="EmailPasswordUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="SecurityUiLabels" map-name="uiLabelMap" global="true"/>
-                <set field="baseEcommerceSecureUrl" value="${baseSecureUrl}"/>
+                <set field="baseEcommerceSecureUrl" value="https://winfirms.net:8443"/>
             </actions>
             <widgets>
                 <platform-specific><html><html-template location="component://securityext/template/email/PasswordEmail.ftl"/></html></platform-specific>
