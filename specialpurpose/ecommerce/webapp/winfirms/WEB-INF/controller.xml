@@ -93,10 +93,8 @@ under the License.
     </request-map>
     <request-map uri="passwordChange">
         <security https="true" auth="false"/>
-        <event type="java" path="org.apache.ofbiz.securityext.login.LoginEvents" invoke="storeLogin"/>
-        <response name="success" type="requirePasswordChange" value="main"/>
-        <response name="requirePasswordChange" type="view" value="requirePasswordChange"/>
-        <response name="error" type="view" value="login"/>
+        <response name="success" type="view" value="requirePasswordChange"/>
+        <response name="error" type="view" value="requirePasswordChange"/>
     </request-map>
     <request-map uri="logout">
         <security https="true" auth="true"/>

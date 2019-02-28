@@ -25,7 +25,6 @@ under the License.
 </#if>
 <!-- PAGE HEADER -->
 <#if userLogin?has_content && userLogin.userLoginId != "anonymous">
-<#list Person as Person><#assign userloginNickname = Person.nickname!></#list>
 	<div class="page_header">
 		<div class="page_header_parallax" style="background: url(/images/defaultCatgoryBg.jpg) no-repeat fixed center;background-size: cover;">
 			<div class="container">
