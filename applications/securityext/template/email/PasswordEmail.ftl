@@ -85,7 +85,7 @@
 		    <!-- List group -->
 			</div> 
 			<div class="panel-footer">
-      	<a style="font-size: 18px;" href="${baseEcommerceSecureUrl}/partymgr/control/passwordChange?USERNAME=${userLogin.userLoginId!}&password=${password!}&forgotPwdFlag=true&tenantId=${tenantId!}" target="_blank">${uiLabelMap.ResetPassword}</a>
+      	<a style="font-size: 18px;" href="${baseEcommerceSecureUrl}/control/passwordChange?USERNAME=${userLogin.userLoginId!}&password=${password!}&forgotPwdFlag=true&tenantId=${tenantId!}" target="_blank">${uiLabelMap.ResetPassword}</a>
 			</div> 
 	 </div>
   
