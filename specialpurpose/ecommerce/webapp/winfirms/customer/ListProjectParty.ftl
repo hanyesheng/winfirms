@@ -24,7 +24,7 @@ under the License.
 		        <div class="md-card-content">
 		        <ul class="md-list md-list-addon">
 		        	<li>
-	                	<#assign personLogoUrl = "/images/winfirms/user.png">
+	                	<#assign createrLogoUrl = "/images/winfirms/user.png">
 						<#list PartyAndUserLogin as PartyAndUserLogin>
 							<#if product.createdByUserLogin = PartyAndUserLogin.userLoginId>
 								<#assign createrPartyId = PartyAndUserLogin.partyId!/>
