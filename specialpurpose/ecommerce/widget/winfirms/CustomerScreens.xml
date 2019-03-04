@@ -86,7 +86,7 @@ under the License.
                     </condition-list>
                     <order-by field-name="-fromDate"/>
                 </entity-condition>
-                <!--上级：课程等-->
+                <!--列出可添加课程-->
                 <set field="allwViewCatalogId" from-field="ProdCatalogCategoryList[0].productCategoryId"/>  
                 <entity-condition entity-name="ProductAndCategoryMember" list="ProductAndCategoryMember">
                     <condition-list combine="and">
@@ -123,18 +123,97 @@ under the License.
                	<!--会员组-->
                 <entity-and list="PartyGroup" entity-name="PartyGroup">
                	</entity-and>
-               	<!--所有孵化器-->
-               	<entity-condition entity-name="PartyRole" list="PartyRole">
-                    <condition-list combine="and">
-                        <condition-expr field-name="roleTypeId" operator="equals" value="CLASS"/>
-                    </condition-list>
-                </entity-condition>
                 <script location="component://ecommerce/groovyScripts/customer/ViewProfile.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">              
                         <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/ViewProfile.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="viewprofileold">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-one entity-name="Party" value-field="party"/>
+                <entity-one entity-name="Person" value-field="person"/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
+				<entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <order-by field-name="-fromDate"/>
+              	</entity-and>
+              	<!--拥有角色-->
+               	<entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                    	<condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="TEACHER"/>
+	                    </condition-list>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <!--当前目录-->
+                <set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>           
+                <!--发布项目-->
+                <entity-condition entity-name="ProdCatalogCategory" list="ProdCatalogCategoryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="prodCatalogCategoryTypeId" operator="equals" value="PCCT_VIEW_ALLW"/>
+                        <condition-expr field-name="prodCatalogId" operator="equals" value="${currentCatalogId}"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <!--列出可添加课程-->
+                <set field="allwViewCatalogId" from-field="ProdCatalogCategoryList[0].productCategoryId"/>  
+                <entity-condition entity-name="ProductAndCategoryMember" list="ProductAndCategoryMember">
+                    <condition-list combine="and">
+                        <condition-expr field-name="productTypeId" operator="equals" value="COURSE"/>
+                        <condition-expr field-name="productCategoryId" operator="equals" value="${allwViewCatalogId}"/>
+                    </condition-list>
+                </entity-condition>
+                <!--活跃度-->
+                <entity-condition entity-name="CommunicationEventAndRole" list="ActiveDegree">
+                	<condition-list combine="or">
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdFrom" operator="equals" value="${partyId}"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <!--参加的项目-->
+               	<entity-condition entity-name="ProductAndRole" list="ProductAndRoleIn">
+                    <condition-list combine="and">
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="productTypeId" operator="equals" value="PROJECT"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="_NA_"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <!--参加的课程-->
+               	<entity-condition entity-name="ProductAndRole" list="CourseAndRoleIn">
+                    <condition-list combine="and">
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="productTypeId" operator="equals" value="COURSE"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+               	<!--会员组-->
+                <entity-and list="PartyGroup" entity-name="PartyGroup">
+               	</entity-and>
+                <script location="component://ecommerce/groovyScripts/customer/ViewProfile.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">              
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/ViewProfileold.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -151,61 +230,7 @@ under the License.
             </widgets>
         </section>
     </screen>
-    <screen name="filemanager">
-        <section>
-            <actions>
-            	<set field="menuCol" value="2"/>
-                <set field="titleProperty" value="PageTitleViewProfile"/>
-                <set field="partyId" from-field="userLogin.partyId"/>
-                <entity-one entity-name="Party" value-field="party"/>
-                <entity-one entity-name="Person" value-field="person"/>
-                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
-                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/dropify.min.js" global="true"/>
-                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_file_input.min.js" global="true"/>
-                <entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
-                    <condition-list combine="and">
-                    	<condition-list combine="or">
-	                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
-	                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
-	                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
-	                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
-	                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
-	                        <condition-expr field-name="roleTypeId" operator="equals" value="TEACHER"/>
-	                    </condition-list>
-                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
-                    </condition-list>
-                </entity-condition>
-                <!--参加的课程-->
-                <entity-condition entity-name="ProductAndRole" list="CourseAndRoleIn">
-                    <condition-list combine="and">
-                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
-                        <condition-expr field-name="productTypeId" operator="equals" value="COURSE"/>
-                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
-                    </condition-list>
-                    <order-by field-name="-fromDate"/>
-                </entity-condition>
-                <entity-and list="ProductContentAndInfoDownload" entity-name="ProductContentAndInfo">
-                    <field-map field-name="productContentTypeId" value="DIGITAL_DOWNLOAD"/>
-                    <order-by field-name="+sequenceNum"/>
-               	</entity-and>
-               	<entity-and list="ProductContentAndInfoUpload" entity-name="ProductContentAndInfo">
-                    <field-map field-name="productContentTypeId" value="DIGITAL_UPLOAD"/>
-                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
-                    <order-by field-name="+sequenceNum"/>
-               	</entity-and>
-                <!--班级的下载的资料-->
-               	<!--个人显示自己的上传的资料-->
-                <script location="component://ecommerce/groovyScripts/customer/ViewProfile.groovy"/>
-            </actions>
-            <widgets>
-                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">              
-                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/FileManager.ftl"/></html></platform-specific>
-                    </decorator-section>
-                </decorator-screen>
-            </widgets>
-        </section>
-    </screen>
+    
 	<screen name="editperson">
         <section>
             <actions>
@@ -234,6 +259,7 @@ under the License.
                 <!--会员组-->
                 <entity-and list="PartyGroup" entity-name="PartyGroup">
                	</entity-and>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/images/winfirms/cropper/dist/cropper.min.js" global="true"/>
                 <script location="component://ecommerce/groovyScripts/customer/EditPerson.groovy"/>
             </actions>
             <widgets>
@@ -359,13 +385,13 @@ under the License.
             </widgets>
         </section>
     </screen>
-    <!--发起项目-->
     
-    <!--发起项目-->
+    <!--编辑项目-基本信息-->
     <screen name="ProjectInfo">
         <section>
             <actions>
             	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="Editproject"/>
                 <set field="tabButtonItem" value="ProjectInfo"/>
                 <set field="partyId" from-field="userLogin.partyId"/>
                 <set field="userLoginId" from-field="userLogin.userLoginId"/>
@@ -394,10 +420,12 @@ under the License.
             </widgets>
         </section>
     </screen>
+    <!--编辑项目领域-->
     <screen name="ProjectFeatures">
         <section>
             <actions>
             	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="Editproject"/>
                 <set field="tabButtonItem" value="ProjectFeatures"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
@@ -419,20 +447,29 @@ under the License.
                     	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
                     	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
                         <platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/EditProductFeatures.ftl"/></html>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/EditProjectFeatures.ftl"/></html>
                         </platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
         </section>
     </screen>
+    <!--编辑项目招募信息-->
     <screen name="ProjectRecruit">
         <section>
             <actions>
             	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="Editproject"/>
                 <set field="tabButtonItem" value="ProjectRecruit"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
+                <entity-and list="ProductContentRecruit" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="productContentTypeId" value="SPECIALINSTRUCTIONS"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <entity-and entity-name="ElectronicText" list="dataText">
+                </entity-and>
                 <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
             </actions>
             <widgets>
@@ -441,11 +478,11 @@ under the License.
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
                     	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
                     	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<screenlet title="${uiLabelMap.RecruitInfo}">
-                            <include-form name="ListProductRecruitInfos" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
-                      	</screenlet>
                       	<platform-specific>
                             <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateRecruit.ftl"/></html>
+                        </platform-specific>
+                        <platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ListProjectRecruit.ftl"/></html>
                         </platform-specific>
                     </decorator-section>
                 </decorator-screen>
@@ -456,6 +493,7 @@ under the License.
         <section>
             <actions>
             	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="Editproject"/>
                 <set field="tabButtonItem" value="ProjectRecruit"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
@@ -463,6 +501,13 @@ under the License.
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
                 <entity-one entity-name="ProductContent" value-field="productContent"/>
+                <entity-and entity-name="ProductContentAndInfo" list="ProductRecruitContentAndInfo">
+                	<field-map field-name="contentId" from-field="parameters.contentId"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <set field="dataResourceId" from-field="ProductRecruitContentAndInfo[0].dataResourceId"/>
+                <entity-and entity-name="ElectronicText" list="dataText">
+                </entity-and>
                 <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
                 <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
             </actions>
@@ -474,9 +519,9 @@ under the License.
                     	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
                     	<section>
                             <widgets>
-                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.RecruitInfo}">
-                                    <include-form name="EditProductRecruitInfos" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
-                                </screenlet>
+                                <platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/EditProjectRecruit.ftl"/></html>
+		                        </platform-specific>
                             </widgets>
                         </section>
                     </decorator-section>
@@ -484,13 +529,20 @@ under the License.
             </widgets>
         </section>
     </screen>
+    <!--编辑项目短视频介绍-->
     <screen name="ProjectVideoIntro">
         <section>
             <actions>
             	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="Editproject"/>
                 <set field="tabButtonItem" value="ProjectVideoIntro"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
+                <entity-and list="ProductContentVideoIntro" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="productContentTypeId" value="VIDEO_DES"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
                 <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
             </actions>
             <widgets>
@@ -499,11 +551,11 @@ under the License.
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
                     	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
                     	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<screenlet title="${uiLabelMap.RecruitInfo}">
-                            <include-form name="ListProjectVideoIntro" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
-                      	</screenlet>
                       	<platform-specific>
                             <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateVideoIntro.ftl"/></html>
+                        </platform-specific>
+                        <platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ListProjectVideoIntro.ftl"/></html>
                         </platform-specific>
                     </decorator-section>
                 </decorator-screen>
@@ -514,6 +566,7 @@ under the License.
         <section>
             <actions>
             	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="Editproject"/>
                 <set field="tabButtonItem" value="ProjectVideoIntro"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
@@ -542,10 +595,12 @@ under the License.
             </widgets>
         </section>
     </screen>
+    <!--编辑项目动态-->
     <screen name="ProjectDynamic">
         <section>
             <actions>
             	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="Editproject"/>
                 <set field="tabButtonItem" value="ProjectDynamic"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
@@ -577,6 +632,7 @@ under the License.
         <section>
             <actions>
             	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="Editproject"/>
                 <set field="tabButtonItem" value="ProjectDynamic"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
@@ -609,6 +665,7 @@ under the License.
         <section>
             <actions>
             	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="Editproject"/>
                 <set field="tabButtonItem" value="ProjectPlan"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
@@ -625,9 +682,7 @@ under the License.
                 </entity-and>
                 <entity-and entity-name="ElectronicText" list="dataText">
                 </entity-and>
-                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
-                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
-                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/page_help.min.js" global="true"/>
                 <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
             </actions>
             <widgets>
@@ -648,13 +703,26 @@ under the License.
         <section>
             <actions>
             	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="Editproject"/>
                 <set field="tabButtonItem" value="ProjectPlan"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
+                <entity-and list="ProductContentTypeDes" entity-name="ProductContentType">
+                	<field-map field-name="productContentTypeId" from-field="parameters.productContentTypeId"/>
+                    <order-by field-name="productContentTypeId"/>
+                </entity-and>
+                <set field="PlanTypeDescription" from-field="ProductContentTypeDes[0].description"/>
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
                 <entity-one entity-name="ProductContent" value-field="productContent"/>
+                <entity-and entity-name="ProductContentAndInfo" list="ProductRecruitContentAndInfo">
+                	<field-map field-name="contentId" from-field="parameters.contentId"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <set field="dataResourceId" from-field="ProductRecruitContentAndInfo[0].dataResourceId"/>
+                <entity-and entity-name="ElectronicText" list="dataText">
+                </entity-and>
                 <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
                 <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
             </actions>
@@ -666,9 +734,9 @@ under the License.
                     	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
                     	<section>
                             <widgets>
-                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.BusinessPlan}">
-                                    <include-form name="EditProjectPlanInfos" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
-                                </screenlet>
+                                <platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/EditProjectPlanInfos.ftl"/></html>
+		                        </platform-specific>
                             </widgets>
                         </section>
                     </decorator-section>
@@ -680,6 +748,7 @@ under the License.
         <section>
             <actions>
             	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="Editproject"/>
                 <set field="tabButtonItem" value="ProjectParty"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
@@ -688,6 +757,22 @@ under the License.
                     <order-by field-name="roleTypeId"/>
                     <order-by field-name="partyId"/>
                 </entity-condition>
+                <entity-and entity-name="ProductAndRole" list="ProductAndRole">
+                	<field-map field-name="productId" from-field="parameters.productId"/>
+                    <order-by field-name="-roleTypeId"/>
+                </entity-and>
+                <entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+              	</entity-and>
+              	<entity-and list="PartyAndUserLogin" entity-name="PartyAndUserLogin">
+              		<order-by field-name="-enabled"/>
+              	</entity-and>
+              	<entity-and list="UserLoginAndPartyDetails" entity-name="UserLoginAndPartyDetails">
+              		<field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+              		<order-by field-name="-enabled"/>
+              	</entity-and>
+              	<set field="createrName" from-field="UserLoginAndPartyDetails[0].nickname"/>
                 <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
             </actions>
             <widgets>
@@ -696,12 +781,9 @@ under the License.
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
                     	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
                     	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<screenlet title="${uiLabelMap.Teammates}">
-                            <include-form name="UpdateProjectParty" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
-                        </screenlet>
-                        <screenlet title="${uiLabelMap.CommonAdd}${uiLabelMap.Teammates}">
-                            <include-form name="AddProjectParty" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
-                        </screenlet>
+                        <platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ListProjectParty.ftl"/></html>
+                        </platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -711,6 +793,7 @@ under the License.
         <section>
             <actions>
             	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="Editproject"/>
                 <set field="tabButtonItem" value="ProjectDiscuss"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
@@ -758,6 +841,7 @@ under the License.
         <section>
             <actions>
             	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="Editproject"/>
                 <set field="tabButtonItem" value="ProjectRelease"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
@@ -771,22 +855,27 @@ under the License.
                     </condition-list>
                     <order-by field-name="-fromDate"/>
                 </entity-condition>
-                <entity-condition entity-name="ProductCategory" list="ProductCategory">
-                    <condition-list combine="or">
-                        <condition-expr field-name="productCategoryTypeId" operator="equals" value="PROJECT"/>
-                        <condition-expr field-name="productCategoryTypeId" operator="equals" value="COURSE_PROJECT"/>
-                    </condition-list>
-                </entity-condition>
                 <set field="ProductCategoryPublicId" from-field="ProdCatalogCategoryList[0].productCategoryId"/>
+                <!--判断是否发布-->
                 <entity-and list="ProductCategoryMemberRelease" entity-name="ProductCategoryMember">
                     <field-map field-name="productId" from-field="parameters.productId"/>
                     <order-by field-name="-fromDate"/>
                 </entity-and>
+                <!--判断是否公开（定位拥有项目的所有分类）-->
                 <entity-and list="ProductCategoryMemberPublic" entity-name="ProductCategoryMember">
                     <field-map field-name="productCategoryId" from-field="ProductCategoryPublicId"/>
                     <field-map field-name="productId" from-field="parameters.productId"/>
                     <order-by field-name="-fromDate"/>
                 </entity-and>
+                <!--找出我的所有课程项目分类-->
+                <entity-condition entity-name="ProductAndRole" list="ProductCategory">
+                    <condition-list combine="and">
+                        <condition-expr field-name="partyId" operator="equals" value="${userLogin.partyId}"/>
+                        <condition-expr field-name="productTypeId" operator="equals" value="COURSE"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
                 <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
             </actions>
             <widgets>
@@ -1064,6 +1153,7 @@ under the License.
 	            </entity-and>
 	            <entity-and list="ProductContentAndInfoUpload" entity-name="ProductContentAndInfo">
                     <field-map field-name="productContentTypeId" value="DIGITAL_UPLOAD"/>
+                    <field-map field-name="productId" value="${productId}"/>
                     <order-by field-name="+sequenceNum"/>
                	</entity-and>
                	<entity-and list="UserLoginAndPartyDetails" entity-name="UserLoginAndPartyDetails">
@@ -1429,11 +1519,13 @@ under the License.
         </section>
     </screen>
     
-    
+    <!--发起项目准备页面-->
     <screen name="InitiateProjectPrepare">
         <section>
             <actions>
             	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="InitiateProject"/>
+            	<set field="tabButtonItem" value="InitiateProject"/>
                 <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
@@ -1447,13 +1539,43 @@ under the License.
             <widgets>
             <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">	  
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="MyProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
                 		<platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/InitiateProjectPrepare.ftl"/></html></platform-specific>
             		</decorator-section>
             </decorator-screen>
             </widgets>
         </section>
     </screen>
+    <!--发起项目-->
+    <screen name="InitiateProject">
+        <section>
+            <actions>
+            	<set field="menuCol" value="6"/>
+            	<set field="titleProperty" value="InitiateProject"/>
+            	<set field="tabButtonItem" value="InitiateProject"/>
+            	<set field="partyId" from-field="userLogin.partyId"/>
+             	<entity-and list="Person" entity-name="Person">
+                    <field-map field-name="partyId" value="${partyId}"/>
+                </entity-and>
+            	<entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+               </entity-condition>
+            </actions>
+            <widgets>
+            <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">	 
+                    	<include-menu name="MyProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                		<platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/InitiateProject.ftl"/></html></platform-specific>
+            		</decorator-section>
+            </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <!--创建课程准备-->
     <screen name="InitiateCoursePrepare">
         <section>
             <actions>
@@ -1479,33 +1601,7 @@ under the License.
         </section>
     </screen>
     
-    <!--发起种子项目-->
-    <screen name="InitiateProject">
-        <section>
-            <actions>
-            	<set field="menuCol" value="6"/>
-            	<set field="partyId" from-field="userLogin.partyId"/>
-             	<entity-and list="Person" entity-name="Person">
-                    <field-map field-name="partyId" value="${partyId}"/>
-                </entity-and>
-            	<entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
-                    <condition-list combine="and">
-                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
-                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
-                    </condition-list>
-               </entity-condition>
-            </actions>
-            <widgets>
-            <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">	 
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                		<platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/InitiateProject.ftl"/></html></platform-specific>
-            		</decorator-section>
-            </decorator-screen>
-            </widgets>
-        </section>
-    </screen>
-    <!--发起种子项目-->
+    <!--创建课程-->
     <screen name="InitiateCourse">
         <section>
             <actions>
@@ -1914,7 +2010,7 @@ under the License.
             <actions>
             	<set field="menuCol" value="6"/>
             	<set field="tabButtonItem" value="MyProjectCreate"/>
-                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="titleProperty" value="MyProjectCreate"/>
                 <set field="userLoginId" from-field="userLogin.userLoginId"/>
                 <entity-condition entity-name="Product" list="Product">
                     <condition-list combine="and">
@@ -1935,8 +2031,7 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">  
                     	<include-menu name="MyProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>    
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>        
-                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectsCreated.ftl"/></html></platform-specific>
+                    	<platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectsCreated.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -1948,13 +2043,16 @@ under the License.
             <actions>
             	<set field="menuCol" value="6"/>
             	<set field="tabButtonItem" value="MyProjectJoin"/>
-                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="titleProperty" value="MyProjectJoin"/>
                 <set field="partyId" from-field="userLogin.partyId"/>
                 <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
                     <condition-list combine="and">
+                    	<condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="_NA_"/>
+                        	<condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                    </condition-list>
                         <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
                         <condition-expr field-name="productTypeId" operator="equals" value="PROJECT"/>
-                        <condition-expr field-name="roleTypeId" operator="equals" value="_NA_"/>
                     </condition-list>
                     <order-by field-name="-fromDate"/>
                 </entity-condition>
@@ -1965,14 +2063,13 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">   
                     	<include-menu name="MyProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>           
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>           
-                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectsIn.ftl"/></html></platform-specific>
+                    	<platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectsIn.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
         </section>
     </screen>
-    <!--我参与的项目-->
+    <!--我参与的活动-->
     <screen name="activityin">
         <section>
             <actions>
@@ -2000,12 +2097,14 @@ under the License.
             </widgets>
         </section>
     </screen>
+    <!--我的课程-->
     <screen name="coursein">
         <section>
             <actions>
             	<set field="menuCol" value="coursein"/>
-                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="titleProperty" value="MyCourseJoin"/>
                 <set field="partyId" from-field="userLogin.partyId"/>
+                <!--列出参加的课程-->
                 <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
                     <condition-list combine="and">
                         <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
@@ -2014,8 +2113,46 @@ under the License.
                     </condition-list>
                     <order-by field-name="-fromDate"/>
                 </entity-condition>
-                 <entity-and list="Product" entity-name="Product">
+                <!--课程信息实体-->
+                <entity-and list="Product" entity-name="Product">
                 </entity-and>
+                <!--课程下载文件-->
+                <entity-and list="ProductContentAndInfoDownload" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productContentTypeId" value="DIGITAL_DOWNLOAD"/>
+                    <order-by field-name="+sequenceNum"/>
+               	</entity-and>
+               	<!--课程上传文件-->
+               	<entity-and list="ProductContentAndInfoUpload" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productContentTypeId" value="DIGITAL_UPLOAD"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                    <order-by field-name="+sequenceNum"/>
+               	</entity-and>
+                <!--确认创客身份-->
+               	<entity-condition entity-name="RoleTypeAndParty" list="BusinessmanConfirm">
+                    <condition-list combine="and">
+	                    <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <set field="IsBusinessman" from-field="BusinessmanConfirm[0].partyId"/>
+                <!--当前目录-->
+                <set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>           
+                <!--定位允许浏览分类-->
+                <entity-condition entity-name="ProdCatalogCategory" list="ProdCatalogCategoryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="prodCatalogCategoryTypeId" operator="equals" value="PCCT_VIEW_ALLW"/>
+                        <condition-expr field-name="prodCatalogId" operator="equals" value="${currentCatalogId}"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <set field="allwViewCatalogId" from-field="ProdCatalogCategoryList[0].productCategoryId"/>  
+                <!--列出可添加课程-->
+                <entity-condition entity-name="ProductAndCategoryMember" list="ProductAndCategoryMember">
+                    <condition-list combine="and">
+                        <condition-expr field-name="productTypeId" operator="equals" value="COURSE"/>
+                        <condition-expr field-name="productCategoryId" operator="equals" value="${allwViewCatalogId}"/>
+                    </condition-list>
+                </entity-condition>
             </actions>
             <widgets>
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">

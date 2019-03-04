@@ -26,7 +26,7 @@
 		<div id="home-quote" class="owl-carousel owl-three owl-theme">
 			
 			<#list ProductAndCategoryMember as ProductAndCategoryMember>
-				<#assign personLogoUrl = "/images/winfirms/headdefault.png">
+				<#assign personLogoUrl = "/images/winfirms/user.png">
 				<#list ProductAndRole as ProductAndRole>
 				<#if ProductAndRole.productId = ProductAndCategoryMember.productId>
 					<#list RoleType as RoleType>

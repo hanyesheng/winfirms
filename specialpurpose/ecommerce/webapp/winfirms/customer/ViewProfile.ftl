@@ -18,7 +18,7 @@ under the License.
 -->
 
 <#if party??>
-<#assign personLogoUrl = "/images/winfirms/headdefault.png"!/>
+<#assign personLogoUrl = "/images/winfirms/user.png"!/>
 <#list PartyContent?sort_by('fromDate') as PartyContent>
 	<#assign personContentId = PartyContent.contentId!/>
 	<#if personContentId?has_content>
@@ -213,6 +213,7 @@ under the License.
       						<input type="hidden" class="" name="comments" size="30" id="AddCourse_comments" require="">
 							<select name="productId">
 								<option value="">---</option>
+								<!--显示允许浏览下的所有课程-->
 								<#list ProductAndCategoryMember as ProductAndCategoryMember>
 									<#assign CourseHas = 0>
 									<#list CourseAndRoleIn as CourseAndRoleIn>
@@ -243,7 +244,8 @@ under the License.
 							<select name="roleTypeId">
 								<option value="BUSINESSMAN">${uiLabelMap.Businessman}</option>
 								<option value="INVESTORS">${uiLabelMap.Investors}</option>
-								<option value="TEACHER">${uiLabelMap.Teacher}</option>
+								<!--教师权限系统添加-->
+								<!--<option value="TEACHER">${uiLabelMap.Teacher}</option>-->
 							</select>
 							<input name="partyId" value="${party.partyId}" type="hidden">
 						</form>

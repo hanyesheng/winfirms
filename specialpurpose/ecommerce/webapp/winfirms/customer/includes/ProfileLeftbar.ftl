@@ -85,6 +85,7 @@ under the License.
                         <li <#if menuCol?? && menuCol = "5">class="act_item"</#if>><a href="<@ofbizUrl>editFollowing</@ofbizUrl>">${uiLabelMap.MyFollowing}</a></li>
                     </ul>
                 </li>-->
+                <#if IsBusinessman??>
                 <li class="act_section" title="${uiLabelMap.BusinessMgr}">
                     <a href="#">
                         <span class="menu_icon"><i class="material-icons">extension</i></span>
@@ -94,9 +95,9 @@ under the License.
                         <li <#if menuCol?? && menuCol = "6">class="act_item"</#if>><a href="<@ofbizUrl>projectscreated</@ofbizUrl>">${uiLabelMap.MyProject}</a></li>
                     	<!--<li <#if menuCol?? && menuCol = "activityin">class="act_item"</#if>><a href="<@ofbizUrl>activityin</@ofbizUrl>">${uiLabelMap.MyActivityJoin}</a></li>-->
                         <li <#if menuCol?? && menuCol = "coursein">class="act_item"</#if>><a href="<@ofbizUrl>coursein</@ofbizUrl>">${uiLabelMap.MyCourse}</a></li>
-                    	<li <#if menuCol?? && menuCol = "2">class="act_item"</#if>><a href="<@ofbizUrl>filemanager</@ofbizUrl>">${uiLabelMap.FileManager}</a></li>
                     </ul>    
                 </li>
+                </#if>
                 <#if IsInvestors??>
                 <li class="act_section" title="${uiLabelMap.InvestorsMgr}">
                     <a href="#">

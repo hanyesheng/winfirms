@@ -26,20 +26,22 @@ under the License.
 	                	<img src="${contentUrl}" class="blog_list_teaser_image"/>       
 	                </#if>
 	                <#if ProductContentTimeline.mimeTypeId?contains("video")>
+	                	<#assign videoUrl = ProductContentTimeline.drObjectInfo! />
 	                	<video id="my-video" class="video-js blog_list_teaser_image" controls preload="auto"  style="border-radius: 5px;min-width: 200px;height: 100%;width: 100%;"
 							  poster="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>" data-setup="{}">
-					        <source src="/content/control/stream?contentId=${ProductContentTimeline.contentId}" type="video/mp4">
+					        <source src="${videoUrl?substring(39)}" type="video/mp4">
 					    </video>
 	                </#if>
                     <div class="blog_list_teaser">
-                        <p>${ProductContentTimeline.description!}</p>
-                        <span class="uk-text-muted uk-text-small">${ProductContentTimeline.fromDate?substring(0,16)!}</span>
+                        ${uiLabelMap.CommonFromDate}&nbsp;:&nbsp;<span class="uk-text-small">${ProductContentTimeline.fromDate?substring(0,16)!}</span>
+                        &nbsp;/&nbsp;
+                        ${uiLabelMap.CommonCreatedBy}&nbsp;:&nbsp;<span class="uk-text-small">${ProductContentTimeline.createdByUserLogin!}</span>
                     </div>
                     <form method="post" action="<@ofbizUrl>removeProjectDynamicInfos</@ofbizUrl>" onsubmit="javascript:submitFormDisableSubmits(this)" name="removeProjectDynamicInfos_${ProductContentTimeline_index}">
                     	<input name="fromDate" value="${ProductContentTimeline.fromDate}" type="hidden">
                     	<input name="productId" value="${ProductContentTimeline.productId}" type="hidden">
                     	<input name="contentId" value="${ProductContentTimeline.contentId}" type="hidden">
-                    	<input name="productContentTypeId" value="TIMELINE" type="hidden">
+                    	<input name="productContentTypeId" value="${ProductContentTimeline.productContentTypeId}" type="hidden">
                     </form>
                     <div class="blog_list_footer">
                         <a href="javascript:document.removeProjectDynamicInfos_${ProductContentTimeline_index}.submit()" class="md-btn md-btn-small md-btn-flat md-btn-flat-primary uk-float-right"><i class="material-icons uk-text-primary">delete</i>${uiLabelMap.CommonDelete}</a>

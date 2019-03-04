@@ -15504,7 +15504,7 @@
         <value xml:lang="ru">Невозможно найти продукт с кодом</value>
         <value xml:lang="th">ไม่สามารถพบสินค้าด้วยรหัส</value>
         <value xml:lang="vi">Không tìm thấy sản phẩm với Id</value>
-        <value xml:lang="zh">没有找到产品——标识</value>
+        <value xml:lang="zh">没有找到产品（项目）或处于隐藏状态——标识</value>
         <value xml:lang="zh-TW">沒有找到產品識別</value>
     </property>
     <property key="ProductCouldNotFindProductCatalogWithId">
@@ -25397,7 +25397,7 @@
         <value xml:lang="ru">Продукт не найдет по Product ID</value>
         <value xml:lang="th">ไม่พบสินค้าจากรหัสสินค้านี้</value>
         <value xml:lang="vi">Sản phẩm không tìm thấy với Id</value>
-        <value xml:lang="zh">没有找到产品——产品标识</value>
+        <value xml:lang="zh">没有找到产品（项目）或处于隐藏状态——产品标识</value>
         <value xml:lang="zh-TW">沒有找到產品識別</value>
     </property>
     <property key="ProductProductNotFoundWithProduct">

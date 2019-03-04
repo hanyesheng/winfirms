@@ -5,7 +5,7 @@
 	<#assign nickname = Person.nickname!/>
 </#list> 
 <script type="text/javascript" src="<@ofbizContentUrl>/images/winfirms/js/laydate/laydate.js</@ofbizContentUrl>"></script>
-<div class="md-card">
+<div class="md-card"  style="margin-top: 15px;">
 	<#if bus?? && bus = "BUSINESSMAN">
 		<div class="md-card-toolbar">
 	    	<h3 class="md-card-toolbar-heading-text">${uiLabelMap.CreatSeedProj}</h3>

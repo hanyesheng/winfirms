@@ -41,7 +41,7 @@ under the License.
 									<#if personContentId?has_content>
 										<#assign personLogoUrl = "/content/control/stream?contentId=${personContentId}"!/>
 									<#else>
-										<#assign personLogoUrl = "/images/winfirms/headdefault.png">
+										<#assign personLogoUrl = "/images/winfirms/user.png">
 									</#if>
 								</#if>
 							</#list>

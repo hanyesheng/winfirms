@@ -56,13 +56,13 @@ under the License.
 		<#if organizerLogoContentId?has_content>
 			<#assign createrLogoUrl = "/content/control/stream?contentId=${organizerLogoContentId}"! />
 		<#else>
-			<#assign createrLogoUrl = "/images/winfirms/headdefault.png">
+			<#assign createrLogoUrl = "/images/winfirms/user.png">
 		</#if>
 	<#else>
 		<#if createrLogoContentId?has_content>	
 			<#assign createrLogoUrl = "/content/control/stream?contentId=${createrLogoContentId}"! />
 		<#else>
-			<#assign createrLogoUrl = "/images/winfirms/headdefault.png">
+			<#assign createrLogoUrl = "/images/winfirms/user.png">
 		</#if>
 	</#if>
 	

@@ -107,14 +107,14 @@ under the License.
 												<#else>
 													<#assign teamComments = uiLabelMap.NoComments />
 												</#if>
-												<#assign teamLogoUrl = "/images/winfirms/headdefault.png">
+												<#assign teamLogoUrl = "/images/winfirms/user.png">
 												<#list teamContentList?sort_by('fromDate') as teamContentList>
 													<#if teamContentList.partyId = teamList.partyId>
 														<#assign teamContentId = teamContentList.contentId! />
 														<#if teamContentId?has_content>
 															<#assign teamLogoUrl = "/content/control/stream?contentId=${teamContentId}"! />
 														<#else>
-															<#assign teamLogoUrl = "/images/winfirms/headdefault.png"! />
+															<#assign teamLogoUrl = "/images/winfirms/user.png"! />
 														</#if>
 													</#if>
 												</#list>

@@ -53,7 +53,7 @@ under the License.
 		<#assign ProductFeatureAndAppl = "---" />
 	</#if>
 </#list>
-<#assign personLogoUrl = "/images/winfirms/headdefault.png">
+<#assign personLogoUrl = "/images/winfirms/user.png">
 <#list partyContentList?sort_by('fromDate') as personContent>
 	<#if personContent.partyId = partyId >
 		<#assign personContentId = personContent.contentId! />

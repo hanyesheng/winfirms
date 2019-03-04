@@ -18,7 +18,7 @@
 		<#list productContent as productContent>
   		<tr>
   			<td>
-    			${productContent.contentName!}[${productContent.contentId!}]
+    			${productContent.contentName!}
     			<a class="buttontext" href="<@ofbizUrl>updateCourseVideo?fromDate=${productContent.fromDate!}&productId=${productContent.productId!}&contentId=${productContent.contentId!}&productContentTypeId=${productContent.productContentTypeId!}</@ofbizUrl>" title="${uiLabelMap.ProductContent}">
       			${uiLabelMap.CommonEdit}
     			</a>

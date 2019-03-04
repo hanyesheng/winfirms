@@ -67,7 +67,7 @@
             </tr>
             <tr>
                 <td align="right" valign="top">
-                    <div><b>${uiLabelMap.ProductLargeImage}</b></div>
+                    <div><b>${uiLabelMap.ProjectPic}URL</b></div>
     				<#if (product.largeImageUrl)??>
                     <a href="<@ofbizContentUrl>${product.largeImageUrl}</@ofbizContentUrl>" target="_blank"><img alt="Large Image" src="<@ofbizContentUrl>${product.largeImageUrl}</@ofbizContentUrl>" style="width: 100px;" class="cssImgSmall"/></a>
     				</#if>
@@ -104,12 +104,10 @@
     <form method="post" enctype="multipart/form-data" action="<@ofbizUrl>uploadProjectImage?productId=${productId}&amp;upload_file_type=large</@ofbizUrl>" name="imageUploadForm">
         <table cellspacing="0" class="basic-table uk-table">
             <tr>
-                <td align="right" valign="top">
-                    <input type="file" size="50" name="fname"/>
-                </td>
+                <td align="right" valign="top"><b>${uiLabelMap.ProjectPic}</b></td>
                 <td>&nbsp;</td>
                 <td colspan="4" valign="top">
-                    <input type="submit" class="smallSubmit" value="${uiLabelMap.ProductUploadImage}"/>
+                    <input type="file" size="50" name="fname"/><input type="submit" class="smallSubmit" value="${uiLabelMap.ProductUploadImage}"/>
                 </td>
             </tr>
         </table>

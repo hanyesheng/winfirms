@@ -259,7 +259,7 @@ under the License.
 							<div class="alert error">
 								<i class="fa fa-lg  fa-times-circle"></i> ${uiLabelMap.ApplyCancelled}
 							</div>
-							<#assign userLogoUrl = "/images/winfirms/headdefault.png">
+							<#assign userLogoUrl = "/images/winfirms/user.png">
 							<#list teamList as teamList>
 								<#if CommunicationEventAndProduct.partyIdFrom = teamList.partyId>
 									<#if teamList.nickname??>

@@ -25,7 +25,7 @@ under the License.
 	<#if incubatorContentId?has_content>
 		<#assign incubatorLogoUrl = "/content/control/stream?contentId=${incubatorContentId}"! />
 	<#else>	
-		<#assign incubatorLogoUrl = "/images/winfirms/headdefault.png">
+		<#assign incubatorLogoUrl = "/images/winfirms/user.png">
 	</#if>
 	<td align="center">
 	<img src="<@ofbizContentUrl>${product.largeImageUrl!}</@ofbizContentUrl>" class="img-responsive" alt="">

@@ -20,6 +20,7 @@ under the License.
 <#list ProductContentVideoIntro?sort_by('fromDate') as ProductContentVideoIntro>
 	<#assign drDataResourceId = ProductContentVideoIntro.drDataResourceId! />
 	<#assign mimeTypeId = ProductContentVideoIntro.mimeTypeId! />
+	<#assign videoUrl = ProductContentVideoIntro.drObjectInfo! />
 </#list>	
 <div class="container space30">
 <div class="tab-content project-tab-content">
@@ -31,7 +32,7 @@ under the License.
 					<video class="video-js" controls preload="none" style="border-radius: 5px;min-width: 200px;height: 100%;width: 100%;"
 					      poster="${product.mediumImageUrl!}"
 					      data-setup="">
-					    <source src="/images/uploads/1528529229818/${drDataResourceId}.mp4" type='${mimeTypeId!}' />
+					    <source src="${videoUrl?substring(39)}" type='${mimeTypeId!}' />
 				  	</video>
 				</div>
 			</div>

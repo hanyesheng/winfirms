@@ -23,7 +23,7 @@ under the License.
 <#if userLoginContentId?has_content>
 	<#assign userLoginLogoUrl = "/content/control/stream?contentId=${userLoginContentId}"! />
 <#else>	
-	<#assign userLoginLogoUrl = "/images/winfirms/headdefault.png">
+	<#assign userLoginLogoUrl = "/images/winfirms/user.png">
 </#if>
 <!-- main header -->
 <header id="header_main">
@@ -97,7 +97,7 @@ under the License.
                         </div>
                     </li>
                     <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
-                        <a href="#" class="user_action_image"><img class="md-user-image" src="${userLoginLogoUrl!}" alt=""/></a>
+                        <a href="#" class="user_action_image"><img class="md-user-image" id="toplogo" src="${userLoginLogoUrl!}" alt=""/></a>
                         <div class="uk-dropdown uk-dropdown-small">
                             <ul class="uk-nav js-uk-prevent">
                             	<#if userLogin??>

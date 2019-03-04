@@ -18,7 +18,7 @@ under the License.
 -->
 
 <#if party??>
-<#assign personLogoUrl = "/images/winfirms/headdefault.png"!/>
+<#assign personLogoUrl = "/images/winfirms/user.png"!/>
 <#list PartyContent?sort_by('fromDate') as PartyContent>
 	<#if PartyContent.partyId = partyId>
 		<#assign personContentId = PartyContent.contentId!/>
@@ -34,8 +34,7 @@ under the License.
 			<table class="table table-bordered">
 				<thead>
 					<tr>
-						<td width="20%">${uiLabelMap.PersonLogo}</td>
-						<td colspan="3">${uiLabelMap.PartyPersonalInformation}<a style="float: right;" class="button btn-border color3 btn-xs btn-radius" href="<@ofbizUrl>editperson</@ofbizUrl>"><i class="fa fa-edit"></i>${uiLabelMap.CommonUpdate}</a></td>
+						<td>${uiLabelMap.PersonLogo}</td>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,106 +63,7 @@ under the License.
 							        </div>
 						      	</div>
 						    </div>
-						</td>
-						<td  width="10%">${uiLabelMap.FormFieldTitle_nickname}</td>
-						<td colspan="2">${person.nickname!}</td>
-					</tr>
-					<tr>
-						<td>${uiLabelMap.PartyRole}</td>
-						<td colspan="2">
-							<#if (RoleTypeAndParty?size > 0)>
-								<#list RoleTypeAndParty as RoleTypeAndParty>
-									<#if RoleTypeAndParty.roleTypeId = "BUSINESSMAN">
-									<span class="businessman">${RoleTypeAndParty.description}</span>
-									<#elseif RoleTypeAndParty.roleTypeId = "SUBSCRIBER">
-									<span class="subscriber">${RoleTypeAndParty.description}</span>
-									<#elseif RoleTypeAndParty.roleTypeId = "INVESTORS">
-									<span class="investors">${RoleTypeAndParty.description}</span>
-									<#elseif RoleTypeAndParty.roleTypeId = "COMPANY">
-									<span class="company">${RoleTypeAndParty.description}</span>
-									<#elseif RoleTypeAndParty.roleTypeId = "INCUBATOR">
-									<span class="incubator">${RoleTypeAndParty.description}</span>
-									<#else>
-									<span class="unverified">${uiLabelMap.Unverified}</span>
-									</#if>
-								</#list>
-							<#else>
-								<span class="unverified">${uiLabelMap.Unverified}</span>
-							</#if>
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<span><a href="<@ofbizUrl>verify</@ofbizUrl>" class="color3" target="_blank">${uiLabelMap.Gotoverify}>></a></span>
-							<a style="float: right;" class="button btn-border color3 btn-xs btn-radius" href="<@ofbizUrl>editpartyrole</@ofbizUrl>"><i class="fa fa-edit"></i>${uiLabelMap.RoleManager}</a>
-						</td>
-					</tr>
-					<#assign hasParentCol = "0">
-						<#list PartyRelationship as PartyRelationship>
-							<#if PartyRelationship.partyIdTo??>
-								<#list PartyGroup as PartyGroup>
-									<#if PartyRelationship.partyIdTo = PartyGroup.partyId>
-										<tr>
-											<td><#if hasParentCol = "0">${uiLabelMap.Course}</#if></td>
-											<td width="30%"><span class="label label-info">${PartyGroup.groupName!}</span></td>
-											<form method="post" id="deletePartyRelationship_${hasParentCol}" action="<@ofbizUrl>deletePartyRelationship</@ofbizUrl>" name="ListPartyRelationships">
-												<input name="roleTypeIdTo" value="INCUBATOR" type="hidden">
-												<input name="fromDate" value="${PartyRelationship.fromDate!}" type="hidden">
-												<input name="partyIdFrom" value="${PartyRelationship.partyIdFrom!}" type="hidden">
-												<input name="partyIdTo" value="${PartyRelationship.partyIdTo!}" type="hidden">
-												<input name="roleTypeIdFrom" value="${PartyRelationship.roleTypeIdFrom!}" type="hidden">
-											</form>
-											<td width="10%">
-												<a style="float: right;" class="button btn-border color3 btn-xs btn-radius" href="javascript:document.getElementById('deletePartyRelationship_${hasParentCol}').submit();"><i class="fa fa-trash"></i>${uiLabelMap.CommonDelete}</a>
-											</td>
-										</tr>
-										<#assign hasParentCol = hasParentCol + 1>
-									</#if>
-								</#list>
-							</#if>
-						</#list>
-					<tr>
-						<td>${uiLabelMap.AddCommonParent}</td>
-						<td width="30%">
-							<form method="post" action="<@ofbizUrl>createPartyRelationship</@ofbizUrl>" id="AddOtherPartyRelationship" class="basic-form" name="AddOtherPartyRelationship">
-								<select name="partyIdTo" class="form-control">
-								<option value="">---</option>
-								<#list PartyRole as PartyRole>
-									<#list PartyGroup as PartyGroup>
-										<#if PartyGroup.partyId = PartyRole.partyId>
-											<option value="${PartyGroup.partyId}">${PartyGroup.groupName}</option>
-										</#if>
-									</#list>
-								</#list>
-								</select>
-								<input name="partyIdFrom" value="${party.partyId}" type="hidden">
-								<input name="roleTypeIdTo" value="INCUBATOR" type="hidden">
-								<input name="partyRelationshipTypeId" value="CHILD" type="hidden">
-								<input name="statusId" value="PARTYREL_CREATED" type="hidden">
-								<input name="fromDate" value="${nowTimestamp}" type="hidden">
-							</form>
-						</td>
-						<td width="10%"><a style="float: right;" class="button btn-border color3 btn-xs btn-radius" href="javascript:document.getElementById('AddOtherPartyRelationship').submit();"><i class="fa fa-edit"></i>${uiLabelMap.AddCommonParent}</a></td>
-					</tr>
-					<tr>
-						<td>${uiLabelMap.PartyGender}</td>
-						<td colspan="2">
-							<#if person.gender??>
-								<#if person.gender == "M" >${uiLabelMap.CommonMale}</#if>
-			                	<#if person.gender == "F" >${uiLabelMap.CommonFemale}</#if>
-		                	<#else>
-		                		----
-							</#if>
-						</td>
-					</tr>
-					<tr>
-						<td>${uiLabelMap.FormFieldTitle_birthDate}</td>
-						<td colspan="2"><#if person.birthDate??>${person.birthDate!}<#else>----</#if></td>
-					</tr>
-					<tr>
-						<td>${uiLabelMap.BriefIntroduction}</td>
-						<td colspan="2"><#if person.comments??>${person.comments!}<#else>${uiLabelMap.NoPartyComments}</#if></td>
-					</tr>
-					<tr>
-						<td colspan="4">
-							<div class="row"><div class="col-md-12">
+						    <div class="row"><div class="col-md-12">
 							<div class="progress" style="display: none; margin-bottom: 1rem;">
 						      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
 						    </div>
@@ -177,69 +77,6 @@ under the License.
 	</div>
 	<div class="double-space-bottom">
 		<h3 class="heading">${uiLabelMap.AttachFile}<span></span></h3>
-		<#list PartyRelationship as PartyRelationship>
-			<table class="table table-bordered">
-			<thead>
-				<tr>
-					<#list PartyGroup as PartyGroup>
-						<#if PartyRelationship.partyIdTo = PartyGroup.partyId>
-						<td colspan="2" style="text-align: center;"><span class="label label-info">${PartyGroup.groupName!}</span></td>
-						</#if>
-					</#list>
-				</tr>
-			</thead>
-			<tbody>
-			<#list PartyContentDownload as PartyContentDownload>
-				<#if PartyContentDownload.partyId = PartyRelationship.partyIdTo>
-				<tr>
-					<td>${PartyContentDownload.contentName}</td>
-					<td>
-						<a href="ViewBinaryDataResource?externalLoginKey=${requestAttributes.externalLoginKey!}&contentId=${PartyContentDownload.contentId}">
-							${uiLabelMap.CommonDownload}
-						</a>
-					</td>
-				</tr>
-				</#if>
-			</#list>
-			<tr><td colspan="2" style="text-align: center;"><span class="label label-success">${uiLabelMap.CommonUpload}</span></td></tr>
-			<#list PartyContentUpload as PartyContentUpload>
-				<#if PartyContentUpload.partyId = PartyRelationship.partyIdTo>
-				<tr>
-					<td>${PartyContentUpload.contentName}</td>
-					<td>
-						<form name="removePartyContent_${PartyContentUpload_index}" style="display: inline-block;" method="post" action="<@ofbizUrl>removePartyContent</@ofbizUrl>">
-		                  <input name="contentId" value="${PartyContentUpload.contentId}" type="hidden">
-		                  <input name="partyId" value="${PartyContentUpload.partyId}" type="hidden">
-		                  <input name="partyContentTypeId" value="${PartyContentUpload.partyContentTypeId}" type="hidden">
-		                  <input name="fromDate" value="${PartyContentUpload.fromDate}" type="hidden">
-		                  <a href="javascript:document.removePartyContent_${PartyContentUpload_index}.submit()">${uiLabelMap.CommonDelete}</a>
-		                </form>
-						<a href="ViewBinaryDataResource?externalLoginKey=${requestAttributes.externalLoginKey!}&contentId=${PartyContentUpload.contentId}">
-							${uiLabelMap.CommonDownload}
-						</a>
-					</td>
-				</tr>
-				</#if>
-			</#list>
-			<tr>
-				<form id="uploadParentPartyContent" method="post" enctype="multipart/form-data" action="<@ofbizUrl>uploadParentPartyContent</@ofbizUrl>">
-		        <input type="hidden" name="dataCategoryId" value="PERSONAL"/>
-		        <input type="hidden" name="statusId" value="CTNT_PUBLISHED"/>
-		        <input name="contentTypeId" value="DOCUMENT" type="hidden">
-		        <input type="hidden" name="partyId" value="${PartyRelationship.partyIdTo}" id="contentPartyId"/>
-		        <input type="hidden" name="partyContentTypeId" value="VNDSHPINF"/>
-		        <input type="hidden" name="isPublic" value="Y"/>
-		        <input type="hidden" name="roleTypeId" value="_NA_"/>
-				<td><input type="file" name="uploadedFile" class="required valid" size="25"/></td>
-		        <td><input type="submit"  value="${uiLabelMap.CommonUpload}"/></td>
-				</form>
-			</tr>
-			<tr>
-				<td colspan="2" style="text-align: center;"><div style="padding: 5px;margin-bottom: 0px;" class="alert alert-warning" role="alert">${uiLabelMap.UploadParentContentWarning}</div></td>
-			</tr>
-			</tbody>
-			</table>
-		</#list>
 	</div>
 </div>
 <form id="uploadPartyLogo" method="post" enctype="multipart/form-data">
@@ -314,9 +151,9 @@ under the License.
           });
 
           initialAvatarURL = avatar.src;
-          initialAvatarURL = toplogo.src;
+//        initialAvatarURL = toplogo.src;
           avatar.src = canvas.toDataURL();
-          toplogo.src = canvas.toDataURL();
+//        toplogo.src = canvas.toDataURL();
           $progress.show();
           $alert.removeClass('alert-success alert-warning');
           canvas.toBlob(function (blob) {

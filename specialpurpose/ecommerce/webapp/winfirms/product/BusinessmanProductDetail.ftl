@@ -37,7 +37,7 @@ under the License.
         </#if>
     }
 </script>
-<#assign personLogoUrl = "/images/winfirms/headdefault.png">
+<#assign personLogoUrl = "/images/winfirms/user.png">
 <#list partyContentList?sort_by('fromDate') as personContent>
 	<#if personContent.partyId = BusinessmanPartyId >
 		<#assign personContentId = personContent.contentId! />

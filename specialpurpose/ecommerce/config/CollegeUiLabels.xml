@@ -143,6 +143,10 @@
         <value xml:lang="en">FileDownload</value>
         <value xml:lang="zh">文件下载</value>
     </property>
+    <property key="FileUpload">
+        <value xml:lang="en">FileUpload</value>
+        <value xml:lang="zh">文件上传</value>
+    </property>
     <property key="CommonDownload">
         <value xml:lang="en">Download</value>
         <value xml:lang="zh">下载</value>
@@ -830,7 +834,7 @@
     </property>
     <property key="UploadYourLogo">
         <value xml:lang="en">UploadYourLogo</value>
-        <value xml:lang="zh">点击上传您的头像</value>  
+        <value xml:lang="zh">上传您的头像</value>  
     </property>
     <property key="UploadSuccess">
         <value xml:lang="en">UploadSuccess</value>
@@ -1216,6 +1220,10 @@
         <value xml:lang="en">UnPublic</value>
         <value xml:lang="zh">未公开</value>
     </property>
+    <property key="UnPublicReleased">
+        <value xml:lang="en">UnPublicReleased</value>
+        <value xml:lang="zh">项目在隐藏状态，不能被其他创客查看，如需发布请点公开</value>
+    </property>
     <property key="CommonAbout">
         <value xml:lang="en">CommonAbout</value>
         <value xml:lang="zh">关于</value>
@@ -1460,6 +1468,10 @@
         <value xml:lang="en">CourseProjectCategory</value>
         <value xml:lang="zh">课程项目分类</value>
     </property>
+    <property key="SeeCourseProjectCategory">
+        <value xml:lang="en">SeeCourseProjectCategory</value>
+        <value xml:lang="zh">查看课程项目</value>
+    </property>
     <property key="CategoryInfo">
         <value xml:lang="en">CategoryInfo</value>
         <value xml:lang="zh">分类信息</value>
@@ -1531,5 +1543,17 @@
     <property key="SchoolForName">
         <value xml:lang="en">SchoolForName</value>
         <value xml:lang="zh">校内注册用户请使用姓名作为昵称</value>
+    </property>
+    <property key="ForegroundPage">
+        <value xml:lang="en">ForegroundPage</value>
+        <value xml:lang="zh">前台展示页面</value>
+    </property>
+    <property key="CommonLastModifiedBy">
+        <value xml:lang="en">CommonLastModifiedBy</value>
+        <value xml:lang="zh">上次修改者</value>
+    </property>
+    <property key="AddRoleNote">
+        <value xml:lang="en">AddRoleNote</value>
+        <value xml:lang="zh">管理员成员可以与项目创建者同时管理项目信息</value>
     </property>
 </resource>

@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
 -->
 
-<div class="md-card">
+<div class="md-card" style="margin-top: 15px;">
 	<div class="md-card-toolbar">
     	<h3 class="md-card-toolbar-heading-text">${uiLabelMap.MyProjectJoin}</h3>
    	</div>
@@ -27,6 +27,8 @@ under the License.
           <tr>
             <th>${uiLabelMap.ProjectName}</th>
             <th>${uiLabelMap.ProjectDescription}</th>
+            <th>${uiLabelMap.CommonRole}</th>
+            <th></th>
             <th></th>
           </tr>
         </thead>
@@ -43,6 +45,17 @@ under the License.
 		            </td>
 		            <td valign="center">
 		              ${Product.description!}
+		            </td>
+		            <td>
+		            	<#if ProductAndRole.roleTypeId = "_NA_"><span class="uk-badge"><i class="material-icons md-color-light-green-50">people</i>&nbsp;${uiLabelMap.Teammates}[${uiLabelMap.CommonNormal}]</span></#if>
+                		<#if ProductAndRole.roleTypeId = "BUSINESSMAN"><span class="uk-badge uk-badge-primary"><i class="material-icons md-color-light-green-50">person</i>&nbsp;${uiLabelMap.Teammates}[${uiLabelMap.CommonManager}]</span></#if>
+                	</td>
+		            <td>
+		            	<#if ProductAndRole.roleTypeId = "BUSINESSMAN">
+		            		<a href="<@ofbizUrl>projectInfo?productId=${Product.productId}</@ofbizUrl>" class="button btn-border color3 btn-xs btn-radius" style="display: inline-table;">
+		            			<i class="fa fa-edit"></i>&nbsp;${uiLabelMap.CommonEdit}
+		            		</a>
+		            	</#if>
 		            </td>
 		            <td valign="center">
 		               <form method="post" action="<@ofbizUrl>removeProductFromParty</@ofbizUrl>" name="UpdateProductRole_${ProCol}">

@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
 -->
 <#assign nowTimestamp = Static["org.apache.ofbiz.base.util.UtilDateTime"].nowTimestamp()>
-<div class="md-card">
+<div class="md-card"  style="margin-top: 15px;">
 	<div class="md-card-toolbar">
     	<h3 class="md-card-toolbar-heading-text">${uiLabelMap.MyProjectCreate}</h3>
    	</div>
@@ -51,7 +51,7 @@ under the License.
 	              ${Product.description!}
 	            </td>
 	            <td valign="center">
-	              <a href="<@ofbizUrl>projectInfo?productId=${Product.productId}</@ofbizUrl>" target="_blank" class="button btn-border color3 btn-xs btn-radius" style="display: inline-table;"><i class="fa fa-edit"></i>&nbsp;${uiLabelMap.CommonEdit}</a>
+	              <a href="<@ofbizUrl>projectInfo?productId=${Product.productId}</@ofbizUrl>" class="button btn-border color3 btn-xs btn-radius" style="display: inline-table;"><i class="fa fa-edit"></i>&nbsp;${uiLabelMap.CommonEdit}</a>
 	            </td>
 	          </tr>
 	          <#assign CreatedCol = CreatedCol + 1>

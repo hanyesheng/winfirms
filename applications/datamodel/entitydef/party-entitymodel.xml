@@ -2194,6 +2194,7 @@ under the License.
       <alias entity-alias="PER" name="firstName"/>
       <alias entity-alias="PER" name="middleName"/>
       <alias entity-alias="PER" name="lastName"/>
+      <alias entity-alias="PER" name="nickname"/>
       <alias entity-alias="PER" name="firstNameLocal"/>
       <alias entity-alias="PER" name="lastNameLocal"/>
       <alias entity-alias="PER" name="personalTitle"/>

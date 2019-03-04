@@ -1636,7 +1636,7 @@ under the License.
                                 <include-screen name="${detailScreen}"/>
                             </widgets>
                             <fail-widgets>
-                                <label style="head2">${uiLabelMap.ProductProductNotFound} ${productId}!</label>
+                                <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/product/NotFoundProduct.ftl"/></html></platform-specific>
                             </fail-widgets>
                         </section>
                     </decorator-section>
@@ -1644,7 +1644,16 @@ under the License.
             </widgets>
         </section>
     </screen>
-
+	<screen name="productProductNotFound">
+        <section>
+            <actions>
+                
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/product/NotFoundProduct.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
     <screen name="productdetail">
         <section>
             <actions>

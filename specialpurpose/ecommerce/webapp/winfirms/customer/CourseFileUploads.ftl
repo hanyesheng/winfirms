@@ -26,7 +26,7 @@
 			<#assign Uploader = null!/>
 	  		<tr>
 	  			<td>
-	    			${ProductContentAndInfoUpload.contentName!}[${ProductContentAndInfoUpload.contentId!}]
+	    			${ProductContentAndInfoUpload.contentName!}
 	  			</td>
 		  		<td>
 					${uiLabelMap.FileManager}
@@ -37,13 +37,13 @@
 			  				<#assign Uploader = UserLoginAndPartyDetails.nickname!/>
 			  			</#if>
 			  		</#list>
-					${Uploader!}
+					${Uploader!}-[${ProductContentAndInfoUpload.createdByUserLogin!}]
 			  	</td>
 		  		<td>
 					${ProductContentAndInfoUpload.fromDate!} 
 			  	</td>
 			  	<td>
-					<a href="/partymgr/control/img/${ProductContentAndInfoUpload.contentName}?imgId=${(ProductContentAndInfoUpload.dataResourceId)!}">
+					<a href="/partymgr/control/img/${Uploader!}-[${ProductContentAndInfoUpload.createdByUserLogin!}]-${ProductContentAndInfoUpload.contentName}?imgId=${(ProductContentAndInfoUpload.dataResourceId)!}">
 						${uiLabelMap.CommonDownload}
 					</a>
 	  			</td>

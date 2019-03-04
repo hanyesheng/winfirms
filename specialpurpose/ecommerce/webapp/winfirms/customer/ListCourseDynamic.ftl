@@ -26,9 +26,10 @@ under the License.
 	                	<img src="${contentUrl}" class="blog_list_teaser_image"/>       
 	                </#if>
 	                <#if ProductContentTimeline.mimeTypeId?contains("video")>
+	                	<#assign videoUrl = ProductContentTimeline.drObjectInfo! />
 	                	<video id="my-video" class="video-js blog_list_teaser_image" controls preload="auto"  style="border-radius: 5px;min-width: 200px;height: 100%;width: 100%;"
 							  poster="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>" data-setup="{}">
-					        <source src="/content/control/stream?contentId=${ProductContentTimeline.contentId}" type="video/mp4">
+					        <source src="${videoUrl?substring(39)}" type="video/mp4">
 					    </video>
 	                </#if>
                     <div class="blog_list_teaser">

@@ -33,7 +33,7 @@ under the License.
 				<#list Person as Person>
 					<#if Person.partyId = CommunicationEventAndRoleRead.partyIdFrom>
 						<#assign nickName = Person.nickname!/>
-						<#assign personLogoUrl = "/images/winfirms/headdefault.png"!/>
+						<#assign personLogoUrl = "/images/winfirms/user.png"!/>
 						<#list PartyContent?sort_by('fromDate') as PartyContent>
 							<#if PartyContent.partyId = Person.partyId>
 								<#assign personContentId = PartyContent.contentId!/>

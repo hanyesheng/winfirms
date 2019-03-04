@@ -1056,6 +1056,10 @@ under the License.
         <security https="true" auth="true"/>
         <response name="success" type="view" value="viewprofile"/>
     </request-map>
+    <request-map uri="viewprofileold">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="viewprofileold"/>
+    </request-map>
 	<!--联系方式-->
 	<request-map uri="viewcontactmech">
         <security https="true" auth="true"/>
@@ -1228,7 +1232,7 @@ under the License.
     <request-map uri="updatePerson">
         <security https="true" auth="true"/>
         <event type="service" invoke="updatePerson"/>
-        <response name="success" type="view" value="editperson"/>
+        <response name="success" type="view" value="viewprofile"/>
         <response name="error" type="view" value="editperson"/>
     </request-map>
 
@@ -2276,7 +2280,7 @@ under the License.
     <request-map uri="updateProductRecruitInfos">
         <security https="true" auth="true"/>
         <event type="service" path="" invoke="updateSimpleTextContentForProduct"/>
-        <response name="success" type="view" value="UpdateProjectRecruit"/>
+        <response name="success" type="view" value="ProjectRecruit"/>
         <response name="error" type="view" value="UpdateProjectRecruit"/>
     </request-map>
     <request-map uri="createProductRecruitInfos">
@@ -2353,7 +2357,7 @@ under the License.
         <security https="true" auth="true"/>
         <response name="success" type="view" value="UpdateProjectPlan" save-current-view="true"/>
     </request-map>
-    <request-map uri="removeProjectPlan">
+    <request-map uri="removeProjectPlanInfos">
         <security https="true" auth="true"/>
         <event type="service" path="" invoke="removeProductContent"/>
         <response name="success" type="view" value="ProjectPlan"/>
@@ -2836,12 +2840,6 @@ under the License.
         <response name="success" type="view" value="filemanager"/>
         <response name="error" type="view" value="filemanager"/>
     </request-map>
-    <!--文件管理-->
-    <request-map uri="filemanager">
-        <security auth="true" https="true"/>
-        <response name="success" type="view" value="filemanager"/>
-        <response name="error" type="view" value="filemanager"/>
-    </request-map>
     
     <request-map uri="removeFileUploads">
         <security https="true" auth="true"/>
@@ -2856,23 +2854,35 @@ under the License.
         <response name="success" type="view" value="viewprofile"/>
         <response name="error" type="view" value="viewprofile"/>
     </request-map>
+    <request-map uri="addCourseAtCourseIn">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="addPartyToProduct"/>
+        <response name="success" type="view" value="coursein"/>
+        <response name="error" type="view" value="coursein"/>
+    </request-map>
     <request-map uri="removeCourse">
         <security https="true" auth="true"/>
         <event type="service" path="" invoke="removePartyFromProduct"/>
         <response name="success" type="view" value="viewprofile"/>
         <response name="error" type="view" value="viewprofile"/>
     </request-map>
+    <request-map uri="removeCourseAtCourseIn">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="removePartyFromProduct"/>
+        <response name="success" type="view" value="coursein"/>
+        <response name="error" type="view" value="coursein"/>
+    </request-map>
     <request-map uri="uploadCourseFile">
         <security https="true" auth="true"/>
         <event type="service" path="" invoke="createDownloadContentForProduct"/>
-        <response name="success" type="view" value="filemanager"/>
-        <response name="error" type="view" value="filemanager"/>
+        <response name="success" type="view" value="coursein"/>
+        <response name="error" type="view" value="coursein"/>
     </request-map>
     <request-map uri="removeUploadCourseFile">
         <security https="true" auth="true"/>
         <event type="service" path="" invoke="removeProductContent"/>
-        <response name="success" type="view" value="filemanager"/>
-        <response name="error" type="view" value="filemanager"/>
+        <response name="success" type="view" value="coursein"/>
+        <response name="error" type="view" value="coursein"/>
     </request-map>
     <!-- End of Request Mappings -->
 
@@ -2880,7 +2890,6 @@ under the License.
     <view-map name="error" page="/error/error.jsp"/>
     <view-map name="verify" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#verify"/>
     <view-map name="editpartyrole" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#editpartyrole"/>
-    <view-map name="filemanager" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#filemanager"/>
     <!--添加上级关系-->
     <view-map name="addPartyParent" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#addPartyParent"/>
     <!--用户角色认证相关-->
@@ -2954,6 +2963,7 @@ under the License.
     <view-map name="newcustomer" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#newcustomer"/>
 
     <view-map name="viewprofile" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#viewprofile"/>
+    <view-map name="viewprofileold" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#viewprofileold"/>
      <!--联系方式-->
     <view-map name="viewcontactmech" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#viewcontactmech"/>
     <!--账号设置-->

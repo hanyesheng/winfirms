@@ -2,7 +2,7 @@
 .video-js .vjs-modal-dialog,
 .vjs-button>.vjs-icon-placeholder:before,
 .vjs-modal-dialog .vjs-modal-dialog-content {
-	position: absolute;
+	position: relative;
 	top: 0;
 	left: 0;
 	width: 100%;
@@ -525,8 +525,8 @@ body.vjs-full-window {
     margin: auto;
 	font-size: 3em;
 	line-height: 1.5em;
-	height: 3em;
-	width: 3em;
+	height: 2em;
+	width: 2em;
 	display: block;
 	position: absolute;
 	padding: 0;

@@ -23,7 +23,7 @@ under the License.
 <#if userLoginContentId?has_content>
 	<#assign userLoginLogoUrl = "/content/control/stream?contentId=${userLoginContentId}"! />
 <#else>	
-	<#assign userLoginLogoUrl = "/images/winfirms/headdefault.png">
+	<#assign userLoginLogoUrl = "/images/winfirms/user.png">
 </#if>
 	<div id="top-bar" class="hidden-xs hidden-sm">
 		<div class="container">

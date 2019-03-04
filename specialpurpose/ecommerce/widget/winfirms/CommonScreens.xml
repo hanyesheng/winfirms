@@ -162,6 +162,7 @@ under the License.
                 <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/Readmore.js-master/readmore.js" global="true"/>
                 <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.js" global="true"/>
                 <set field="layoutSettings.styleSheets[+0]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.css" global="true" />	
+                <set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/cropper/dist/cropper.min.css" global="true"/>
 				
                 <set field="partyId" from-field="userLogin.partyId"/>
 				<!--发布项目-->

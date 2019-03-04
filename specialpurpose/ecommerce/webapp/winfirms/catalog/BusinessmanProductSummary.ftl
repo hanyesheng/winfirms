@@ -21,7 +21,7 @@ under the License.
 	<#if investorsContentId?has_content>
 		<#assign investorsLogoUrl = "/content/control/stream?contentId=${investorsContentId}"! />
 	<#else>	
-		<#assign investorsLogoUrl = "/images/winfirms/headdefault.png">
+		<#assign investorsLogoUrl = "/images/winfirms/user.png">
 	</#if>
 	<td align="center" style="width: 120px;">
 		<img src="${investorsLogoUrl}" class="img-responsive" alt="">

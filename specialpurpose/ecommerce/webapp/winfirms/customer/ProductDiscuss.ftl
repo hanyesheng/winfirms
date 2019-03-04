@@ -30,7 +30,7 @@ under the License.
 				<#list commPersonList as commPersonList>
 					<#if commPersonList.partyId = communicationEvents.partyIdFrom>
 						<#assign nickName = commPersonList.nickname!/>
-						<#assign personLogoUrl = "/images/winfirms/headdefault.png">
+						<#assign personLogoUrl = "/images/winfirms/user.png">
 						<#list commPartyContentList?sort_by('fromDate') as commPartyContentList>
 							<#if commPartyContentList.partyId = commPersonList.partyId>
 								<#assign personContentId = commPartyContentList.contentId!/>

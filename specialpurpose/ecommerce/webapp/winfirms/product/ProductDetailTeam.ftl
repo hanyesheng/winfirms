@@ -32,7 +32,7 @@ under the License.
 		<#assign partyComments = uiLabelMap.NoComments />
 	</#if>
 </#list>
-<#assign personLogoUrl = "/images/winfirms/headdefault.png">
+<#assign personLogoUrl = "/images/winfirms/user.png">
 <#list partyContentList?sort_by('fromDate') as personContent>
 	<#if personContent.partyId = partyId >
 		<#assign personContentId = personContent.contentId! />
@@ -40,7 +40,7 @@ under the License.
 	<#if personContentId?has_content>
 		<#assign personLogoUrl = "/content/control/stream?contentId=${personContentId}"! />
 	<#else>
-		<#assign personLogoUrl = "/images/winfirms/headdefault.png"! />
+		<#assign personLogoUrl = "/images/winfirms/user.png"! />
 	</#if>
 </#list>
 <#if userPartyId??>
@@ -83,14 +83,14 @@ under the License.
 							<#else>
 								<#assign teamComments = uiLabelMap.NoComments />
 							</#if>
-							<#assign teamLogoUrl = "/images/winfirms/headdefault.png">
+							<#assign teamLogoUrl = "/images/winfirms/user.png">
 							<#list teamContentList?sort_by('fromDate') as teamContentList>
 								<#if teamContentList.partyId = teamList.partyId>
 									<#assign teamContentId = teamContentList.contentId! />
 									<#if teamContentId?has_content>
 										<#assign teamLogoUrl = "/content/control/stream?contentId=${teamContentId}"! />
 									<#else>
-										<#assign teamLogoUrl = "/images/winfirms/headdefault.png"! />
+										<#assign teamLogoUrl = "/images/winfirms/user.png"! />
 									</#if>
 								</#if>
 							</#list>
@@ -186,14 +186,14 @@ under the License.
 							<div class="alert info text-center">
 								<i class="fa fa-lg fa-comments-o"></i>${uiLabelMap.ApplyWaiting}
 							</div>
-							<#assign userLogoUrl = "/images/winfirms/headdefault.png">
+							<#assign userLogoUrl = "/images/winfirms/user.png">
 							<#list teamContentList?sort_by('fromDate') as teamContentList>
 								<#if teamContentList.partyId = CommunicationEventAndProduct.partyIdFrom>
 									<#assign teamContentId = teamContentList.contentId! />
 									<#if teamContentId?has_content>
 										<#assign userLogoUrl = "/content/control/stream?contentId=${teamContentId}"! />
 									<#else>
-										<#assign userLogoUrl = "/images/winfirms/headdefault.png"! />
+										<#assign userLogoUrl = "/images/winfirms/user.png"! />
 									</#if>
 								</#if>
 							</#list>
@@ -266,14 +266,14 @@ under the License.
 							<div class="alert error">
 								<i class="fa fa-lg  fa-times-circle"></i> ${uiLabelMap.ApplyCancelled}
 							</div>
-							<#assign userLogoUrl = "/images/winfirms/headdefault.png">
+							<#assign userLogoUrl = "/images/winfirms/user.png">
 							<#list teamContentList?sort_by('fromDate') as teamContentList>
 								<#if teamContentList.partyId = CommunicationEventAndProduct.partyIdFrom>
 									<#assign teamContentId = teamContentList.contentId! />
 									<#if teamContentId?has_content>
 										<#assign userLogoUrl = "/content/control/stream?contentId=${teamContentId}"! />
 									<#else>
-										<#assign userLogoUrl = "/images/winfirms/headdefault.png"! />
+										<#assign userLogoUrl = "/images/winfirms/user.png"! />
 									</#if>
 								</#if>
 							</#list>
