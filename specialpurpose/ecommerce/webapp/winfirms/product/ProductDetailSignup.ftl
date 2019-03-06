@@ -316,7 +316,7 @@ under the License.
 					  	<input name="messageId" type="hidden"/>
 					  	<input name="productId" value="${product.productId}" type="hidden"/>
 					  	<input name="parentCommEventId" value="" type="hidden"/>
-					  	<input name="communicationEventTypeId" value="PROJECT_APPLY_JOIN" type="hidden"/>
+					  	<input name="communicationEventTypeId" value="PRODUCT_APPLY" type="hidden"/>
 					  	<input name="statusId" value="COM_IN_PROGRESS" type="hidden"/>
 					  	<input name="partyIdFrom" value="${userPartyId}" type="hidden"/>
 					  	<input name="partyIdTo" value="${partyId}" type="hidden"/>

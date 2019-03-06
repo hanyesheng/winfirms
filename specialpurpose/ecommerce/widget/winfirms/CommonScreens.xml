@@ -93,7 +93,7 @@ under the License.
                     <condition-list combine="and">
                     	<condition-list combine="or">
 	                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_DISSCUSS"/>
-	                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PROJECT_APPLY_JOIN"/>
+	                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_APPLY"/>
 	                    </condition-list>
                         <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
                         <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
@@ -197,7 +197,7 @@ under the License.
                         <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
                         <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
                         <condition-expr field-name="roleStatusId" operator="equals" value="COM_ROLE_CREATED"/>
-                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PROJECT_APPLY_JOIN"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_APPLY"/>
                     </condition-list>
                     <order-by field-name="-entryDate"/>
                 </entity-condition>
@@ -225,7 +225,7 @@ under the License.
                     <condition-list combine="and">
                     	<condition-list combine="or">
 	                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_DISSCUSS"/>
-	                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PROJECT_APPLY_JOIN"/>
+	                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_APPLY"/>
 	                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRIVATE_LETTER"/>
 	                    </condition-list>
                         <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>

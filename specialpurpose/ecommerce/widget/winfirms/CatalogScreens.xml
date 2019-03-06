@@ -2711,7 +2711,7 @@ under the License.
             	<entity-and entity-name="CommunicationEventAndProduct" list="CommunicationEventAndProduct">
                     <field-map field-name="productId" from-field="product.productId"/>
                     <field-map field-name="partyIdFrom" from-field="userLogin.partyId"/>
-                    <field-map field-name="communicationEventTypeId" value="PROJECT_APPLY_JOIN"/>
+                    <field-map field-name="communicationEventTypeId" value="PRODUCT_APPLY"/>
                 </entity-and>
             	<entity-and entity-name="ProductRole" list="ProductRole" >
                     <field-map field-name="productId" from-field="product.productId"/>
@@ -2749,7 +2749,7 @@ under the License.
             	<entity-and entity-name="CommunicationEventAndProduct" list="CommunicationEventAndProduct">
                     <field-map field-name="productId" from-field="product.productId"/>
                     <field-map field-name="partyIdFrom" from-field="userLogin.partyId"/>
-                    <field-map field-name="communicationEventTypeId" value="PROJECT_APPLY_JOIN"/>
+                    <field-map field-name="communicationEventTypeId" value="PRODUCT_APPLY"/>
                	</entity-and>
                	<entity-and entity-name="ProductContentAndInfo" list="ProductContentAndInfo">
                 	<field-map field-name="productContentTypeId" value="SPECIALINSTRUCTIONS"/>

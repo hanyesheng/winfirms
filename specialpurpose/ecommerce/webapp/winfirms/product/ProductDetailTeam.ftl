@@ -215,7 +215,7 @@ under the License.
 								</thead>
 								<tbody>
 									<tr>
-										<td rowspan="0">
+										<td rowspan="4">
 											<div class="quote-info">
 												<img src="${userLogoUrl}" class="img-responsive" alt="">
 												<h2>${userName}</h2>
@@ -234,16 +234,14 @@ under the License.
 									</tr>
 									<tr>
 										<td>${uiLabelMap.Applystatus}</td>
-										<td>${CommunicationEventAndProduct.statusId}</td>
+										<td><span class="label label-default">${uiLabelMap.CommonProcessing}</span></td>
 									</tr>
-									<#if ProductContentUpload?has_content>
-										<tr>
-											<td colspan="2" style="text-align: center;"><span class="label label-success">${uiLabelMap.CommonUpload}</span></td>
-										</tr>
-									</#if>
+									<tr>
+										<td colspan="3" style="text-align: center;"><span class="label label-success">${uiLabelMap.CommonUpload}</span></td>
+									</tr>
 									<#list ProductContentUpload as ProductContentUpload>
 										<tr>
-											<td>${ProductContentUpload.contentName!}</td>
+											<td colspan="2">${ProductContentUpload.contentName!}</td>
 											<td>
 												<a href="<@ofbizUrl>ViewBinaryDataResource?externalLoginKey=${requestAttributes.externalLoginKey!}&contentId=${ProductContentUpload.contentId}</@ofbizUrl>">
 													${uiLabelMap.CommonDownload}
@@ -255,7 +253,7 @@ under the License.
 										<form  id="uploadParentPartyContent" method="post" enctype="multipart/form-data" action="<@ofbizUrl>createUploadContentForProduct</@ofbizUrl>">
 								        	<input name="productId" value="${product.productId}" id="EditProductContentDownload_productId" type="hidden">
 								        	<input name="productContentTypeId" value="DIGITAL_UPLOAD" id="EditProductContentDownload_productContentTypeId" type="hidden">
-											<td><input type="file" name="imageData" class="required valid" size="25"/></td>
+											<td colspan="2"><input type="file" name="imageData" class="required valid" size="25"/></td>
 								        	<td><input type="submit"  value="${uiLabelMap.CommonUpload}"/></td>
 										</form>
 									</tr>
@@ -295,7 +293,7 @@ under the License.
 								</thead>
 								<tbody>
 									<tr>
-										<td rowspan="0">
+										<td rowspan="4">
 											<div class="quote-info">
 												<img src="${userLogoUrl}" class="img-responsive" alt="">
 												<h2>${userName}</h2>
@@ -314,13 +312,16 @@ under the License.
 									</tr>
 									<tr>
 										<td>${uiLabelMap.Applystatus}</td>
-										<td>${CommunicationEventAndProduct.statusId}</td>
+										<td><span class="label label-danger">${uiLabelMap.CommonRejected}</span></td>
+									</tr>
+									<tr>
+										<td colspan="3" style="text-align: center;"><span class="label label-success">${uiLabelMap.CommonUpload}</span></td>
 									</tr>
 									<#list ProductContentUpload as ProductContentUpload>
 										<tr>
-											<td>${ProductContentUpload.contentName!}</td>
+											<td colspan="2">${ProductContentUpload.contentName!}</td>
 											<td>
-												<a href="<@ofbizUrl>ViewBinaryDataResource?externalLoginKey=${requestAttributes.externalLoginKey!}&contentId=${ProductContentUpload.contentId}</@ofbizUrl>">
+												<a href="/partymgr/control/img/${ProductContentUpload.contentName}?imgId=${(ProductContentUpload.dataResourceId)!}">
 													${uiLabelMap.CommonDownload}
 												</a>
 											</td>
@@ -330,7 +331,7 @@ under the License.
 										<form  id="uploadParentPartyContent" method="post" enctype="multipart/form-data" action="<@ofbizUrl>createUploadContentForProduct</@ofbizUrl>">
 								        	<input name="productId" value="${product.productId}" id="EditProductContentDownload_productId" type="hidden">
 								        	<input name="productContentTypeId" value="DIGITAL_UPLOAD" id="EditProductContentDownload_productContentTypeId" type="hidden">
-											<td><input type="file" name="imageData" class="required valid" size="25"/></td>
+											<td colspan="2"><input type="file" name="imageData" class="required valid" size="25"/></td>
 								        	<td><input type="submit"  value="${uiLabelMap.CommonUpload}"/></td>
 										</form>
 									</tr>
@@ -347,7 +348,7 @@ under the License.
 					  	<input name="messageId" type="hidden"/>
 					  	<input name="productId" value="${product.productId}" type="hidden"/>
 					  	<input name="parentCommEventId" value="" type="hidden"/>
-					  	<input name="communicationEventTypeId" value="PROJECT_APPLY_JOIN" type="hidden"/>
+					  	<input name="communicationEventTypeId" value="PRODUCT_APPLY" type="hidden"/>
 					  	<input name="statusId" value="COM_IN_PROGRESS" type="hidden"/>
 					  	<input name="partyIdFrom" value="${userPartyId}" type="hidden"/>
 					  	<input name="partyIdTo" value="${partyId}" type="hidden"/>

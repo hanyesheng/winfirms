@@ -21,7 +21,7 @@ under the License.
 	<#assign NoCol = NoCol + 1>
 </#list>
 <ul class="uk-tab">
-	<li><a href="<@ofbizUrl>messageDissListReceive</@ofbizUrl>">${uiLabelMap.CommunicationEventReceive}<#if NoCol = 0><#else><span class="col">(${NoCol})</span></#if></a></li>
+	<li><a href="<@ofbizUrl>messageDissListReceive</@ofbizUrl>">${uiLabelMap.CommunicationEventReceive}<#if NoCol = 0><#else><span class="colcommunicationEventsTopbar uk-badge">(${NoCol})</span></#if></a></li>
 	<li class="uk-active"><a href="<@ofbizUrl>messageDissListSend</@ofbizUrl>">${uiLabelMap.CommunicationEventSend}</a></li>
 </ul>
 <div class="md-card-list-wrapper" id="mailbox">

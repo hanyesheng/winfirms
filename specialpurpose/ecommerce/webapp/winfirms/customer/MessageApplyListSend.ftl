@@ -22,7 +22,7 @@ under the License.
 </#list>
 <ul class="uk-tab">
 	<li class="uk-active"><a href="<@ofbizUrl>messageApplyListSend</@ofbizUrl>">${uiLabelMap.CommunicationEventSend}</a></li>
-	<li><a href="<@ofbizUrl>messageApplyListReceive</@ofbizUrl>">${uiLabelMap.CommunicationEventReceive}<#if NoCol = 0><#else><span class="col">(${NoCol})</span></#if></a></li>
+	<li><a href="<@ofbizUrl>messageApplyListReceive</@ofbizUrl>">${uiLabelMap.CommunicationEventReceive}<#if NoCol = 0><#else><span class="colcommunicationEventsTopbar uk-badge">(${NoCol})</span></#if></a></li>
 </ul>
 <div class="md-card-list-wrapper" id="mailbox">
     <div class="uk-width-large-8-10 uk-container-center">

@@ -85,6 +85,40 @@ under the License.
   //]]>
 </script>
 </#if>
+<#if userLogin?has_content && userLogin.userLoginId != "anonymous">
+<!-- PAGE HEADER -->
+<div class="page_header">
+	<div class="page_header_parallax" style="background: url(/images/defaultCatgoryBg.jpg) no-repeat fixed center;background-size: cover;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h3>${uiLabelMap.EcommerceRegister}</h3>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="bcrumb-wrap">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<ul class="bcrumbs">
+						<li><a href="<@ofbizUrl>main</@ofbizUrl>"><i class="fa fa-home"></i> ${uiLabelMap.CommonMain}</a></li>
+						<li>${uiLabelMap.EcommerceRegister}</li>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<div class="clearfix space40"></div>
+	<div class="text-center space40">
+		<h4>${uiLabelMap.CommonWelcome}&nbsp;<#if person??>${person.nickname!}<#else>${partyGroup.groupName!}</#if></h4>
+		<div class="space30"></div>
+		<a href="<@ofbizUrl>main</@ofbizUrl>" style="display: inline-block;" class="button btn-small btn-center btn-radius space20">${uiLabelMap.CommonMain}</a>
+		<a href="<@ofbizUrl>viewprofile</@ofbizUrl>" style="display: inline-block;" class="button btn-small btn-center btn-radius space20">${uiLabelMap.PartyProfile}</a>
+	</div>
+<#else>
 <div class="page_header">
 	<div class="page_header_parallax" style="background: url(/images/defaultCatgoryBg.jpg) no-repeat fixed center;background-size: cover;">
 		<div class="container">
@@ -148,7 +182,7 @@ under the License.
 					<label style="float:right;color:red;display:none;">${uiLabelMap.WrongNickNameFormat}</label>
 					<label style="float:right;color:red;display:none;">${uiLabelMap.YourNickNameNotEmpty}</label>
 					<label style="color:rgb(153, 143, 143);float:right;display:none;">${uiLabelMap.YourNicknameFormat}</label>
-					<input required="required" type="text" class="form-control" name="USER_NICKNAME" id="USER_NICKNAME" value="${requestParameters.USER_NICKNAME!}" onfocus="reminderNickname()"  onblur="testNickname()" placeholder="${uiLabelMap.YourNickname}"/>
+					<input required="required" type="text" class="form-control" name="USER_NICKNAME" id="USER_NICKNAME" value="${requestParameters.USER_NICKNAME!}" onfocus="reminderNickname()"  onblur="testNickname()" placeholder="${uiLabelMap.YourNickname}(${uiLabelMap.SchoolForName})"/>
 				</div>
 				
 				<!-- Field 2 -->
@@ -178,7 +212,7 @@ under the License.
 		</div>
 	</div>
 </div>
-
+</#if>
 <script type="text/javascript">
   //<![CDATA[
   hideShowUsaStates();

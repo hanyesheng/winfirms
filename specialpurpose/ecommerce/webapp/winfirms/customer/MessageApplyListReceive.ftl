@@ -22,7 +22,7 @@ under the License.
 </#list>
 <ul class="uk-tab">
 	<li><a href="<@ofbizUrl>messageApplyListSend</@ofbizUrl>">${uiLabelMap.CommunicationEventSend}</a></li>
-	<li class="uk-active"><a href="<@ofbizUrl>messageApplyListReceive</@ofbizUrl>">${uiLabelMap.CommunicationEventReceive}<#if NoCol = 0><#else><span class="col">(${NoCol})</span></#if></a></li>
+	<li class="uk-active"><a href="<@ofbizUrl>messageApplyListReceive</@ofbizUrl>">${uiLabelMap.CommunicationEventReceive}<#if NoCol = 0><#else><span class="colcommunicationEventsTopbar uk-badge">(${NoCol})</span></#if></a></li>
 </ul>
 <div class="md-card-list-wrapper" id="mailbox">
     <div class="uk-width-large-8-10 uk-container-center">
@@ -100,11 +100,11 @@ under the License.
 		                    <img src="${personLogoUrl}" class="md-card-list-item-avatar" alt="" />
 		                </div>
 		                <div class="md-card-list-item-sender">
-		                    <span>${nickName}</span>
+		                    <span>${nickName}-[${CommunicationEventAndRoleRead.partyIdFrom}]</span>
 		                </div>
 		                <div class="md-card-list-item-subject">
 		                    <div class="md-card-list-item-sender-small">
-		                        <span>${nickName}</span>
+		                        <span>${nickName}-[${CommunicationEventAndRoleRead.partyIdFrom}]</span>
 		                    </div>
 		                    <span>
 		                    	<#if productUrl??><span class="product-categories">${uiLabelMap.MessageFrom}&nbsp;:&nbsp;<a href="${productUrl}" target="_blank">${productName!}</a></span></#if>
@@ -161,18 +161,18 @@ under the License.
 		                    <img src="${personLogoUrl}" class="md-card-list-item-avatar" alt="" />
 		                </div>
 		                <div class="md-card-list-item-sender">
-		                    <span>${nickName}</span>
+		                    <span>${nickName}-[${CommunicationEventAndRoleRead.partyIdFrom}]</span>
 		                </div>
 		                <div class="md-card-list-item-subject">
 		                    <div class="md-card-list-item-sender-small">
-		                        <span>${nickName}</span>
+		                        <span>${nickName}-[${CommunicationEventAndRoleRead.partyIdFrom}]</span>
 		                    </div>
-		                    <span><#if productUrl??><span class="product-categories">${uiLabelMap.MessageFrom}&nbsp;:&nbsp;<a href="${productUrl}" target="_blank">${productName!}</a></span></#if></span>
+		                    <span>
+		                    	<#if productUrl??><span class="product-categories">${uiLabelMap.MessageFrom}&nbsp;:&nbsp;<a href="${productUrl}" target="_blank">${productName!}</a></span></#if>
+		                    	<span class="uk-badge uk-badge-warning">${uiLabelMap.NoRead}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+		                	</span>
 		                </div>
-						<div class="md-card-list-item-content-wrapper wrapper-full">
-		                    <div class="md-card-list-item-content">
-		                        <p>${CommunicationEventAndRoleRead.content!}</p>
-		                    </div>
+		                <div class="md-card-list-item-content-wrapper wrapper-full">
 		                    <form method="post" action="<@ofbizUrl secure="true">readApplyMessage</@ofbizUrl>" name="ecomm_read_mess_${colcommunicationEvents}">
 					        <input name="communicationEventId" value="${CommunicationEventAndRoleRead.communicationEventId}" type="hidden"/>
 					       	</form>

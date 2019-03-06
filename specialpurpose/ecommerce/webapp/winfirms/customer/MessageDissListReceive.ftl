@@ -21,7 +21,7 @@ under the License.
 	<#assign NoCol = NoCol + 1>
 </#list>
 <ul class="uk-tab">
-	<li class="uk-active"><a href="<@ofbizUrl>messageDissListReceive</@ofbizUrl>">${uiLabelMap.CommunicationEventReceive}<#if NoCol = 0><#else><span class="col">(${NoCol})</span></#if></a></li>
+	<li class="uk-active"><a href="<@ofbizUrl>messageDissListReceive</@ofbizUrl>">${uiLabelMap.CommunicationEventReceive}<#if NoCol = 0><#else><span class="colcommunicationEventsTopbar uk-badge">(${NoCol})</span></#if></a></li>
 	<li><a href="<@ofbizUrl>messageDissListSend</@ofbizUrl>">${uiLabelMap.CommunicationEventSend}</a></li>
 </ul>
 <div class="md-card-list-wrapper" id="mailbox">
@@ -80,11 +80,11 @@ under the License.
 	                    <img src="${personLogoUrl}" class="md-card-list-item-avatar" alt="" />
 	                </div>
 	                <div class="md-card-list-item-sender">
-	                    <span>${nickName}</span>
+	                    <span>${nickName}-[${CommunicationEventAndRoleRead.partyIdFrom}]</span>
 	                </div>
 	                <div class="md-card-list-item-subject">
 	                    <div class="md-card-list-item-sender-small">
-	                        <span>${nickName}</span>
+	                        <span>${nickName}-[${CommunicationEventAndRoleRead.partyIdFrom}]</span>
 	                    </div>
 	                    <span><#if productUrl??><span class="product-categories">${uiLabelMap.MessageFrom}&nbsp;:&nbsp;<a href="${productUrl}" target="_blank">${productName!}</a></span></#if></span>
 	                </div>

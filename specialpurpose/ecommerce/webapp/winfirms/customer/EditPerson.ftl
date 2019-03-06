@@ -152,6 +152,7 @@ under the License.
 		
 		document.getElementById('input').addEventListener('click', function () {
 			$modal.hide();
+			cropper.destroy();
 			cropper = null;
 		});
 		

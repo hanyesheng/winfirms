@@ -255,6 +255,10 @@
         <value xml:lang="en">MySend</value>
         <value xml:lang="zh">我的回复</value>  
     </property>
+    <property key="NoRead">
+        <value xml:lang="en">NoRead</value>
+        <value xml:lang="zh">未读取</value>  
+    </property>
     <property key="MySendNoRead">
         <value xml:lang="en">MySendNoRead</value>
         <value xml:lang="zh">对方暂未读取</value>  
