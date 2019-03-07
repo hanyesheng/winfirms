@@ -39,6 +39,10 @@
         <value xml:lang="en">ProjectCreatedby</value>
         <value xml:lang="zh">项目创建者</value>
     </property>
+    <property key="ProjectFileList">
+        <value xml:lang="en">ProjectFileList</value>
+        <value xml:lang="zh">项目文件</value>
+    </property>
     <property key="Teammates">
         <value xml:lang="en">Teammates</value>
         <value xml:lang="zh">团队成员</value>

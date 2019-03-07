@@ -789,6 +789,84 @@ under the License.
             </widgets>
         </section>
     </screen>
+    <!--项目文件列表-->
+    <screen name="ProjectFile">
+        <section>
+            <actions>
+            	<set field="titleProperty" value="Editproject"/>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectFile"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+                <entity-and entity-name="ProductContentAndInfo" list="productContent">
+	                <field-map field-name="productContentTypeId" value="DIGITAL_DOWNLOAD"/>
+	                <field-map field-name="productId" value="${productId}"/>
+	                <order-by field-name="-fromDate"/>
+	            </entity-and>
+	            <entity-and list="ProductContentAndInfoUpload" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productContentTypeId" value="DIGITAL_UPLOAD"/>
+                    <field-map field-name="productId" value="${productId}"/>
+                    <order-by field-name="+sequenceNum"/>
+               	</entity-and>
+               	<entity-and list="UserLoginAndPartyDetails" entity-name="UserLoginAndPartyDetails">
+               	</entity-and>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<screenlet title="${uiLabelMap.ProjectFileList}">
+                            <platform-specific>
+	                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectFileList.ftl"/></html>
+	                        </platform-specific>
+                      	</screenlet>
+                      	<platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateProjectFile.ftl"/></html>
+                        </platform-specific>
+                        <platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectFileUploads.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="UpdateProjectFile">
+        <section>
+            <actions>
+            	<set field="titleProperty" value="Editproject"/>
+            	<set field="menuCol" value="6"/>
+                <set field="tabButtonItem" value="ProjectFile"/>
+                <set field="productId" from-field="parameters.productId"/>
+                <entity-one entity-name="Product" value-field="product"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
+                <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
+                <entity-one entity-name="ProductContent" value-field="productContent"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
+                <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                    	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
+                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<section>
+                            <widgets>
+                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.ProjectFileList}">
+                                    <include-form name="EditProjectFile" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                </screenlet>
+                            </widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
     <screen name="ProjectDiscuss">
         <section>
             <actions>

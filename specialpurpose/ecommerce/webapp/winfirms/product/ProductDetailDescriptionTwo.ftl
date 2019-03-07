@@ -42,6 +42,37 @@ under the License.
 		<article class="blogpost">
 			${productContentWrapper.get("LONG_DESCRIPTION", "html")!}
 		</article>
+		<hr class="space50" style="background-color:#dedede;height:1px;">
+		<#if downloadProductContentAndInfoList?has_content>
+			<h3 class="uppercase text-center space30">${uiLabelMap.FileDownload}</h3>
+	        <table class="table table-bordered">
+	        	<tbody>
+		     	<#if userLogin?has_content && userLogin.userLoginId != "anonymous">
+					<#list downloadProductContentAndInfoList as downloadProductContentAndInfo>
+			            <tr>
+							<td>
+								${downloadProductContentAndInfo.contentName!}
+								<#if downloadProductContentAndInfo.description?has_content>
+				            		 - ${downloadProductContentAndInfo.description}
+				            	</#if>
+							</td>
+							<td>
+								<a href="/partymgr/control/img/${downloadProductContentAndInfo.contentName}?imgId=${(downloadProductContentAndInfo.dataResourceId)!}" target="_blank">
+									${uiLabelMap.CommonDownload}
+								</a>
+							</td>
+						</tr>
+		        	</#list>
+				<#else>
+					<tr>
+						<td colspan="2">
+						( ${uiLabelMap.OrderYouMust}<a href="<@ofbizUrl>checkLogin</@ofbizUrl>" class="buttontext">${uiLabelMap.CommonLogin}</a>${uiLabelMap.DownloadFile} )
+						</td>
+					</tr>
+				</#if>
+				</tbody>
+			</table>
+		</#if>
 	</div>
 </div>
 </div>

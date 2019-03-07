@@ -49,9 +49,8 @@ under the License.
 				<li>
 					<a class="pull-left" href="#"><img class="comment-avatar" src="${personLogoUrl}" alt="" width="50" height="50"></a>
 					<div class="comment-meta">
-						<span class="replycomm">${nickName}</span>
+						<a class="replycomm" data-toggle="modal" data-target=".parent_${colcommunicationEvents}" href="#">${nickName}&nbsp;<i class="fa fa-comment-o"></i></a>
 						<span><em>${communicationEvents.entryDate.toString().substring(0,19)!}</em></span>
-						<a data-toggle="modal" data-target=".parent_${colcommunicationEvents}"  href="#" class="replycomm">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;${uiLabelMap.PartyReply}</a>						
 						<!-- 点击回复弹出的小框 -->
 						<div class="modal fade parent_${colcommunicationEvents}">
 						  <div class="modal-dialog">
@@ -124,9 +123,8 @@ under the License.
 						</#list>
 						<li class="childcomm">
 							<div class="comment-meta">
-								<span class="replycomm">${nickNamechildFrom!}</span>&nbsp;&nbsp;${uiLabelMap.PartyReply}&nbsp;<span class="replycomm">${nickNamechildTo!}</span>
+								<a class="replycomm" data-toggle="modal" data-target=".${colChildevents}"  href="#">${nickNamechildFrom!}&nbsp;<i class="fa fa-comment-o"></i></a>&nbsp;&nbsp;${uiLabelMap.PartyReply}&nbsp;<span class="replycomm">${nickNamechildTo!}</span>
 								<span><em>${childEvents.entryDate.toString().substring(0,19)!}</em></span>
-								<a data-toggle="modal" data-target=".${colChildevents}"  href="#" class="replycomm">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-comment"></i>&nbsp;${uiLabelMap.PartyReply}${nickNamechildFrom!}</a>								
 								<div class="modal fade ${colChildevents}">
 								  	<div class="modal-dialog">
 									    <div class="modal-content">

@@ -2398,6 +2398,33 @@ under the License.
         <response name="success" type="view" value="ProjectParty"/>
         <response name="error" type="view" value="ProjectParty"/>
     </request-map>
+    <!--项目文件-->
+    <request-map uri="projectFile">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="ProjectFile" save-current-view="true"/>
+    </request-map>
+    <request-map uri="prepareCreateProjectFile">
+        <security https="true" auth="true"/>
+        <response name="success" type="view" value="UpdateProjectFile" save-current-view="true"/>
+    </request-map>
+    <request-map uri="removeProjectFile">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="removeProductContent"/>
+        <response name="success" type="view" value="ProjectFile"/>
+        <response name="error" type="view" value="ProjectFile"/>
+    </request-map>
+    <request-map uri="updateProjectFile">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="updateDownloadContentForProduct"/>
+        <response name="success" type="view" value="UpdateProjectFile"/>
+        <response name="error" type="view" value="UpdateProjectFile"/>
+    </request-map>
+    <request-map uri="createProjectFile">
+        <security https="true" auth="true"/>
+        <event type="service" path="" invoke="createDownloadContentForProduct"/>
+        <response name="success" type="view" value="ProjectFile"/>
+        <response name="error" type="view" value="UpdateProjectFile"/>
+    </request-map>
     <!--发布项目-->
     <request-map uri="projectRelease">
         <security https="true" auth="true"/>
@@ -3091,6 +3118,8 @@ under the License.
    	<view-map name="UpdateProjectDynamic" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#UpdateProjectDynamic"/>
    	<view-map name="ProjectPlan" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#ProjectPlan"/>
    	<view-map name="UpdateProjectPlan" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#UpdateProjectPlan"/>
+   	<view-map name="ProjectFile" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#ProjectFile"/>
+   	<view-map name="UpdateProjectFile" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#UpdateProjectFile"/>
    	<view-map name="ProjectFeatures" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#ProjectFeatures"/>
    	<view-map name="ProjectParty" type="screen" page="component://ecommerce/widget/winfirms/CustomerScreens.xml#ProjectParty"/>
    	<!--编辑课程·-->

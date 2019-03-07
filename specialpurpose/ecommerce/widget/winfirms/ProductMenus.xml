@@ -30,18 +30,18 @@ under the License.
                 <parameter param-name="productId"/>
             </link>
         </menu-item>
-        <menu-item name="ProjectRecruit" title="${uiLabelMap.RecruitInfo}">
-            <link target="projectRecruit">
-                <parameter param-name="productId"/>
-            </link>
-        </menu-item>
         <menu-item name="ProjectVideoIntro" title="${uiLabelMap.VideoIntro}">
             <link target="projectVideoIntro">
                 <parameter param-name="productId"/>
             </link>
         </menu-item>
-        <menu-item name="ProjectDynamic" title="${uiLabelMap.ProjectDynamic}">
-            <link target="projectDynamic">
+        <menu-item name="ProjectRecruit" title="${uiLabelMap.RecruitInfo}">
+            <link target="projectRecruit">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="ProjectFile" title="${uiLabelMap.FileManager}">
+            <link target="projectFile">
                 <parameter param-name="productId"/>
             </link>
         </menu-item>
@@ -52,6 +52,11 @@ under the License.
         </menu-item>
         <menu-item name="ProjectParty" title="${uiLabelMap.Teammates}">
             <link target="projectParty">
+                <parameter param-name="productId"/>
+            </link>
+        </menu-item>
+        <menu-item name="ProjectDynamic" title="${uiLabelMap.ProjectDynamic}">
+            <link target="projectDynamic">
                 <parameter param-name="productId"/>
             </link>
         </menu-item>

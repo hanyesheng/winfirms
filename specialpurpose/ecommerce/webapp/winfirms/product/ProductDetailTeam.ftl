@@ -150,7 +150,7 @@ under the License.
 					            	</#if>
 								</td>
 								<td>
-									<a href="<@ofbizUrl>ViewBinaryDataResource?externalLoginKey=${requestAttributes.externalLoginKey!}&contentId=${downloadProductContentAndInfo.contentId}</@ofbizUrl>">
+									<a href="/partymgr/control/img/${downloadProductContentAndInfo.contentName}?imgId=${(downloadProductContentAndInfo.dataResourceId)!}" target="_blank">
 										${uiLabelMap.CommonDownload}
 									</a>
 								</td>
@@ -243,7 +243,7 @@ under the License.
 										<tr>
 											<td colspan="2">${ProductContentUpload.contentName!}</td>
 											<td>
-												<a href="<@ofbizUrl>ViewBinaryDataResource?externalLoginKey=${requestAttributes.externalLoginKey!}&contentId=${ProductContentUpload.contentId}</@ofbizUrl>">
+												<a href="/partymgr/control/img/${ProductContentUpload.contentName}?imgId=${(ProductContentUpload.dataResourceId)!}" target="_blank">
 													${uiLabelMap.CommonDownload}
 												</a>
 											</td>
@@ -321,7 +321,7 @@ under the License.
 										<tr>
 											<td colspan="2">${ProductContentUpload.contentName!}</td>
 											<td>
-												<a href="/partymgr/control/img/${ProductContentUpload.contentName}?imgId=${(ProductContentUpload.dataResourceId)!}">
+												<a href="/partymgr/control/img/${ProductContentUpload.contentName}?imgId=${(ProductContentUpload.dataResourceId)!}" target="_blank">
 													${uiLabelMap.CommonDownload}
 												</a>
 											</td>
