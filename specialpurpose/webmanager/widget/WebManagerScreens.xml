@@ -6,28 +6,45 @@
         <section>
             <actions>
                 <set field="headerItem" value="main"/><!-- this highlights the selected menu-item with name "main" -->
+                <set field="adminUserLoginId" value="admin"/>
+                <set field="filterDate" type="Timestamp" from-field="nowTimestamp"/>
                 <entity-and entity-name="ProductStoreRole" list="ProductStoreRoles">
 	                <field-map field-name="productStoreId" value="10000"/>
 	            </entity-and>
-	            <entity-and entity-name="Visit" list="Visits">
-	                <field-map field-name="webappName" value="root"/>
-	            </entity-and>
+	            <entity-condition entity-name="Visit" list="LoginVisits">
+	                <condition-list combine="and">
+		                <condition-expr field-name="partyId" operator="not-equals" from-field="null"/>
+		                <condition-expr field-name="webappName" operator="equals" value="root"/>
+	                    <condition-expr field-name="userLoginId" operator="not-equals" from-field="adminUserLoginId"/>
+	                </condition-list>
+	                <order-by field-name="-fromDate"/>
+	            </entity-condition>
+	            <entity-condition entity-name="Visit" list="LoginVisitsAWeek">
+	                <condition-list combine="and">
+		                <condition-expr field-name="partyId" operator="not-equals" from-field="null"/>
+		                <condition-expr field-name="webappName" operator="equals" value="root"/>
+	                    <condition-expr field-name="userLoginId" operator="not-equals" from-field="adminUserLoginId"/>
+	                    <condition-expr field-name="fromDate" operator="greater-equals" value="${groovy: org.apache.ofbiz.base.util.UtilDateTime.addDaysToTimestamp(filterDate,-7)}"/>
+	                </condition-list>
+	                <order-by field-name="-fromDate"/>
+	            </entity-condition>
 	            <entity-and entity-name="Product" list="Products">
 	                <field-map field-name="productTypeId" value="PROJECT"/>
 	            </entity-and>
-               <entity-and entity-name="Visit" list="todayVisitSizes">
-	                <field-map field-name="webappName" value="root"/>
-	            </entity-and>
 	            <entity-condition entity-name="Visit" list="Visitors">
-                    <condition-expr field-name="partyId" operator="not-equals" from-field="null"/>
-                    <condition-expr field-name="userLoginId" operator="not-equals" from-field="null"/>
+                    <condition-list combine="and">
+	                    <condition-expr field-name="partyId" operator="not-equals" from-field="null"/>
+	                    <condition-expr field-name="userLoginId" operator="not-equals" from-field="adminUserLoginId"/>
+                    </condition-list>
                     <order-by field-name="-fromDate"/>
                     <limit-range start="0" size="5"/>
                </entity-condition>
+               <entity-and list="Person" entity-name="Person">
+               	</entity-and>
                <entity-and list="partyContentList" entity-name="PartyContent">
                     <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
                     <order-by field-name="-fromDate"/>
-               	</entity-and>
+               </entity-and>
             </actions>
             <widgets>
                 <decorator-screen name="WebManagerCommonDecorator" location="${parameters.mainDecoratorLocation}">

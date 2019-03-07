@@ -37,8 +37,8 @@ under the License.
     <div>
         <div class="md-card">
             <div class="md-card-content">
-                <span class="uk-text-muted uk-text-small">${uiLabelMap.VisitSize}</span>
-                <h2 class="uk-margin-remove"><span class="countUpMe">${Visits?size}</span></h2>
+                <span class="uk-text-muted uk-text-small">${uiLabelMap.LoginVisitSize}</span>
+                <h2 class="uk-margin-remove"><span class="countUpMe">${LoginVisits?size}</span></h2>
             </div>
         </div>
     </div>
@@ -46,7 +46,7 @@ under the License.
         <div class="md-card">
             <div class="md-card-content">
                 <span class="uk-text-muted uk-text-small">${uiLabelMap.VisitSizeAweek}</span>
-                <h2 class="uk-margin-remove" id="peity_live_text">${Visits?size}</h2>
+                <h2 class="uk-margin-remove" id="peity_live_text">${LoginVisitsAWeek?size}</h2>
             </div>
         </div>
     </div>
@@ -79,10 +79,16 @@ under the License.
 										</#if>
 									</#if>
 								</#list>
+								<#assign PersonName = visitObj.partyId>
+								<#list Person as Person>
+									<#if Person.partyId = visitObj.partyId>
+										<#assign PersonName = Person.nickname!/>
+									</#if>
+								</#list>
                             	<td>
 			                        <img class="md-user-image md-list-addon-avatar" src="${personLogoUrl!}" alt="">
                             	</td>
-                                <td><a href="#">${visitObj.userLoginId!}</a></td>
+                                <td><a href="#">${visitObj.userLoginId!}-[${PersonName!}]</a></td>
                                 <td><span class="uk-badge">${visitObj.clientIpAddress!}</span></td>
                                 <td>${visitObj.fromDate?substring(0,16)!}</td>
                             </tr>

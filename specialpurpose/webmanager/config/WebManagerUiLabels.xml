@@ -24,9 +24,9 @@
         <value xml:lang="en">ProductStoreRoleSize</value>
         <value xml:lang="zh">用户量</value>
     </property>
-    <property key="VisitSize">
-        <value xml:lang="en">VisitSize</value>
-        <value xml:lang="zh">访问量</value>
+    <property key="LoginVisitSize">
+        <value xml:lang="en">LoginVisitSize</value>
+        <value xml:lang="zh">登录访问量</value>
     </property>
     <property key="ProductSize">
         <value xml:lang="en">ProductSize</value>
