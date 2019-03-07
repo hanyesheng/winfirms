@@ -13,7 +13,10 @@ by creating a component-load.xml file in the hot-deploy directory and use the lo
 your components in the order you want (just use the component-load.xml file in the application folder as a template).
 
 
+//实体数量
+//<set field="productSize" value="${util:size(Products)}" type="Integer"/>
 gradle "ofbiz --load-data readers=seed-initial"
 gradle "ofbiz --load-data readers=seed-alipay"
 gradle "ofbiz --load-data readers=theme"
 gradle "ofbiz --load-data readers=EXT_ALIPAY"
+gradle "ofbiz --load-data readers=webmgr"

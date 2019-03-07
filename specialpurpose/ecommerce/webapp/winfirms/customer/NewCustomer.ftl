@@ -48,7 +48,7 @@ under the License.
 	
   function sendMsg(btn) {
     var username = jQuery('#CUSTOMER_MOBILE_CONTACT').val();
-    if(!(/^1(3|4|5|7|8)\d{9}$/.test(username))){ 
+    if(!(/^1(3|4|5|7|8|9)\d{9}$/.test(username))){ 
         alert("please input real phone numbers");  
         return false; 
     }else{

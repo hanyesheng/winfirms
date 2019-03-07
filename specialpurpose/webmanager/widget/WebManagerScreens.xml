@@ -9,15 +9,15 @@
                 <entity-and entity-name="ProductStoreRole" list="ProductStoreRoles" use-cache="true">
 	                <field-map field-name="productStoreId" value="10000"/>
 	            </entity-and>
-	            <set field="productStoreRoleSize" value="${util:size(ProductStoreRoles)}" type="Integer"/>
+	            <set field="productStoreRoleSize" value="123" type="Integer"/>
 	            <entity-and entity-name="Visit" list="Visits" use-cache="true">
 	                <field-map field-name="webappName" value="root"/>
 	            </entity-and>
-	            <set field="visitSize" value="${util:size(Visits)}" type="Integer"/>
+	            <set field="visitSize" value="123" type="Integer"/>
 	            <entity-and entity-name="Product" list="Products" use-cache="true">
 	                <field-map field-name="productTypeId" value="ACTIVITY"/>
 	            </entity-and>
-	            <set field="productSize" value="${util:size(Products)}" type="Integer"/>
+	            <set field="productSize" value="123" type="Integer"/>
                <entity-and entity-name="Visit" list="todayVisitSizes" use-cache="true">
 	                <field-map field-name="webappName" value="root"/>
 	            </entity-and>
