@@ -57,6 +57,7 @@ under the License.
     <div class="uk-width-medium-1-2">
         <div class="md-card">
             <div class="md-card-content">
+            	<h3 class="heading_a uk-margin-bottom">${uiLabelMap.VisitorLately}</h3>
                 <div class="uk-overflow-container">
                     <table class="uk-table uk-table-bordered uk-table-hover">
                         <thead>

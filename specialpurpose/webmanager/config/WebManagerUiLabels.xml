@@ -22,11 +22,11 @@
     </property>
     <property key="ProductStoreRoleSize">
         <value xml:lang="en">ProductStoreRoleSize</value>
-        <value xml:lang="zh">用户量</value>
+        <value xml:lang="zh">用户数量</value>
     </property>
     <property key="LoginVisitSize">
         <value xml:lang="en">LoginVisitSize</value>
-        <value xml:lang="zh">登录访问量</value>
+        <value xml:lang="zh">登录用户访问量</value>
     </property>
     <property key="ProductSize">
         <value xml:lang="en">ProductSize</value>
@@ -35,5 +35,9 @@
     <property key="VisitSizeAweek">
         <value xml:lang="en">VisitSizeAweek</value>
         <value xml:lang="zh">最近一周访问</value>
+    </property>
+    <property key="VisitorLately">
+        <value xml:lang="en">VisitorLately</value>
+        <value xml:lang="zh">最近登录用户</value>
     </property>
 </resource>
