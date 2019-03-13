@@ -17,7 +17,7 @@ specific language governing permissions and limitations
 under the License.
 -->
 <!-- statistics (small charts) -->
-<div class="uk-grid uk-grid-width-large-1-4 uk-grid-width-medium-1-2 uk-grid-medium uk-sortable sortable-handler hierarchical_show" data-uk-sortable data-uk-grid-margin>
+<div class="uk-grid uk-grid-width-large-1-4 uk-grid-width-medium-1-2 uk-grid-medium" data-uk-grid-margin>
     <div>
         <div class="md-card">
             <div class="md-card-content">

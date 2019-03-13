@@ -1564,4 +1564,8 @@
         <value xml:lang="en">AddRoleNote</value>
         <value xml:lang="zh">管理员成员可以与项目创建者同时管理项目信息</value>
     </property>
+    <property key="ProjectViewPermissionError">
+        <value xml:lang="en">ProjectViewPermissionError</value>
+        <value xml:lang="zh">您没有管理此项目的权限，只有项目创建者与项目管理员才能管理此项目</value>
+    </property>
 </resource>

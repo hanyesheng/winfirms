@@ -81,7 +81,7 @@ under the License.
 	                        	<#if ProductAndRole.roleTypeId = "_NA_"><span class="uk-badge"><i class="material-icons md-color-light-green-50">people</i>&nbsp;${uiLabelMap.Teammates}[${uiLabelMap.CommonNormal}]</span></#if>
                         		<#if ProductAndRole.roleTypeId = "BUSINESSMAN"><span class="uk-badge uk-badge-primary"><i class="material-icons md-color-light-green-50">person</i>&nbsp;${uiLabelMap.Teammates}[${uiLabelMap.CommonManager}]</span></#if>
                         		<#if ProductAndRole.roleTypeId = "INVESTORS"><span class="uk-badge uk-badge-primary"><i class="material-icons md-color-light-green-50">monetization_on</i>&nbsp;${uiLabelMap.Investors}</span></#if>
-	                        	${ProductAndRole.nickname!}-[${UserLogin!}]
+	                        	${ProductAndRole.nickname!}-[${UserLogin!}]-[${uiLabelMap.PartyId}:${ProductAndRole.partyId!}]
 	                        </span>
 	                        <p style="margin: 5px;"><#if ProductAndRole.comments??>${uiLabelMap.CommentInformation}&nbsp;:&nbsp;${ProductAndRole.comments!}</#if></p>
 	                        <span class="uk-text-small uk-text-muted">${ProductAndRole.fromDate?substring(0,16)!}</span>

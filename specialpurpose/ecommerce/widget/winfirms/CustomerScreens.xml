@@ -134,91 +134,7 @@ under the License.
             </widgets>
         </section>
     </screen>
-    <screen name="viewprofileold">
-        <section>
-            <actions>
-                <set field="titleProperty" value="PageTitleViewProfile"/>
-                <set field="partyId" from-field="userLogin.partyId"/>
-                <entity-one entity-name="Party" value-field="party"/>
-                <entity-one entity-name="Person" value-field="person"/>
-                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
-				<entity-and list="PartyContent" entity-name="PartyContent">
-                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
-                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
-                    <order-by field-name="-fromDate"/>
-              	</entity-and>
-              	<!--拥有角色-->
-               	<entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
-                    <condition-list combine="and">
-                    	<condition-list combine="or">
-	                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
-	                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
-	                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
-	                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
-	                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
-	                        <condition-expr field-name="roleTypeId" operator="equals" value="TEACHER"/>
-	                    </condition-list>
-                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
-                    </condition-list>
-                </entity-condition>
-                <!--当前目录-->
-                <set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>           
-                <!--发布项目-->
-                <entity-condition entity-name="ProdCatalogCategory" list="ProdCatalogCategoryList">
-                    <condition-list combine="and">
-                        <condition-expr field-name="prodCatalogCategoryTypeId" operator="equals" value="PCCT_VIEW_ALLW"/>
-                        <condition-expr field-name="prodCatalogId" operator="equals" value="${currentCatalogId}"/>
-                    </condition-list>
-                    <order-by field-name="-fromDate"/>
-                </entity-condition>
-                <!--列出可添加课程-->
-                <set field="allwViewCatalogId" from-field="ProdCatalogCategoryList[0].productCategoryId"/>  
-                <entity-condition entity-name="ProductAndCategoryMember" list="ProductAndCategoryMember">
-                    <condition-list combine="and">
-                        <condition-expr field-name="productTypeId" operator="equals" value="COURSE"/>
-                        <condition-expr field-name="productCategoryId" operator="equals" value="${allwViewCatalogId}"/>
-                    </condition-list>
-                </entity-condition>
-                <!--活跃度-->
-                <entity-condition entity-name="CommunicationEventAndRole" list="ActiveDegree">
-                	<condition-list combine="or">
-                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
-                        <condition-expr field-name="partyIdFrom" operator="equals" value="${partyId}"/>
-                    </condition-list>
-                    <order-by field-name="-entryDate"/>
-                </entity-condition>
-                <!--参加的项目-->
-               	<entity-condition entity-name="ProductAndRole" list="ProductAndRoleIn">
-                    <condition-list combine="and">
-                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
-                        <condition-expr field-name="productTypeId" operator="equals" value="PROJECT"/>
-                        <condition-expr field-name="roleTypeId" operator="equals" value="_NA_"/>
-                    </condition-list>
-                    <order-by field-name="-fromDate"/>
-                </entity-condition>
-                <!--参加的课程-->
-               	<entity-condition entity-name="ProductAndRole" list="CourseAndRoleIn">
-                    <condition-list combine="and">
-                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
-                        <condition-expr field-name="productTypeId" operator="equals" value="COURSE"/>
-                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
-                    </condition-list>
-                    <order-by field-name="-fromDate"/>
-                </entity-condition>
-               	<!--会员组-->
-                <entity-and list="PartyGroup" entity-name="PartyGroup">
-               	</entity-and>
-                <script location="component://ecommerce/groovyScripts/customer/ViewProfile.groovy"/>
-            </actions>
-            <widgets>
-                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
-                    <decorator-section name="body">              
-                        <platform-specific><html><html-template location="component://ecommerce/webapp/winfirms/customer/ViewProfileold.ftl"/></html></platform-specific>
-                    </decorator-section>
-                </decorator-screen>
-            </widgets>
-        </section>
-    </screen>
+    
     <screen name="changepassword">
         <section>
             <actions>
@@ -395,6 +311,17 @@ under the License.
                 <set field="tabButtonItem" value="ProjectInfo"/>
                 <set field="partyId" from-field="userLogin.partyId"/>
                 <set field="userLoginId" from-field="userLogin.userLoginId"/>
+                <!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <!--判定权限-->
                 <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
@@ -408,13 +335,26 @@ under the License.
             <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                 <decorator-section name="body">	  
                 	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                	<screenlet title="${uiLabelMap.BasicInformation}">
-                        <platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectInfo.ftl"/></html>
-                        </platform-specific>
-                   </screenlet>
+                	<section>
+                        <condition>
+                        	<or>
+                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+                        	</or>
+                        </condition>
+                        <widgets>
+	                		<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+	                		<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+	                		<screenlet title="${uiLabelMap.BasicInformation}">
+		                        <platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectInfo.ftl"/></html>
+		                        </platform-specific>
+		                   	</screenlet>
+		                </widgets>
+		                <fail-widgets>
+		                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+	                	</fail-widgets>
+	                </section>
         		</decorator-section>
             </decorator-screen>
             </widgets>
@@ -429,6 +369,17 @@ under the License.
                 <set field="tabButtonItem" value="ProjectFeatures"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
+                <!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <!--判定权限-->
                 <script location="component://product/groovyScripts/catalog/product/EditProductFeatures.groovy"/>
                 <entity-and entity-name="ProductFeatureIactn" list="featureInteractions">
                     <field-map field-name="productId" from-field="parameters.productId"/>
@@ -444,11 +395,24 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">	  
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                        <platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/EditProjectFeatures.ftl"/></html>
-                        </platform-specific>
+                    	<section>
+	                        <condition>
+	                        	<or>
+	                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+	                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+	                        	</or>
+	                        </condition>
+	                        <widgets>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                        <platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/EditProjectFeatures.ftl"/></html>
+		                        </platform-specific>
+		                    </widgets>
+			                <fail-widgets>
+			                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+		                	</fail-widgets>
+		                </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -463,6 +427,17 @@ under the License.
                 <set field="tabButtonItem" value="ProjectRecruit"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
+                <!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <!--判定权限-->
                 <entity-and list="ProductContentRecruit" entity-name="ProductContentAndInfo">
                     <field-map field-name="productId" from-field="product.productId"/>
                     <field-map field-name="productContentTypeId" value="SPECIALINSTRUCTIONS"/>
@@ -476,14 +451,27 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                      	<platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateRecruit.ftl"/></html>
-                        </platform-specific>
-                        <platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ListProjectRecruit.ftl"/></html>
-                        </platform-specific>
+                    	<section>
+	                        <condition>
+	                        	<or>
+	                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+	                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+	                        	</or>
+	                        </condition>
+	                        <widgets>
+	                        	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                      	<platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateRecruit.ftl"/></html>
+		                        </platform-specific>
+		                        <platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ListProjectRecruit.ftl"/></html>
+		                        </platform-specific>
+		                    </widgets>
+			                <fail-widgets>
+			                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+		                	</fail-widgets>
+		                </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -497,6 +485,17 @@ under the License.
                 <set field="tabButtonItem" value="ProjectRecruit"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
+                <!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <!--判定权限-->
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
@@ -515,15 +514,28 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
                     	<section>
-                            <widgets>
-                                <platform-specific>
-		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/EditProjectRecruit.ftl"/></html>
-		                        </platform-specific>
-                            </widgets>
-                        </section>
+	                        <condition>
+	                        	<or>
+	                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+	                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+	                        	</or>
+	                        </condition>
+	                        <widgets>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<section>
+		                            <widgets>
+		                                <platform-specific>
+				                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/EditProjectRecruit.ftl"/></html>
+				                        </platform-specific>
+		                            </widgets>
+		                        </section>
+	                        </widgets>
+			                <fail-widgets>
+			                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+		                	</fail-widgets>
+		                </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -543,20 +555,44 @@ under the License.
                     <field-map field-name="productContentTypeId" value="VIDEO_DES"/>
                     <order-by field-name="-fromDate"/>
                 </entity-and>
+                <!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <!--判定权限-->
                 <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                      	<platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateVideoIntro.ftl"/></html>
-                        </platform-specific>
-                        <platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ListProjectVideoIntro.ftl"/></html>
-                        </platform-specific>
+                    	<section>
+	                        <condition>
+	                        	<or>
+	                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+	                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+	                        	</or>
+	                        </condition>
+	                        <widgets>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                      	<platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateVideoIntro.ftl"/></html>
+		                        </platform-specific>
+		                        <platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ListProjectVideoIntro.ftl"/></html>
+		                        </platform-specific>
+	                        </widgets>
+			                <fail-widgets>
+			                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+		                	</fail-widgets>
+		                </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -570,6 +606,17 @@ under the License.
                 <set field="tabButtonItem" value="ProjectVideoIntro"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
+                <!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <!--判定权限-->
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
@@ -581,15 +628,28 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
                     	<section>
-                            <widgets>
-                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.VideoIntro}">
-                                    <include-form name="EditProjectVideoIntro" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
-                                </screenlet>
-                            </widgets>
-                        </section>
+	                        <condition>
+	                        	<or>
+	                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+	                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+	                        	</or>
+	                        </condition>
+	                        <widgets>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<section>
+		                            <widgets>
+		                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.VideoIntro}">
+		                                    <include-form name="EditProjectVideoIntro" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+		                                </screenlet>
+		                            </widgets>
+		                        </section>
+		                    </widgets>
+			                <fail-widgets>
+			                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+		                	</fail-widgets>
+		                </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -609,20 +669,44 @@ under the License.
                     <field-map field-name="productContentTypeId" value="TIMELINE"/>
                     <order-by field-name="-fromDate"/>
                 </entity-and>
+                <!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <!--判定权限-->
                 <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                      	<platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateProjectDynamic.ftl"/></html>
-                        </platform-specific>
-                        <platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ListProjectDynamic.ftl"/></html>
-                        </platform-specific>
+                    	<section>
+	                        <condition>
+	                        	<or>
+	                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+	                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+	                        	</or>
+	                        </condition>
+	                        <widgets>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                      	<platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateProjectDynamic.ftl"/></html>
+		                        </platform-specific>
+		                        <platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ListProjectDynamic.ftl"/></html>
+		                        </platform-specific>
+		                    </widgets>
+				                <fail-widgets>
+				                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+			                	</fail-widgets>
+			                </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -636,6 +720,17 @@ under the License.
                 <set field="tabButtonItem" value="ProjectDynamic"/>
                 <set field="productId" from-field="parameters.productId"/>
                 <entity-one entity-name="Product" value-field="product"/>
+                <!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <!--判定权限-->
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/ckeditor.js" global="true"/>
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
@@ -647,15 +742,28 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
                     	<section>
-                            <widgets>
-                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.ProjectDynamic}">
-                                    <include-form name="EditProjectDynamic" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
-                                </screenlet>
-                            </widgets>
-                        </section>
+	                        <condition>
+	                        	<or>
+	                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+	                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+	                        	</or>
+	                        </condition>
+	                        <widgets>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<section>
+		                            <widgets>
+		                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.ProjectDynamic}">
+		                                    <include-form name="EditProjectDynamic" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+		                                </screenlet>
+		                            </widgets>
+		                        </section>
+		                    </widgets>
+				                <fail-widgets>
+				                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+			                	</fail-widgets>
+			                </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -682,6 +790,17 @@ under the License.
                 </entity-and>
                 <entity-and entity-name="ElectronicText" list="dataText">
                 </entity-and>
+                <!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <!--判定权限-->
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/page_help.min.js" global="true"/>
                 <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
             </actions>
@@ -689,11 +808,24 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreatePlan.ftl"/></html>
-                        </platform-specific>
+                    	<section>
+	                        <condition>
+	                        	<or>
+	                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+	                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+	                        	</or>
+	                        </condition>
+	                        <widgets>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreatePlan.ftl"/></html>
+		                        </platform-specific>
+		                    </widgets>
+				                <fail-widgets>
+				                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+			                	</fail-widgets>
+			                </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -723,6 +855,17 @@ under the License.
                 <set field="dataResourceId" from-field="ProductRecruitContentAndInfo[0].dataResourceId"/>
                 <entity-and entity-name="ElectronicText" list="dataText">
                 </entity-and>
+                <!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <!--判定权限-->
                 <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
                 <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
             </actions>
@@ -730,15 +873,28 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
                     	<section>
-                            <widgets>
-                                <platform-specific>
-		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/EditProjectPlanInfos.ftl"/></html>
-		                        </platform-specific>
-                            </widgets>
-                        </section>
+	                        <condition>
+	                        	<or>
+	                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+	                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+	                        	</or>
+	                        </condition>
+	                        <widgets>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<section>
+		                            <widgets>
+		                                <platform-specific>
+				                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/EditProjectPlanInfos.ftl"/></html>
+				                        </platform-specific>
+		                            </widgets>
+		                        </section>
+		                    </widgets>
+			                <fail-widgets>
+			                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+		                	</fail-widgets>
+		                </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -772,6 +928,18 @@ under the License.
               		<field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
               		<order-by field-name="-enabled"/>
               	</entity-and>
+              	<!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                
+                <!--判定权限-->
               	<set field="createrName" from-field="UserLoginAndPartyDetails[0].nickname"/>
                 <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
             </actions>
@@ -779,11 +947,24 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                        <platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ListProjectParty.ftl"/></html>
-                        </platform-specific>
+                    	<section>
+	                        <condition>
+	                        	<or>
+	                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+	                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+	                        	</or>
+	                        </condition>
+	                        <widgets>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                        <platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ListProjectParty.ftl"/></html>
+		                        </platform-specific>
+		                    </widgets>
+			                <fail-widgets>
+			                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+		                	</fail-widgets>
+		                </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -811,24 +992,48 @@ under the License.
                	</entity-and>
                	<entity-and list="UserLoginAndPartyDetails" entity-name="UserLoginAndPartyDetails">
                	</entity-and>
+               	<!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <!--判定权限-->
             </actions>
             <widgets>
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<screenlet title="${uiLabelMap.ProjectFileList}">
-                            <platform-specific>
-	                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectFileList.ftl"/></html>
-	                        </platform-specific>
-                      	</screenlet>
-                      	<platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateProjectFile.ftl"/></html>
-                        </platform-specific>
-                        <platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectFileUploads.ftl"/></html>
-                        </platform-specific>
+                    	<section>
+	                        <condition>
+	                        	<or>
+	                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+	                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+	                        	</or>
+	                        </condition>
+	                        <widgets>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<screenlet title="${uiLabelMap.ProjectFileList}">
+		                            <platform-specific>
+			                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectFileList.ftl"/></html>
+			                        </platform-specific>
+		                      	</screenlet>
+		                      	<platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/CreateProjectFile.ftl"/></html>
+		                        </platform-specific>
+		                        <platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectFileUploads.ftl"/></html>
+		                        </platform-specific>
+		                    </widgets>
+			                <fail-widgets>
+			                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+		                	</fail-widgets>
+		                </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -846,6 +1051,17 @@ under the License.
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/ckeditor/adapters/jquery.js" global="true"/>
                 <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/forms_wysiwyg.min.js" global="true"/>
                 <entity-one entity-name="ProductContent" value-field="productContent"/>
+                <!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <!--判定权限-->
                 <script location="component://product/groovyScripts/catalog/product/EditProductContentContent.groovy"/>
                 <script location="component://product/groovyScripts/catalog/product/EditProductSEO.groovy"/>
             </actions>
@@ -853,15 +1069,28 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
                     	<section>
-                            <widgets>
-                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.ProjectFileList}">
-                                    <include-form name="EditProjectFile" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
-                                </screenlet>
-                            </widgets>
-                        </section>
+	                        <condition>
+	                        	<or>
+	                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+	                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+	                        	</or>
+	                        </condition>
+	                        <widgets>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<section>
+		                            <widgets>
+		                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.ProjectFileList}">
+		                                    <include-form name="EditProjectFile" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+		                                </screenlet>
+		                            </widgets>
+		                        </section>
+		                    </widgets>
+			                <fail-widgets>
+			                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+		                	</fail-widgets>
+		                </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -899,17 +1128,41 @@ under the License.
                 <entity-and entity-name="CommunicationEventAndProduct" list="childEvents">
                     <field-map field-name="productId" from-field="parameters.productId"/>
                 </entity-and>
+                <!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <!--判定权限-->
                 <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProductDiscuss.ftl"/></html>
-                        </platform-specific>
+                    	<section>
+	                        <condition>
+	                        	<or>
+	                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+	                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+	                        	</or>
+	                        </condition>
+	                        <widgets>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProductDiscuss.ftl"/></html>
+		                        </platform-specific>
+		                    </widgets>
+			                <fail-widgets>
+			                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+		                	</fail-widgets>
+		                </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
@@ -954,17 +1207,41 @@ under the License.
                     </condition-list>
                     <order-by field-name="-fromDate"/>
                 </entity-condition>
+                <!--判定权限-->
+                <entity-and entity-name="ProductRole" list="BusinessmanRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="BUSINESSMAN"/>
+                </entity-and>
+                <entity-and entity-name="Product" list="CreaterRole">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <!--判定权限-->
                 <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
             </actions>
             <widgets>
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<platform-specific>
-                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectRelease.ftl"/></html>
-                        </platform-specific>
+                    	<section>
+	                        <condition>
+	                        	<or>
+	                        		<if-compare operator="equals" value="${userLogin.partyId}" field="BusinessmanRole[0].partyId"/>
+	                        		<if-compare operator="equals" value="${userLogin.userLoginId}" field="CreaterRole[0].createdByUserLogin"/>
+	                        	</or>
+	                        </condition>
+	                        <widgets>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<platform-specific>
+		                            <html><html-template location="component://ecommerce/webapp/winfirms/customer/ProjectRelease.ftl"/></html>
+		                        </platform-specific>
+		                    </widgets>
+			                <fail-widgets>
+			                	<label style="h3">${uiLabelMap.ProjectViewPermissionError}</label>
+		                	</fail-widgets>
+		                </section>
                     </decorator-section>
                 </decorator-screen>
             </widgets>
