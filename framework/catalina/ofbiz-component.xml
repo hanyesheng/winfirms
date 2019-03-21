@@ -143,8 +143,8 @@ under the License.
                 the default will be false-->
             <property name="clientAuth" value="false"/>
             
-            <property name="keystoreFile" value="framework/base/config/214553782630465.pfx"/>
-            <property name="keystorePass" value="214553782630465"/>
+            <property name="keystoreFile" value="framework/base/config/winfirms_net.pfx"/>
+            <property name="keystorePass" value="b3crpKxt"/>
             <property name="keystoreType" value="PKCS12"/>
             <property name="ciphers" value="TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256"/>
         </property>
@@ -202,8 +202,8 @@ under the License.
             <property name="compressableMimeType" value="text/html,text/xml,text/plain,text/javascript,text/css,application/json"/>
             <property name="sslImplementationName" value="org.apache.tomcat.util.net.jsse.JSSEImplementation"/>
             <property name="algorithm" value="SunX509"/>
-            <property name="keystoreFile" value="framework/base/config/214553782630465.pfx"/>
-            <property name="keystorePass" value="214553782630465"/>
+            <property name="keystoreFile" value="framework/base/config/winfirms_net.pfx"/>
+            <property name="keystorePass" value="b3crpKxt"/>
             <property name="keystoreType" value="PKCS12"/>
             <property name="ciphers" value="TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256"/>
         </property>
