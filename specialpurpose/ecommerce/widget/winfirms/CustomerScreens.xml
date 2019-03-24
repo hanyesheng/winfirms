@@ -1204,6 +1204,7 @@ under the License.
                         <condition-expr field-name="partyId" operator="equals" value="${userLogin.partyId}"/>
                         <condition-expr field-name="productTypeId" operator="equals" value="COURSE"/>
                         <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+                        <condition-expr field-name="primaryProductCategoryId" operator="not-equals" from-field="null"/>
                     </condition-list>
                     <order-by field-name="-fromDate"/>
                 </entity-condition>
