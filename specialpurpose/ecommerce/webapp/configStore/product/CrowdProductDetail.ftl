@@ -399,7 +399,7 @@ $(function(){
 							  	<#assign productAdditionalImage4 = productContentWrapper.get("ADDITIONAL_IMAGE_4", "url")! />
 						        <#if productLargeImageUrl?string?has_content>
 					            	<li>
-						            	<img src="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>" name="mainImage" vspace="5" hspace="5" class="img-responsive" alt=""/>
+						            	<img src="<@ofbizContentUrl>${productLargeImageUrl!}</@ofbizContentUrl>" name="mainImage" vspace="5" hspace="5" class="img-responsive" alt=""/>
 					            	</li>
 					            </#if>
 					            <#if productAdditionalImage1?string?has_content>
@@ -424,7 +424,7 @@ $(function(){
 						<ul class="gal-nav">
 							<li>
 								<div>
-								    <img src="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>" name="mainImage" vspace="5" hspace="5" class="img-responsive" alt=""/>
+								    <img src="<@ofbizContentUrl>${productLargeImageUrl!}</@ofbizContentUrl>" name="mainImage" vspace="5" hspace="5" class="img-responsive" alt=""/>
 								</div>
 							</li>
 							<li>

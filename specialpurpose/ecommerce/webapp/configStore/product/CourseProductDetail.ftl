@@ -69,7 +69,7 @@ under the License.
 		<#if isPlaying?? && isPlaying = "Y">
 			<div class="col-md-10 col-md-offset-1 white space40">
 				<video id="video-playing" class="video-js" controls preload="none"  style="border-radius: 5px;min-width: 200px;height: 100%;width: 100%;"
-					  poster="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>" data-setup="{}">
+					  poster="<@ofbizContentUrl>${productLargeImageUrl!}</@ofbizContentUrl>" data-setup="{}">
 			        <source src="/images/uploads/1528529229818/${parameters.videoId}.mp4" type="video/mp4">
 			    </video>
 			    <script type="text/javascript">
@@ -88,7 +88,7 @@ under the License.
 							<#if mimeTypeId?? && mimeTypeId?contains("video")>
 								<td rowspan="5" width="50%">
 									<video id="my-video" class="video-js" controls preload="none"  style="border-radius: 5px;min-width: 200px;height: 100%;width: 100%;"
-										  poster="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>" data-setup="{}">
+										  poster="<@ofbizContentUrl>${productLargeImageUrl!}</@ofbizContentUrl>" data-setup="{}">
 								        <source src="/images/uploads/1528529229818/${drDataResourceId}.mp4" type="video/mp4">
 								    </video>
 								</td>

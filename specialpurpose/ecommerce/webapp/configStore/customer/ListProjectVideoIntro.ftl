@@ -28,7 +28,7 @@ under the License.
 	                <#if ProductContentVideoIntro.mimeTypeId?contains("video")>
 	                	<#assign videoUrl = ProductContentVideoIntro.drObjectInfo! />
 	                	<video id="my-video" class="video-js blog_list_teaser_image" controls preload="auto"  style="border-radius: 5px;min-width: 200px;height: 100%;width: 100%;"
-							  poster="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>" data-setup="{}">
+							  poster="<@ofbizContentUrl>${productLargeImageUrl!}</@ofbizContentUrl>" data-setup="{}">
 					        <source src="${videoUrl?substring(39)}" type="video/mp4">
 					    </video>
 	                </#if>

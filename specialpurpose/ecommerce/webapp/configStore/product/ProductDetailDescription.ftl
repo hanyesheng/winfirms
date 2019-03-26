@@ -31,7 +31,7 @@ under the License.
 				<div class="col-md-6">
 					<div class="padding30">
 						<video class="video-js" controls preload="none" style="border-radius: 5px;min-width: 200px;height: 100%;width: 100%;"
-						      poster="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>"
+						      poster="<@ofbizContentUrl>${productLargeImageUrl!}</@ofbizContentUrl>"
 						      data-setup="">
 						    <source src="${videoUrl?substring(39)}" type='${mimeTypeId!}' />
 					  </video>
@@ -40,7 +40,7 @@ under the License.
 			<#else>
 				<div class="col-md-6">
 					<div class="padding30">
-						<img class="img-responsive" src="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>"/>
+						<img class="img-responsive" src="<@ofbizContentUrl>${productLargeImageUrl!}</@ofbizContentUrl>"/>
 					</div>
 				</div>
 			</#if>

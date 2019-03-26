@@ -34,7 +34,7 @@
 	          	<#elseif (IfPublic?? && IfPublic = "0") && (IfRelease?? && IfRelease = "1")>
 	          		<span class="uk-badge uk-badge-warning">${uiLabelMap.UnPublicReleased}</span>
 	          	<#else>
-	          		<span class="uk-badge uk-badge-warning">${uiLabelMap.UnReleased}</span>
+	          		<span class="uk-badge uk-badge-warning">${uiLabelMap.UnReleased}${uiLabelMap.CommonTo}${uiLabelMap.Course}</span>
 	          	</#if>
 	          </td>
 	          <td><#if IfPublic?? && IfPublic = "1"><span class="uk-badge uk-badge-success">${uiLabelMap.OnPublic}</span><#else><span class="uk-badge uk-badge-warning">${uiLabelMap.UnPublic}</span></#if></td>

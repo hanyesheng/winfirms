@@ -368,11 +368,11 @@ $(function(){
         </#if>
         <#if productLargeImageUrl?string?has_content>
           <a href="javascript:popupDetail();">
-            <img id="detailImage" src="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>"
+            <img id="detailImage" src="<@ofbizContentUrl>${productLargeImageUrl!}</@ofbizContentUrl>"
                 name="mainImage" vspace="5" hspace="5" class="cssImgXLarge" alt=""/>
           </a>
           <input type="hidden" id="originalImage" name="originalImage"
-              value="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>"/>
+              value="<@ofbizContentUrl>${productLargeImageUrl!}</@ofbizContentUrl>"/>
         </#if>
         <#if !productLargeImageUrl?string?has_content>
           <img id="detailImage" src="/images/defaultImage.jpg" name="mainImage" alt=""/>
@@ -402,11 +402,11 @@ $(function(){
         </#if>
         <#if productLargeImageUrl?string?has_content>
           <a href="javascript:popupDetail();">
-            <img id="detailImage" src="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>"
+            <img id="detailImage" src="<@ofbizContentUrl>${productLargeImageUrl!}</@ofbizContentUrl>"
                 name="mainImage" vspace="5" hspace="5" class="cssImgXLarge" alt=""/>
           </a>
           <input type="hidden" id="originalImage" name="originalImage"
-              value="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>"/>
+              value="<@ofbizContentUrl>${productLargeImageUrl!}</@ofbizContentUrl>"/>
         </#if>
         <#if !productLargeImageUrl?string?has_content>
           <img id="detailImage" src="/images/defaultImage.jpg" name="mainImage" alt=""/>
@@ -904,7 +904,7 @@ $(function(){
           </#if>
           <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1);" class="linktext">${key}</a>
           <a href="javascript:getList('FT${featureOrderFirst}','${indexer}',1);"><img
-              src="<@ofbizContentUrl>${contentPathPrefix!}${imageUrl}</@ofbizContentUrl>" class="cssImgSmall" alt=""/></a>
+              src="<@ofbizContentUrl>${imageUrl}</@ofbizContentUrl>" class="cssImgSmall" alt=""/></a>
           <br/>
         </#if>
         <#assign indexer = indexer + 1 />
