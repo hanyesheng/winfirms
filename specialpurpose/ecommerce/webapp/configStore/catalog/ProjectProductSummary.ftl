@@ -76,7 +76,7 @@ under the License.
 					<#if product.detailImageUrl?? && product.detailImageUrl?string?has_content>
 					<img src="<@ofbizContentUrl>${product.detailImageUrl!}</@ofbizContentUrl>" class="img-responsive" alt="" style="width: 100%;">
 					<#else>
-					<img src="<@ofbizContentUrl>${contentPathPrefix!}${largeImageUrl}</@ofbizContentUrl>" class="img-responsive" alt="" style="width: 100%;">
+					<img src="<@ofbizContentUrl>${largeImageUrl}</@ofbizContentUrl>" class="img-responsive" alt="" style="width: 100%;">
 					</#if>
 					<span class="createrName">
 						<span class="label label-primary">${partyName!}</span>

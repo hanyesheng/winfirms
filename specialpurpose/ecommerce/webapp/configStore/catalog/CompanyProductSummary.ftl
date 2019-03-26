@@ -35,7 +35,7 @@ under the License.
 		<#if product.detailImageUrl?? && product.detailImageUrl?string?has_content>
 		<img src="<@ofbizContentUrl>${product.detailImageUrl!}</@ofbizContentUrl>" class="img-responsive" alt="">
 		<#else>
-		<img src="<@ofbizContentUrl>${contentPathPrefix!}${largeImageUrl}</@ofbizContentUrl>" class="img-responsive" alt="">
+		<img src="<@ofbizContentUrl>${largeImageUrl}</@ofbizContentUrl>" class="img-responsive" alt="">
 		</#if>
 		<div class="product-post-info space10">
 			<h5>

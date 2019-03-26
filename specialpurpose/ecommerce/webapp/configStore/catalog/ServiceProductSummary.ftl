@@ -75,7 +75,7 @@ under the License.
 			<div class="text-center">
 				<div class="product-thumbnail">
 					<a href="/store/products/p_${product.productId}">
-						<img src="<@ofbizContentUrl>${contentPathPrefix!}${largeImageUrl}</@ofbizContentUrl>" class="img-responsive" alt=""/>
+						<img src="<@ofbizContentUrl>${largeImageUrl}</@ofbizContentUrl>" class="img-responsive" alt=""/>
 					</a>
 					<#if price.isSale?? && price.isSale>
 						<span class="salePrice">${uiLabelMap.OrderOnSale}!</span>

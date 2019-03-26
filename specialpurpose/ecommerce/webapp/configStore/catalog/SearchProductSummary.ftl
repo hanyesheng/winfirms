@@ -47,7 +47,7 @@ under the License.
     <div class="col-md-3 space30">
     	<div class="text-center">
 	    	<div class="post-media">
-				<img style="width: 100%;" src="<@ofbizContentUrl>${contentPathPrefix!}${largeImageUrl}</@ofbizContentUrl>" class="img-responsive" alt="">
+				<img style="width: 100%;" src="<@ofbizContentUrl>${largeImageUrl}</@ofbizContentUrl>" class="img-responsive" alt="">
 				<div class="donate-meter">
 					<span class="white"><i class="icon-user"></i>&nbsp;&nbsp;${createrName!}</span>
 				</div>
