@@ -25,18 +25,20 @@ under the License.
 <#else>	
 	<#assign userLoginLogoUrl = "/images/winfirms/user.png">
 </#if>
-	<div id="top-bar" class="hidden-xs hidden-sm">
+	<div id="top-bar">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
 					<div class="top-bar-content">
 						<p>
-							${uiLabelMap.CommonContactUs}
-							<span></span>
-							<i class="icon-mobile2"></i>${uiLabelMap.CommonTelephoneAbbr} -  (028) 87897886 
-							<span></span>&bull;<span></span> 
-							<i class="icon-mail3"></i> ${uiLabelMap.Email} - 
-							<a href="#">winfirms@qq.com</a><span></span>&bull;<span></span> 
+							<span class="hidden-xs hidden-sm">
+								${uiLabelMap.CommonContactUs}
+								<span></span>
+								<i class="icon-mobile2"></i>${uiLabelMap.CommonTelephoneAbbr} -  (028) 87897886 
+								<span></span>&bull;<span></span> 
+								<i class="icon-mail3"></i> ${uiLabelMap.Email} - 
+								<a href="#">winfirms@qq.com</a><span></span>&bull;<span></span> 
+							</span>	
 							<i class="fa fa-map-marker"></i>&nbsp;<a data-toggle="modal" data-target=".catalogCol" href="#">${currentCatalogName!}</a>
 						</p>
 						<div class="modal fade catalogCol">
