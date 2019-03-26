@@ -5279,4 +5279,8 @@
         <value xml:lang="en">Choose</value>
         <value xml:lang="zh">选择</value>
     </property>
+    <property key="CurrentChoose">
+        <value xml:lang="en">CurrentChoose</value>
+        <value xml:lang="zh">当前选择</value>
+    </property>
 </resource>

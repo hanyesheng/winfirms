@@ -41,44 +41,44 @@ under the License.
 							</span>	
 							<i class="fa fa-map-marker"></i>&nbsp;<a data-toggle="modal" data-target=".catalogCol" href="#">${currentCatalogName!}</a>
 						</p>
-						<div class="modal fade catalogCol">
-					  		<div class="modal-dialog">
-						    	<div class="modal-content">
-						    		<#assign catalogCol = Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCatalogIdsAvailable(request)!>
-									<#assign currentCatalogId = Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCurrentCatalogId(request)!>
-									<#assign currentCatalogName =
-									    Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCatalogName(request, currentCatalogId)!>
-									
-									<#-- Only show if there is more than 1 (one) catalog, no sense selecting when there is only one option... -->
-									<#if (catalogCol?size > 1)>
-									<div class="modal-header">
-							        	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">${uiLabelMap.Close}</span></button>
-							        	<h4 class="modal-title text-center">${uiLabelMap.CommonChoose}</h4>
-							      	</div>
-									<div class="modal-body">
-									    <div class="screenlet-body">
-									      <form name="choosecatalogform" method="post" action="<@ofbizUrl>main</@ofbizUrl>">
-									        <select name='CURRENT_CATALOG_ID'  class="btn btn-default btn-center" onchange="submit()">
-									          <option value='${currentCatalogId}'>${currentCatalogName}</option>
-									          <option value='${currentCatalogId}'></option>
-									          <#list catalogCol as catalogId>
-									            <#assign thisCatalogName =
-									                Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCatalogName(request, catalogId)>
-									            <option value='${catalogId}'>${thisCatalogName}</option>
-									          </#list>
-									        </select>
-									      </form>
-									    </div>
-								  	</div>
-									</#if>
-						    	</div><!-- /.modal-content -->
-						  	</div><!-- /.modal-dialog -->
-						</div><!-- /.modal -->
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<div class="modal fade catalogCol">
+  		<div class="modal-dialog">
+	    	<div class="modal-content">
+	    		<#assign catalogCol = Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCatalogIdsAvailable(request)!>
+				<#assign currentCatalogId = Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCurrentCatalogId(request)!>
+				<#assign currentCatalogName =
+				    Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCatalogName(request, currentCatalogId)!>
+				
+				<#-- Only show if there is more than 1 (one) catalog, no sense selecting when there is only one option... -->
+				<#if (catalogCol?size > 1)>
+				<div class="modal-header">
+		        	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">${uiLabelMap.Close}</span></button>
+		        	<h4 class="modal-title text-center">${uiLabelMap.CommonChoose}</h4>
+		      	</div>
+				<div class="modal-body">
+				    <div class="screenlet-body">
+				    	<button type="button" class="btn btn-success">${uiLabelMap.CurrentChoose}&nbsp;:&nbsp;${currentCatalogName}</button>
+				    	<br/>
+				    	<hr class="space10" style="background-color:#dedede;height:0.1px;">
+			          	<#list catalogCol as catalogId>
+				            <#assign thisCatalogName = Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCatalogName(request, catalogId)>
+			                <form name="chooseCatalogForm_${catalogId_index}" method="post" action="<@ofbizUrl>main</@ofbizUrl>" style="display: inline;">
+			                	<input type="hidden" name="CURRENT_CATALOG_ID" value="${catalogId}"/>
+			                </form>
+			            	<a class="btn btn-default space10" href="javascript:document.chooseCatalogForm_${catalogId_index}.submit()" role="button">${thisCatalogName}</a>
+			          	</#list>
+				    </div>
+			  	</div>
+				</#if>
+	    	</div><!-- /.modal-content -->
+	  	</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
 	<header id="header-main">
 		<div class="container">
 			<div class="navbar yamm navbar-default">
