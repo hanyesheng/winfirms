@@ -5275,4 +5275,8 @@
         <value xml:lang="en">writeMsgCode</value>
         <value xml:lang="zh">填写验证码</value>
     </property>
+    <property key="CommonChoose">
+        <value xml:lang="en">Choose</value>
+        <value xml:lang="zh">选择</value>
+    </property>
 </resource>

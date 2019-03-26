@@ -30,7 +30,48 @@ under the License.
 			<div class="row">
 				<div class="col-md-12">
 					<div class="top-bar-content">
-						<p>${uiLabelMap.CommonContactUs}<span></span><i class="icon-mobile2"></i>${uiLabelMap.CommonTelephoneAbbr} -  (028) 87897886 <span></span>&bull;<span></span> <i class="icon-mail3"></i> ${uiLabelMap.Email} - <a href="#">winfirms@qq.com</a></p>
+						<p>
+							${uiLabelMap.CommonContactUs}
+							<span></span>
+							<i class="icon-mobile2"></i>${uiLabelMap.CommonTelephoneAbbr} -  (028) 87897886 
+							<span></span>&bull;<span></span> 
+							<i class="icon-mail3"></i> ${uiLabelMap.Email} - 
+							<a href="#">winfirms@qq.com</a><span></span>&bull;<span></span> 
+							<i class="fa fa-map-marker"></i>&nbsp;<a data-toggle="modal" data-target=".catalogCol" href="#">${currentCatalogId}</a>
+						</p>
+						<div class="modal fade catalogCol">
+					  		<div class="modal-dialog">
+						    	<div class="modal-content">
+						    		<#assign catalogCol = Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCatalogIdsAvailable(request)!>
+									<#assign currentCatalogId = Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCurrentCatalogId(request)!>
+									<#assign currentCatalogName =
+									    Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCatalogName(request, currentCatalogId)!>
+									
+									<#-- Only show if there is more than 1 (one) catalog, no sense selecting when there is only one option... -->
+									<#if (catalogCol?size > 1)>
+									<div class="modal-header">
+							        	<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">${uiLabelMap.Close}</span></button>
+							        	<h4 class="modal-title text-center">${uiLabelMap.CommonChoose}</h4>
+							      	</div>
+									<div class="modal-body">
+									    <div class="screenlet-body">
+									      <form name="choosecatalogform" method="post" action="<@ofbizUrl>main</@ofbizUrl>">
+									        <select name='CURRENT_CATALOG_ID'  class="btn btn-default btn-center" onchange="submit()">
+									          <option value='${currentCatalogId}'>${currentCatalogName}</option>
+									          <option value='${currentCatalogId}'></option>
+									          <#list catalogCol as catalogId>
+									            <#assign thisCatalogName =
+									                Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCatalogName(request, catalogId)>
+									            <option value='${catalogId}'>${thisCatalogName}</option>
+									          </#list>
+									        </select>
+									      </form>
+									    </div>
+								  	</div>
+									</#if>
+						    	</div><!-- /.modal-content -->
+						  	</div><!-- /.modal-dialog -->
+						</div><!-- /.modal -->
 					</div>
 				</div>
 			</div>
@@ -45,7 +86,7 @@ under the License.
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a href="/control/main" style="margin-top: 4px;" class="navbar-brand"><img src="/images/winfirms/logo.png" width="40" alt=""/></a>
+					<a href="<@ofbizUrl secure="true">main</@ofbizUrl>" style="margin-top: 4px;" class="navbar-brand"><img src="/images/winfirms/logo.png" width="40" alt=""/></a>
 				</div>
 				<!-- end navbar-header -->
 				<#assign shoppingCart = sessionAttributes.shoppingCart!>
@@ -53,7 +94,7 @@ under the License.
 					<div class="s-cart">
 						<div class="sc-trigger"><i class="icon-bag"></i><span>${shoppingCart.getTotalQuantity()}</span></div>
 						<div class="cart-info">
-							${screens.render("component://ecommerce/widget/winfirms/BusinessScreens.xml#minicart")}
+							${screens.render("component://ecommerce/widget/configStore/BusinessScreens.xml#minicart")}
 						</div>
 					</div>
 					<!-- SEARCH -->
@@ -110,19 +151,35 @@ under the License.
 							<li class="dropdown">
 								<#if OneLevel?? && OneLevel = 1>
 									<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-										${ProductCategoryRollupAndChildOne.categoryName!}
+										<#if ProductCategoryRollupAndChildOne.categoryName??>
+											${ProductCategoryRollupAndChildOne.categoryName!}
+										<#else>	
+											${ProductCategoryRollupAndChildOne.productCategoryId!}
+										</#if>
 										<div class="arrow-up"><i class="fa fa-angle-down"></i></div>
 									</a>
 								<#else>	
-									<a <#if parameters.productCategoryId?? && parameters.productCategoryId = ProductCategoryRollupAndChildOne.productCategoryId>class="selected"</#if> href="/products/${ProductCategoryRollupAndChildOne.productCategoryId}" >
-										${ProductCategoryRollupAndChildOne.categoryName!}
+									<a <#if parameters.productCategoryId?? && parameters.productCategoryId = ProductCategoryRollupAndChildOne.productCategoryId>class="selected"</#if> href="/store/products/${ProductCategoryRollupAndChildOne.productCategoryId}" >
+										<#if ProductCategoryRollupAndChildOne.categoryName??>
+											${ProductCategoryRollupAndChildOne.categoryName!}
+										<#else>	
+											${ProductCategoryRollupAndChildOne.productCategoryId!}
+										</#if>
 									</a>
 								</#if>
 								<#if OneLevel?? && OneLevel = 1>
 								<ul class="dropdown-menu"  role="menu">
 									<#list ProductCategoryRollupAndChildTwo as ProductCategoryRollupAndChildTwo>
 										<#if (ProductCategoryRollupAndChildOne.productCategoryId = ProductCategoryRollupAndChildTwo.parentProductCategoryId)>
-										<li><a <#if parameters.productCategoryId?? && parameters.productCategoryId = ProductCategoryRollupAndChildTwo.productCategoryId>class="selected"</#if> href="/products/${ProductCategoryRollupAndChildTwo.productCategoryId}">${ProductCategoryRollupAndChildTwo.categoryName}</a></li>									
+										<li>
+											<a <#if parameters.productCategoryId?? && parameters.productCategoryId = ProductCategoryRollupAndChildTwo.productCategoryId>class="selected"</#if> href="/store/products/${ProductCategoryRollupAndChildTwo.productCategoryId}">
+												<#if ProductCategoryRollupAndChildTwo.categoryName??>
+													${ProductCategoryRollupAndChildTwo.categoryName!}
+												<#else>	
+													${ProductCategoryRollupAndChildTwo.productCategoryId!}
+												</#if>
+											</a>
+										</li>									
 										</#if>
 									</#list>
 								</ul>

@@ -1,0 +1,391 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Widget-Form" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Form http://ofbiz.apache.org/dtds/widget-form.xsd">
+    <!-- ProductContent -->
+    
+    <form name="EditProjectVideoIntro" type="upload" target="updateProjectVideoIntro" title="${uiLabelMap.ProductUpdateSimpleTextContentProduct}"
+        header-row-style="header-row" default-table-style="basic-table">
+        <alt-target use-when="contentId==null" target="createProjectVideoIntro"/>
+        <auto-fields-entity entity-name="ProductContent" map-name="productContentData"/>
+        <field name="fromDate" title="${uiLabelMap.CommonFromDate}" ></field>
+        <field name="thruDate" title="${uiLabelMap.CommonThruDate}"></field>
+        <field name="purchaseFromDate" title="${uiLabelMap.ProductPurchaseFromDate}"><hidden/></field>
+        <field name="purchaseThruDate" title="${uiLabelMap.ProductPurchaseThruDate}"><hidden/></field>
+        <field name="useCountLimit" title="${uiLabelMap.ProductUseCountLimit}"><hidden/></field>
+        <field name="useTime" title="${uiLabelMap.ProductUseTime}"><hidden/></field>
+        <field name="useTimeUomId" title="${uiLabelMap.ProductUseTimeUom}">
+            <hidden/>
+        </field>
+        <field name="useRoleTypeId" title="${uiLabelMap.ProductUseRole}"><hidden/></field>
+        <field name="description" title="${uiLabelMap.ProductProductDescription}" map-name="content"><hidden/></field>
+        <field use-when="contentId == null" name="contentId" title="${uiLabelMap.ProductContentId}" tooltip="${uiLabelMap.ProductOptional}"><hidden/></field>
+        <field use-when="contentId != null" name="contentId" title="${uiLabelMap.ProductContentId}" tooltip="${uiLabelMap.ProductNotModificationRecrationProductContentAssociation}" map-name="productContentData" >
+            <display/>
+        </field>
+        <field name="imageData" title="${uiLabelMap.ProductFile}"><file/></field>
+        <field name="fileDataResourceId" map-name="downloadData"><hidden/></field>
+        <field name="productId"><hidden/></field>
+        <field name="sequenceNum"><hidden/></field>
+        <field name="productContentTypeId"><hidden/></field>
+        <field use-when="contentId == null" name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+        <field use-when="contentId != null" name="submitButton" title="${uiLabelMap.CommonUpdate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    <form name="ListProjectPlanInfos" type="list" title="" list-name="productContent"
+        odd-row-style="alternate-row" default-table-style="basic-table">
+        <actions>
+            <entity-and entity-name="ProductContent" list="productContent">
+                <field-map field-name="productContentTypeId" value="BUSINESSPLAN"/>
+                <field-map field-name="productId" value="${productId}"/>
+                <order-by field-name="-fromDate"/>
+            </entity-and>
+        </actions>
+        <field name="editProductContentInfo" title="${uiLabelMap.ProductContent}" widget-style="buttontext">
+            <hyperlink description="${uiLabelMap.CommonEdit} [${contentId}]" target="updateProjectPlan" also-hidden="false">
+                <parameter param-name="productId"/>
+                <parameter param-name="contentId"/>
+                <parameter param-name="productContentTypeId"/>
+                <parameter param-name="fromDate"/>
+            </hyperlink>
+        </field>
+        <field name="productContentTypeId">
+            <display-entity entity-name="ProductContentType" also-hidden="false" description="${uiLabelMap.BusinessPlan}"/>
+        </field>
+        <field name="fromDate"><display/></field>
+        <field name="sequenceNum"><display/></field>
+        <field name="removeContent" title=" " widget-style="buttontext">
+            <hyperlink description="${uiLabelMap.CommonDelete}" target="removeProjectPlan" also-hidden="false">
+                <parameter param-name="productId"/><parameter param-name="contentId"/><parameter param-name="productContentTypeId"/><parameter param-name="fromDate"/>
+            </hyperlink>
+        </field>
+    </form>
+    <form name="EditProjectFile" type="upload" target="updateProjectFile" title="${uiLabelMap.ProductUpdateSimpleTextContentProduct}"
+        header-row-style="header-row" default-table-style="basic-table">
+        <alt-target use-when="contentId==null" target="createProjectFile"/>
+        <auto-fields-entity entity-name="ProductContent" map-name="productContentData"/>
+        <field name="fromDate" title="${uiLabelMap.CommonFromDate}" ></field>
+        <field name="thruDate" title="${uiLabelMap.CommonThruDate}"></field>
+        <field name="purchaseFromDate" title="${uiLabelMap.ProductPurchaseFromDate}"><hidden/></field>
+        <field name="purchaseThruDate" title="${uiLabelMap.ProductPurchaseThruDate}"><hidden/></field>
+        <field name="useCountLimit" title="${uiLabelMap.ProductUseCountLimit}"><hidden/></field>
+        <field name="useTime" title="${uiLabelMap.ProductUseTime}"><hidden/></field>
+        <field name="useTimeUomId" title="${uiLabelMap.ProductUseTimeUom}">
+            <hidden/>
+        </field>
+        <field name="useRoleTypeId" title="${uiLabelMap.ProductUseRole}"><hidden/></field>
+        <field name="description" title="${uiLabelMap.ProductProductDescription}" map-name="content"><hidden/></field>
+        <field use-when="contentId == null" name="contentId" title="${uiLabelMap.ProductContentId}" tooltip="${uiLabelMap.ProductOptional}"><hidden/></field>
+        <field use-when="contentId != null" name="contentId" title="${uiLabelMap.ProductContentId}" tooltip="${uiLabelMap.ProductNotModificationRecrationProductContentAssociation}" map-name="productContentData" >
+            <display/>
+        </field>
+        <field name="description" title="${uiLabelMap.EcommerceSubject}" map-name="content"><hidden/></field>
+        <field name="imageData" title="${uiLabelMap.ProductFile}"><file/></field>
+        <field name="fileDataResourceId" map-name="downloadData"><hidden/></field>
+        <field name="productId"><hidden/></field>
+        <field name="sequenceNum"></field>
+        <field name="productContentTypeId"><hidden/></field>
+        <field use-when="contentId == null" name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+        <field use-when="contentId != null" name="submitButton" title="${uiLabelMap.CommonUpdate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    <form name="EditProjectDynamic" type="upload" target="updateProjectDynamicInfos" title="${uiLabelMap.ProductUpdateSimpleTextContentProduct}"
+        header-row-style="header-row" default-table-style="basic-table">
+        <alt-target use-when="contentId==null" target="createProjectDynamicInfos"/>
+        <auto-fields-entity entity-name="ProductContent" map-name="productContentData"/>
+        <field name="fromDate" title="${uiLabelMap.CommonFromDate}" ></field>
+        <field name="thruDate" title="${uiLabelMap.CommonThruDate}"></field>
+        <field name="purchaseFromDate" title="${uiLabelMap.ProductPurchaseFromDate}"><hidden/></field>
+        <field name="purchaseThruDate" title="${uiLabelMap.ProductPurchaseThruDate}"><hidden/></field>
+        <field name="useCountLimit" title="${uiLabelMap.ProductUseCountLimit}"><hidden/></field>
+        <field name="useTime" title="${uiLabelMap.ProductUseTime}"><hidden/></field>
+        <field name="useTimeUomId" title="${uiLabelMap.ProductUseTimeUom}">
+            <hidden/>
+        </field>
+        <field name="useRoleTypeId" title="${uiLabelMap.ProductUseRole}"><hidden/></field>
+        <field name="description" title="${uiLabelMap.ProductProductDescription}" map-name="content"><hidden/></field>
+        <field use-when="contentId == null" name="contentId" title="${uiLabelMap.ProductContentId}" tooltip="${uiLabelMap.ProductOptional}"><hidden/></field>
+        <field use-when="contentId != null" name="contentId" title="${uiLabelMap.ProductContentId}" tooltip="${uiLabelMap.ProductNotModificationRecrationProductContentAssociation}" map-name="productContentData" >
+            <display/>
+        </field>
+        <field name="description" title="${uiLabelMap.EcommerceSubject}" map-name="content"><text/></field>
+        <field name="imageData" title="${uiLabelMap.ProductFile}"><file/></field>
+        <field name="fileDataResourceId" map-name="downloadData"><hidden/></field>
+        <field name="productId"><hidden/></field>
+        <field name="sequenceNum"><hidden/></field>
+        <field name="productContentTypeId"><hidden/></field>
+        <field use-when="contentId == null" name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+        <field use-when="contentId != null" name="submitButton" title="${uiLabelMap.CommonUpdate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+    <form name="ListCourseVideoIntro" type="list" title="" list-name="productContent"
+        odd-row-style="alternate-row" default-table-style="basic-table">
+        <actions>
+            <entity-and entity-name="ProductContent" list="productContent">
+                <field-map field-name="productContentTypeId" value="VIDEO_DES"/>
+                <field-map field-name="productId" value="${productId}"/>
+                <order-by field-name="-fromDate"/>
+            </entity-and>
+        </actions>
+        <field name="editProductContentInfo" title="${uiLabelMap.ProductContent}" widget-style="buttontext">
+            <hyperlink description="${uiLabelMap.CommonEdit} [${contentId}]" target="updateCourseVideo" also-hidden="false">
+                <parameter param-name="productId"/>
+                <parameter param-name="contentId"/>
+                <parameter param-name="productContentTypeId"/>
+                <parameter param-name="fromDate"/>
+            </hyperlink>
+        </field>
+        <field name="productContentTypeId">
+            <display-entity entity-name="ProductContentType" also-hidden="false" description="${uiLabelMap.VideoIntro}"/>
+        </field>
+        <field name="fromDate"><display/></field>
+        <field name="thruDate"><display/></field>
+        <field name="removeContent" title=" " widget-style="buttontext">
+            <hyperlink description="${uiLabelMap.CommonDelete}" target="removeCourseVideoIntro" also-hidden="false">
+                <parameter param-name="productId"/><parameter param-name="contentId"/><parameter param-name="productContentTypeId"/><parameter param-name="fromDate"/>
+            </hyperlink>
+        </field>
+    </form>
+    <form name="EditCourseVideoIntro" type="upload" target="updateCourseVideoIntro" title="${uiLabelMap.ProductUpdateSimpleTextContentProduct}"
+        header-row-style="header-row" default-table-style="basic-table">
+        <alt-target use-when="contentId==null" target="createCourseVideoIntro"/>
+        <auto-fields-entity entity-name="ProductContent" map-name="productContentData"/>
+        <field name="fromDate" title="${uiLabelMap.CommonFromDate}" ></field>
+        <field name="thruDate" title="${uiLabelMap.CommonThruDate}"></field>
+        <field name="purchaseFromDate" title="${uiLabelMap.ProductPurchaseFromDate}"><hidden/></field>
+        <field name="purchaseThruDate" title="${uiLabelMap.ProductPurchaseThruDate}"><hidden/></field>
+        <field name="useCountLimit" title="${uiLabelMap.ProductUseCountLimit}"><hidden/></field>
+        <field name="useTime" title="${uiLabelMap.ProductUseTime}"><hidden/></field>
+        <field name="useTimeUomId" title="${uiLabelMap.ProductUseTimeUom}">
+            <hidden/>
+        </field>
+        <field name="useRoleTypeId" title="${uiLabelMap.ProductUseRole}"><hidden/></field>
+        <field name="description" title="${uiLabelMap.ProductProductDescription}" map-name="content"><hidden/></field>
+        <field use-when="contentId == null" name="contentId" title="${uiLabelMap.ProductContentId}" tooltip="${uiLabelMap.ProductOptional}"><hidden/></field>
+        <field use-when="contentId != null" name="contentId" title="${uiLabelMap.ProductContentId}" tooltip="${uiLabelMap.ProductNotModificationRecrationProductContentAssociation}" map-name="productContentData" >
+            <display/>
+        </field>
+        <field name="imageData" title="${uiLabelMap.ProductFile}"><file/></field>
+        <field name="fileDataResourceId" map-name="downloadData"><hidden/></field>
+        <field name="productId"><hidden/></field>
+        <field name="sequenceNum"><hidden/></field>
+        <field name="productContentTypeId"><hidden/></field>
+        <field use-when="contentId == null" name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+        <field use-when="contentId != null" name="submitButton" title="${uiLabelMap.CommonUpdate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    <form name="ListCourseVideoList" type="list" title="" list-name="productContent"
+        odd-row-style="alternate-row" default-table-style="basic-table">
+        <actions>
+            <entity-and entity-name="ProductContent" list="productContent">
+                <field-map field-name="productContentTypeId" value="VIDEO_COURSE"/>
+                <field-map field-name="productId" value="${productId}"/>
+                <order-by field-name="-fromDate"/>
+            </entity-and>
+        </actions>
+        <field name="editProductContentInfo" title="${uiLabelMap.ProductContent}" widget-style="buttontext">
+            <hyperlink description="${uiLabelMap.CommonEdit} [${contentId}]" target="updateCourseList" also-hidden="false">
+                <parameter param-name="productId"/>
+                <parameter param-name="contentId"/>
+                <parameter param-name="productContentTypeId"/>
+                <parameter param-name="fromDate"/>
+            </hyperlink>
+        </field>
+        <field name="productContentTypeId">
+            <display-entity entity-name="ProductContentType" also-hidden="false" description="${uiLabelMap.CourseVideoList}"/>
+        </field>
+        <field name="fromDate"><display/></field>
+        <field name="thruDate"><display/></field>
+        <field name="removeContent" title=" " widget-style="buttontext">
+            <hyperlink description="${uiLabelMap.CommonDelete}" target="removeCourseVideoList" also-hidden="false">
+                <parameter param-name="productId"/><parameter param-name="contentId"/><parameter param-name="productContentTypeId"/><parameter param-name="fromDate"/>
+            </hyperlink>
+        </field>
+    </form>
+    <form name="EditCourseVideoList" type="upload" target="updateCourseVideoIntro" title="${uiLabelMap.ProductUpdateSimpleTextContentProduct}"
+        header-row-style="header-row" default-table-style="basic-table">
+        <alt-target use-when="contentId==null" target="createCourseVideoList"/>
+        <auto-fields-entity entity-name="ProductContent" map-name="productContentData"/>
+        <field name="fromDate" title="${uiLabelMap.CommonFromDate}" ></field>
+        <field name="thruDate" title="${uiLabelMap.CommonThruDate}"></field>
+        <field name="purchaseFromDate" title="${uiLabelMap.ProductPurchaseFromDate}"><hidden/></field>
+        <field name="purchaseThruDate" title="${uiLabelMap.ProductPurchaseThruDate}"><hidden/></field>
+        <field name="useCountLimit" title="${uiLabelMap.ProductUseCountLimit}"><hidden/></field>
+        <field name="useTime" title="${uiLabelMap.ProductUseTime}"><hidden/></field>
+        <field name="useTimeUomId" title="${uiLabelMap.ProductUseTimeUom}">
+            <hidden/>
+        </field>
+        <field name="useRoleTypeId" title="${uiLabelMap.ProductUseRole}"><hidden/></field>
+        <field name="description" title="${uiLabelMap.ProductProductDescription}" map-name="content"><hidden/></field>
+        <field use-when="contentId == null" name="contentId" title="${uiLabelMap.ProductContentId}" tooltip="${uiLabelMap.ProductOptional}"><hidden/></field>
+        <field use-when="contentId != null" name="contentId" title="${uiLabelMap.ProductContentId}" tooltip="${uiLabelMap.ProductNotModificationRecrationProductContentAssociation}" map-name="productContentData" >
+            <display/>
+        </field>
+        <field name="description" title="${uiLabelMap.EcommerceSubject}" map-name="content"><text/></field>
+        <field name="imageData" title="${uiLabelMap.ProductFile}"><file/></field>
+        <field name="fileDataResourceId" map-name="downloadData"><hidden/></field>
+        <field name="productId"><hidden/></field>
+        <field name="sequenceNum"></field>
+        <field name="productContentTypeId"><hidden/></field>
+        <field use-when="contentId == null" name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+        <field use-when="contentId != null" name="submitButton" title="${uiLabelMap.CommonUpdate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    <form name="EditCourseDynamic" type="upload" target="updateCourseDynamicInfos" title="${uiLabelMap.ProductUpdateSimpleTextContentProduct}"
+        header-row-style="header-row" default-table-style="basic-table">
+        <alt-target use-when="contentId==null" target="createCourseDynamicInfos"/>
+        <auto-fields-entity entity-name="ProductContent" map-name="productContentData"/>
+        <field name="fromDate" title="${uiLabelMap.CommonFromDate}" ></field>
+        <field name="thruDate" title="${uiLabelMap.CommonThruDate}"></field>
+        <field name="purchaseFromDate" title="${uiLabelMap.ProductPurchaseFromDate}"><hidden/></field>
+        <field name="purchaseThruDate" title="${uiLabelMap.ProductPurchaseThruDate}"><hidden/></field>
+        <field name="useCountLimit" title="${uiLabelMap.ProductUseCountLimit}"><hidden/></field>
+        <field name="useTime" title="${uiLabelMap.ProductUseTime}"><hidden/></field>
+        <field name="useTimeUomId" title="${uiLabelMap.ProductUseTimeUom}">
+            <hidden/>
+        </field>
+        <field name="useRoleTypeId" title="${uiLabelMap.ProductUseRole}"><hidden/></field>
+        <field name="description" title="${uiLabelMap.ProductProductDescription}" map-name="content"><hidden/></field>
+        <field use-when="contentId == null" name="contentId" title="${uiLabelMap.ProductContentId}" tooltip="${uiLabelMap.ProductOptional}"><hidden/></field>
+        <field use-when="contentId != null" name="contentId" title="${uiLabelMap.ProductContentId}" tooltip="${uiLabelMap.ProductNotModificationRecrationProductContentAssociation}" map-name="productContentData" >
+            <display/>
+        </field>
+        <field name="description" title="${uiLabelMap.EcommerceSubject}" map-name="content"><text/></field>
+        <field name="imageData" title="${uiLabelMap.ProductFile}"><file/></field>
+        <field name="fileDataResourceId" map-name="downloadData"><hidden/></field>
+        <field name="productId"><hidden/></field>
+        <field name="sequenceNum"><hidden/></field>
+        <field name="productContentTypeId"><hidden/></field>
+        <field use-when="contentId == null" name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+        <field use-when="contentId != null" name="submitButton" title="${uiLabelMap.CommonUpdate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    <form name="UpdateCourseParty" type="list" target="updateCourseParty" title="${uiLabelMap.Teammates}" list-name="productRoles"
+        odd-row-style="alternate-row" default-table-style="basic-table" separate-columns="true">
+        <auto-fields-service service-name="updatePartyToProduct"/>
+        <field name="productId"><hidden/></field>
+        <field name="sequenceNum"><hidden/></field>
+        <field name="comments" title="${uiLabelMap.CommentInformation}"><text size="30"/></field>
+        
+        <!-- three possibilities for the Party: person, partyGroup, neither... just print everything and if it's empty, no biggie -->
+        <field name="partyId" title="${uiLabelMap.PartyParty}">
+            <display-entity entity-name="PartyNameView" description="${lastName}${firstName} [${nickname}][${partyId}] ${groupName}" also-hidden="true" cache="false">
+            </display-entity>
+        </field>
+        <field name="roleTypeId" title="${uiLabelMap.PartyRole}"><display-entity entity-name="RoleType"/></field>
+        <field name="roleTypeId" use-when="roleTypeId == '_NA_'"><display description="${uiLabelMap.Teammates}"/></field>
+        <field name="fromDate" title="${uiLabelMap.CommonFromDateTime}" red-when="after-now"><display/></field>
+        <field name="thruDate" title="${uiLabelMap.CommonThruDateTime}" red-when="before-now"></field>
+        <field name="submitButton" title="${uiLabelMap.CommonUpdate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+        <field name="deleteLink" title=" " widget-style="buttontext">
+            <hyperlink description="${uiLabelMap.CommonDelete}" target="removeProjectParty" also-hidden="false">
+              <parameter param-name="productId"/>
+              <parameter param-name="partyId"/>
+              <parameter param-name="roleTypeId"/>
+              <parameter param-name="fromDate"/>
+            </hyperlink>
+        </field>
+    </form>
+    <form name="AddCourseParty" type="single" target="addCourseParty" title=""
+        header-row-style="header-row" default-table-style="basic-table">
+        <auto-fields-service service-name="addPartyToProduct"/>
+        <actions>
+            <entity-condition entity-name="RoleType" list="RoleType">
+                <condition-list combine="or">
+                    <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+                    <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+                    <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+                </condition-list>
+                <order-by field-name="description"/>
+            </entity-condition>
+        </actions>
+        <field name="fromDate" required-field="true"><date-time default-value="${nowTimestamp}"/></field>
+        <field name="productId"><hidden/></field>
+        <field name="partyId"></field>
+        <field name="sequenceNum"><hidden/></field>
+        <field name="comments" title="${uiLabelMap.CommentInformation}"><text size="30"/></field>
+        <field name="roleTypeId">
+            <drop-down allow-empty="false">
+            	<option key="_NA_" description="${uiLabelMap.Teammates}"/>
+                <list-options list-name="RoleType" key-name="roleTypeId"/>
+            </drop-down>
+        </field>
+        <field name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+    
+    <form name="ListCourseFile" type="list" title="" list-name="productContent"
+        odd-row-style="alternate-row" default-table-style="basic-table">
+        <actions>
+            <entity-and entity-name="ProductContentAndInfo" list="productContent">
+                <field-map field-name="productContentTypeId" value="DIGITAL_DOWNLOAD"/>
+                <field-map field-name="productId" value="${productId}"/>
+                <order-by field-name="-fromDate"/>
+            </entity-and>
+        </actions>
+        <field name="editProductContentInfo" title="${uiLabelMap.ProductContent}" widget-style="buttontext">
+            <hyperlink description="${uiLabelMap.CommonEdit} [${contentId}]" target="updateCourseFile" also-hidden="false">
+                <parameter param-name="productId"/>
+                <parameter param-name="contentId"/>
+                <parameter param-name="productContentTypeId"/>
+                <parameter param-name="fromDate"/>
+            </hyperlink>
+        </field>
+        <field name="productContentTypeId">
+            <display-entity entity-name="ProductContentType" also-hidden="false" description="${uiLabelMap.FileManager}"/>
+        </field>
+        <field name="contentName"><display/></field>
+        <field name="fromDate"><display/></field>
+        <field name="thruDate"><display/></field>
+        <field name="removeContent" title=" " widget-style="buttontext">
+            <hyperlink description="${uiLabelMap.CommonDelete}" target="removeCourseFile" also-hidden="false">
+                <parameter param-name="productId"/><parameter param-name="contentId"/><parameter param-name="productContentTypeId"/><parameter param-name="fromDate"/>
+            </hyperlink>
+        </field>
+				<field name="downloadContent" title=" " widget-style="buttontext">
+						<hyperlink description="${uiLabelMap.CommonDownload}" target="/partymgr/control/img/${contentName}" also-hidden="false">
+								<parameter param-name="dataResourceId"/>
+						</hyperlink>
+				</field>
+    </form>
+    <form name="EditCourseFile" type="upload" target="updateCourseFile" title="${uiLabelMap.ProductUpdateSimpleTextContentProduct}"
+        header-row-style="header-row" default-table-style="basic-table">
+        <alt-target use-when="contentId==null" target="createCourseFile"/>
+        <auto-fields-entity entity-name="ProductContent" map-name="productContentData"/>
+        <field name="fromDate" title="${uiLabelMap.CommonFromDate}" ></field>
+        <field name="thruDate" title="${uiLabelMap.CommonThruDate}"></field>
+        <field name="purchaseFromDate" title="${uiLabelMap.ProductPurchaseFromDate}"><hidden/></field>
+        <field name="purchaseThruDate" title="${uiLabelMap.ProductPurchaseThruDate}"><hidden/></field>
+        <field name="useCountLimit" title="${uiLabelMap.ProductUseCountLimit}"><hidden/></field>
+        <field name="useTime" title="${uiLabelMap.ProductUseTime}"><hidden/></field>
+        <field name="useTimeUomId" title="${uiLabelMap.ProductUseTimeUom}">
+            <hidden/>
+        </field>
+        <field name="useRoleTypeId" title="${uiLabelMap.ProductUseRole}"><hidden/></field>
+        <field name="description" title="${uiLabelMap.ProductProductDescription}" map-name="content"><hidden/></field>
+        <field use-when="contentId == null" name="contentId" title="${uiLabelMap.ProductContentId}" tooltip="${uiLabelMap.ProductOptional}"><hidden/></field>
+        <field use-when="contentId != null" name="contentId" title="${uiLabelMap.ProductContentId}" tooltip="${uiLabelMap.ProductNotModificationRecrationProductContentAssociation}" map-name="productContentData" >
+            <display/>
+        </field>
+        <field name="description" title="${uiLabelMap.EcommerceSubject}" map-name="content"><hidden/></field>
+        <field name="imageData" title="${uiLabelMap.ProductFile}"><file/></field>
+        <field name="fileDataResourceId" map-name="downloadData"><hidden/></field>
+        <field name="productId"><hidden/></field>
+        <field name="sequenceNum"></field>
+        <field name="productContentTypeId"><hidden/></field>
+        <field use-when="contentId == null" name="submitButton" title="${uiLabelMap.CommonCreate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+        <field use-when="contentId != null" name="submitButton" title="${uiLabelMap.CommonUpdate}" widget-style="smallSubmit"><submit button-type="button"/></field>
+    </form>
+ </forms>

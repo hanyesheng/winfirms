@@ -1,0 +1,784 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
+    <screen name="main-decorator">
+        <section>
+            <actions>
+                <!-- base/top/specific map first, then more common map added for shared labels -->
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ContentUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+
+                <set field="MainColumnStyle" value="nocolumns" global="true"/>
+
+                <!-- The default (global) shortcut icon -->
+                <set field="layoutSettings.shortcutIcon" value="/images/winfirms/logo_main_small@2x.png" global="true"/>
+
+                <!-- The default (main) java scripts -->
+                <!-- NOTE: this should be included on each screen that uses it to avoid including it in all screens: -->
+          	 	<set field="layoutSettings.javaScripts[]" value="/images/OfbizUtil.js" global="true"/>
+                <set field="initialLocaleComplete" type="String" value="${groovy:parameters?.userLogin?.lastLocale}" default-value="${groovy:locale.toString()}"/>
+                <set field="layoutSettings.javaScripts[+0]" value="${groovy: org.apache.ofbiz.common.JsLanguageFilesMapping.dateTime.getFilePath(initialLocaleComplete)}" global="true"/>
+				<set field="layoutSettings.javaScripts[+0]" value="/images/jquery/jquery-1.11.0.min.js" global="true"/>
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/css/color-scheme/orange.css" global="true"/>
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/css/video-js.css" global="true"/>
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/css/style.css" global="true"/>
+				<!-- Bootstrap CSS -->
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/css/bootstrap.min.css" global="true"/>
+			
+				<!-- Styles -->
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/js/owl-carousel/owl.carousel.css" global="true"/>
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/js/owl-carousel/owl.theme.css"/>
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/js/owl-carousel/owl.transitions.css" global="true"/>
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/js/rs-plugin/css/settings.css" global="true"/>
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/js/flexslider/flexslider.css" global="true"/>
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/js/isotope/isotope.css" global="true"/>
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/js/magnific-popup/magnific-popup.css" global="true"/>
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/cropper/dist/cropper.min.css" global="true"/>
+				
+				<!-- Icon Fonts -->
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/css/icomoon/style.css" global="true"/>
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/font-awesome/css/font-awesome.min.css" global="true"/>
+			
+				<!-- SKIN -->
+				<set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/css/color-scheme/default-black.css" global="true"/>
+					
+				<!--发布项目-->
+				<set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="ProdCatalogCategory" list="ProdCatalogCategoryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="prodCatalogCategoryTypeId" operator="equals" value="PCCT_BROWSE_ROOT"/>
+                        <condition-expr field-name="prodCatalogId" operator="equals" value="${currentCatalogId}"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildOne">
+                    <field-map field-name="parentProductCategoryId" from-field="ProdCatalogCategoryList[0].productCategoryId"/>
+                    <order-by field-name="+sequenceNum"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildTwo">
+                	<order-by field-name="+sequenceNum"/>
+                </entity-and>
+                <script location="component://ecommerce/groovyScripts/EcommerceSetup.groovy"/>
+				
+				<entity-and entity-name="WebAnalyticsConfig" list="webAnalyticsConfigs">
+                    <field-map field-name="webSiteId"/>
+                </entity-and>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleNoreadall">
+                    <condition-list combine="and">
+                    	<condition-list combine="or">
+	                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_DISSCUSS"/>
+	                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_APPLY"/>
+	                    </condition-list>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="roleStatusId" operator="equals" value="COM_ROLE_CREATED"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and list="Person" entity-name="Person">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+               	</entity-and>
+               	<entity-and list="userLoginContentList" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <set field="userLoginContentId" from-field="userLoginContentList[0].contentId"/>
+            </actions>
+            <widgets>
+               <section>
+                  <condition>
+                     <not><if-empty field="globalContext.productStore"/></not>
+                  </condition>
+                  <widgets>
+                 	<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/includes/HeaderHead.ftl"/></html></platform-specific>
+                 	<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/includes/OpenHtmlBody.ftl"/></html></platform-specific>
+                 	<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/includes/Messages.ftl"/></html></platform-specific>
+                 	<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/includes/Header.ftl"/></html></platform-specific>
+                 	<!-- render header -->
+					<decorator-section-include name="body"/>
+                    <!-- render footer -->
+                    <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/includes/Footer.ftl"/></html></platform-specific>
+                    <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/includes/CloseHtmlBody.ftl"/></html></platform-specific>
+                  </widgets>
+                  <fail-widgets>
+                     <label text="A Product Store has not been defined for this ecommerce site.  A Product Store can be created using the ofbizsetup wizard."/>
+                  </fail-widgets>
+               </section>
+            </widgets>
+        </section>
+    </screen>
+	
+	<screen name="profile-decorator">
+        <section>
+            <actions>
+                <!-- base/top/specific map first, then more common map added for shared labels -->
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ContentUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="AccountingUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+
+                <set field="MainColumnStyle" value="nocolumns" global="true"/>
+
+                <!-- The default (global) shortcut icon -->
+                <set field="layoutSettings.shortcutIcon" value="/images/winfirms/logo_main_small@2x.png" global="true"/>
+                <set field="initialLocaleComplete" type="String" value="${groovy:parameters?.userLogin?.lastLocale}" default-value="${groovy:locale.toString()}" />
+                <set field="layoutSettings.javaScripts[+0]" value="${groovy: org.apache.ofbiz.common.JsLanguageFilesMapping.datejs.getFilePath(initialLocaleComplete)}" global="true" />
+                <set field="layoutSettings.javaScripts[+0]" value="${groovy: org.apache.ofbiz.common.JsLanguageFilesMapping.jquery.getFilePath(initialLocaleComplete)}" global="true" />
+                <set field="layoutSettings.javaScripts[+0]" value="${groovy: org.apache.ofbiz.common.JsLanguageFilesMapping.validation.getFilePath(initialLocaleComplete)}" global="true" />
+                <set field="layoutSettings.javaScripts[+0]" value="${groovy: org.apache.ofbiz.common.JsLanguageFilesMapping.dateTime.getFilePath(initialLocaleComplete)}" global="true" />
+                <!-- Jgrowl -->
+                <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/Readmore.js-master/readmore.js" global="true"/>
+                <set field="layoutSettings.javaScripts[]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.js" global="true"/>
+                <set field="layoutSettings.styleSheets[+0]" value="/images/jquery/plugins/jquery-jgrowl/1.4.1/jquery.jgrowl.min.css" global="true" />	
+                <set field="layoutSettings.styleSheets[+0]" value="/images/winfirms/cropper/dist/cropper.min.css" global="true"/>
+				
+                <set field="partyId" from-field="userLogin.partyId"/>
+				<!--发布项目-->
+				<set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>
+                <entity-condition entity-name="ProdCatalogCategory" list="ProdCatalogCategoryList">
+                    <condition-list combine="and">
+                        <condition-expr field-name="prodCatalogCategoryTypeId" operator="equals" value="PCCT_BROWSE_ROOT"/>
+                        <condition-expr field-name="prodCatalogId" operator="equals" value="${currentCatalogId}"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildOne">
+                    <field-map field-name="parentProductCategoryId" from-field="ProdCatalogCategoryList[0].productCategoryId"/>
+                    <order-by field-name="+sequenceNum"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildTwo">
+                	<order-by field-name="+sequenceNum"/>
+                </entity-and>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleNoread">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="roleStatusId" operator="equals" value="COM_ROLE_CREATED"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_DISSCUSS"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleApplyNoread">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="roleStatusId" operator="equals" value="COM_ROLE_CREATED"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_APPLY"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRolePriLetterNoread">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="roleStatusId" operator="equals" value="COM_ROLE_CREATED"/>
+                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRIVATE_LETTER"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+				<set field="visualThemeId" value="ALTAIR"/>
+                <service service-name="getVisualThemeResources">
+                    <field-map field-name="visualThemeId"/>
+                    <field-map field-name="themeResources" from-field="layoutSettings"/>
+                </service>
+                <set field="layoutSettings" from-field="themeResources" default-value="${layoutSettings}" global="true"/>
+                <script location="component://ecommerce/groovyScripts/EcommerceSetup.groovy"/>
+				<entity-and entity-name="WebAnalyticsConfig" list="webAnalyticsConfigs">
+                    <field-map field-name="webSiteId"/>
+                </entity-and>
+                <entity-condition entity-name="CommunicationEventAndRole" list="CommunicationEventAndRoleNoreadall">
+                    <condition-list combine="and">
+                    	<condition-list combine="or">
+	                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_DISSCUSS"/>
+	                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRODUCT_APPLY"/>
+	                        <condition-expr field-name="communicationEventTypeId" operator="equals" value="PRIVATE_LETTER"/>
+	                    </condition-list>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="ADDRESSEE"/>
+                        <condition-expr field-name="partyId" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="partyIdTo" operator="equals" value="${partyId}"/>
+                        <condition-expr field-name="roleStatusId" operator="equals" value="COM_ROLE_CREATED"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and list="Person" entity-name="Person">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+               	</entity-and>
+               	<entity-and list="userLoginContentList" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <!--拥有角色-->
+               	<entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                    	<condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="TEACHER"/>
+	                    </condition-list>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <set field="userLoginContentId" from-field="userLoginContentList[0].contentId"/>
+                <script location="component://ecommerce/groovyScripts/catalog/ProductCategories.groovy"/>
+            </actions>
+            <widgets>
+               <section>
+                  <condition>
+                     <not><if-empty field="globalContext.productStore"/></not>
+                  </condition>
+                  <widgets>
+                 	<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/includes/ProfileHeaderHead.ftl"/></html></platform-specific>
+                 	<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/includes/ProfileOpenHtmlBody.ftl"/></html></platform-specific>
+                 	<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/includes/Messages.ftl"/></html></platform-specific>
+                 	<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/includes/ProfileHeader.ftl"/></html></platform-specific>
+                 	<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/includes/ProfileLeftbar.ftl"/></html></platform-specific>
+                 	<!-- render header -->
+					<decorator-section-include name="body"/>
+                    <!-- render footer -->
+                    <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/includes/ProfileFooter.ftl"/></html></platform-specific>
+                    <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/includes/ProfileCloseHtmlBody.ftl"/></html></platform-specific>
+                  </widgets>
+                  <fail-widgets>
+                     <label text="A Product Store has not been defined for this ecommerce site.  A Product Store can be created using the ofbizsetup wizard."/>
+                  </fail-widgets>
+               </section>
+            </widgets>
+        </section>
+    </screen>
+	
+    <!-- Side Columns -->
+    <screen name="leftbar">
+        <section>
+            <widgets>
+                    <include-screen name="choosecatalog" location="component://ecommerce/widget/CatalogScreens.xml"/>
+                    <include-screen name="keywordsearchbox" location="component://ecommerce/widget/CatalogScreens.xml"/>
+                    <!--include-screen name="sidedeepcategory" location="component://ecommerce/widget/CatalogScreens.xml"/-->
+                    <include-screen name="productCategories" location="component://ecommerce/widget/CatalogScreens.xml"/>
+                    <include-screen name="LayeredNavBar" location="component://ecommerce/widget/CatalogScreens.xml"/>
+                    <include-screen name="minireorderprods" location="component://ecommerce/widget/CatalogScreens.xml"/>
+                    <include-screen name="signupforcontactlist" location="component://ecommerce/widget/EmailContactListScreens.xml"/>
+                    <include-screen name="minipoll" location="component://ecommerce/widget/ContentScreens.xml"/>
+                    <include-screen name="forums" location="component://ecommerce/widget/ForumScreens.xml"/>
+                    <include-screen name="content_categories" location="component://ecommerce/widget/ContentScreens.xml"/>
+                    <include-screen name="blogs" location="component://ecommerce/widget/blog/BlogScreens.xml"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="rightbar">
+        <section>
+            <widgets>
+                    <include-screen name="language"/>
+                    <include-screen name="minicart" location="component://ecommerce/widget/CartScreens.xml"/>
+                    <include-screen name="compareproductslist" location="component://order/widget/ordermgr/OrderEntryCatalogScreens.xml"/>
+                    <include-screen name="minipromotext" location="component://ecommerce/widget/CartScreens.xml"/>
+                    <include-screen name="miniassocprods" location="component://ecommerce/widget/CatalogScreens.xml"/>
+                    <include-screen name="factoids" location="component://ecommerce/widget/ContentScreens.xml"/>
+                    <include-screen name="minilastviewedcategories" location="component://ecommerce/widget/CatalogScreens.xml"/>
+                    <include-screen name="minilastviewedproducts" location="component://ecommerce/widget/CatalogScreens.xml"/>
+                    <include-screen name="minilastproductsearches" location="component://ecommerce/widget/CatalogScreens.xml"/>
+                    <include-screen name="recentlyviewed" location="component://ecommerce/widget/ContentScreens.xml"/>
+                    <include-screen name="populartags" location="component://ecommerce/widget/CatalogScreens.xml"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- Common Decorators -->
+    <screen name="CommonEmptyDecorator">
+        <section>
+            <actions>
+                <set field="MainColumnStyle" value="center"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <decorator-section-include name="body"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CommonLeftDecorator">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="MainColumnStyle" value="center"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <decorator-section-include name="body"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CommonRightDecorator">
+        <section>
+            <actions>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <decorator-section-include name="body"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="CommonLeftRightDecorator">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <decorator-section-include name="body"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- forum decorator? -->
+    <screen name="commonForumDecorator">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                      <label style="head1" text="${uiLabelMap.${titleProperty}}"></label>
+                      <decorator-section-include name="body"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="CommonBlog">
+        <section>
+            <actions>
+                <set field="currentMenuItemName" from-field="currentMenuItemName" default-value="all" from-scope="user"/>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator">
+                    <decorator-section name="body">
+                        <container style="blogs">
+                            <include-screen name="CommonBlogTitle" location="component://ecommerce/widget/blog/BlogScreens.xml"/>
+                            <decorator-section-include name="body"/>
+                        </container>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- Column Included Screens -->
+    <screen name="language">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/includes/Language.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- Top Level Screens -->
+    <screen name="main">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleMain"/>
+                <set field="headerItem" value="main"/>
+                <set field="randomSurveyGroup" value="testSurveyGroup"/>
+                
+                <script location="component://ecommerce/groovyScripts/Main.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <include-screen name="showMainSlider"/>
+                        <include-screen name="showMainIntro"/>
+                        <include-screen name="showMainFour"/>
+                        <include-screen name="showMainThree"/>
+                        <include-screen name="showMainOne"/>
+                        <include-screen name="showMainTwo"/>
+                        <include-screen name="showMainSupport"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="showMainSlider">
+        <section>
+        	<actions>
+        		<set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>
+				<entity-and list="ProdCatalogCategory" entity-name="ProdCatalogCategory">
+                    <field-map field-name="prodCatalogId" from-field="currentCatalogId"/>
+                    <field-map field-name="prodCatalogCategoryTypeId" value="PCCT_VIEW_ALLW"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and list="ProductCategoryRollupAndChild" entity-name="ProductCategoryRollupAndChild">
+                    <field-map field-name="parentProductCategoryId" from-field="ProdCatalogCategory[0].productCategoryId"/>
+                    <field-map field-name="productCategoryTypeId" value="BEST_SELL_CATEGORY"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and list="ProductAndCategoryMember" entity-name="ProductAndCategoryMember">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+        	</actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/main/ShowMainSlider.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="showMainIntro">
+        <section>
+        	<actions>
+        		<set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>
+				<entity-and list="ProdCatalogCategory" entity-name="ProdCatalogCategory">
+                    <field-map field-name="prodCatalogId" from-field="currentCatalogId"/>
+                    <field-map field-name="prodCatalogCategoryTypeId" value="PCCT_VIEW_ALLW"/>
+                    <order-by field-name="-fromDate"/>
+               </entity-and>
+               	<entity-and list="ProductCategoryRollupAndChild" entity-name="ProductCategoryRollupAndChild">
+                    <field-map field-name="parentProductCategoryId" from-field="ProdCatalogCategory[0].productCategoryId"/>
+                    <field-map field-name="productCategoryTypeId" value="CATALOG_CATEGORY"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+               	</entity-and>
+               	<entity-and list="ProductAndCategoryMember" entity-name="ProductAndCategoryMember">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+                    <order-by field-name="-sequenceNum"/>
+               	</entity-and>
+        	</actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/main/ShowMainIntro.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="showMainOne">
+        <section>
+        	<actions>
+        		<set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>
+				<entity-and list="ProdCatalogCategory" entity-name="ProdCatalogCategory">
+                    <field-map field-name="prodCatalogId" from-field="currentCatalogId"/>
+                    <field-map field-name="prodCatalogCategoryTypeId" value="PCCT_VIEW_ALLW"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and list="ProductCategoryRollupAndChild" entity-name="ProductCategoryRollupAndChild">
+                    <field-map field-name="parentProductCategoryId" from-field="ProdCatalogCategory[0].productCategoryId"/>
+                    <field-map field-name="productCategoryTypeId" value="CROSS_SELL_CATEGORY"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and list="ProductCategoryRollupAndChildChild" entity-name="ProductCategoryRollupAndChild">
+                    <field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+                    <order-by field-name="-sequenceNum"/>
+               	</entity-and>
+               	<entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+               	</entity-and>
+               	<entity-and list="ProductCategoryChild" entity-name="ProductCategory">
+               	</entity-and>
+               	<entity-and list="ProductAndCategoryMember" entity-name="ProductAndCategoryMember">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+        	</actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/main/ShowMainOne.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="showMainTwo">
+        <section>
+        	<actions>
+        		<set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>
+				<entity-and list="ProdCatalogCategory" entity-name="ProdCatalogCategory">
+                    <field-map field-name="prodCatalogId" from-field="currentCatalogId"/>
+                    <field-map field-name="prodCatalogCategoryTypeId" value="PCCT_VIEW_ALLW"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and list="ProductCategoryRollupAndChild" entity-name="ProductCategoryRollupAndChild">
+                    <field-map field-name="parentProductCategoryId" from-field="ProdCatalogCategory[0].productCategoryId"/>
+                    <field-map field-name="productCategoryTypeId" value="INCUBATOR"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+               	</entity-and>
+               	<entity-and list="ProductAndCategoryMember" entity-name="ProductAndCategoryMember">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+        	</actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/main/ShowMainTwo.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="showMainThree">
+        <section>
+        	<actions>
+        		<set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>
+				<entity-and list="ProdCatalogCategory" entity-name="ProdCatalogCategory">
+                    <field-map field-name="prodCatalogId" from-field="currentCatalogId"/>
+                    <field-map field-name="prodCatalogCategoryTypeId" value="PCCT_VIEW_ALLW"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and list="ProductCategoryRollupAndChild" entity-name="ProductCategoryRollupAndChild">
+                    <field-map field-name="parentProductCategoryId" from-field="ProdCatalogCategory[0].productCategoryId"/>
+                    <field-map field-name="productCategoryTypeId" value="BUSINESSMAN"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+               	</entity-and>
+               	<entity-and list="ProductAndCategoryMember" entity-name="ProductAndCategoryMember">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+                    <order-by field-name="+sequenceNum"/>
+               	</entity-and>
+               	<entity-and list="ProductCategoryRollupAndChildChild" entity-name="ProductCategoryRollupAndChild">
+                    <field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+                    <order-by field-name="-sequenceNum"/>
+               	</entity-and>
+               	<entity-and list="ProductAndCategoryMemberChild" entity-name="ProductAndCategoryMember">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildChild[0].productCategoryId"/>
+                    <order-by field-name="+sequenceNum"/>
+               	</entity-and>
+               	<entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                    <condition-list combine="or">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="RoleType" entity-name="RoleType">
+               	</entity-and>
+               	<entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and list="PersonList" entity-name="Person">
+                </entity-and>
+        	</actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/main/ShowMainThree.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="showMainFour">
+        <section>
+        	<actions>
+        		<set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>
+				<entity-and list="ProdCatalogCategory" entity-name="ProdCatalogCategory">
+                    <field-map field-name="prodCatalogId" from-field="currentCatalogId"/>
+                    <field-map field-name="prodCatalogCategoryTypeId" value="PCCT_VIEW_ALLW"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and list="ProductCategoryRollupAndChild" entity-name="ProductCategoryRollupAndChild">
+                    <field-map field-name="parentProductCategoryId" from-field="ProdCatalogCategory[0].productCategoryId"/>
+                    <field-map field-name="productCategoryTypeId" value="GOOGLE_BASE_CATEGORY"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+               	</entity-and>
+               	<entity-and list="ProductAndCategoryMember" entity-name="ProductAndCategoryMember">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+        	</actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/main/ShowMainFour.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="showMainSupport">
+        <section>
+        	<actions>
+        		<set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>
+				<entity-and list="ProdCatalogCategory" entity-name="ProdCatalogCategory">
+                    <field-map field-name="prodCatalogId" from-field="currentCatalogId"/>
+                    <field-map field-name="prodCatalogCategoryTypeId" value="PCCT_VIEW_ALLW"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and list="ProductCategoryRollupAndChild" entity-name="ProductCategoryRollupAndChild">
+                    <field-map field-name="parentProductCategoryId" from-field="ProdCatalogCategory[0].productCategoryId"/>
+                    <field-map field-name="productCategoryTypeId" value="INDUSTRY_CATEGORY"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+               	<entity-and list="ProductCategory" entity-name="ProductCategory">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+               	</entity-and>
+               	<entity-and list="ProductAndCategoryMember" entity-name="ProductAndCategoryMember">
+                    <field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChild[0].productCategoryId"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+        	</actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/main/ShowMainSupport.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="login">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleLogin"/>
+                <set field="headerItem" value="login"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-one entity-name="Person" value-field="person"/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
+               	<property-map resource="PassportUiLabels" map-name="uiLabelMap" global="true"/> 
+              	<script location="component://passport/groovyScripts/login/GetThirdPartyLogins.groovy"/>
+                <script location="component://ecommerce/groovyScripts/Login.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/configStore/Login.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="forgetpassword">
+        <section>
+            <actions>
+                <set field="titleProperty" value="CommonForgotYourPassword"/>
+                <set field="headerItem" value="login"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-and list="Person" entity-name="Person">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+               	</entity-and>
+               	<property-map resource="PassportUiLabels" map-name="uiLabelMap" global="true"/> 
+              	<script location="component://passport/groovyScripts/login/GetThirdPartyLogins.groovy"/>
+                <script location="component://ecommerce/groovyScripts/Login.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/configStore/ForgetPassword.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="requirePasswordChange">
+        <section>
+            <actions>
+                <set field="titleProperty" value="CommonPasswordChange"/>
+                <set field="headerItem" value="login"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-one entity-name="Person" value-field="person"/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
+                <script location="component://ecommerce/groovyScripts/Login.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific>
+                            <html><html-template location="component://ecommerce/webapp/configStore/RequirePasswordChange.ftl"/></html>
+                        </platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <!--<screen name="profile-decorator">
+        <section>
+            <actions>
+                <set field="titleProperty" value="PageTitleViewProfile"/>
+                <set field="partyId" from-field="userLogin.partyId"/>
+                <entity-one entity-name="Party" value-field="party"/>
+                <entity-one entity-name="Person" value-field="person"/>
+                <entity-one entity-name="PartyGroup" value-field="partyGroup"/>
+                <entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+               </entity-and>
+               <entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                    	<condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+	                    </condition-list>
+                        <condition-expr field-name="partyId" operator="equals" from-field="userLogin.partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <script location="component://ecommerce/groovyScripts/customer/ViewProfile.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/OpenProfile.ftl"/></html></platform-specific>
+                        <decorator-section-include name="profilebody"/>
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/CloseProfile.ftl"/></html></platform-specific>                        
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>-->
+</screens>

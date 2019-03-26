@@ -1,0 +1,3285 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<screens xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.apache.org/Widget-Screen http://ofbiz.apache.org/dtds/widget-screen.xsd">
+
+    <!-- Column Included Screens -->
+    <screen name="choosecatalog">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/ChooseCatalog.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="keywordsearchbox">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/KeywordSearchOptions.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://order/template/entry/catalog/KeywordSearchBox.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="sidedeepcategory">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/SideDeepCategory.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/SideDeepCategory.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="minireorderprods">
+        <section>
+            <actions>
+                <script location="component://ecommerce/groovyScripts/catalog/MiniReorderProds.groovy"/>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/MiniReOrderProds.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="miniassocprods">
+        <section>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/MiniAssocProds.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="minilastviewedcategories">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/SideDeepCategory.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/MiniLastViewedCategories.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="minilastviewedproducts">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://ecommerce/groovyScripts/catalog/MiniProductSummary.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/MiniLastViewedProducts.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="minilastproductsearches">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/MiniLastProductSearches.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="miniproductsummary">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://ecommerce/groovyScripts/catalog/MiniProductSummary.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/MiniProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="productsummary">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://order/template/entry/catalog/ProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="breadcrumbs">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/SideDeepCategory.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://order/template/entry/catalog/BreadCrumbs.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <!-- =========== Top-Level and Stand-Alone Screens =========== -->
+
+    <!-- Category Screens -->
+    <screen name="category">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
+
+                <set field="titleProperty" value="PageTitleCategoryPage"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <!-- Open this commented section for the demo of Layered Navigation, navigate through Gizmo and Widgets categories to see it in action.
+                <script location="component://ecommerce/groovyScripts/catalog/LayeredNavigation.groovy"/>
+                <set field="detailScreen" value="LayeredCategoryDetail"/>
+                 -->
+                <set field="tabButtonItem" value="LookupProductCategories"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <include-screen name="category-include"/>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="category-include">
+        <section>
+            <widgets>
+                <section>
+                    <condition>
+                        <not><if-empty field="productCategory"/></not>
+                    </condition>
+                    <widgets>
+                        <include-screen name="${detailScreen}"/>
+                    </widgets>
+                    <fail-widgets>
+                        <label style="head2">${uiLabelMap.ProductCategoryNotFoundForCategoryID} ${productCategoryId}!</label>
+                    </fail-widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="categorydetail">
+        <section>
+            <actions>
+                <set field="productsummaryScreen" value="component://ecommerce/widget/CatalogScreens.xml#productsummary"/>
+                <set field="productCategoryLinkScreen" value="component://ecommerce/widget/CatalogScreens.xml#ProductCategoryLink"/>
+
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+
+                <entity-and entity-name="ProductCategoryLink" list="productCategoryLinks" use-cache="true" filter-by-date="true">
+                    <field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                    <order-by field-name="sequenceNum"/>
+                </entity-and>
+                <set field="paginateEcommerceStyle" value="Y"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://order/template/entry/catalog/CategoryDetail.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <!--项目分类详情页-->
+    <screen name="projectCategorydetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/ProjectCategoryDetail.ftl"/></html></platform-specific>
+                <include-screen name="projectCategorydetails"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="projectCategorydetails">
+        <section>
+            <actions>
+            	<property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+                <set field="projectProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#projectProductsummary"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <set field="paginateEcommerceStyle" value="Y"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/ProjectCategoryDetails.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--项目分类预览图-->
+    <screen name="projectProductsummary">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+                <entity-and entity-name="ProductContentAndInfo" list="ProductContentAndInfo">
+                	<field-map field-name="productContentTypeId" value="SPECIALINSTRUCTIONS"/>
+                	<field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and entity-name="UserLogin" list="UserLoginList" >
+                	<field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+	            <entity-condition entity-name="ProductAndRole" list="ProductAndRoleOrganizer">
+                	<condition-list combine="and">
+	                    <condition-expr field-name="roleTypeId" operator="equals" value="ORGANIZER"/>
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+                    </condition-list>
+                    <order-by field-name="+sequenceNum"/>
+                </entity-condition>
+                <set field="OrganizerPartyId" from-field="ProductAndRoleOrganizer[0].partyId"/>
+                <entity-and list="PartyGroup" entity-name="PartyGroup">
+               	</entity-and>
+                <entity-and list="PersonList" entity-name="Person">
+                	<field-map field-name="partyId" value="${UserLoginList[0].partyId}"/>
+                </entity-and>
+                <entity-and list="createrContentList" entity-name="PartyContent">
+                	<field-map field-name="partyId" value="${UserLoginList[0].partyId}"/>
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <entity-and list="organizerContentList" entity-name="PartyContent">
+                	<field-map field-name="partyId" value="${ProductAndRoleOrganizer[0].partyId}"/>
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <set field="createrLogoContentId" from-field="createrContentList[0].contentId"/>
+                <set field="organizerLogoContentId" from-field="organizerContentList[0].contentId"/>
+               	<!--项目上级角色-->
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                    <condition-list combine="or">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+               	<entity-condition entity-name="PartyRole" list="PartyRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FinancingStageFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FINANCINGSTAGE"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FieldAboutFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FIELDABOUT"/>
+                </entity-and>
+                <entity-condition entity-name="ProductKeyword" list="ProductTag">
+	                <condition-list combine="and">
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    <condition-expr field-name="keywordTypeId" operator="equals" value="KWT_TAG"/>
+	                    <condition-expr field-name="statusId" operator="equals" value="KW_APPROVED"/>
+	                </condition-list>
+	                <order-by field-name="statusId"/>
+	                <order-by field-name="-relevancyWeight"/>
+	                <order-by field-name="keyword"/>
+	            </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/ProjectProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--项目分类分页-->
+    <screen name="projectProductCategoryList">
+        <section>
+            <condition>
+                <if-empty field="parameters.mainSubmitted"/>
+            </condition>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <set field="fromSetSessionLocale" value="${groovy: return request.getAttribute('fromSetSessionLocale');}"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-compare operator="equals" value="true" field="fromSetSessionLocale"/>
+                    </condition>
+                    <widgets>
+                        <include-screen name="category"/>
+                    </widgets>
+                    <fail-widgets>
+                        <include-screen name="projectCategorydetails" share-scope="true"/>
+                    </fail-widgets>
+                </section>
+            </widgets>
+            <fail-widgets>
+                <section>
+                   <widgets>
+                        <include-screen name="category"/>
+                   </widgets>
+                </section>
+            </fail-widgets>
+        </section>
+    </screen>
+	
+	<!--课程分类详情页-->
+    <screen name="courseCategorydetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/CourseCategoryDetail.ftl"/></html></platform-specific>
+                <include-screen name="courseCategorydetails"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="courseCategorydetails">
+        <section>
+            <actions>
+            	<property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+                <set field="courseProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#courseProductsummary"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <set field="paginateEcommerceStyle" value="Y"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/CourseCategoryDetails.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--课程分类预览图-->
+    <screen name="courseProductsummary">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+                <entity-and entity-name="UserLogin" list="UserLoginList" >
+                	<field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+                <entity-and list="PersonList" entity-name="Person">
+                	<field-map field-name="partyId" value="${UserLoginList[0].partyId}"/>
+                </entity-and>
+                <entity-condition entity-name="ProductKeyword" list="ProductTag">
+	                <condition-list combine="and">
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    <condition-expr field-name="keywordTypeId" operator="equals" value="KWT_TAG"/>
+	                    <condition-expr field-name="statusId" operator="equals" value="KW_APPROVED"/>
+	                </condition-list>
+	                <order-by field-name="statusId"/>
+	                <order-by field-name="-relevancyWeight"/>
+	                <order-by field-name="keyword"/>
+	            </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/CourseProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--课程分类分页-->
+    <screen name="courseProductCategoryList">
+        <section>
+            <condition>
+                <if-empty field="parameters.mainSubmitted"/>
+            </condition>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <set field="fromSetSessionLocale" value="${groovy: return request.getAttribute('fromSetSessionLocale');}"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-compare operator="equals" value="true" field="fromSetSessionLocale"/>
+                    </condition>
+                    <widgets>
+                        <include-screen name="category"/>
+                    </widgets>
+                    <fail-widgets>
+                        <include-screen name="courseCategorydetails" share-scope="true"/>
+                    </fail-widgets>
+                </section>
+            </widgets>
+            <fail-widgets>
+                <section>
+                   <widgets>
+                        <include-screen name="category"/>
+                   </widgets>
+                </section>
+            </fail-widgets>
+        </section>
+    </screen>
+	
+	
+	<!--创客分类详情页-->
+    <screen name="businessmanCategorydetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/BusinessmanCategoryDetail.ftl"/></html></platform-specific>
+                <include-screen name="businessmanCategorydetails"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="businessmanCategorydetails">
+        <section>
+            <actions>
+            	<property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="businessmanProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#businessmanProductsummary"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <set field="paginateEcommerceStyle" value="Y"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/BusinessmanCategoryDetails.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--创客分类预览图-->
+    <screen name="businessmanProductsummary">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+               	<entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+                        <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+                <set field="InvestorsPartyId" from-field="ProductAndRole[0].partyId" default-value="${UserLoginList[0].partyId}"/>
+                <entity-and list="investorsContentList" entity-name="PartyContent">
+                	<field-map field-name="partyId" value="${InvestorsPartyId}"/>
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <set field="investorsContentId" value="${investorsContentList[0].contentId}"/>
+                <entity-and list="investorsList" entity-name="Person">
+                	<field-map field-name="partyId" value="${InvestorsPartyId}"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FinancingStageFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FINANCINGSTAGE"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FieldAboutFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FIELDABOUT"/>
+                </entity-and>
+                <entity-condition entity-name="ProductKeyword" list="ProductTag">
+	                <condition-list combine="and">
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    <condition-expr field-name="keywordTypeId" operator="equals" value="KWT_TAG"/>
+	                    <condition-expr field-name="statusId" operator="equals" value="KW_APPROVED"/>
+	                </condition-list>
+	                <order-by field-name="statusId"/>
+	                <order-by field-name="-relevancyWeight"/>
+	                <order-by field-name="keyword"/>
+	            </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/BusinessmanProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--创客分类分页-->
+    <screen name="businessmanProductCategoryList">
+        <section>
+            <condition>
+                <if-empty field="parameters.mainSubmitted"/>
+            </condition>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <set field="fromSetSessionLocale" value="${groovy: return request.getAttribute('fromSetSessionLocale');}"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-compare operator="equals" value="true" field="fromSetSessionLocale"/>
+                    </condition>
+                    <widgets>
+                        <include-screen name="category"/>
+                    </widgets>
+                    <fail-widgets>
+                        <include-screen name="investorsCategorydetails" share-scope="true"/>
+                    </fail-widgets>
+                </section>
+            </widgets>
+            <fail-widgets>
+                <section>
+                   <widgets>
+                        <include-screen name="category"/>
+                   </widgets>
+                </section>
+            </fail-widgets>
+        </section>
+    </screen>
+	<!--活动分类详情页-->
+    <screen name="activityCategorydetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/ActivityCategoryDetail.ftl"/></html></platform-specific>
+                <include-screen name="activityCategorydetails"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="activityCategorydetails">
+        <section>
+            <actions>
+            	<property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+                <set field="activityProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#activityProductsummary"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <set field="paginateEcommerceStyle" value="Y"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/ActivityCategoryDetails.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--活动分类预览图-->
+    <screen name="activityProductsummary">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+                <entity-and entity-name="ProductContentAndInfo" list="ProductContentAndInfo">
+                	<field-map field-name="productContentTypeId" value="SPECIALINSTRUCTIONS"/>
+                	<field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and entity-name="UserLogin" list="UserLoginList" >
+                	<field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+                <entity-and list="PersonList" entity-name="Person">
+                	<field-map field-name="partyId" value="${UserLoginList[0].partyId}"/>
+                </entity-and>
+                <entity-condition entity-name="ProductKeyword" list="ProductTag">
+	                <condition-list combine="and">
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    <condition-expr field-name="keywordTypeId" operator="equals" value="KWT_TAG"/>
+	                    <condition-expr field-name="statusId" operator="equals" value="KW_APPROVED"/>
+	                </condition-list>
+	                <order-by field-name="statusId"/>
+	                <order-by field-name="-relevancyWeight"/>
+	                <order-by field-name="keyword"/>
+	            </entity-condition>
+	            <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                	<condition-list combine="and">
+	                    <condition-expr field-name="roleTypeId" operator="equals" value="ORGANIZER"/>
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+                    </condition-list>
+                    <order-by field-name="-sequenceNum"/>
+                </entity-condition>
+                <set field="OrganizerPartyId" from-field="ProductAndRole[0].partyId" default-value="${UserLoginList[0].partyId}"/>
+                <entity-and list="PartyGroup" entity-name="PartyGroup">
+               	</entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/ActivityProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--活动分类分页-->
+    <screen name="activityProductCategoryList">
+        <section>
+            <condition>
+                <if-empty field="parameters.mainSubmitted"/>
+            </condition>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <set field="fromSetSessionLocale" value="${groovy: return request.getAttribute('fromSetSessionLocale');}"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-compare operator="equals" value="true" field="fromSetSessionLocale"/>
+                    </condition>
+                    <widgets>
+                        <include-screen name="category"/>
+                    </widgets>
+                    <fail-widgets>
+                        <include-screen name="activityCategorydetails" share-scope="true"/>
+                    </fail-widgets>
+                </section>
+            </widgets>
+            <fail-widgets>
+                <section>
+                   <widgets>
+                        <include-screen name="category"/>
+                   </widgets>
+                </section>
+            </fail-widgets>
+        </section>
+    </screen>
+    
+    <!--服务分类详情页-->
+    <screen name="serviceCategorydetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/ServiceCategoryDetail.ftl"/></html></platform-specific>
+                <include-screen name="serviceCategorydetails"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="serviceCategorydetails">
+        <section>
+            <actions>
+            	<property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+                <set field="serviceProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#serviceProductsummary"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <set field="paginateEcommerceStyle" value="Y"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/ServiceCategoryDetails.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--服务分类预览图-->
+    <screen name="serviceProductsummary">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+                <entity-and entity-name="ProductContentAndInfo" list="ProductContentAndInfo">
+                	<field-map field-name="productContentTypeId" value="SPECIALINSTRUCTIONS"/>
+                	<field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and entity-name="UserLogin" list="UserLoginList" >
+                	<field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+                <entity-and list="PersonList" entity-name="Person">
+                	<field-map field-name="partyId" value="${UserLoginList[0].partyId}"/>
+                </entity-and>
+               	<!--项目上级角色-->
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                    <condition-list combine="or">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="PartyGroup" entity-name="PartyGroup">
+               	</entity-and>
+               	<entity-condition entity-name="PartyRole" list="PartyRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-condition entity-name="ProductKeyword" list="ProductTag">
+	                <condition-list combine="and">
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    <condition-expr field-name="keywordTypeId" operator="equals" value="KWT_TAG"/>
+	                    <condition-expr field-name="statusId" operator="equals" value="KW_APPROVED"/>
+	                </condition-list>
+	                <order-by field-name="statusId"/>
+	                <order-by field-name="-relevancyWeight"/>
+	                <order-by field-name="keyword"/>
+	            </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/ServiceProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--服务分类分页-->
+    <screen name="serviceProductCategoryList">
+        <section>
+            <condition>
+                <if-empty field="parameters.mainSubmitted"/>
+            </condition>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <set field="fromSetSessionLocale" value="${groovy: return request.getAttribute('fromSetSessionLocale');}"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-compare operator="equals" value="true" field="fromSetSessionLocale"/>
+                    </condition>
+                    <widgets>
+                        <include-screen name="category"/>
+                    </widgets>
+                    <fail-widgets>
+                        <include-screen name="serviceCategorydetails" share-scope="true"/>
+                    </fail-widgets>
+                </section>
+            </widgets>
+            <fail-widgets>
+                <section>
+                   <widgets>
+                        <include-screen name="category"/>
+                   </widgets>
+                </section>
+            </fail-widgets>
+        </section>
+    </screen>
+    
+    <!--公司分类详情页-->
+    <screen name="companyCategorydetail">
+        <section>
+            <actions>
+                <entity-and entity-name="PartyRole" list="InvestorsRole" >
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="INVESTORS"/>
+               	</entity-and>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/CompanyCategoryDetail.ftl"/></html></platform-specific>
+                <include-screen name="companyCategorydetails"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="companyCategorydetails">
+        <section>
+            <actions>
+            	<property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+                <set field="companyProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#companyProductsummary"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <set field="paginateEcommerceStyle" value="Y"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/CompanyCategoryDetails.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--公司分类预览图-->
+    <screen name="companyProductsummary">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+                <entity-and entity-name="ProductContentAndInfo" list="ProductContentAndInfo">
+                	<field-map field-name="productContentTypeId" value="SPECIALINSTRUCTIONS"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FinancingStageFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FINANCINGSTAGE"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FieldAboutFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FIELDABOUT"/>
+                </entity-and>
+                <entity-condition entity-name="ProductKeyword" list="ProductTag">
+	                <condition-list combine="and">
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    <condition-expr field-name="keywordTypeId" operator="equals" value="KWT_TAG"/>
+	                    <condition-expr field-name="statusId" operator="equals" value="KW_APPROVED"/>
+	                </condition-list>
+	                <order-by field-name="statusId"/>
+	                <order-by field-name="-relevancyWeight"/>
+	                <order-by field-name="keyword"/>
+	            </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/CompanyProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--公司分类分页-->
+    <screen name="companyProductCategoryList">
+        <section>
+            <condition>
+                <if-empty field="parameters.mainSubmitted"/>
+            </condition>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <set field="fromSetSessionLocale" value="${groovy: return request.getAttribute('fromSetSessionLocale');}"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-compare operator="equals" value="true" field="fromSetSessionLocale"/>
+                    </condition>
+                    <widgets>
+                        <include-screen name="category"/>
+                    </widgets>
+                    <fail-widgets>
+                        <include-screen name="companyCategorydetails" share-scope="true"/>
+                    </fail-widgets>
+                </section>
+            </widgets>
+            <fail-widgets>
+                <section>
+                   <widgets>
+                        <include-screen name="category"/>
+                   </widgets>
+                </section>
+            </fail-widgets>
+        </section>
+    </screen>
+	<!--新闻资讯分类详情页-->
+	<screen name="newsCategorydetail">
+	    <section>
+	        <actions>
+	            <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+	            <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+	             <!--所有项目 -->
+	            <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+	            	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+	            </entity-and>
+	            <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+	            <!--所有项目子分类-->
+	            <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+	            	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+	            </entity-and>
+	            <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+	            	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+	            </entity-and>
+	            <!--当所有项目为上级目录时取其字段-->
+	            <entity-and entity-name="ProductCategory" list="ProductCategory">
+	            	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+	            </entity-and>
+	        </actions>
+	        <widgets>
+	            <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/NewsCategoryDetail.ftl"/></html></platform-specific>
+	            <include-screen name="newsCategorydetails"/>
+	        </widgets>
+	    </section>
+	</screen>
+	<screen name="newsCategorydetails">
+	    <section>
+	        <actions>
+	        	<property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+	            <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+	            <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+	            <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+	                            <!--所有项目 -->
+	            <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+	            	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+	            </entity-and>
+	            <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+	            <!--所有项目子分类-->
+	            <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+	            	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+	            </entity-and>
+	            <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+	            	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+	            </entity-and>
+	            <!--当所有项目为上级目录时取其字段-->
+	            <entity-and entity-name="ProductCategory" list="ProductCategory">
+	            	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+	            </entity-and>
+	            <set field="newsProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#newsProductsummary"/>
+	            <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+	            <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+	            <set field="paginateEcommerceStyle" value="Y"/>
+	        </actions>
+	        <widgets>
+	            <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/NewsCategoryDetails.ftl"/></html></platform-specific>
+	        </widgets>
+	    </section>
+	</screen>
+	<!--新闻资讯分类预览图-->
+	<screen name="newsProductsummary">
+	    <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+	            <entity-and entity-name="ProductContentAndInfo" list="ProductContentAndInfo">
+	            	<field-map field-name="productId" from-field="product.productId"/>
+	            </entity-and>
+            </actions>
+	        <widgets>
+	            <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/NewsProductSummary.ftl"/></html></platform-specific>
+	        </widgets>
+	    </section>
+	</screen>
+	<!--众筹分类详情页-->
+    <screen name="crowdCategorydetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/CrowdCategoryDetail.ftl"/></html></platform-specific>
+                <include-screen name="crowdCategorydetails"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="crowdCategorydetails">
+        <section>
+            <actions>
+            	<property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+                <set field="courseProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#crowdProductsummary"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <set field="paginateEcommerceStyle" value="Y"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/CrowdCategoryDetails.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--众筹分类预览图-->
+    <screen name="crowdProductsummary">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+                <entity-and entity-name="UserLogin" list="UserLoginList" >
+                	<field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+                <entity-and list="PersonList" entity-name="Person">
+                	<field-map field-name="partyId" value="${UserLoginList[0].partyId}"/>
+                </entity-and>
+                <entity-condition entity-name="ProductKeyword" list="ProductTag">
+	                <condition-list combine="and">
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    <condition-expr field-name="keywordTypeId" operator="equals" value="KWT_TAG"/>
+	                    <condition-expr field-name="statusId" operator="equals" value="KW_APPROVED"/>
+	                </condition-list>
+	                <order-by field-name="statusId"/>
+	                <order-by field-name="-relevancyWeight"/>
+	                <order-by field-name="keyword"/>
+	            </entity-condition>
+	            <entity-and list="OrderItemAndProduct" entity-name="OrderItemAndProduct">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/CrowdProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--众筹分类分页-->
+    <screen name="crowdProductCategoryList">
+        <section>
+            <condition>
+                <if-empty field="parameters.mainSubmitted"/>
+            </condition>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <set field="fromSetSessionLocale" value="${groovy: return request.getAttribute('fromSetSessionLocale');}"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-compare operator="equals" value="true" field="fromSetSessionLocale"/>
+                    </condition>
+                    <widgets>
+                        <include-screen name="category"/>
+                    </widgets>
+                    <fail-widgets>
+                        <include-screen name="crowdCategorydetails" share-scope="true"/>
+                    </fail-widgets>
+                </section>
+            </widgets>
+            <fail-widgets>
+                <section>
+                   <widgets>
+                        <include-screen name="category"/>
+                   </widgets>
+                </section>
+            </fail-widgets>
+        </section>
+    </screen>
+	<!--投资人分类详情页-->
+    <screen name="investorsCategorydetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/InvestorsCategoryDetail.ftl"/></html></platform-specific>
+                <include-screen name="investorsCategorydetails"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="investorsCategorydetails">
+        <section>
+            <actions>
+            	<property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <set field="investorsProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#investorsProductsummary"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <set field="paginateEcommerceStyle" value="Y"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/InvestorsCategoryDetails.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--投资人分类预览图-->
+    <screen name="investorsProductsummary">
+       <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+               	<entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+                        <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+                <set field="InvestorsPartyId" from-field="ProductAndRole[0].partyId" default-value="${UserLoginList[0].partyId}"/>
+                <entity-and list="investorsContentList" entity-name="PartyContent">
+                	<field-map field-name="partyId" value="${InvestorsPartyId}"/>
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <set field="investorsContentId" value="${investorsContentList[0].contentId}"/>
+                <entity-and list="investorsList" entity-name="Person">
+                	<field-map field-name="partyId" value="${InvestorsPartyId}"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FinancingStageFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FINANCINGSTAGE"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FieldAboutFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FIELDABOUT"/>
+                </entity-and>
+                <entity-condition entity-name="ProductKeyword" list="ProductTag">
+	                <condition-list combine="and">
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    <condition-expr field-name="keywordTypeId" operator="equals" value="KWT_TAG"/>
+	                    <condition-expr field-name="statusId" operator="equals" value="KW_APPROVED"/>
+	                </condition-list>
+	                <order-by field-name="statusId"/>
+	                <order-by field-name="-relevancyWeight"/>
+	                <order-by field-name="keyword"/>
+	            </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/InvestorsProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--投资人分类分页-->
+    <screen name="investorsProductCategoryList">
+        <section>
+            <condition>
+                <if-empty field="parameters.mainSubmitted"/>
+            </condition>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <set field="fromSetSessionLocale" value="${groovy: return request.getAttribute('fromSetSessionLocale');}"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-compare operator="equals" value="true" field="fromSetSessionLocale"/>
+                    </condition>
+                    <widgets>
+                        <include-screen name="category"/>
+                    </widgets>
+                    <fail-widgets>
+                        <include-screen name="investorsCategorydetails" share-scope="true"/>
+                    </fail-widgets>
+                </section>
+            </widgets>
+            <fail-widgets>
+                <section>
+                   <widgets>
+                        <include-screen name="category"/>
+                   </widgets>
+                </section>
+            </fail-widgets>
+        </section>
+    </screen>
+	
+	<!--孵化器分类详情页-->
+    <screen name="incubatorCategorydetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                 <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/IncubatorCategoryDetail.ftl"/></html></platform-specific>
+                <include-screen name="incubatorCategorydetails"/>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="incubatorCategorydetails">
+        <section>
+            <actions>
+            	<property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                                <!--所有项目 -->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildAll">
+                	<field-map field-name="parentProductCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <set field="IsParent" from-field="ProductCategoryRollupAndChildAll[0].productCategoryId" />
+                <!--所有项目子分类-->
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildParent">
+                	<field-map field-name="productCategoryId" from-field="productCategoryId"/>
+                </entity-and>
+                <entity-and entity-name="ProductCategoryRollupAndChild" list="ProductCategoryRollupAndChildItem">
+                	<field-map field-name="parentProductCategoryId" from-field="ProductCategoryRollupAndChildParent[0].parentProductCategoryId"/>
+                </entity-and>
+                <!--当所有项目为上级目录时取其字段-->
+                <entity-and entity-name="ProductCategory" list="ProductCategory">
+                	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
+                </entity-and>
+                <set field="incubatorProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#incubatorProductsummary"/>
+                <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+                <set field="paginateEcommerceStyle" value="Y"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/IncubatorCategoryDetails.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--孵化器分类预览图-->
+    <screen name="incubatorProductsummary">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+               	<entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+                        <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+                <set field="IncubatorPartyId" from-field="ProductAndRole[0].partyId" default-value="${UserLoginList[0].partyId}"/>
+                <entity-and list="incubatorContentList" entity-name="PartyContent">
+                	<field-map field-name="partyId" value="${IncubatorPartyId}"/>
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="CityFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="CITY"/>
+                </entity-and>
+                <set field="incubatorContentId" value="${investorsContentList[0].contentId}"/>
+                <entity-and list="incubatorList" entity-name="PartyGroup">
+                	<field-map field-name="partyId" value="${IncubatorPartyId}"/>
+                </entity-and>
+                <entity-condition entity-name="ProductKeyword" list="ProductTag">
+	                <condition-list combine="and">
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    <condition-expr field-name="keywordTypeId" operator="equals" value="KWT_TAG"/>
+	                    <condition-expr field-name="statusId" operator="equals" value="KW_APPROVED"/>
+	                </condition-list>
+	                <order-by field-name="statusId"/>
+	                <order-by field-name="-relevancyWeight"/>
+	                <order-by field-name="keyword"/>
+	            </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/IncubatorProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--孵化器分类分页-->
+    <screen name="incubatorProductCategoryList">
+        <section>
+            <condition>
+                <if-empty field="parameters.mainSubmitted"/>
+            </condition>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <set field="fromSetSessionLocale" value="${groovy: return request.getAttribute('fromSetSessionLocale');}"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-compare operator="equals" value="true" field="fromSetSessionLocale"/>
+                    </condition>
+                    <widgets>
+                        <include-screen name="category"/>
+                    </widgets>
+                    <fail-widgets>
+                        <include-screen name="incubatorCategorydetails" share-scope="true"/>
+                    </fail-widgets>
+                </section>
+            </widgets>
+            <fail-widgets>
+                <section>
+                   <widgets>
+                        <include-screen name="category"/>
+                   </widgets>
+                </section>
+            </fail-widgets>
+        </section>
+    </screen>
+	
+    <screen name="categorydetailmatrix">
+        <section>
+            <actions>
+                <set field="numCol" value="3"/>
+                <set field="searchInCategory" value="N"/>
+                <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="9"/>
+            </actions>
+            <widgets>
+                <include-screen name="categorydetail"/>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="ProductCategoryLink">
+        <section>
+            <actions>
+                <!-- TODO/NOTE DEJ20070223: for some reason this isn't working, doing an assign within the FTL file which does work: <set field="productCategoryLink" from-field="requestAttributes.productCategoryLink"/> -->
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/ProductCategoryLink.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="product">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
+                <set field="titleProperty" value="PageTitleProductPage"/>
+                <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
+                <set field="courseproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#courseproductdetail"/>
+                <set field="activityproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#activityproductdetail"/>
+                <set field="projectproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#projectproductdetail"/>
+                <set field="serviceproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#serviceproductdetail"/>
+                <set field="policyproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#policyproductdetail"/>
+                <set field="crowdproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#crowdproductdetail"/>
+                <set field="businessmanproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#businessmanproductdetail"/>
+                <set field="investorsproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#investorsproductdetail"/>
+                <set field="companyproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#companyproductdetail"/>
+                <set field="incubatorproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#incubatorproductdetail"/>
+                <set field="newsproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#newsproductdetail"/>
+                <script location="component://order/groovyScripts/entry/catalog/Product.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <section>
+                            <condition>
+                                <not><if-empty field="product"/></not>
+                            </condition>
+                            <widgets>
+                                <include-screen name="${detailScreen}"/>
+                            </widgets>
+                            <fail-widgets>
+                                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/NotFoundProduct.ftl"/></html></platform-specific>
+                            </fail-widgets>
+                        </section>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+	<screen name="productProductNotFound">
+        <section>
+            <actions>
+                
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/NotFoundProduct.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productdetail">
+        <section>
+            <actions>
+                <set field="userPartyId" from-field="userLogin.partyId"/>
+            	<entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+                <entity-and entity-name="ProductContentAndInfo" list="ProductContentAndInfo" >
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="productContentTypeId" value="DIGITAL_DOWNLOAD"/>
+                </entity-and>
+                <entity-and list="PersonList" entity-name="Person">
+                    <field-map field-name="partyId" from-field="UserLoginList[0].partyId"/>
+                </entity-and>
+                <entity-and list="partyContentList" entity-name="PartyContent">
+                    <field-map field-name="partyId" from-field="UserLoginList[0].partyId"/>
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <entity-and list="ShoppingListItem" entity-name="ShoppingListItem">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and list="commPartyContentList" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+               	</entity-and>
+                <entity-and list="commPersonList" entity-name="Person">
+                </entity-and>
+                <entity-condition entity-name="CommunicationEventAndProduct" list="disscussCommunicationEvents">
+                    <condition-list>
+                    	<condition-expr field-name="productId" from-field="parameters.productId"/>
+                    	<condition-expr field-name="communicationEventTypeId" value="PRODUCT_DISSCUSS"/>
+                    	<condition-expr field-name="statusId" value="COM_COMPLETE"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and entity-name="CommunicationEventAndProduct" list="childEvents">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                </entity-and>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProductDetail.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="inlineProductDetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/InlineProductDetail.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://order/template/entry/catalog/InlineProductDetail.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <!--新闻资讯产品详情-->
+    <screen name="newsproductdetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+	            <entity-and entity-name="ProductContentAndInfo" list="ProductContentAndInfo">
+	            	<field-map field-name="productId" from-field="product.productId"/>
+	            </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/NewsProductDetail.ftl"/></html></platform-specific>
+            	<include-screen name="productdetailcomm"/>
+            </widgets>
+        </section>
+    </screen>
+	<!--课程产品详情-->
+    <screen name="courseproductdetail">
+        <section>
+            <actions>
+            	<set field="userPartyId" from-field="userLogin.partyId"/>
+            	<entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                	<condition-list combine="and">
+	                    <condition-expr field-name="roleTypeId" operator="equals" value="TEACHER"/>
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <set field="TeacherPartyId" from-field="ProductAndRole[0].partyId" default-value="${UserLoginList[0].partyId}"/>
+                <entity-and list="PersonList" entity-name="Person">
+                    <field-map field-name="partyId" from-field="TeacherPartyId"/>
+                </entity-and>
+                <entity-and list="ShoppingList" entity-name="ShoppingList">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="shoppingListTypeId" value="COLLECTE"/>
+                </entity-and>
+                <set field="ShoppingListId" from-field="ShoppingList[0].shoppingListId"/>
+                <entity-and list="ShoppingListItem" entity-name="ShoppingListItem">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-condition entity-name="ProductKeyword" list="ProductTag">
+	                <condition-list combine="and">
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    <condition-expr field-name="keywordTypeId" operator="equals" value="KWT_TAG"/>
+	                    <condition-expr field-name="statusId" operator="equals" value="KW_APPROVED"/>
+	                </condition-list>
+	                <order-by field-name="statusId"/>
+	                <order-by field-name="-relevancyWeight"/>
+	                <order-by field-name="keyword"/>
+	            </entity-condition>
+            	<entity-and list="ProductContentVideoIntro" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="productContentTypeId" value="VIDEO_DES"/>
+                    <order-by field-name="-fromDate"/>
+               </entity-and>
+               <entity-condition entity-name="ProductContentAndInfo" list="ProductContentVideoPlaying">
+	                <condition-list combine="and">
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    <condition-expr field-name="drDataResourceId" operator="equals" from-field="parameters.videoId"/>
+	                    <condition-expr field-name="productContentTypeId" operator="equals" value="VIDEO_COURSE"/>
+	                </condition-list>
+	                <order-by field-name="+sequenceNum"/>
+	            </entity-condition>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/CourseProductDetail.ftl"/></html></platform-specific>
+    			<section>
+                    <condition>
+                        <not><if-empty field="parameters.detailId"/></not>
+                    </condition>
+                    <widgets>
+                    	<section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="description"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetaildestwo"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="discuss"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetailcomm"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="download"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetaildownload"/>
+                            </widgets>
+                        </section>
+                    </widgets>
+                    <fail-widgets>
+                    	<include-screen name="productdetailcourselist"/>
+                    </fail-widgets>
+               </section>
+            </widgets>
+        </section>
+    </screen>
+    <!--活动产品详情-->
+    <screen name="activityproductdetail">
+        <section>
+            <actions>
+            	<set field="userPartyId" from-field="userLogin.partyId"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+            	<entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+                <entity-and list="PersonList" entity-name="Person">
+                    <field-map field-name="partyId" from-field="UserLoginList[0].partyId"/>
+                </entity-and>
+                <entity-and list="ShoppingList" entity-name="ShoppingList">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="shoppingListTypeId" value="COLLECTE"/>
+                </entity-and>
+                <set field="ShoppingListId" from-field="ShoppingList[0].shoppingListId"/>
+                <entity-and list="ShoppingListItem" entity-name="ShoppingListItem">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-condition entity-name="ProductKeyword" list="ProductTag">
+	                <condition-list combine="and">
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    <condition-expr field-name="keywordTypeId" operator="equals" value="KWT_TAG"/>
+	                    <condition-expr field-name="statusId" operator="equals" value="KW_APPROVED"/>
+	                </condition-list>
+	                <order-by field-name="statusId"/>
+	                <order-by field-name="-relevancyWeight"/>
+	                <order-by field-name="keyword"/>
+	            </entity-condition>
+               	<entity-condition entity-name="ProductAndRole" list="ProductAndRoleOrganizer">
+                	<condition-list combine="and">
+	                    <condition-expr field-name="roleTypeId" operator="equals" value="ORGANIZER"/>
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+                    </condition-list>
+                    <order-by field-name="+sequenceNum"/>
+                </entity-condition>
+                <entity-and list="PartyGroup" entity-name="PartyGroup">
+               	</entity-and>
+            </actions>
+            <widgets>
+        		<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ActivityProductDetail.ftl"/></html></platform-specific>
+        		<section>
+                    <condition>
+                        <not><if-empty field="parameters.detailId"/></not>
+                    </condition>
+                    <widgets>
+                    	<section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="signup"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetailsignup"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="discuss"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetailcomm"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="dynamic"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetaildynamic"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="faq"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetailfaq"/>
+                            </widgets>
+                        </section>
+                    </widgets>
+                    <fail-widgets>
+                    	<include-screen name="productdetaildestwo"/>
+                    </fail-widgets>
+               </section>
+            </widgets>
+        </section>
+    </screen>
+    <!--项目产品详情-->
+    <screen name="projectproductdetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+            	<entity-and entity-name="ProductFeatureAndAppl" list="ProductFeatureAndAppl" >
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+            	<entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+                <entity-and list="PersonList" entity-name="Person">
+                    <field-map field-name="partyId" from-field="UserLoginList[0].partyId"/>
+                </entity-and>
+                <entity-and list="ShoppingList" entity-name="ShoppingList">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="shoppingListTypeId" value="COLLECTE"/>
+                </entity-and>
+                <set field="ShoppingListId" from-field="ShoppingList[0].shoppingListId"/>
+                <entity-and list="ShoppingListItem" entity-name="ShoppingListItem">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and list="partyContentList" entity-name="PartyContent">
+                    <field-map field-name="partyId" from-field="UserLoginList[0].partyId"/>
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <entity-and entity-name="ProductContentAndInfo" list="ProductContentAndInfo">
+                	<field-map field-name="productContentTypeId" value="SPECIALINSTRUCTIONS"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FinancingStageFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FINANCINGSTAGE"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FieldAboutFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FIELDABOUT"/>
+                </entity-and>
+                <entity-condition entity-name="PartyRelationship" list="PartyRelationship">
+                    <condition-list combine="and">
+                        <condition-expr field-name="statusId" operator="equals" value="PARTYREL_CREATED"/>
+                        <condition-expr field-name="partyRelationshipTypeId" operator="equals" value="CHILD"/>
+                        <condition-expr field-name="roleTypeIdTo" operator="equals" value="INCUBATOR"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-and list="PartyGroup" entity-name="PartyGroup">
+               	</entity-and>
+            </actions>
+            <widgets>
+        		<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProjectProductDetail.ftl"/></html></platform-specific>
+        		<section>
+                    <condition>
+                        <not><if-empty field="parameters.detailId"/></not>
+                    </condition>
+                    <widgets>
+                    	<section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="team"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetailteam"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="comm"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetailcomm"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="dynamic"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetaildynamic"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="plan"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetailplan"/>
+                            </widgets>
+                        </section>
+                    </widgets>
+                    <fail-widgets>
+                    	<include-screen name="productdetaildes"/>
+                    </fail-widgets>
+               </section>
+            </widgets>
+        </section>
+    </screen>
+    <!--公司产品详情-->
+    <screen name="companyproductdetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+            	<entity-and entity-name="ProductFeatureAndAppl" list="ProductFeatureAndAppl" >
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+            	<entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                	<condition-list combine="and">
+	                    <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <set field="CompanyPartyId" from-field="ProductAndRole[0].partyId" default-value="${UserLoginList[0].partyId}"/>
+                <entity-and list="PersonList" entity-name="PartyGroup">
+                    <field-map field-name="partyId" from-field="CompanyPartyId"/>
+                </entity-and>
+                <entity-and list="ShoppingList" entity-name="ShoppingList">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="shoppingListTypeId" value="FOLLOW"/>
+                </entity-and>
+                <set field="ShoppingListId" from-field="ShoppingList[0].shoppingListId"/>
+                <entity-and list="ShoppingListItem" entity-name="ShoppingListItem">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and list="partyContentList" entity-name="PartyContent">
+                    <field-map field-name="partyId" from-field="CompanyPartyId"/>
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FinancingStageFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FINANCINGSTAGE"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FieldAboutFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FIELDABOUT"/>
+                </entity-and>
+                <entity-and entity-name="PartyRole" list="InvestorsRole" >
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="roleTypeId" value="INVESTORS"/>
+               	</entity-and>
+               	<set field="ChildProjectRole" value="COMPANY"/>
+               	<set field="ChildProjectPartyId" from-field="CompanyPartyId"/>
+                <entity-condition entity-name="PartyRelationship" list="PartyRelationship">
+                    <condition-list combine="and">
+                        <condition-expr field-name="statusId" operator="equals" value="PARTYREL_CREATED"/>
+                        <condition-expr field-name="partyRelationshipTypeId" operator="equals" value="CHILD"/>
+                        <condition-expr field-name="roleTypeIdTo" operator="equals" value="INCUBATOR"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-and list="PartyGroup" entity-name="PartyGroup">
+               	</entity-and>
+            </actions>
+            <widgets>
+        		<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/CompanyProductDetail.ftl"/></html></platform-specific>
+        		<section>
+                    <condition>
+                        <not><if-empty field="parameters.detailId"/></not>
+                    </condition>
+                    <widgets>
+                    	<section>
+                            <condition>
+                            	<and>
+	                                <if-compare field="parameters.detailId" operator="equals" value="childproject"/>
+	                                <not><if-empty field="InvestorsRole"/></not>
+                                </and>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetailchildproject"/>
+                            </widgets>
+                       	</section>
+                        <section>
+                            <condition>
+                            	<and>
+	                                <if-compare field="parameters.detailId" operator="equals" value="dynamic"/>
+	                                <not><if-empty field="InvestorsRole"/></not>
+                                </and>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetaildynamic"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                            	<and>
+	                                <if-compare field="parameters.detailId" operator="equals" value="plan"/>
+	                                <not><if-empty field="InvestorsRole"/></not>
+                                </and>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetailplan"/>
+                            </widgets>
+                        </section>
+                    </widgets>
+                    <fail-widgets>
+                    	<section>
+	                    	<condition>
+		                        <not><if-empty field="InvestorsRole"/></not>
+		                    </condition>
+		                    <widgets>
+	                    		<include-screen name="productdetaildes"/>
+	                    	</widgets>
+                        </section>
+                    </fail-widgets>
+               </section>
+            </widgets>
+        </section>
+    </screen>
+    <!--投资人详细-->
+    <screen name="investorsproductdetail">
+        <section>
+            <actions>
+            	<entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+               	</entity-and>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                	<condition-list combine="and">
+	                    <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <set field="InvestorsPartyId" from-field="ProductAndRole[0].partyId" default-value="${UserLoginList[0].partyId}"/>
+                <set field="userPartyId" from-field="userLogin.partyId"/>
+                <entity-and list="PersonList" entity-name="Person">
+                    <field-map field-name="partyId" from-field="InvestorsPartyId"/>
+                </entity-and>
+                <entity-and list="ShoppingList" entity-name="ShoppingList">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="shoppingListTypeId" value="FOLLOW"/>
+                </entity-and>
+                <set field="ShoppingListId" from-field="ShoppingList[0].shoppingListId"/>
+                <entity-and list="ShoppingListItem" entity-name="ShoppingListItem">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and list="partyContentList" entity-name="PartyContent">
+                    <field-map field-name="partyId" from-field="InvestorsPartyId"/>
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FinancingStageFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FINANCINGSTAGE"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FieldAboutFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FIELDABOUT"/>
+                </entity-and>
+                <set field="ChildProjectRole" value="INVESTORS"/>
+               	<set field="ChildProjectPartyId" from-field="InvestorsPartyId"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+            </actions>
+            <widgets>
+        		<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/InvestorsProductDetail.ftl"/></html></platform-specific>
+        		<section>
+                    <condition>
+                        <not><if-empty field="parameters.detailId"/></not>
+                    </condition>
+                    <widgets>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="childproject"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetailchildproject"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="dynamic"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetaildynamic"/>
+                            </widgets>
+                        </section>
+                    </widgets>
+                    <fail-widgets>
+                    	<include-screen name="productdetaildestwo"/>
+                    </fail-widgets>
+               </section>
+            </widgets>
+        </section>
+    </screen>
+    <!--孵化器产品详情-->
+    <screen name="incubatorproductdetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+            	<entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                	<condition-list combine="and">
+	                    <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <set field="IncubatorPartyId" from-field="ProductAndRole[0].partyId" default-value="${UserLoginList[0].partyId}"/>
+                <entity-and list="PersonList" entity-name="PartyGroup">
+                    <field-map field-name="partyId" from-field="IncubatorPartyId"/>
+                </entity-and>
+                <entity-and list="ShoppingList" entity-name="ShoppingList">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="shoppingListTypeId" value="FOLLOW"/>
+                </entity-and>
+                <set field="ShoppingListId" from-field="ShoppingList[0].shoppingListId"/>
+                <entity-and list="ShoppingListItem" entity-name="ShoppingListItem">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and list="partyContentList" entity-name="PartyContent">
+                    <field-map field-name="partyId" from-field="IncubatorPartyId"/>
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="CityFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="CITY"/>
+                </entity-and>
+                <entity-condition entity-name="ProductKeyword" list="ProductTag">
+	                <condition-list combine="and">
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    <condition-expr field-name="keywordTypeId" operator="equals" value="KWT_TAG"/>
+	                    <condition-expr field-name="statusId" operator="equals" value="KW_APPROVED"/>
+	                </condition-list>
+	                <order-by field-name="statusId"/>
+	                <order-by field-name="-relevancyWeight"/>
+	                <order-by field-name="keyword"/>
+	            </entity-condition>
+               	<set field="ChildProjectRole" value="INCUBATOR"/>
+               	<set field="ChildProjectPartyId" from-field="IncubatorPartyId"/>
+            </actions>
+            <widgets>
+        		<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/IncubatorProductDetail.ftl"/></html></platform-specific>
+        		<section>
+                    <condition>
+                        <not><if-empty field="parameters.detailId"/></not>
+                    </condition>
+                    <widgets>
+                    	<section>
+                            <condition>
+                            	<and>
+	                                <if-compare field="parameters.detailId" operator="equals" value="childproject"/>
+                                </and>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetailchildproject"/>
+                            </widgets>
+                       	</section>
+                        <section>
+                            <condition>
+                            	<and>
+	                                <if-compare field="parameters.detailId" operator="equals" value="dynamic"/>
+                                </and>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetaildynamic"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                            	<and>
+	                                <if-compare field="parameters.detailId" operator="equals" value="activity"/>
+                                </and>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetailactivity"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                            	<and>
+	                                <if-compare field="parameters.detailId" operator="equals" value="policy"/>
+                                </and>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetailpolicy"/>
+                            </widgets>
+                        </section>
+                    </widgets>
+                    <fail-widgets>
+                    	<section>
+		                    <widgets>
+	                    		<include-screen name="productdetaildestwo"/>
+	                    	</widgets>
+                        </section>
+                    </fail-widgets>
+               </section>
+            </widgets>
+        </section>
+    </screen>
+    <!--服务产品详情-->
+    <screen name="serviceproductdetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+                <entity-and entity-name="ProductReview" list="ProductReviewList" >
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and list="OrderItem" entity-name="OrderItem">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="changeByUserLoginId" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <entity-and list="UserLoginList" entity-name="UserLogin">
+            	</entity-and>
+                <entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+            	</entity-and>
+            	<!--新加-->
+                <set field="userPartyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="CommunicationEventAndProduct" list="disscussCommunicationEvents">
+                    <condition-list>
+                    	<condition-expr field-name="productId" from-field="parameters.productId"/>
+                    	<condition-expr field-name="communicationEventTypeId" value="PRODUCT_DISSCUSS"/>
+                    	<condition-expr field-name="statusId" value="COM_COMPLETE"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and entity-name="CommunicationEventAndProduct" list="childEvents">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                </entity-and>
+                <entity-and list="commPersonList" entity-name="Person">
+                </entity-and>
+                <entity-and list="ShoppingList" entity-name="ShoppingList">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="shoppingListTypeId" value="COLLECTE"/>
+                </entity-and>
+                <set field="ShoppingListId" from-field="ShoppingList[0].shoppingListId"/>
+                <entity-and list="ShoppingListItem" entity-name="ShoppingListItem">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and list="OrderItemAndProduct" entity-name="OrderItemAndProduct">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ServiceProductDetail.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+   	</screen>
+   	<!--众筹产品详情-->
+    <screen name="crowdproductdetail">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+                <entity-and entity-name="ProductReview" list="ProductReviewList" >
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and list="OrderItem" entity-name="OrderItem">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="changeByUserLoginId" from-field="userLogin.userLoginId"/>
+                </entity-and>
+                <entity-and list="UserLoginList" entity-name="UserLogin">
+            	</entity-and>
+                <entity-and list="PartyContent" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+            	</entity-and>
+            	<!--新加-->
+                <set field="userPartyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="CommunicationEventAndProduct" list="disscussCommunicationEvents">
+                    <condition-list>
+                    	<condition-expr field-name="productId" from-field="parameters.productId"/>
+                    	<condition-expr field-name="communicationEventTypeId" value="PRODUCT_DISSCUSS"/>
+                    	<condition-expr field-name="statusId" value="COM_COMPLETE"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and entity-name="CommunicationEventAndProduct" list="childEvents">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                </entity-and>
+                <entity-and list="commPersonList" entity-name="Person">
+                </entity-and>
+                <entity-and list="ShoppingList" entity-name="ShoppingList">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="shoppingListTypeId" value="COLLECTE"/>
+                </entity-and>
+                <set field="ShoppingListId" from-field="ShoppingList[0].shoppingListId"/>
+                <entity-and list="ShoppingListItem" entity-name="ShoppingListItem">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and list="OrderItemAndProduct" entity-name="OrderItemAndProduct">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/CrowdProductDetail.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+   	</screen>
+   	<!--创客详细-->
+    <screen name="businessmanproductdetail">
+        <section>
+            <actions>
+            	<entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+               	</entity-and>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                	<condition-list combine="and">
+	                    <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <set field="InvestorsPartyId" from-field="ProductAndRole[0].partyId" default-value="${UserLoginList[0].partyId}"/>
+                <set field="userPartyId" from-field="userLogin.partyId"/>
+                <entity-and list="PersonList" entity-name="Person">
+                    <field-map field-name="partyId" from-field="BusinessmanPartyId"/>
+                </entity-and>
+                <entity-and list="ShoppingList" entity-name="ShoppingList">
+                    <field-map field-name="partyId" from-field="userLogin.partyId"/>
+                    <field-map field-name="shoppingListTypeId" value="FOLLOW"/>
+                </entity-and>
+                <set field="ShoppingListId" from-field="ShoppingList[0].shoppingListId"/>
+                <entity-and list="ShoppingListItem" entity-name="ShoppingListItem">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and list="partyContentList" entity-name="PartyContent">
+                    <field-map field-name="partyId" from-field="BusinessmanPartyId"/>
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FinancingStageFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FINANCINGSTAGE"/>
+                </entity-and>
+                <entity-and entity-name="ProductFeatureAndAppl" list="FieldAboutFeature">
+                	<field-map field-name="productId" from-field="product.productId"/>
+                	<field-map field-name="productFeatureTypeId" value="FIELDABOUT"/>
+                </entity-and>
+                <set field="ChildProjectRole" value="INVESTORS"/>
+               	<set field="ChildProjectPartyId" from-field="BusinessmanPartyId"/>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+            </actions>
+            <widgets>
+        		<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/BusinessmanProductDetail.ftl"/></html></platform-specific>
+        		<section>
+                    <condition>
+                        <not><if-empty field="parameters.detailId"/></not>
+                    </condition>
+                    <widgets>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="childproject"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetailchildproject"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="dynamic"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="productdetaildynamic"/>
+                            </widgets>
+                        </section>
+                    </widgets>
+                    <fail-widgets>
+                    	<include-screen name="productdetaildestwo"/>
+                    </fail-widgets>
+               </section>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="personproductdetail">
+        <section>
+            <actions>
+            	<entity-and entity-name="ProductFeatureAndAppl" list="ProductFeatureAndAppl" >
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+            	<entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+                </entity-and>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                	<condition-list combine="and">
+	                    <condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+	                    </condition-list>
+	                    <condition-list combine="and">
+	                        <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    </condition-list>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="PersonList" entity-name="Person">
+                    <field-map field-name="partyId" from-field="ProductAndRole[0].partyId"/>
+                </entity-and>
+                <entity-condition entity-name="RoleTypeAndParty" list="RoleTypeAndParty">
+                    <condition-list combine="and">
+                    	<condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+	                    </condition-list>
+                        <condition-expr field-name="partyId" operator="equals" from-field="ProductAndRole[0].partyId"/>
+                    </condition-list>
+                </entity-condition>
+                <entity-and list="ShoppingListItem" entity-name="ShoppingListItem">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and list="partyContentList" entity-name="PartyContent">
+                    <field-map field-name="partyId" from-field="ProductAndRole[0].partyId"/>
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <entity-and entity-name="ProductContentAndInfo" list="ProductContentAndInfo">
+                	<field-map field-name="productContentTypeId" value="SPECIALINSTRUCTIONS"/>
+                </entity-and>
+                <script location="component://order/groovyScripts/entry/catalog/ProductDetail.groovy"/>
+            </actions>
+            <widgets>
+        		<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/PersonProductDetail.ftl"/></html></platform-specific>
+        		<section>
+                    <condition>
+                        <not><if-empty field="parameters.detailId"/></not>
+                    </condition>
+                    <widgets>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="discuss"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="personproductdetailcomm"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="created"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="personproductdetailcreated"/>
+                            </widgets>
+                        </section>
+                        <section>
+                            <condition>
+                                <if-compare field="parameters.detailId" operator="equals" value="joined"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="personproductdetailjoined"/>
+                            </widgets>
+                        </section>
+                    </widgets>
+                    <fail-widgets>
+                    	<include-screen name="productdetaildes"/>
+                    </fail-widgets>
+               </section>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productdetaildes">
+        <section>
+            <actions>
+            	<entity-condition entity-name="ProductKeyword" list="ProductTag">
+	                <condition-list combine="and">
+	                    <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    <condition-expr field-name="keywordTypeId" operator="equals" value="KWT_TAG"/>
+	                    <condition-expr field-name="statusId" operator="equals" value="KW_APPROVED"/>
+	                </condition-list>
+	                <order-by field-name="statusId"/>
+	                <order-by field-name="-relevancyWeight"/>
+	                <order-by field-name="keyword"/>
+	            </entity-condition>
+            	<entity-and list="ProductContentVideoIntro" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="productContentTypeId" value="VIDEO_DES"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProductDetailDescription.ftl"/></html></platform-specific>               
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productdetaildestwo">
+        <section>
+            <actions>
+            	<entity-and list="ProductContentVideoIntro" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="productContentTypeId" value="VIDEO_DES"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProductDetailDescriptionTwo.ftl"/></html></platform-specific>               
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productdetailchildproject">
+        <section>
+            <actions>
+               	<entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                	<condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" from-field="ChildProjectRole"/>
+                        <condition-expr field-name="partyId" operator="equals" from-field="ChildProjectPartyId"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="Product" entity-name="Product">
+                	<field-map field-name="productTypeId" value="PROJECT"/>
+               	</entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProductDetailChildProjects.ftl"/></html></platform-specific>               
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productdetailactivity">
+        <section>
+            <actions>
+               	<entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                	<condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" from-field="ChildProjectRole"/>
+                        <condition-expr field-name="partyId" operator="equals" from-field="ChildProjectPartyId"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="Product" entity-name="Product">
+                	<field-map field-name="productTypeId" value="ACTIVITY"/>
+               	</entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProductDetailActivity.ftl"/></html></platform-specific>               
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productdetailpolicy">
+        <section>
+            <actions>
+               	<entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                	<condition-list combine="and">
+                        <condition-expr field-name="roleTypeId" operator="equals" from-field="ChildProjectRole"/>
+                        <condition-expr field-name="partyId" operator="equals" from-field="ChildProjectPartyId"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="Product" entity-name="Product">
+                	<field-map field-name="productTypeId" value="POLICY"/>
+               	</entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProductDetailPolicy.ftl"/></html></platform-specific>               
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productdetailcomm">
+        <section>
+            <actions>
+            	<entity-and list="commPartyContentList" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+               </entity-and>
+               <entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+               </entity-and>
+                <entity-and list="PersonList" entity-name="Person">
+                    <field-map field-name="partyId" from-field="UserLoginList[0].partyId"/>
+                </entity-and>
+                <entity-and list="commPersonList" entity-name="Person">
+                </entity-and>
+                <set field="userPartyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="CommunicationEventAndProduct" list="disscussCommunicationEvents">
+                    <condition-list>
+                    	<condition-expr field-name="productId" from-field="parameters.productId"/>
+                    	<condition-expr field-name="communicationEventTypeId" value="PRODUCT_DISSCUSS"/>
+                    	<condition-expr field-name="statusId" value="COM_COMPLETE"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and entity-name="CommunicationEventAndProduct" list="childEvents">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProductDetailDiscuss.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productdetaildynamic">
+        <section>
+            <actions>
+            	<entity-and list="ProductContentTimeline" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="productContentTypeId" value="TIMELINE"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProductDetailDynamic.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productdetailteam">
+        <section>
+            <actions>
+            	<set field="userPartyId" from-field="userLogin.partyId"/>
+            	<entity-and entity-name="CommunicationEventAndProduct" list="CommunicationEventAndProduct">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="partyIdFrom" from-field="userLogin.partyId"/>
+                    <field-map field-name="communicationEventTypeId" value="PRODUCT_APPLY"/>
+                </entity-and>
+            	<entity-and entity-name="ProductRole" list="ProductRole" >
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and list="teamList" entity-name="Person">
+                </entity-and>
+                <entity-and list="teamContentList" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <entity-and list="ProductContentRecruit" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="productContentTypeId" value="SPECIALINSTRUCTIONS"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <set field="ProductContentRecruitId" from-field="ProductContentRecruit[0].dataResourceId"/>
+                <entity-and entity-name="ElectronicText" list="dataText">
+                </entity-and>
+                <entity-and list="ProductContentUpload" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="productContentTypeId" value="DIGITAL_UPLOAD"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProductDetailTeam.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productdetailsignup">
+        <section>
+            <actions>
+            	<set field="userPartyId" from-field="userLogin.partyId"/>
+            	<entity-and entity-name="CommunicationEventAndProduct" list="CommunicationEventAndProduct">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="partyIdFrom" from-field="userLogin.partyId"/>
+                    <field-map field-name="communicationEventTypeId" value="PRODUCT_APPLY"/>
+               	</entity-and>
+               	<entity-and entity-name="ProductContentAndInfo" list="ProductContentAndInfo">
+                	<field-map field-name="productContentTypeId" value="SPECIALINSTRUCTIONS"/>
+                </entity-and>
+                <entity-and entity-name="OrderHeaderAndItems" list="ProductOrderItem" >
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and list="ProductContentUpload" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="productContentTypeId" value="DIGITAL_UPLOAD"/>
+                    <field-map field-name="createdByUserLogin" from-field="userLogin.userLoginId"/>
+                    <order-by field-name="-fromDate"/>
+                </entity-and>
+                <entity-and entity-name="ProductRole" list="ProductRole" >
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="roleTypeId" value="_NA_"/>
+                </entity-and>
+                <entity-and list="teamList" entity-name="Person">
+                </entity-and>
+                <entity-and list="OrderItemAndProduct" entity-name="OrderItem">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                </entity-and>
+                <entity-and list="OrderHeader" entity-name="OrderHeader">
+                    <field-map field-name="createdBy" from-field="userLogin.userLoginId"/>
+                    <field-map field-name="statusId" value="ORDER_APPROVED"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProductDetailSignup.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productdetailplan">
+        <section>
+            <actions>
+            	<entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+               </entity-and>
+                <entity-and list="PersonList" entity-name="Person">
+                    <field-map field-name="partyId" from-field="UserLoginList[0].partyId"/>
+                </entity-and>
+                <set field="userPartyId" from-field="userLogin.partyId"/>
+                <entity-and list="ProductContentTypeParent" entity-name="ProductContentType">
+                    <field-map field-name="parentTypeId" value="BUSINESSPLAN"/>
+                    <order-by field-name="productContentTypeId"/>
+                </entity-and>
+                <entity-and list="ProductContentType" entity-name="ProductContentType">
+                    <order-by field-name="productContentTypeId"/>
+                </entity-and>
+                <entity-and list="ProductContent" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <order-by field-name="+fromDate"/>
+                </entity-and>
+                <entity-condition entity-name="PartyRole" list="PartyRole">
+                    <condition-list combine="and">
+	                    <condition-list combine="or">
+	                    	<condition-expr field-name="roleTypeId" value="TEACHER"/>
+	                    	<condition-expr field-name="roleTypeId" value="INVESTORS"/>
+	                    </condition-list>
+	                    <condition-expr field-name="partyId" from-field="userLogin.partyId"/>
+                    </condition-list>
+                    <order-by field-name="-lastUpdatedStamp"/>
+                </entity-condition>
+                <entity-and entity-name="ElectronicText" list="dataText">
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProductDetailPlan.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productdetailfaq">
+        <section>
+            <actions>
+            	<entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="userLoginId" from-field="product.createdByUserLogin"/>
+               </entity-and>
+                <entity-and list="PersonList" entity-name="Person">
+                    <field-map field-name="partyId" from-field="UserLoginList[0].partyId"/>
+                </entity-and>
+                <set field="userPartyId" from-field="userLogin.partyId"/>
+                <entity-and list="ProductContent" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productContentTypeId" value="BUSINESSPLAN"/>
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <order-by field-name="+fromDate"/>
+                </entity-and>
+                <entity-and entity-name="ElectronicText" list="dataText">
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProductDetailFaq.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productdetailcourselist">
+        <section>
+            <actions>
+            	<entity-and list="ProductContentVideoList" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="productContentTypeId" value="VIDEO_COURSE"/>
+                    <order-by field-name="+sequenceNum"/>
+               </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProductDetailCourseList.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productdetaildownload">
+        <section>
+            <actions>
+            	<entity-and list="downloadProductContentAndInfoList" entity-name="ProductContentAndInfo">
+                    <field-map field-name="productId" from-field="product.productId"/>
+                    <field-map field-name="productContentTypeId" value="DIGITAL_DOWNLOAD"/>
+                    <order-by field-name="+sequenceNum"/>
+               	</entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/ProductDetailDownload.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="personproductdetailcomm">
+        <section>
+            <actions>
+            	<entity-and list="commPartyContentList" entity-name="PartyContent">
+                    <field-map field-name="partyContentTypeId" value="LGOIMGURL"/>
+                    <order-by field-name="-fromDate"/>
+               </entity-and>
+                <entity-and list="commPersonList" entity-name="Person">
+                </entity-and>
+                <set field="userPartyId" from-field="userLogin.partyId"/>
+                <entity-condition entity-name="CommunicationEventAndProduct" list="disscussCommunicationEvents">
+                    <condition-list>
+                    	<condition-expr field-name="productId" from-field="parameters.productId"/>
+                    	<condition-expr field-name="communicationEventTypeId" value="PRODUCT_DISSCUSS"/>
+                    	<condition-expr field-name="statusId" value="COM_COMPLETE"/>
+                    </condition-list>
+                    <order-by field-name="-entryDate"/>
+                </entity-condition>
+                <entity-and entity-name="CommunicationEventAndProduct" list="childEvents">
+                    <field-map field-name="productId" from-field="parameters.productId"/>
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/PersonProductDetailDiscuss.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="personproductdetailcreated">
+        <section>
+            <actions>
+            	<entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                	<condition-list combine="and">
+	                    <condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+	                    </condition-list>
+	                    <condition-list combine="and">
+	                        <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    </condition-list>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="PersonList" entity-name="Person">
+                    <field-map field-name="partyId" from-field="ProductAndRole[0].partyId"/>
+                </entity-and>
+                <entity-and entity-name="UserLogin" list="UserLoginList" >
+                    <field-map field-name="partyId" from-field="ProductAndRole[0].partyId"/>
+                </entity-and>
+                <entity-condition entity-name="Product" list="Product">
+                    <condition-list combine="and">
+                        <condition-expr field-name="productTypeId" operator="equals" value="ACTIVITY"/>
+                        <condition-expr field-name="createdByUserLogin" operator="equals" from-field="UserLoginList[0].userLoginId"/>
+                    </condition-list>
+                    <order-by field-name="-lastUpdatedStamp"/>
+                </entity-condition>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/PersonProductDetailCreated.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="personproductdetailjoined">
+        <section>
+            <actions>
+            	<entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                	<condition-list combine="and">
+	                    <condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="SUBSCRIBER"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INVESTORS"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="COMPANY"/>
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="INCUBATOR"/>
+	                    </condition-list>
+	                    <condition-list combine="and">
+	                        <condition-expr field-name="productId" operator="equals" from-field="product.productId"/>
+	                    </condition-list>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-and list="PersonList" entity-name="Person">
+                    <field-map field-name="partyId" from-field="ProductAndRole[0].partyId"/>
+                </entity-and>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                    <condition-list combine="and">
+                        <condition-expr field-name="partyId" operator="equals" from-field="ProductAndRole[0].partyId"/>
+                        <condition-expr field-name="productTypeId" operator="equals" value="ACTIVITY"/>
+                        <condition-expr field-name="roleTypeId" operator="not-equals" value="BUSINESSMAN"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                 <entity-and list="Product" entity-name="Product">
+                </entity-and>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/product/PersonProductDetailJoined.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+	
+    <screen name="productreview">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
+
+                <set field="titleProperty" value="PageTitleProductReview"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://ecommerce/template/catalog/ProductReview.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="lastviewedproducts">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
+
+                <set field="titleProperty" value="PageTitleLastViewProducts"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://ecommerce/template/catalog/LastViewedProducts.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="detailImage">
+        <section>
+            <widgets>
+               <platform-specific><html><html-template location="component://ecommerce/template/catalog/DetailImage.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="tellafriend">
+        <section>
+            <actions>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://ecommerce/template/catalog/TellAFriend.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="quickadd">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
+
+                <set field="quickaddsummaryScreen" value="component://ecommerce/widget/CatalogScreens.xml#quickaddsummary"/>
+
+                <set field="titleProperty" value="PageTitleQuickAdd"/>
+                <script location="component://order/groovyScripts/entry/catalog/QuickAdd.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://order/template/entry/catalog/QuickAdd.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="quickaddsummary">
+        <section>
+            <actions>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://order/template/entry/catalog/QuickAddSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="keywordsearch">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
+
+                <set field="searchproductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#searchproductsummary"/>
+
+                <set field="titleProperty" value="PageTitleSearchResults"/>
+                <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="20"/>
+                <script location="component://order/groovyScripts/entry/catalog/KeywordSearch.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/KeywordSearch.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+	
+	<!--搜索产品预览图-->
+    <screen name="searchproductsummary">
+        <section>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+                <entity-and entity-name="UserLogin" list="UserLoginList">
+                </entity-and>
+                <entity-and list="PersonList" entity-name="Person">
+                </entity-and>
+                <script location="component://order/groovyScripts/entry/catalog/ProductSummary.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/catalog/SearchProductSummary.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+	
+    <screen name="tagsearch">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
+
+                <set field="productsummaryScreen" value="component://ecommerce/widget/CatalogScreens.xml#productsummary"/>
+
+                <set field="titleProperty" value="PageTitleTagResults"/>
+                <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="10"/>
+                <script location="component://order/groovyScripts/entry/catalog/KeywordSearch.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://order/template/entry/catalog/TagSearch.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="advancedsearch">
+        <section>
+            <actions>
+                <set field="leftbarScreenName" value="leftbar"/>
+                <set field="rightbarScreenName" value="rightbar"/>
+                <set field="MainColumnStyle" value="center"/>
+
+                <set field="titleProperty" value="PageTitleAdvancedSearch"/>
+                <set field="headerItem" value="Advanced Search"/>
+                <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
+            </actions>
+            <widgets>
+                <decorator-screen name="main-decorator" location="${parameters.mainDecoratorLocation}">
+                    <decorator-section name="body">
+                        <platform-specific><html><html-template location="component://ecommerce/template/catalog/AdvancedSearch.ftl"/></html></platform-specific>
+                    </decorator-section>
+                </decorator-screen>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="LayeredNavBar">
+        <section>
+            <actions>
+                <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/LayeredNavBar.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="LayeredCategoryDetail">
+        <section>
+            <actions>
+                <set field="productsummaryScreen" value="component://ecommerce/widget/CatalogScreens.xml#productsummary"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/LayeredCategoryDetail.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    
+    <screen name="bestSellingCategory">
+        <section>
+            <widgets>
+                <section>
+                    <widgets>
+                        <!--<label style="h1" text="Popular Categories"/>-->
+                        <include-screen name="showBestSellingCategory"/>
+                    </widgets>
+                </section>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="showBestSellingCategory">
+        <section>
+            <actions>
+                <script location="component://ecommerce/groovyScripts/catalog/BestSellingCategory.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/ShowBestSellingCategory.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productCategories">
+        <section>
+            <actions>
+                <set field="tabButtonItem" value="LookupProductCategories"/>
+                
+                <script location="component://ecommerce/groovyScripts/catalog/ProductCategories.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/ProductCategories.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+    <screen name="productCategoryList">
+        <section>
+            <condition>
+                <if-empty field="parameters.mainSubmitted"/>
+            </condition>
+            <actions>
+                <property-map resource="ProductUiLabels" map-name="uiLabelMap" global="true"/>
+                <property-map resource="OrderUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://order/groovyScripts/entry/catalog/Category.groovy"/>
+                <set field="fromSetSessionLocale" value="${groovy: return request.getAttribute('fromSetSessionLocale');}"/>
+                <set field="visualThemeId" from-field="productStore.visualThemeId" default-value="EC_DEFAULT"/>
+                <service service-name="getVisualThemeResources">
+                    <field-map field-name="visualThemeId"/>
+                    <field-map field-name="themeResources" from-field="layoutSettings"/>
+                </service>
+                <set field="layoutSettings" from-field="themeResources" default-value="${layoutSettings}" global="true"/>
+            </actions>
+            <widgets>
+                <section>
+                    <condition>
+                        <if-compare operator="equals" value="true" field="fromSetSessionLocale"/>
+                    </condition>
+                    <widgets>
+                        <include-screen name="category"/>
+                    </widgets>
+                    <fail-widgets>
+                        <section>
+                            <condition>
+                                <if-empty field="category_id"/>
+                            </condition>
+                            <widgets>
+                                <include-screen name="newbreadcrumbs" share-scope="true"/>
+                            </widgets>
+                            <fail-widgets>
+                                <include-screen name="breadcrumbs" share-scope="true"/>
+                            </fail-widgets>
+                        </section>
+                        <include-screen name="category-include" share-scope="true"/>
+                    </fail-widgets>
+                </section>
+            </widgets>
+            <fail-widgets>
+                <section>
+                   <widgets>
+                        <include-screen name="category"/>
+                   </widgets>
+                </section>
+            </fail-widgets>
+        </section>
+    </screen>
+    <screen name="newbreadcrumbs">
+       <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://ecommerce/groovyScripts/catalog/AjaxBreadcrumbs.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific>
+                    <html><html-template location="component://ecommerce/template/catalog/AjaxBreadCrumbs.ftl"/></html>
+                </platform-specific>
+            </widgets>
+        </section>
+    </screen>
+
+    <screen name="populartags">
+        <section>
+            <actions>
+                <property-map resource="CommonUiLabels" map-name="uiLabelMap" global="true"/>
+                <script location="component://ecommerce/groovyScripts/catalog/PopularTags.groovy"/>
+            </actions>
+            <widgets>
+                <platform-specific><html><html-template location="component://ecommerce/template/catalog/PopularTags.ftl"/></html></platform-specific>
+            </widgets>
+        </section>
+    </screen>
+</screens>
