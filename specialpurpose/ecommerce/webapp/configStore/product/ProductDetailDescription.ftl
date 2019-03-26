@@ -40,7 +40,7 @@ under the License.
 			<#else>
 				<div class="col-md-6">
 					<div class="padding30">
-						<img src="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>"/>
+						<img class="img-responsive" src="<@ofbizContentUrl>${contentPathPrefix!}${productLargeImageUrl!}</@ofbizContentUrl>"/>
 					</div>
 				</div>
 			</#if>
