@@ -69,6 +69,12 @@ under the License.
 					
 				<!--发布项目-->
 				<set field="currentCatalogId" value="${groovy: org.apache.ofbiz.product.catalog.CatalogWorker.getCurrentCatalogId(request)}"/>
+				<!--目录标志-->
+				<entity-and entity-name="ProdCatalog" list="ProdCatalog">
+                    <field-map field-name="prodCatalogId" value="${currentCatalogId}"/>
+                    <order-by field-name="+prodCatalogId"/>
+                </entity-and>
+                <set field="prodCatalogLogoUrl" from-field="ProdCatalog[0].contentPathPrefix"/>
                 <set field="partyId" from-field="userLogin.partyId"/>
                 <entity-condition entity-name="ProdCatalogCategory" list="ProdCatalogCategoryList">
                     <condition-list combine="and">

@@ -86,7 +86,13 @@ under the License.
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a href="<@ofbizUrl secure="true">main</@ofbizUrl>" style="margin-top: 4px;" class="navbar-brand"><img src="/images/winfirms/logo.png" width="40" alt=""/></a>
+					<a href="<@ofbizUrl secure="true">main</@ofbizUrl>" style="margin-top: 4px;" class="navbar-brand">
+						<#if prodCatalogLogoUrl??>
+						<img src="${prodCatalogLogoUrl!}" width="40" alt="" style="width: 180px;"/>
+						<#else>
+						<img src="/images/winfirms/logo.png" width="40" alt=""/>
+						</#if>
+					</a>
 				</div>
 				<!-- end navbar-header -->
 				<#assign shoppingCart = sessionAttributes.shoppingCart!>
