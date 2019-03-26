@@ -18,7 +18,7 @@ under the License.
 -->
 <#if (requestAttributes.externalLoginKey)??><#assign externalKeyParam = "?externalLoginKey=" + requestAttributes.externalLoginKey!></#if>
 <#if (externalLoginKey)??><#assign externalKeyParam = "?externalLoginKey=" + requestAttributes.externalLoginKey!></#if>
-
+<#assign currentCatalogName = Static["org.apache.ofbiz.product.catalog.CatalogWorker"].getCatalogName(request, currentCatalogId)!>
 <#assign NoCol = CommunicationEventAndRoleNoreadall?size>
 <#if userLoginContentId?has_content>
 	<#assign userLoginLogoUrl = "/content/control/stream?contentId=${userLoginContentId}"! />
@@ -37,7 +37,7 @@ under the License.
 							<span></span>&bull;<span></span> 
 							<i class="icon-mail3"></i> ${uiLabelMap.Email} - 
 							<a href="#">winfirms@qq.com</a><span></span>&bull;<span></span> 
-							<i class="fa fa-map-marker"></i>&nbsp;<a data-toggle="modal" data-target=".catalogCol" href="#">${currentCatalogId}</a>
+							<i class="fa fa-map-marker"></i>&nbsp;<a data-toggle="modal" data-target=".catalogCol" href="#">${currentCatalogName!}</a>
 						</p>
 						<div class="modal fade catalogCol">
 					  		<div class="modal-dialog">
