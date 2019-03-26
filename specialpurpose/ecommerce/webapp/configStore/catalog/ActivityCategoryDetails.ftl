@@ -24,11 +24,11 @@ under the License.
 			});
 	    	function callDocumentByPaginate(info) {
 	        var str = info.split('~');
-	        var checkUrl = '/control/activityCategoryAjaxFired';
+	        var checkUrl = '/store/control/activityCategoryAjaxFired';
 	        if(checkUrl.search("http"))
-	            var ajaxUrl = '/control/activityCategoryAjaxFired';
+	            var ajaxUrl = '/store/control/activityCategoryAjaxFired';
 	        else
-	            var ajaxUrl = '/control/activityCategoryAjaxFiredSecure';   
+	            var ajaxUrl = '/store/control/activityCategoryAjaxFiredSecure';   
 	            $("#loadgif").show(); 
 	            $("#ajaxload").addClass("overlay");
 	        //jQuerry Ajax Request

@@ -194,6 +194,17 @@ function insertImageName(type,nameValue) {
                            <option value="component://ecommerce/widget/winfirms/CatalogScreens.xml#incubatorCategorydetail">${uiLabelMap.IncubatorDetail}</option>
                            <option value="component://ecommerce/widget/winfirms/CatalogScreens.xml#businessmanCategorydetail">${uiLabelMap.BusinessmanDetail}</option>
                            <option value="component://ecommerce/widget/winfirms/CatalogScreens.xml#newsCategorydetail">${uiLabelMap.NewsDetail}</option>
+                           
+                           <option value="component://ecommerce/widget/configStore/CatalogScreens.xml#projectCategorydetail">${uiLabelMap.ProjectDetail}-ConfigStore</option>
+                           <option value="component://ecommerce/widget/configStore/CatalogScreens.xml#activityCategorydetail">${uiLabelMap.ActivityDetail}-ConfigStore</option>
+                           <option value="component://ecommerce/widget/configStore/CatalogScreens.xml#serviceCategorydetail">${uiLabelMap.ServiceDetail}-ConfigStore</option>
+                           <option value="component://ecommerce/widget/configStore/CatalogScreens.xml#courseCategorydetail">${uiLabelMap.CourseDetail}-ConfigStore</option>
+                           <option value="component://ecommerce/widget/configStore/CatalogScreens.xml#crowdCategorydetail">${uiLabelMap.CrowdDetail}-ConfigStore</option>
+                           <option value="component://ecommerce/widget/configStore/CatalogScreens.xml#companyCategorydetail">${uiLabelMap.CompanyDetail}-ConfigStore</option>
+                           <option value="component://ecommerce/widget/configStore/CatalogScreens.xml#investorsCategorydetail">${uiLabelMap.InvestorsDetail}-ConfigStore</option>
+                           <option value="component://ecommerce/widget/configStore/CatalogScreens.xml#incubatorCategorydetail">${uiLabelMap.IncubatorDetail}-ConfigStore</option>
+                           <option value="component://ecommerce/widget/configStore/CatalogScreens.xml#businessmanCategorydetail">${uiLabelMap.BusinessmanDetail}-ConfigStore</option>
+                           <option value="component://ecommerce/widget/configStore/CatalogScreens.xml#newsCategorydetail">${uiLabelMap.NewsDetail}</option>
 												</select>
                         <br /><span class="tooltip">${uiLabelMap.ProductDefaultsTo} &quot;categorydetail&quot;, ${uiLabelMap.ProductDetailScreenMessage}: &quot;component://ecommerce/widget/CatalogScreens.xml#categorydetail&quot;</span>
                     </td>

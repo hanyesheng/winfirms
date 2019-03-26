@@ -25,11 +25,11 @@ under the License.
 	    	function callDocumentByPaginate(info) {
 			
 	        var str = info.split('~');
-	        var checkUrl = '/control/companyCategoryAjaxFired';
+	        var checkUrl = '/store/control/companyCategoryAjaxFired';
 	        if(checkUrl.search("http"))
-	            var ajaxUrl = '/control/companyCategoryAjaxFired';
+	            var ajaxUrl = '/store/control/companyCategoryAjaxFired';
 	        else
-	            var ajaxUrl = '/control/companyCategoryAjaxFiredSecure';   
+	            var ajaxUrl = '/store/control/companyCategoryAjaxFiredSecure';   
 	            $("#loadgif").show(); 
 	            $("#ajaxload").addClass("overlay");
 	        //jQuerry Ajax Request
