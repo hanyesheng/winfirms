@@ -88,7 +88,7 @@ under the License.
 					</button>
 					<a href="<@ofbizUrl secure="true">main</@ofbizUrl>" style="margin-top: 4px;" class="navbar-brand">
 						<#if prodCatalogLogoUrl??>
-						<img src="${prodCatalogLogoUrl!}" width="40" alt="" style="width: 180px;"/>
+						<img src="${prodCatalogLogoUrl!}" width="40" alt="" style="width: auto;height: 40px;"/>
 						<#else>
 						<img src="/images/winfirms/logo.png" width="40" alt=""/>
 						</#if>
