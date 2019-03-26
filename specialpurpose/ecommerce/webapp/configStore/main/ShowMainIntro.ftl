@@ -14,8 +14,8 @@
 					<p>${ProductAndCategoryMember.description!} </p>
 				</div>
 				<div class="dual-btns auto-width">
-					<a href="/products/p_${ProductAndCategoryMember.productId}?detailId=signup" class="button btn-lg">${uiLabelMap.ActivityJoinWay}</a>
-					<a href="/products/p_${ProductAndCategoryMember.productId}" class="button color2 btn-lg">${uiLabelMap.Readmore}</a>
+					<a href="/store/products/p_${ProductAndCategoryMember.productId}?detailId=signup" class="button btn-lg">${uiLabelMap.ActivityJoinWay}</a>
+					<a href="/store/products/p_${ProductAndCategoryMember.productId}" class="button color2 btn-lg">${uiLabelMap.Readmore}</a>
 				</div>
 			</div>
 		</div>

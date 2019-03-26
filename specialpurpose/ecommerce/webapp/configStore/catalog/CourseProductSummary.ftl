@@ -43,7 +43,7 @@ under the License.
 				</#list>
 			</div>
 		</div>
-		<h3 class="product-title text-center"><a href="/products/p_${product.productId}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a></h3>
+		<h3 class="product-title text-center"><a href="/store/products/p_${product.productId}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a></h3>
 		<div class="space10">
 			<div class="post-meta text-center">
 				<span><i class="icon-user"></i> ${partyName!}</span>

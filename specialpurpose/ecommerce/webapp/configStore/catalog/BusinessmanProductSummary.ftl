@@ -26,7 +26,7 @@ under the License.
 	<td align="center" style="width: 120px;">
 		<img src="${investorsLogoUrl}" class="img-responsive" alt="">
 	</td>
-	<td><a href="/products/p_${product.productId}" style="white-space: normal;">${product.productName!}</a></td>
+	<td><a href="/store/products/p_${product.productId}" style="white-space: normal;">${product.productName!}</a></td>
 	<td>${product.description!}</td>
 	<td><#if FieldAboutFeature?has_content><#list FieldAboutFeature as FieldAboutFeature><span class="label label-info">${FieldAboutFeature.description}</span></#list><#else>----</#if></td>
 <#else>

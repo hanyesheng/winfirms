@@ -82,7 +82,7 @@ under the License.
 						<span class="label label-primary">${partyName!}</span>
 					</span>
 				</div>
-				<h3 class="product-title"><img class="createrLogoUrl img-responsive rounded" src="${createrLogoUrl}"><a href="/products/p_${product.productId}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a></h3>
+				<h3 class="product-title"><img class="createrLogoUrl img-responsive rounded" src="${createrLogoUrl}"><a href="/store/products/p_${product.productId}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a></h3>
 				<p>${productContentWrapper.get("DESCRIPTION", "html")!}</p>
 				<div class="text-left">
 				<#if ParentName??><span class="label label-primary" style="margin-top: 4px;">From:&nbsp;${ParentName!}</span></#if>

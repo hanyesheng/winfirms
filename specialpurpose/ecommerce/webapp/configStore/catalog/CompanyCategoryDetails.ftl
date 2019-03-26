@@ -59,7 +59,7 @@ under the License.
 					<ol class="breadcrumb" style="background-color: inherit;margin-bottom: 0px;">
 						<li>${categoryParentName}&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
 						<#list ProductCategoryRollupAndChildItem as ProductCategoryRollupAndChildItem>
-						<li><a <#if ProductCategoryRollupAndChildItem.productCategoryId = productCategory.productCategoryId>class="active"</#if> href="/products/${ProductCategoryRollupAndChildItem.productCategoryId!}">${ProductCategoryRollupAndChildItem.categoryName!}</a></li>
+						<li><a <#if ProductCategoryRollupAndChildItem.productCategoryId = productCategory.productCategoryId>class="active"</#if> href="/store/products/${ProductCategoryRollupAndChildItem.productCategoryId!}">${ProductCategoryRollupAndChildItem.categoryName!}</a></li>
 						</#list>
 					</ol>
 				</div>
@@ -69,9 +69,9 @@ under the License.
 					<#if (viewIndexMax?int > 0)>
 					<div class="col-md-2">
 						<div class="layout-modes">
-							<a <#if (viewIndex?int > 0)>href="/products/${productCategoryId}?VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex?int - 1}" </#if> style="padding: 4px 8px;"><i class="fa fa-arrow-left"></i></a>
+							<a <#if (viewIndex?int > 0)>href="/store/products/${productCategoryId}?VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex?int - 1}" </#if> style="padding: 4px 8px;"><i class="fa fa-arrow-left"></i></a>
 							${viewIndex?int + 1}&nbsp;/&nbsp;${viewIndexMax}
-							<a <#if highIndex?int < listSize?int>href="/products/${productCategoryId}?VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex?int + 1}" </#if> style="padding: 4px 8px;"><i class="fa fa-arrow-right"></i></a>
+							<a <#if highIndex?int < listSize?int>href="/store/products/${productCategoryId}?VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex?int + 1}" </#if> style="padding: 4px 8px;"><i class="fa fa-arrow-right"></i></a>
 						</div>
 					</div>
 					</#if>
@@ -119,19 +119,19 @@ under the License.
 						<ul class="shop_pn">
 							<#if (viewIndex?int > 0)>
 								<li>
-									<a href="/products/${productCategoryId}?VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex?int - 1}" aria-label="Previous">
+									<a href="/store/products/${productCategoryId}?VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex?int - 1}" aria-label="Previous">
 										<i class="fa fa-angle-left"></i>
 									</a>
 								</li>
 							</#if>
 							<#if (viewIndexMax?int > 1)>
 	        					<#list 1..viewIndexMax as curViewNum>
-								<li><a href="/products/${productCategoryId}?VIEW_SIZE=${viewSize}&VIEW_INDEX=${curViewNum-1?int}" <#if viewIndex + 1 = curViewNum>class="active"</#if> >${curViewNum}</a></li>
+								<li><a href="/store/products/${productCategoryId}?VIEW_SIZE=${viewSize}&VIEW_INDEX=${curViewNum-1?int}" <#if viewIndex + 1 = curViewNum>class="active"</#if> >${curViewNum}</a></li>
 								</#list>
 	    					</#if>
 							<#if highIndex?int < listSize?int>
 								<li>
-									<a href="/products/${productCategoryId}?VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex?int + 1}" aria-label="Next">
+									<a href="/store/products/${productCategoryId}?VIEW_SIZE=${viewSize}&VIEW_INDEX=${viewIndex?int + 1}" aria-label="Next">
 										<i class="fa fa-angle-right"></i>
 									</a>
 								</li>

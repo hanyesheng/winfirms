@@ -25,7 +25,7 @@ under the License.
 					<#if ProductContentVideoList.mimeTypeId?? && ProductContentVideoList.mimeTypeId?contains("video")>
 					  	<li class="list-group-item <#if parameters.videoId?? && ProductContentVideoList.drDataResourceId = parameters.videoId>active</#if>">
 						    ${ProductContentVideoList.description!}
-						    <a href="/products/p_${productId}?videoId=${ProductContentVideoList.drDataResourceId}" class="label label-danger pull-right">
+						    <a href="/store/products/p_${productId}?videoId=${ProductContentVideoList.drDataResourceId}" class="label label-danger pull-right">
 						    	<#if parameters.videoId?? && ProductContentVideoList.drDataResourceId = parameters.videoId>
 						    		<span class="glyphicon glyphicon-stats"></span>&nbsp;&nbsp;${uiLabelMap.VideoPlaying}...
 					    		<#else>

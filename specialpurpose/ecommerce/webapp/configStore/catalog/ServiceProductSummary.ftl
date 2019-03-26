@@ -74,7 +74,7 @@ under the License.
 			<#if product.brandName?has_content><span class="badge red">${product.brandName}</span></#if>
 			<div class="text-center">
 				<div class="product-thumbnail">
-					<a href="/products/p_${product.productId}">
+					<a href="/store/products/p_${product.productId}">
 						<img src="<@ofbizContentUrl>${contentPathPrefix!}${largeImageUrl}</@ofbizContentUrl>" class="img-responsive" alt=""/>
 					</a>
 					<#if price.isSale?? && price.isSale>
@@ -90,7 +90,7 @@ under the License.
 						<#if (!product.reserv2ndPPPerc?? || product.reserv2ndPPPerc == 0) && (!product.reservNthPPPerc?? || product.reservNthPPPerc == 0)><br />${uiLabelMap.ProductMaximum} ${product.reservMaxPersons!1} ${uiLabelMap.ProductPersons}.</#if>
 					</#if>
 				</div>
-				<h3 class="product-title"><a href="/products/p_${product.productId}">${product.productName!}</a></h3>
+				<h3 class="product-title"><a href="/store/products/p_${product.productId}">${product.productName!}</a></h3>
 				<#if productContentWrapper.get("DESCRIPTION", "html")?length lt 40>
 					<p style="line-height: 1.3;">${productContentWrapper.get("DESCRIPTION", "html")!}</p>
 				<#else>

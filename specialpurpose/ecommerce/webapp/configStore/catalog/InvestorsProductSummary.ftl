@@ -30,7 +30,7 @@ under the License.
 			<img src="${investorsLogoUrl}" class="img-responsive" alt="">
 		</#if>
 	</td>
-	<td><a href="/products/p_${product.productId}">${product.productName!}</a></td>
+	<td><a href="/store/products/p_${product.productId}">${product.productName!}</a></td>
 	<td>${product.description!}</td>
 	<td><#if FinancingStageFeature?has_content><#list FinancingStageFeature as FinancingStageFeature><span class="label label-warning">${FinancingStageFeature.description}</span></#list><#else>----</#if></td>
 	<td><#if FieldAboutFeature?has_content><#list FieldAboutFeature as FieldAboutFeature><span class="label label-info">${FieldAboutFeature.description}</span></#list><#else>----</#if></td>

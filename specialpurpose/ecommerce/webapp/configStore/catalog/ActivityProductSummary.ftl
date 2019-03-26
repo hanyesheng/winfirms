@@ -61,7 +61,7 @@ under the License.
 						<#if partyName??><span class="label label-warning">By:&nbsp;${partyName!}</span></#if>
 					</span>
 				</div>
-				<h3 class="product-title"><a href="/products/p_${product.productId}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a></h3>
+				<h3 class="product-title"><a href="/store/products/p_${product.productId}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a></h3>
 				<div class="space10">
 					<div class="post-meta">
 						<#if product.releaseDate??><span><i class="icon-clock2"></i>&nbsp;${(product.releaseDate?substring(0,10))!}</span></#if>

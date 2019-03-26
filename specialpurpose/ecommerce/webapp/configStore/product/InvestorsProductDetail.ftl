@@ -177,9 +177,9 @@ under the License.
 <div class="project product-tab">
 <div class="container">
 	<ul class="nav nav-tabs">
-		<li class="<#if !parameters.detailId??>active</#if> col-md-4" ><a href="/products/p_${productId}"><i class="fa fa-fire"></i>${uiLabelMap.PersonDetail}</a></li>
-		<li class="col-md-4 <#if parameters.detailId?? && parameters.detailId = "childproject">active</#if>" ><a href="/products/p_${productId}?detailId=childproject"><i class="fa fa-pencil"></i>${uiLabelMap.FinancingProject}</a></li>
-		<li class="col-md-4 <#if parameters.detailId?? && parameters.detailId = "dynamic">active</#if>" ><a href="/products/p_${productId}?detailId=dynamic"><i class="fa fa-calendar"></i>${uiLabelMap.PersonDynamic}</a></li>
+		<li class="<#if !parameters.detailId??>active</#if> col-md-4" ><a href="/store/products/p_${productId}"><i class="fa fa-fire"></i>${uiLabelMap.PersonDetail}</a></li>
+		<li class="col-md-4 <#if parameters.detailId?? && parameters.detailId = "childproject">active</#if>" ><a href="/store/products/p_${productId}?detailId=childproject"><i class="fa fa-pencil"></i>${uiLabelMap.FinancingProject}</a></li>
+		<li class="col-md-4 <#if parameters.detailId?? && parameters.detailId = "dynamic">active</#if>" ><a href="/store/products/p_${productId}?detailId=dynamic"><i class="fa fa-calendar"></i>${uiLabelMap.PersonDynamic}</a></li>
 	</ul>
 </div>
 </div>

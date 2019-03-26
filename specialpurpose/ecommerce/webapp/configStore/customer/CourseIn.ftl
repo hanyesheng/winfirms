@@ -46,7 +46,7 @@ under the License.
 			              	[${ProductAndRole.description!}]
 			            </td>
 			            <td valign="center">
-			              	<a href="/products/${ProductAndRole.primaryProductCategoryId!}" target="_blank">${uiLabelMap.SeeCourseProjectCategory}</a>
+			              	<a href="/store/products/${ProductAndRole.primaryProductCategoryId!}" target="_blank">${uiLabelMap.SeeCourseProjectCategory}</a>
 			            </td>
 			            <td valign="center" rowspan="3" style="border-left: 1px solid #e0e0e0;">
 			              	<form method="post" action="<@ofbizUrl>removeCourseAtCourseIn</@ofbizUrl>" name="RemoveCourse_${ProductAndRole_index}">

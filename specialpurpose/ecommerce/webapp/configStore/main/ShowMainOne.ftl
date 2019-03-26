@@ -15,7 +15,7 @@
 		<div id="portfolio-home_2" class="isotope gutter folio-boxed-3col">
 			<#list ProductAndCategoryMember as ProductAndCategoryMember>
 			<div class="project-item ${ProductAndCategoryMember.primaryProductCategoryId!}">
-				<a href="/products/p_${ProductAndCategoryMember.productId}">
+				<a href="/store/products/p_${ProductAndCategoryMember.productId}">
 					<div class="project-gal">
 						<img src="${ProductAndCategoryMember.largeImageUrl!}" class="img-responsive" alt="">
 						<div class="overlay-folio2">

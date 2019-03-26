@@ -45,18 +45,18 @@
 	            	  	<#if !smallImageUrl?string?has_content><#assign smallImageUrl = "/images/defaultImage.jpg" /></#if>
 	            	  	<#if smallImageUrl?string?has_content>
 		              		<td class="product-thumbnail">
-								<a href="/products/p_${parentProductId}">
+								<a href="/store/products/p_${parentProductId}">
 									<img height="90" width="90" alt="Product Image" class="img-responsive" src="<@ofbizContentUrl>${requestAttributes.contentPathPrefix!}${smallImageUrl}</@ofbizContentUrl>">
 								</a>
 							</td>
 	            	  	</#if>
 	            	  	<td class="product-name" style="padding-left: 30px;">
 	                      	<#if cartLine.getParentProductId()??>
-	                          	<h5><a href="/products/p_${parentProductId!}" class="linktext" style="white-space: normal;">
+	                          	<h5><a href="/store/products/p_${parentProductId!}" class="linktext" style="white-space: normal;">
 	                          	${cartLine.getName()}
 	                          	</a></h5>
 	                      	<#else>
-	                          	<h5><a href="/products/p_${parentProductId!}" class="linktext" style="white-space: normal;">
+	                          	<h5><a href="/store/products/p_${parentProductId!}" class="linktext" style="white-space: normal;">
 	                          	${cartLine.getName()}
 	                          	</a></h5>
 	                      	</#if>

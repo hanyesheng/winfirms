@@ -27,7 +27,7 @@
 		            	<#if ProductAndCategoryMember.largeImageUrl??>
 		            	<img src="${ProductAndCategoryMember.largeImageUrl!}" width="100px"/>
 	            		</#if>
-	              	<a href="/products/p_${ProductAndCategoryMember.productId}" target="_blank" class="button btn-border color3 btn-xs btn-radius" style="display: inline-table;">
+	              	<a href="/store/products/p_${ProductAndCategoryMember.productId}" target="_blank" class="button btn-border color3 btn-xs btn-radius" style="display: inline-table;">
 	              		${ProductAndCategoryMember.productName!}
 	              	</a>
 		            </td>

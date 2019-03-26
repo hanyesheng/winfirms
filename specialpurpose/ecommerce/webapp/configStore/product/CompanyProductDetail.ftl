@@ -189,10 +189,10 @@ under the License.
 <div class="project product-tab">
 	<div class="container">
 	<ul class="nav nav-tabs">
-		<li class="col-md-3 <#if !parameters.detailId??>active</#if>"  ><a href="/products/p_${productId}"><i class="fa fa-fire"></i>${uiLabelMap.CompanyIntro}</a></li>
-		<li class="col-md-3 <#if parameters.detailId?? && parameters.detailId = "childproject">active</#if>" ><a href="/products/p_${productId}?detailId=childproject"><i class="fa fa-pencil"></i>${uiLabelMap.CompanyProject}</a></li>
-		<li class="col-md-3 <#if parameters.detailId?? && parameters.detailId = "plan">active</#if>" ><a href="/products/p_${productId}?detailId=plan"><i class="fa fa-calendar"></i>${uiLabelMap.FinancingPlan}</a></li>
-		<li class="col-md-3 <#if parameters.detailId?? && parameters.detailId = "dynamic">active</#if>" ><a href="/products/p_${productId}?detailId=dynamic"><i class="fa fa-calendar"></i>${uiLabelMap.CompanyDynamic}</a></li>
+		<li class="col-md-3 <#if !parameters.detailId??>active</#if>"  ><a href="/store/products/p_${productId}"><i class="fa fa-fire"></i>${uiLabelMap.CompanyIntro}</a></li>
+		<li class="col-md-3 <#if parameters.detailId?? && parameters.detailId = "childproject">active</#if>" ><a href="/store/products/p_${productId}?detailId=childproject"><i class="fa fa-pencil"></i>${uiLabelMap.CompanyProject}</a></li>
+		<li class="col-md-3 <#if parameters.detailId?? && parameters.detailId = "plan">active</#if>" ><a href="/store/products/p_${productId}?detailId=plan"><i class="fa fa-calendar"></i>${uiLabelMap.FinancingPlan}</a></li>
+		<li class="col-md-3 <#if parameters.detailId?? && parameters.detailId = "dynamic">active</#if>" ><a href="/store/products/p_${productId}?detailId=dynamic"><i class="fa fa-calendar"></i>${uiLabelMap.CompanyDynamic}</a></li>
 	</ul>
 	</div>
 </div>

@@ -53,7 +53,7 @@ under the License.
 				</div>
 			</div>
 			<div class="space10"></div>
-			<h3 class="product-title"><a href="/products/p_${product.productId}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a></h3>
+			<h3 class="product-title"><a href="/store/products/p_${product.productId}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a></h3>
 			<span><i class="icon-clock2"></i>&nbsp;&nbsp;${(product.createdDate?substring(0,16))!}</span>
 			<p>${productContentWrapper.get("DESCRIPTION", "html")!}</p>
 		</div>

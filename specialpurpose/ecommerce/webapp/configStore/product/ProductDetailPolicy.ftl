@@ -28,7 +28,7 @@ under the License.
 				      	<#if ProductAndRole.productId = Product.productId>
 				          <tr>
 				            <td valign="center">
-				            	<a href="/products/p_${Product.productId}" target="_blank">
+				            	<a href="/store/products/p_${Product.productId}" target="_blank">
 				              	${Product.productName?default("No Name")}</a>
 				            </td>
 				            <td valign="center">

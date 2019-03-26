@@ -190,10 +190,10 @@ under the License.
 <div class="project product-tab">
 <div class="container">
 	<ul class="nav nav-tabs">
-		<li class="<#if !parameters.detailId??>active</#if> col-md-3" ><a href="/products/p_${productId}"><i class="fa fa-fire"></i>${uiLabelMap.CourseList}</a></li>
-		<li class="col-md-3 <#if parameters.detailId?? && parameters.detailId = "description">active</#if>" ><a href="/products/p_${productId}?detailId=description"><i class="fa fa-pencil"></i>${uiLabelMap.CourseInfo}</a></li>
-		<li class="col-md-3 <#if parameters.detailId?? && parameters.detailId = "discuss">active</#if>" ><a href="/products/p_${productId}?detailId=discuss"><i class="fa fa-pencil"></i>${uiLabelMap.CourseDiscuss}</a></li>
-		<li class="col-md-3 <#if parameters.detailId?? && parameters.detailId = "download">active</#if>" ><a href="/products/p_${productId}?detailId=download"><i class="fa fa-download"></i>${uiLabelMap.FileDownload}</a></li>
+		<li class="<#if !parameters.detailId??>active</#if> col-md-3" ><a href="/store/products/p_${productId}"><i class="fa fa-fire"></i>${uiLabelMap.CourseList}</a></li>
+		<li class="col-md-3 <#if parameters.detailId?? && parameters.detailId = "description">active</#if>" ><a href="/store/products/p_${productId}?detailId=description"><i class="fa fa-pencil"></i>${uiLabelMap.CourseInfo}</a></li>
+		<li class="col-md-3 <#if parameters.detailId?? && parameters.detailId = "discuss">active</#if>" ><a href="/store/products/p_${productId}?detailId=discuss"><i class="fa fa-pencil"></i>${uiLabelMap.CourseDiscuss}</a></li>
+		<li class="col-md-3 <#if parameters.detailId?? && parameters.detailId = "download">active</#if>" ><a href="/store/products/p_${productId}?detailId=download"><i class="fa fa-download"></i>${uiLabelMap.FileDownload}</a></li>
 	</ul>
 </div>
 </div>

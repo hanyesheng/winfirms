@@ -16,7 +16,7 @@
 						${ProductAndCategoryMember.createdDate?substring(5,7)!}${uiLabelMap.CommonMonth}<span>${ProductAndCategoryMember.createdDate?substring(8,10)!}</span>${ProductAndCategoryMember.createdDate?substring(0,4)!}
 					</div>
 				</div>
-				<h4><a class="white" href="/products/p_${ProductAndCategoryMember.productId}">${ProductAndCategoryMember.productName!}</a></h4>
+				<h4><a class="white" href="/store/products/p_${ProductAndCategoryMember.productId}">${ProductAndCategoryMember.productName!}</a></h4>
 				<p class="white">${ProductAndCategoryMember.description!}</p>
 			</div>
 		</div>

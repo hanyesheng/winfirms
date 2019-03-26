@@ -25,13 +25,13 @@ under the License.
 
     <article class="blogpost bm-item isotope-item course-item" >
 		<div class="post-media">
-			<a href="/products/p_${product.productId}">
+			<a href="/store/products/p_${product.productId}">
 				<img src="${largeImageUrl!}" class="img-responsive" alt="" >
 			</a>
 		</div>
 		<p></p>
     	<!--标题-->
-		<h2 class="post-title-small"><a href="/products/p_${product.productId}">${product.productName!}</a></h2>
+		<h2 class="post-title-small"><a href="/store/products/p_${product.productId}">${product.productName!}</a></h2>
 		<div class="post-meta">
 			<!--发布时间-->
 			<span><a><i class="icon-clock2"></i><#list ProductContentAndInfo as ProductContentAndInfo>&nbsp;${ProductContentAndInfo.fromDate?substring(0,10)!}</#list></a></span>

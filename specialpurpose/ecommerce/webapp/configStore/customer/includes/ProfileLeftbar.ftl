@@ -57,7 +57,7 @@ under the License.
         <div class="menu_section">
             <ul>
             	<li title="${(productStore.storeName)!}">
-                    <a href="/control/main">
+                    <a href="/store/control/main">
                         <span class="menu_icon"><i class="material-icons">&#xE871;</i></span>
                         <span class="menu_title">${(productStore.storeName)!}</span>
                     </a>

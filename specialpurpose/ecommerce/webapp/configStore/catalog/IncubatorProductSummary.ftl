@@ -30,7 +30,7 @@ under the License.
 	<td align="center">
 	<img src="<@ofbizContentUrl>${product.largeImageUrl!}</@ofbizContentUrl>" class="img-responsive" alt="">
 	</td>
-	<td><a href="/products/p_${product.productId}">${product.productName!}</a></td>
+	<td><a href="/store/products/p_${product.productId}">${product.productName!}</a></td>
 	<td>${product.description!}</td>
 	<td><#if CityFeature?has_content><#list CityFeature as CityFeature><span class="label label-primary">${CityFeature.description}</span></#list><#else>----</#if></td>
 	<td>

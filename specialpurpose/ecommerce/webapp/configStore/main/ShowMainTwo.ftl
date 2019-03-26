@@ -13,7 +13,7 @@
 				<div class="hb-thumb">
 					<img src="${ProductAndCategoryMember.largeImageUrl!}" class="img-responsive" alt="">
 				</div>
-				<h4><a class="white" href="/products/p_${ProductAndCategoryMember.productId}">${ProductAndCategoryMember.productName!}</a></h4>
+				<h4><a class="white" href="/store/products/p_${ProductAndCategoryMember.productId}">${ProductAndCategoryMember.productName!}</a></h4>
 				<p class="white">${ProductAndCategoryMember.description!}</p>
 			</div>
 		</div>

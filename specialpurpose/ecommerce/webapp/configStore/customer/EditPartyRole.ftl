@@ -46,7 +46,7 @@ under the License.
 	          		<#assign RoleProductIdCol = 0>
 					<#list ProductAndRoleFrom as ProductAndRoleFrom>
 						<#if (ProductAndRoleFrom.partyId = RoleTypeAndParty.partyId) && (RoleTypeAndParty.roleTypeId =ProductAndRoleFrom.roleTypeId)>
-	      					<td><a href="/products/p_${ProductAndRoleFrom.productId!}" target="_blank" class="button btn-border color3 btn-xs btn-radius" style="display: inline-table;"><i class="fa fa-edit"></i>&nbsp;${uiLabelMap.SeeRoleResume}</a></td>
+	      					<td><a href="/store/products/p_${ProductAndRoleFrom.productId!}" target="_blank" class="button btn-border color3 btn-xs btn-radius" style="display: inline-table;"><i class="fa fa-edit"></i>&nbsp;${uiLabelMap.SeeRoleResume}</a></td>
 		      				<#if RoleTypeAndParty.roleTypeId = "BUSINESSMAN">
 								<td><a href="<@ofbizUrl>addRoleShowSecCk?productId=${ProductAndRoleFrom.productId!}</@ofbizUrl>" target="_blank" class="button btn-border color3 btn-xs btn-radius" style="display: inline-table;"><i class="fa fa-edit"></i>&nbsp;${uiLabelMap.CommonEdit}${uiLabelMap.Resume}</a></td>
 							<#elseif RoleTypeAndParty.roleTypeId = "SUBSCRIBER">

@@ -105,9 +105,9 @@ under the License.
 </div>
 <div class="container">
 	<ul class="nav nav-tabs">
-		<li class="<#if !parameters.detailId??>active</#if> col-md-3" ><a href="/products/p_${productId}"><i class="fa fa-fire"></i>${uiLabelMap.Persondetail}</a></li>
-		<li class="<#if parameters.detailId?? && parameters.detailId = "discuss">active</#if> col-md-3" ><a href="/products/p_${productId}?detailId=comm"><i class="fa fa-check"></i>${uiLabelMap.PersonComm}</a></li>
-		<li class="<#if parameters.detailId?? && parameters.detailId = "created">active</#if> col-md-3" ><a href="/products/p_${productId}?detailId=created"><i class="fa fa-calendar"></i>${uiLabelMap.ProjectCreate}</a></li>
-		<li class="<#if parameters.detailId?? && parameters.detailId = "joined">active</#if> col-md-3" ><a href="/products/p_${productId}?detailId=joined"><i class="fa fa-calendar"></i>${uiLabelMap.ProjectJoin}</a></li>
+		<li class="<#if !parameters.detailId??>active</#if> col-md-3" ><a href="/store/products/p_${productId}"><i class="fa fa-fire"></i>${uiLabelMap.Persondetail}</a></li>
+		<li class="<#if parameters.detailId?? && parameters.detailId = "discuss">active</#if> col-md-3" ><a href="/store/products/p_${productId}?detailId=comm"><i class="fa fa-check"></i>${uiLabelMap.PersonComm}</a></li>
+		<li class="<#if parameters.detailId?? && parameters.detailId = "created">active</#if> col-md-3" ><a href="/store/products/p_${productId}?detailId=created"><i class="fa fa-calendar"></i>${uiLabelMap.ProjectCreate}</a></li>
+		<li class="<#if parameters.detailId?? && parameters.detailId = "joined">active</#if> col-md-3" ><a href="/store/products/p_${productId}?detailId=joined"><i class="fa fa-calendar"></i>${uiLabelMap.ProjectJoin}</a></li>
 	</ul>
 </div>

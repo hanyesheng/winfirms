@@ -39,7 +39,7 @@ under the License.
 		</#if>
 		<div class="product-post-info space10">
 			<h5>
-				<a href="/products/p_${product.productId}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a>
+				<a href="/store/products/p_${product.productId}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a>
 			</h5>
 			<p>${productContentWrapper.get("DESCRIPTION", "html")!}</p>
 			<div class="stats1-info">

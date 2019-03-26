@@ -173,11 +173,11 @@ under the License.
 <div class="project product-tab">
 <div class="container">
 	<ul class="nav nav-tabs">
-		<li class="<#if !parameters.detailId??>active</#if> col-md-2" ><a href="/products/p_${productId}"><i class="fa fa-fire"></i>${uiLabelMap.ActivityDetail}</a></li>
-		<li class="col-md-2 <#if parameters.detailId?? && parameters.detailId = "signup">active</#if>" ><a href="/products/p_${productId}?detailId=signup""><i class="fa fa-fire"></i>${uiLabelMap.ActivityJoinWay}</a></li>
-		<li class="col-md-2 <#if parameters.detailId?? && parameters.detailId = "discuss">active</#if>" ><a href="/products/p_${productId}?detailId=discuss"><i class="fa fa-pencil"></i>${uiLabelMap.ActivityDiscuss}</a></li>
-		<li class="col-md-2 <#if parameters.detailId?? && parameters.detailId = "dynamic">active</#if>" ><a href="/products/p_${productId}?detailId=dynamic"><i class="fa fa-download"></i>${uiLabelMap.ActivityDynamic}</a></li>
-		<li class="col-md-2 <#if parameters.detailId?? && parameters.detailId = "faq">active</#if>" ><a href="/products/p_${productId}?detailId=faq"><i class="fa fa-download"></i>${uiLabelMap.ActivityFaq}</a></li>
+		<li class="<#if !parameters.detailId??>active</#if> col-md-2" ><a href="/store/products/p_${productId}"><i class="fa fa-fire"></i>${uiLabelMap.ActivityDetail}</a></li>
+		<li class="col-md-2 <#if parameters.detailId?? && parameters.detailId = "signup">active</#if>" ><a href="/store/products/p_${productId}?detailId=signup""><i class="fa fa-fire"></i>${uiLabelMap.ActivityJoinWay}</a></li>
+		<li class="col-md-2 <#if parameters.detailId?? && parameters.detailId = "discuss">active</#if>" ><a href="/store/products/p_${productId}?detailId=discuss"><i class="fa fa-pencil"></i>${uiLabelMap.ActivityDiscuss}</a></li>
+		<li class="col-md-2 <#if parameters.detailId?? && parameters.detailId = "dynamic">active</#if>" ><a href="/store/products/p_${productId}?detailId=dynamic"><i class="fa fa-download"></i>${uiLabelMap.ActivityDynamic}</a></li>
+		<li class="col-md-2 <#if parameters.detailId?? && parameters.detailId = "faq">active</#if>" ><a href="/store/products/p_${productId}?detailId=faq"><i class="fa fa-download"></i>${uiLabelMap.ActivityFaq}</a></li>
 	</ul>
 </div>
 </div>

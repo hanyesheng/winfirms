@@ -12,7 +12,7 @@
 						<div class="staff-img">
 							<img src="${ProductAndCategoryMemberChild.largeImageUrl!}" class="img-responsive" alt="">
 						</div>
-						<h2><a href="/products/p_${ProductAndCategoryMemberChild.productId}">${ProductAndCategoryMemberChild.productName!}</a></h2>
+						<h2><a href="/store/products/p_${ProductAndCategoryMemberChild.productId}">${ProductAndCategoryMemberChild.productName!}</a></h2>
 						<span>${ProductAndCategoryMemberChild.description!}</span>	
 					</div>
 					</#list>
@@ -54,7 +54,7 @@
 					<img src="${personLogoUrl}" class="img-responsive" alt="">
 					<p class="white">${ProductAndCategoryMember.description!}</p>
 					<h2>
-						<a href="/products/p_${ProductAndCategoryMember.productId}">${ProductAndCategoryMember.productName!}</a>
+						<a href="/store/products/p_${ProductAndCategoryMember.productId}">${ProductAndCategoryMember.productName!}</a>
 						<#if RoleTypeId?? && RoleTypeId = "BUSINESSMAN">
 						<span class="businessman">${RoleTypeDescription}</span>
 						<#elseif RoleTypeId?? && RoleTypeId = "SUBSCRIBER">

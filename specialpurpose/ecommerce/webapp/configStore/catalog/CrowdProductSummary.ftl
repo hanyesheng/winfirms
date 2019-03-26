@@ -46,7 +46,7 @@ under the License.
 						<span class="label label-primary" style="color: white;margin-top: 5px;">${uiLabelMap.TargetAmount}:<@ofbizCurrency amount=price.listPrice isoCode=price.currencyUsed /></span>
 					</span>
 				</div>
-				<h3 class="product-title"><a href="/products/p_${product.productId}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a></h3>
+				<h3 class="product-title"><a href="/store/products/p_${product.productId}">${productContentWrapper.get("PRODUCT_NAME", "html")!}</a></h3>
 				<p style="">${productContentWrapper.get("DESCRIPTION", "html")!}</p>
 				<#if price.listPrice??>
 					<#assign sumprice = 0 />

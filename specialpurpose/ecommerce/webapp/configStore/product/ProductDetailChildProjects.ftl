@@ -35,7 +35,7 @@ under the License.
 				          <tr>
 				            <td valign="center">
 				            	<img alt="Large Image" src="<@ofbizContentUrl>${Product.largeImageUrl!}</@ofbizContentUrl>" width="100px"/>
-				              <a href="/products/p_${Product.productId}" target="_blank">
+				              <a href="/store/products/p_${Product.productId}" target="_blank">
 				              ${Product.productName?default("No Name")}</a>
 				            </td>
 				            <td valign="center">
