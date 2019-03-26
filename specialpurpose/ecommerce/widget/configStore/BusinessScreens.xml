@@ -130,7 +130,7 @@ xmlns="http://ofbiz.apache.org/Widget-Screen" xsi:schemaLocation="http://ofbiz.a
 				<set field="leftbarScreenName" value="leftbar"/>
 				<set field="rightbarScreenName" value="rightbar"/>
 				<set field="MainColumnStyle" value="center"/>
-				<set field="productsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#serviceProductsummary"/>
+				<set field="productsummaryScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#serviceProductsummary"/>
 				<set field="titleProperty" value="PageTitleShowPromotionDetails"/>
 				<script location="component://order/groovyScripts/entry/cart/ShowPromotionDetails.groovy"/>
 			</actions>

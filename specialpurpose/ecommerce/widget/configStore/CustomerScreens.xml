@@ -343,8 +343,8 @@ under the License.
                         	</or>
                         </condition>
                         <widgets>
-	                		<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-	                		<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+	                		<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+	                		<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 	                		<screenlet title="${uiLabelMap.BasicInformation}">
 		                        <platform-specific>
 		                            <html><html-template location="component://ecommerce/webapp/configStore/customer/ProjectInfo.ftl"/></html>
@@ -403,8 +403,8 @@ under the License.
 	                        	</or>
 	                        </condition>
 	                        <widgets>
-		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                        <platform-specific>
 		                            <html><html-template location="component://ecommerce/webapp/configStore/customer/EditProjectFeatures.ftl"/></html>
 		                        </platform-specific>
@@ -459,8 +459,8 @@ under the License.
 	                        	</or>
 	                        </condition>
 	                        <widgets>
-	                        	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+	                        	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                      	<platform-specific>
 		                            <html><html-template location="component://ecommerce/webapp/configStore/customer/CreateRecruit.ftl"/></html>
 		                        </platform-specific>
@@ -522,8 +522,8 @@ under the License.
 	                        	</or>
 	                        </condition>
 	                        <widgets>
-		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                    	<section>
 		                            <widgets>
 		                                <platform-specific>
@@ -580,8 +580,8 @@ under the License.
 	                        	</or>
 	                        </condition>
 	                        <widgets>
-		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                      	<platform-specific>
 		                            <html><html-template location="component://ecommerce/webapp/configStore/customer/CreateVideoIntro.ftl"/></html>
 		                        </platform-specific>
@@ -636,12 +636,12 @@ under the License.
 	                        	</or>
 	                        </condition>
 	                        <widgets>
-		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                    	<section>
 		                            <widgets>
 		                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.VideoIntro}">
-		                                    <include-form name="EditProjectVideoIntro" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+		                                    <include-form name="EditProjectVideoIntro" location="component://ecommerce/widget/configStore/ProductForms.xml"/>
 		                                </screenlet>
 		                            </widgets>
 		                        </section>
@@ -694,8 +694,8 @@ under the License.
 	                        	</or>
 	                        </condition>
 	                        <widgets>
-		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                      	<platform-specific>
 		                            <html><html-template location="component://ecommerce/webapp/configStore/customer/CreateProjectDynamic.ftl"/></html>
 		                        </platform-specific>
@@ -750,12 +750,12 @@ under the License.
 	                        	</or>
 	                        </condition>
 	                        <widgets>
-		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                    	<section>
 		                            <widgets>
 		                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.ProjectDynamic}">
-		                                    <include-form name="EditProjectDynamic" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+		                                    <include-form name="EditProjectDynamic" location="component://ecommerce/widget/configStore/ProductForms.xml"/>
 		                                </screenlet>
 		                            </widgets>
 		                        </section>
@@ -816,8 +816,8 @@ under the License.
 	                        	</or>
 	                        </condition>
 	                        <widgets>
-		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                    	<platform-specific>
 		                            <html><html-template location="component://ecommerce/webapp/configStore/customer/CreatePlan.ftl"/></html>
 		                        </platform-specific>
@@ -881,8 +881,8 @@ under the License.
 	                        	</or>
 	                        </condition>
 	                        <widgets>
-		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                    	<section>
 		                            <widgets>
 		                                <platform-specific>
@@ -955,8 +955,8 @@ under the License.
 	                        	</or>
 	                        </condition>
 	                        <widgets>
-		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                        <platform-specific>
 		                            <html><html-template location="component://ecommerce/webapp/configStore/customer/ListProjectParty.ftl"/></html>
 		                        </platform-specific>
@@ -1016,8 +1016,8 @@ under the License.
 	                        	</or>
 	                        </condition>
 	                        <widgets>
-		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                    	<screenlet title="${uiLabelMap.ProjectFileList}">
 		                            <platform-specific>
 			                            <html><html-template location="component://ecommerce/webapp/configStore/customer/ProjectFileList.ftl"/></html>
@@ -1077,12 +1077,12 @@ under the License.
 	                        	</or>
 	                        </condition>
 	                        <widgets>
-		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                    	<section>
 		                            <widgets>
 		                                <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.ProjectFileList}">
-		                                    <include-form name="EditProjectFile" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+		                                    <include-form name="EditProjectFile" location="component://ecommerce/widget/configStore/ProductForms.xml"/>
 		                                </screenlet>
 		                            </widgets>
 		                        </section>
@@ -1153,8 +1153,8 @@ under the License.
 	                        	</or>
 	                        </condition>
 	                        <widgets>
-		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                    	<platform-specific>
 		                            <html><html-template location="component://ecommerce/webapp/configStore/customer/ProductDiscuss.ftl"/></html>
 		                        </platform-specific>
@@ -1233,8 +1233,8 @@ under the License.
 	                        	</or>
 	                        </condition>
 	                        <widgets>
-		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                    	<platform-specific>
 		                            <html><html-template location="component://ecommerce/webapp/configStore/customer/ProjectRelease.ftl"/></html>
 		                        </platform-specific>
@@ -1276,8 +1276,8 @@ under the License.
             <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                 <decorator-section name="body">	  
                 	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                 	<screenlet title="${uiLabelMap.BasicInformation}">
                         <platform-specific>
                             <html><html-template location="component://ecommerce/webapp/configStore/customer/CourseInfo.ftl"/></html>
@@ -1311,8 +1311,8 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">	  
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                         <platform-specific>
                             <html><html-template location="component://ecommerce/webapp/configStore/customer/EditProductFeatures.ftl"/></html>
                         </platform-specific>
@@ -1335,10 +1335,10 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                     	<screenlet title="${uiLabelMap.RecruitInfo}">
-                            <include-form name="ListProductRecruitInfos" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                            <include-form name="ListProductRecruitInfos" location="component://ecommerce/widget/configStore/ProductForms.xml"/>
                       	</screenlet>
                       	<platform-specific>
                             <html><html-template location="component://ecommerce/webapp/configStore/customer/CreateRecruit.ftl"/></html>
@@ -1367,12 +1367,12 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                     	<section>
                             <widgets>
                                 <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.RecruitInfo}">
-                                    <include-form name="EditProductRecruitInfos" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                    <include-form name="EditProductRecruitInfos" location="component://ecommerce/widget/configStore/ProductForms.xml"/>
                                 </screenlet>
                             </widgets>
                         </section>
@@ -1395,10 +1395,10 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                     	<screenlet title="${uiLabelMap.BasicInformation}">
-                            <include-form name="ListCourseVideoIntro" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                            <include-form name="ListCourseVideoIntro" location="component://ecommerce/widget/configStore/ProductForms.xml"/>
                       	</screenlet>
                       	<platform-specific>
                             <html><html-template location="component://ecommerce/webapp/configStore/customer/CreateCourseVideoIntro.ftl"/></html>
@@ -1427,12 +1427,12 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                     	<section>
                             <widgets>
                                 <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.VideoIntro}">
-                                    <include-form name="EditCourseVideoIntro" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                    <include-form name="EditCourseVideoIntro" location="component://ecommerce/widget/configStore/ProductForms.xml"/>
                                 </screenlet>
                             </widgets>
                         </section>
@@ -1455,10 +1455,10 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                     	<screenlet title="${uiLabelMap.BasicInformation}">
-                            <include-form name="ListCourseVideoList" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                            <include-form name="ListCourseVideoList" location="component://ecommerce/widget/configStore/ProductForms.xml"/>
                       	</screenlet>
                       	<platform-specific>
                             <html><html-template location="component://ecommerce/webapp/configStore/customer/CreateCourseVideoList.ftl"/></html>
@@ -1487,12 +1487,12 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                     	<section>
                             <widgets>
                                 <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.CourseVideoList}">
-                                    <include-form name="EditCourseVideoList" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                    <include-form name="EditCourseVideoList" location="component://ecommerce/widget/configStore/ProductForms.xml"/>
                                 </screenlet>
                             </widgets>
                         </section>
@@ -1528,8 +1528,8 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                     	<screenlet title="${uiLabelMap.CourseFileList}">
                             <platform-specific>
 	                            <html><html-template location="component://ecommerce/webapp/configStore/customer/CourseFileList.ftl"/></html>
@@ -1565,12 +1565,12 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                     	<section>
                             <widgets>
                                 <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.CourseFileList}">
-                                    <include-form name="EditCourseFile" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                    <include-form name="EditCourseFile" location="component://ecommerce/widget/configStore/ProductForms.xml"/>
                                 </screenlet>
                             </widgets>
                         </section>
@@ -1599,8 +1599,8 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                       	<platform-specific>
                             <html><html-template location="component://ecommerce/webapp/configStore/customer/CreateCourseDynamic.ftl"/></html>
                         </platform-specific>
@@ -1631,12 +1631,12 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                     	<section>
                             <widgets>
                                 <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.CourseDynamic}">
-                                    <include-form name="EditCourseDynamic" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                    <include-form name="EditCourseDynamic" location="component://ecommerce/widget/configStore/ProductForms.xml"/>
                                 </screenlet>
                             </widgets>
                         </section>
@@ -1675,8 +1675,8 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                     	<platform-specific>
                             <html><html-template location="component://ecommerce/webapp/configStore/customer/CreatePlan.ftl"/></html>
                         </platform-specific>
@@ -1704,12 +1704,12 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                     	<section>
                             <widgets>
                                 <screenlet title="${uiLabelMap.CommonEdit}${uiLabelMap.BusinessPlan}">
-                                    <include-form name="EditCoursePlanInfos" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                                    <include-form name="EditCoursePlanInfos" location="component://ecommerce/widget/configStore/ProductForms.xml"/>
                                 </screenlet>
                             </widgets>
                         </section>
@@ -1737,13 +1737,13 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                     	<screenlet title="${uiLabelMap.Teammates}">
-                            <include-form name="UpdateCourseParty" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                            <include-form name="UpdateCourseParty" location="component://ecommerce/widget/configStore/ProductForms.xml"/>
                         </screenlet>
                         <screenlet title="${uiLabelMap.CommonAdd}${uiLabelMap.Teammates}">
-                            <include-form name="AddCourseParty" location="component://ecommerce/widget/winfirms/ProductForms.xml"/>
+                            <include-form name="AddCourseParty" location="component://ecommerce/widget/configStore/ProductForms.xml"/>
                         </screenlet>
                     </decorator-section>
                 </decorator-screen>
@@ -1788,8 +1788,8 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                     	<platform-specific>
                             <html><html-template location="component://ecommerce/webapp/configStore/customer/ProductDiscuss.ftl"/></html>
                         </platform-specific>
@@ -1827,16 +1827,16 @@ under the License.
 		                    </condition>
 		                    <widgets>
 				                <container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-		                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                    	<platform-specific>
 		                            <html><html-template location="component://ecommerce/webapp/configStore/customer/CourseCategoryProjects.ftl"/></html>
 		                        </platform-specific>
 	                		</widgets>
 	                		<fail-widgets>
 	                			<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-		                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-		                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+		                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+		                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
 		                    	<container><label style="h2">${uiLabelMap.CouldNotFindPrimaryProductCategoryId}</label></container>
 	                    	</fail-widgets>
                     	</section>
@@ -1882,8 +1882,8 @@ under the License.
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">
                     	<container><label style="h2">${product.productName}-[${product.productId}]</label></container>
-                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                     	<platform-specific>
                             <html><html-template location="component://ecommerce/webapp/configStore/customer/CourseRelease.ftl"/></html>
                         </platform-specific>
@@ -1913,7 +1913,7 @@ under the License.
             <widgets>
             <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">	  
-                    	<include-menu name="MyProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="MyProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                 		<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/InitiateProjectPrepare.ftl"/></html></platform-specific>
             		</decorator-section>
             </decorator-screen>
@@ -1941,7 +1941,7 @@ under the License.
             <widgets>
             <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">	 
-                    	<include-menu name="MyProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="MyProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                 		<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/InitiateProject.ftl"/></html></platform-specific>
             		</decorator-section>
             </decorator-screen>
@@ -1968,7 +1968,7 @@ under the License.
             <widgets>
             <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">	  
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                 		<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/InitiateCoursePrepare.ftl"/></html></platform-specific>
             		</decorator-section>
             </decorator-screen>
@@ -2009,7 +2009,7 @@ under the License.
             <widgets>
             <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">	 
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>
                 		<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/InitiateCourse.ftl"/></html></platform-specific>
             		</decorator-section>
             </decorator-screen>
@@ -2406,7 +2406,7 @@ under the License.
             <widgets>
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">  
-                    	<include-menu name="MyProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>    
+                    	<include-menu name="MyProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>    
                     	<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/ProjectsCreated.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
@@ -2438,7 +2438,7 @@ under the License.
             <widgets>
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">   
-                    	<include-menu name="MyProjectTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>           
+                    	<include-menu name="MyProjectTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>           
                     	<platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/ProjectsIn.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
@@ -2466,7 +2466,7 @@ under the License.
             <widgets>
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">   
-                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>           
+                    	<include-menu name="ProjectSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>           
                         <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/ActivityIn.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
@@ -2584,7 +2584,7 @@ under the License.
             <widgets>
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">      
-                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>        
+                    	<include-menu name="CourseSubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>        
                         <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/CourseCreated.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
@@ -2616,7 +2616,7 @@ under the License.
             <widgets>
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
                     <decorator-section name="body">      
-                    	<include-menu name="CourseCategorySubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>        
+                    	<include-menu name="CourseCategorySubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>        
                         <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/CourseCategoryMgr.ftl"/></html></platform-specific>
                     </decorator-section>
                 </decorator-screen>
@@ -2647,12 +2647,12 @@ under the License.
 		                    </condition>
 		                    <widgets>
 		                    	<container><label style="h2">${productCategory.categoryName}-[${productCategoryId}]</label></container>      
-		                    	<include-menu name="CourseCategoryTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>  
-		                    	<include-menu name="CourseCategorySubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>      
+		                    	<include-menu name="CourseCategoryTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>  
+		                    	<include-menu name="CourseCategorySubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>      
 		                        <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/CreateCourseCategory.ftl"/></html></platform-specific>
                     		</widgets>
                     		<fail-widgets>
-		                    	<include-menu name="CourseCategorySubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>      
+		                    	<include-menu name="CourseCategorySubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>      
 		                        <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/CreateCourseCategory.ftl"/></html></platform-specific>
 		                    </fail-widgets>
                     	</section>
@@ -2697,8 +2697,8 @@ under the License.
 		                    </condition>
 		                    <widgets>
 		                    	<container><label style="h2">${productCategory.categoryName}-[${productCategoryId}]</label></container>      
-		                    	<include-menu name="CourseCategoryTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>  
-		                    	<include-menu name="CourseCategorySubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>      
+		                    	<include-menu name="CourseCategoryTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>  
+		                    	<include-menu name="CourseCategorySubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>      
 		                        <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/CourseCategoryCourse.ftl"/></html></platform-specific>
                     		</widgets>
                     		<fail-widgets>
@@ -2739,8 +2739,8 @@ under the License.
 		                    </condition>
 		                    <widgets>
 		                    	<container><label style="h2">${productCategory.categoryName}-[${productCategoryId}]</label></container>      
-		                    	<include-menu name="CourseCategoryTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>  
-		                    	<include-menu name="CourseCategorySubTabBar" location="component://ecommerce/widget/winfirms/ProductMenus.xml"/>      
+		                    	<include-menu name="CourseCategoryTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>  
+		                    	<include-menu name="CourseCategorySubTabBar" location="component://ecommerce/widget/configStore/ProductMenus.xml"/>      
 		                        <platform-specific><html><html-template location="component://ecommerce/webapp/configStore/customer/CourseCategoryProjects.ftl"/></html></platform-specific>
                     		</widgets>
                     		<fail-widgets>

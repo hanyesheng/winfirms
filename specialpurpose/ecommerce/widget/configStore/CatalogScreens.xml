@@ -270,7 +270,7 @@ under the License.
                 <entity-and entity-name="ProductCategory" list="ProductCategory">
                 	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
                 </entity-and>
-                <set field="projectProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#projectProductsummary"/>
+                <set field="projectProductsummaryScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#projectProductsummary"/>
                 <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
                 <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
                 <set field="paginateEcommerceStyle" value="Y"/>
@@ -445,7 +445,7 @@ under the License.
                 <entity-and entity-name="ProductCategory" list="ProductCategory">
                 	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
                 </entity-and>
-                <set field="courseProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#courseProductsummary"/>
+                <set field="courseProductsummaryScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#courseProductsummary"/>
                 <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
                 <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
                 <set field="paginateEcommerceStyle" value="Y"/>
@@ -560,7 +560,7 @@ under the License.
                 <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
-                <set field="businessmanProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#businessmanProductsummary"/>
+                <set field="businessmanProductsummaryScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#businessmanProductsummary"/>
                 <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
                 <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
                 <set field="paginateEcommerceStyle" value="Y"/>
@@ -710,7 +710,7 @@ under the License.
                 <entity-and entity-name="ProductCategory" list="ProductCategory">
                 	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
                 </entity-and>
-                <set field="activityProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#activityProductsummary"/>
+                <set field="activityProductsummaryScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#activityProductsummary"/>
                 <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
                 <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
                 <set field="paginateEcommerceStyle" value="Y"/>
@@ -853,7 +853,7 @@ under the License.
                 <entity-and entity-name="ProductCategory" list="ProductCategory">
                 	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
                 </entity-and>
-                <set field="serviceProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#serviceProductsummary"/>
+                <set field="serviceProductsummaryScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#serviceProductsummary"/>
                 <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
                 <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
                 <set field="paginateEcommerceStyle" value="Y"/>
@@ -1004,7 +1004,7 @@ under the License.
                 <entity-and entity-name="ProductCategory" list="ProductCategory">
                 	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
                 </entity-and>
-                <set field="companyProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#companyProductsummary"/>
+                <set field="companyProductsummaryScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#companyProductsummary"/>
                 <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
                 <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
                 <set field="paginateEcommerceStyle" value="Y"/>
@@ -1138,7 +1138,7 @@ under the License.
 	            <entity-and entity-name="ProductCategory" list="ProductCategory">
 	            	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
 	            </entity-and>
-	            <set field="newsProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#newsProductsummary"/>
+	            <set field="newsProductsummaryScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#newsProductsummary"/>
 	            <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
 	            <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
 	            <set field="paginateEcommerceStyle" value="Y"/>
@@ -1218,7 +1218,7 @@ under the License.
                 <entity-and entity-name="ProductCategory" list="ProductCategory">
                 	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
                 </entity-and>
-                <set field="courseProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#crowdProductsummary"/>
+                <set field="courseProductsummaryScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#crowdProductsummary"/>
                 <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
                 <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
                 <set field="paginateEcommerceStyle" value="Y"/>
@@ -1334,7 +1334,7 @@ under the License.
                 <property-map resource="EcommerceUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="CollegeUiLabels" map-name="uiLabelMap" global="true"/>
                 <property-map resource="PartyUiLabels" map-name="uiLabelMap" global="true"/>
-                <set field="investorsProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#investorsProductsummary"/>
+                <set field="investorsProductsummaryScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#investorsProductsummary"/>
                 <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
                 <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
                 <set field="paginateEcommerceStyle" value="Y"/>
@@ -1485,7 +1485,7 @@ under the License.
                 <entity-and entity-name="ProductCategory" list="ProductCategory">
                 	<field-map field-name="productCategoryId" from-field="ProductCategoryRollupAndChildItem[0].parentProductCategoryId"/>
                 </entity-and>
-                <set field="incubatorProductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#incubatorProductsummary"/>
+                <set field="incubatorProductsummaryScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#incubatorProductsummary"/>
                 <script location="component://order/groovyScripts/entry/catalog/CategoryDetail.groovy"/>
                 <script location="component://order/groovyScripts/entry/catalog/AdvancedSearchOptions.groovy"/>
                 <set field="paginateEcommerceStyle" value="Y"/>
@@ -1612,17 +1612,17 @@ under the License.
                 <set field="MainColumnStyle" value="center"/>
                 <set field="titleProperty" value="PageTitleProductPage"/>
                 <set field="layoutSettings.javaScripts[]" value="/ecommerce/images/productAdditionalView.js" global="true"/>
-                <set field="courseproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#courseproductdetail"/>
-                <set field="activityproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#activityproductdetail"/>
-                <set field="projectproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#projectproductdetail"/>
-                <set field="serviceproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#serviceproductdetail"/>
-                <set field="policyproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#policyproductdetail"/>
-                <set field="crowdproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#crowdproductdetail"/>
-                <set field="businessmanproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#businessmanproductdetail"/>
-                <set field="investorsproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#investorsproductdetail"/>
-                <set field="companyproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#companyproductdetail"/>
-                <set field="incubatorproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#incubatorproductdetail"/>
-                <set field="newsproductdetailScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#newsproductdetail"/>
+                <set field="courseproductdetailScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#courseproductdetail"/>
+                <set field="activityproductdetailScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#activityproductdetail"/>
+                <set field="projectproductdetailScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#projectproductdetail"/>
+                <set field="serviceproductdetailScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#serviceproductdetail"/>
+                <set field="policyproductdetailScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#policyproductdetail"/>
+                <set field="crowdproductdetailScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#crowdproductdetail"/>
+                <set field="businessmanproductdetailScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#businessmanproductdetail"/>
+                <set field="investorsproductdetailScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#investorsproductdetail"/>
+                <set field="companyproductdetailScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#companyproductdetail"/>
+                <set field="incubatorproductdetailScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#incubatorproductdetail"/>
+                <set field="newsproductdetailScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#newsproductdetail"/>
                 <script location="component://order/groovyScripts/entry/catalog/Product.groovy"/>
             </actions>
             <widgets>
@@ -3074,7 +3074,7 @@ under the License.
                 <set field="rightbarScreenName" value="rightbar"/>
                 <set field="MainColumnStyle" value="center"/>
 
-                <set field="searchproductsummaryScreen" value="component://ecommerce/widget/winfirms/CatalogScreens.xml#searchproductsummary"/>
+                <set field="searchproductsummaryScreen" value="component://ecommerce/widget/configStore/CatalogScreens.xml#searchproductsummary"/>
 
                 <set field="titleProperty" value="PageTitleSearchResults"/>
                 <set field="parameters.VIEW_SIZE" from-field="parameters.VIEW_SIZE" default-value="20"/>
