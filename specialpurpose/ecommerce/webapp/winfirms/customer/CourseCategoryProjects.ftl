@@ -1,12 +1,13 @@
 <div class="md-card">
 	<div class="md-card-toolbar">
-    	<h3 class="md-card-toolbar-heading-text">${uiLabelMap.CourseCategoryProjects}</h3>
+    	<h3 class="md-card-toolbar-heading-text">${uiLabelMap.CourseCategoryProjects}(${ProductAndCategoryMember?size})</h3>
    	</div>
    	<div class="md-card-content uk-overflow-container">
 	 	<div class="dt_colVis_buttons"></div>
 	    <table id="dt_tableExport"  class="uk-table uk-table-bordered uk-table-hover">
 	      	<thead>
 	          	<tr>
+	          		<th></th>
 		            <th>${uiLabelMap.ProjectId}</th>
 		            <th>${uiLabelMap.ProjectName}</th>
 		            <th>${uiLabelMap.ProjectCreatedby}</th>
@@ -21,6 +22,9 @@
               <input type="hidden" name="productCategoryId" value="${productCategoryId}">
               <input type="hidden" name="fromDate" value="${ProductAndCategoryMember.fromDate}">
 	          	<tr>
+	          		<td valign="center">
+		            	${ProductAndCategoryMember_index+1}
+		            </td>
 		            <td valign="center">
 		            	${ProductAndCategoryMember.productId}
 		            	<input type="hidden" name="productId" value="${ProductAndCategoryMember.productId}">
@@ -52,9 +56,7 @@
 										</#if>
 									</#list>
 								</#if>
-								<#if ProductAndRole.roleTypeId = "_NA_"><span class="uk-badge"><i class="material-icons md-color-light-green-50">people</i>&nbsp;${uiLabelMap.Teammates}[${uiLabelMap.CommonNormal}]</span></#if>
-                        		<#if ProductAndRole.roleTypeId = "BUSINESSMAN"><span class="uk-badge uk-badge-primary"><i class="material-icons md-color-light-green-50">person</i>&nbsp;${uiLabelMap.Teammates}[${uiLabelMap.CommonManager}]</span></#if>
-                        		${ProductAndRole.nickname!}-[${UserLogin!}]-[${uiLabelMap.PartyId}:${ProductAndRole.partyId!}]
+                        		${ProductAndRole.nickname!}<#if ProductAndRole.roleTypeId = "BUSINESSMAN">-[${uiLabelMap.CommonManager}]</#if>-[${UserLogin!}]-[${uiLabelMap.PartyId}:${ProductAndRole.partyId!}]
 	              				<br/>
 	              			</#if>
 	              		</#list>

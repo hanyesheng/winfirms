@@ -1827,6 +1827,24 @@ under the License.
                 <entity-condition entity-name="UserLoginAndPartyDetails" list="UserLoginAndPartyDetails">
                 </entity-condition>
                 <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
+                <!-- page specific plugins -->
+			    <!-- datatables -->
+			    <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/datatables/jquery.dataTables.min.js" global="true"/>
+			    <!-- datatables buttons-->
+			    <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/datatables/dataTables.buttons.js" global="true"/>
+			    <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/datatables/buttons.uikit.js" global="true"/>
+			    <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/datatables/jszip.min.js" global="true"/>
+			    <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/datatables/pdfmake.min.js" global="true"/>
+			    <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/datatables/vfs_fonts.js" global="true"/>
+			    <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/datatables/buttons.colVis.js" global="true"/>
+			    <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/datatables/buttons.html5.js" global="true"/>
+			    <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/datatables/buttons.print.js" global="true"/>
+			    
+			    <!-- datatables custom integration -->
+			    <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/datatables/datatables.uikit.min.js" global="true"/>
+			
+			    <!--  datatables functions -->
+			    <set field="layoutSettings.javaScriptsSpecial[]" value="/altair/js/datatables/plugins_datatables.min.js" global="true"/>
             </actions>
             <widgets>
                 <decorator-screen name="profile-decorator" location="${parameters.mainDecoratorLocation}">
