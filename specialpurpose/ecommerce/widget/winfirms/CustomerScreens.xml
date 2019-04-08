@@ -1814,6 +1814,16 @@ under the License.
                     </condition-list>
                     <order-by field-name="-fromDate"/>
                 </entity-condition>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                    <condition-list combine="and">
+                    	<condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="_NA_"/>
+                        	<condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                    </condition-list>
+                        <condition-expr field-name="productTypeId" operator="equals" value="PROJECT"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
                 <entity-condition entity-name="UserLoginAndPartyDetails" list="UserLoginAndPartyDetails">
                 </entity-condition>
                 <script location="component://product/groovyScripts/catalog/product/EditProductContent.groovy"/>
@@ -2723,6 +2733,16 @@ under the License.
                 <entity-condition entity-name="ProductAndCategoryMember" list="ProductAndCategoryMember">
                     <condition-list combine="and">
                         <condition-expr field-name="productCategoryId" operator="equals" value="${productCategoryId}"/>
+                    </condition-list>
+                    <order-by field-name="-fromDate"/>
+                </entity-condition>
+                <entity-condition entity-name="ProductAndRole" list="ProductAndRole">
+                    <condition-list combine="and">
+                    	<condition-list combine="or">
+	                        <condition-expr field-name="roleTypeId" operator="equals" value="_NA_"/>
+                        	<condition-expr field-name="roleTypeId" operator="equals" value="BUSINESSMAN"/>
+	                    </condition-list>
+                        <condition-expr field-name="productTypeId" operator="equals" value="PROJECT"/>
                     </condition-list>
                     <order-by field-name="-fromDate"/>
                 </entity-condition>

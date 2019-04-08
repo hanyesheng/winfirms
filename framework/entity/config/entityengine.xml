@@ -460,7 +460,7 @@ access. For a detailed description see the core/docs/entityconfig.html file.
             use-order-by-nulls="true"
             result-fetch-size="50"> <!-- Comment out the result-fetch-size attribute for jdbc driver versions older than 8.0.
             Not recommended to use those though. They are archived unsupported versions: http://jdbc.postgresql.org/download.html -->
-        
+        <!--120.27.130.206-->
         <read-data reader-name="tenant"/>
         <read-data reader-name="seed"/>
         <read-data reader-name="seed-initial"/>

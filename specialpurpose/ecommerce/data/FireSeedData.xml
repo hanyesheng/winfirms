@@ -104,4 +104,46 @@ under the License.
 	<ProductContentType parentTypeId="BUSINESSPLAN" productContentTypeId="8" description="团队介绍" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
 	<ProductContentType parentTypeId="8" productContentTypeId="8_1" description="团队成员构成" hasTable="N" createdStamp="2018-05-17 03:37:39.899" createdTxStamp="2018-05-17 03:37:39.815" lastUpdatedStamp="2018-05-17 03:37:39.899" lastUpdatedTxStamp="2018-05-17 03:37:39.815"/> 
 
+	<!--可配置店铺浏览根分类模板-->
+	<ProductCategory productCategoryId="UESTCROOT" description="UESTCROOT" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_1" description="UESTC_1" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_1_1" description="UESTC_1_1" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_1_2" description="UESTC_1_2" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_1_3" description="UESTC_1_3" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_2" description="UESTC_2" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_2_1" description="UESTC_2_1" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_2_2" description="UESTC_2_2" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_2_3" description="UESTC_2_3" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_3" description="UESTC_3" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_3_1" description="UESTC_3_1" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_3_2" description="UESTC_3_2" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_3_3" description="UESTC_3_3" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_4" description="UESTC_4" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_4_1" description="UESTC_4_1" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_4_2" description="UESTC_4_2" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_4_3" description="UESTC_4_3" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_5" description="UESTC_5" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_5_1" description="UESTC_5_1" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_5_2" description="UESTC_5_2" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategory productCategoryId="UESTC_5_3" description="UESTC_5_3" productCategoryTypeId="CATALOG_CATEGORY"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTCROOT" productCategoryId="UESTC_1" sequenceNum="1"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTCROOT" productCategoryId="UESTC_2" sequenceNum="2"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTCROOT" productCategoryId="UESTC_3" sequenceNum="3"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTCROOT" productCategoryId="UESTC_4" sequenceNum="4"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTCROOT" productCategoryId="UESTC_5" sequenceNum="5"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_1" productCategoryId="UESTC_1_1" sequenceNum="1"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_1" productCategoryId="UESTC_1_2" sequenceNum="2"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_1" productCategoryId="UESTC_1_3" sequenceNum="3"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_2" productCategoryId="UESTC_2_1" sequenceNum="1"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_2" productCategoryId="UESTC_2_2" sequenceNum="2"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_2" productCategoryId="UESTC_2_3" sequenceNum="3"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_3" productCategoryId="UESTC_3_1" sequenceNum="1"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_3" productCategoryId="UESTC_3_2" sequenceNum="2"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_3" productCategoryId="UESTC_3_3" sequenceNum="3"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_4" productCategoryId="UESTC_4_1" sequenceNum="1"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_4" productCategoryId="UESTC_4_2" sequenceNum="2"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_4" productCategoryId="UESTC_4_3" sequenceNum="3"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_5" productCategoryId="UESTC_5_1" sequenceNum="1"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_5" productCategoryId="UESTC_5_2" sequenceNum="2"/>
+	<ProductCategoryRollup fromDate="2008-12-02 12:00:00.0" parentProductCategoryId="UESTC_5" productCategoryId="UESTC_5_3" sequenceNum="3"/>
 </entity-engine-xml>
