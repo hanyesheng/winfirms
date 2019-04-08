@@ -455,8 +455,8 @@ under the License.
                         <include-screen name="showMainIntro"/>
                         <include-screen name="showMainTwo"/>
                         <include-screen name="showMainOne"/>
-                        <include-screen name="showMainThree"/>
                         <include-screen name="showMainFour"/>
+                        <include-screen name="showMainThree"/>
                         <include-screen name="showMainSupport"/>
                     </decorator-section>
                 </decorator-screen>
