@@ -76,13 +76,15 @@ under the License.
 	  location="webapp/winfirms" 
 	  mount-point="/" 
 	  app-bar-display="false"> 
-	  <!--<virtual-host host-name="a.abc.com"/>--> 
+	  <virtual-host host-name="winfirms.net"/>
 	</webapp> 
 	<webapp name="configStore"
         title="Configure eCommerce"
         server="default-server"
         location="webapp/configStore"
-        mount-point="/store"
-        app-bar-display="false"/>
+        mount-point="/"
+        app-bar-display="false">
+    	<virtual-host host-name="startupservice.cn"/>
+    </webapp> 
 </ofbiz-component>
 
